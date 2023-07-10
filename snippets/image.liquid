@@ -1,0 +1,80 @@
+{% comment %}
+  * Render an image in <img> tag
+
+  *  image {object} - The Image that would be used
+  *  width {Int} - The default image width (Optional)
+  *  height {Int} - The default image height (Optional)
+  *  sizes {String} - A set of media conditions (Optional)
+  *  widths {Array} - An array of the image widths for srcset (Optional)
+  *  alt {String} - Overrides image alt value (Optional)
+  *  classes {string} - Classes and modifiers that would be used for the image and image-placeholder containers (Optional)
+  *  styles {string} - Additional styles that can be added to the image (Optional)
+  *  placeholder_svg {string} - SVG placeholder name (https://shopify.dev/api/liquid/filters#placeholder_svg_tag) (Optional)
+
+  {%- render 'image', image: section.settings.image, width: section.settings.image.width, height: section.settings.image.height, placeholder_svg: 'lifestyle-1' -%}
+{% endcomment %}
+
+{%- liquid
+  assign default_image = 'blank.svg' | asset_url
+  assign image = image | default: default_image
+  assign classes = classes | default: ''
+  assign styles = styles | default: ''
+  assign width = width | default: 3000
+  assign height = height | default: nil
+  assign sizes = sizes | default: '100vw'
+  assign widths = widths | default: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1950, 2100, 2260, 2450, 2700, 3000, 3350, 3750, 4100'
+  assign alt = alt | default: image.alt
+  assign alt = alt | escape
+  assign image_classes = ''
+  assign no_js_classes = 'img-object-contain'
+  assign placeholder_svg = placeholder_svg | default: 'image'
+  assign has_image = true
+
+  if image == blank or image contains 'blank.svg'
+    assign has_image = false
+    assign image_classes = image_classes | append: ' ' | append: 'img-object-contain'
+  else
+    assign image_classes = image_classes | append: ' ' | append: 'lazyload'
+  endif
+
+  if classes != ''
+    assign image_classes = image_classes | append: ' ' | append: classes
+    assign no_js_classes = no_js_classes | append: ' ' | append: classes
+  endif
+
+  capture image_styles
+    if styles != ''
+      echo styles
+    endif
+  endcapture
+-%}
+
+{%- if has_image -%}
+  {{ image | image_url: width: width, height: height
+    | image_tag:
+    widths: widths,
+    sizes: sizes,
+    alt: alt,
+    class: image_classes,
+    style: image_styles
+  }}
+  <noscript>
+    {{ image | image_url: width: width, height: height
+      | image_tag:
+      widths: widths,
+      sizes: sizes,
+      alt: alt,
+      class: no_js_classes,
+      style: image_styles
+    }}
+  </noscript>
+{%- else -%}
+  <img src="{{ 'blank.svg' | asset_url }}"
+    loading="lazy"
+    width="{{ width }}"
+    height="{{ height }}"
+    sizes="{{ sizes }}"
+    alt="{{ alt }}"
+    style="{{ image_styles }}"
+    class="{{ image_classes }}">
+{%- endif -%}

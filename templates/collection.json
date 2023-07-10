@@ -1,0 +1,145 @@
+{
+  "sections": {
+    "hero": {
+      "type": "collection-image-with-title",
+      "disabled": true,
+      "settings": {
+        "banner_height": "one-fifty-height",
+        "text_position": "middle-left",
+        "show_image": false,
+        "text_color": "text-dark",
+        "overlay_opacity": 10,
+        "bg_color_secondary": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "subcollections": {
+      "type": "subcollections",
+      "settings": {
+        "subcollections": [
+
+        ],
+        "limit": 8,
+        "layout": "grid",
+        "image_source": "collection",
+        "image_aspect_ratio": 0.6,
+        "image_overlay_opacity": 10,
+        "bg_color": "",
+        "text_color": "text-light",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "e567062d-266b-4546-8c39-5c7c8bd45f6f": {
+      "type": "section-list-collection",
+      "disabled": true,
+      "blocks": {
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "custom_collection_image": "shopify:\/\/shop_images\/Cgear-58-Web-1x1.jpg",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        },
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "custom_collection_image": "shopify:\/\/shop_images\/Cgear-71-Web.jpg",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        },
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "cgear-privacy-screens",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        },
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "cgear-end-drops",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        },
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "cgear-fiama-privacy-screens",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        },
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "the-door-floor",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-0",
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-1",
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-2",
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-3",
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-4",
+        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-5"
+      ],
+      "settings": {
+        "layout": "carousel",
+        "alignment": "center",
+        "image_shape": "square",
+        "image_width": 200,
+        "image_height": 55,
+        "title": "",
+        "heading_size": 100,
+        "text_size": 130,
+        "overlay_text": false,
+        "layout_mobile": "carousel",
+        "image_width_mobile": 150,
+        "image_height_mobile": 100,
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "collection",
+      "settings": {
+        "show_breadcrumbs": false,
+        "enable_sorting": false,
+        "enable_filters": false,
+        "filters_layout": "open",
+        "show_more": false,
+        "filter_mode": "default",
+        "heading_style": "body",
+        "bg_color": "",
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "subcollections",
+    "e567062d-266b-4546-8c39-5c7c8bd45f6f",
+    "main"
+  ]
+}

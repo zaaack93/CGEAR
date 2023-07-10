@@ -1,0 +1,1274 @@
+{
+  "sections": {
+    "section-slideshow": {
+      "type": "section-slideshow",
+      "blocks": {
+        "section-slideshow-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cgear-10-Web-EDIT-2.jpg",
+            "overlay_opacity": 0,
+            "text_width": "normal",
+            "text_position": "top-left",
+            "text_color": "text-light",
+            "subheading": "Loved by over 100,000 Aussies.",
+            "title": "Sand-free. Stress-free.",
+            "text": "Find comfort in the uncomfortable with Australia's favourite sand and dirt free mats.",
+            "button_1_text": "Shop All Products",
+            "button_1_link": "shopify:\/\/collections\/all-cgear-products",
+            "button_1_color": "btn--primary",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--large",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--secondary",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "section-slideshow-0"
+      ],
+      "settings": {
+        "slide_height": "six-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_slide_height": "five-fifty-height-mobile",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "slide",
+        "enable_zoom_animation": true,
+        "heading_size": 180
+      }
+    },
+    "section-marquee": {
+      "type": "section-marquee",
+      "blocks": {
+        "section-marquee-0": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "message": "Spend ||amount|| more for free shipping.",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "7113ace1-d443-4bff-9451-420481c47368": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Aussie Designed & Owned<\/strong><\/p>",
+            "icon_name": "map-pin",
+            "icon_color": "",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_White-Aussie.png",
+            "icon_width": 23,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "section-marquee-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>New collections just released - <a href=\"\/collections\" title=\"All collections\">Shop now<\/a><\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "section-marquee-2": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Use code <strong>TENOFF<\/strong> for 10% off first purchase<\/p>",
+            "icon_name": "none",
+            "icon_color": "",
+            "icon_width": 20,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "762f2f94-4ad1-4c8d-a72b-e7e0bc5f9d48": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Patented Technology<\/strong><\/p>",
+            "icon_name": "award",
+            "icon_color": "#ffffff",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_White-PatentTechnology.png",
+            "icon_width": 23,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        },
+        "29dea954-77a9-4875-8741-9b4170a622e5": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>12-Month Warranty<\/strong><\/p>",
+            "icon_name": "shield",
+            "icon_color": "",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_White-Hammock.png",
+            "icon_width": 23,
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "section-marquee-0",
+        "7113ace1-d443-4bff-9451-420481c47368",
+        "section-marquee-1",
+        "section-marquee-2",
+        "762f2f94-4ad1-4c8d-a72b-e7e0bc5f9d48",
+        "29dea954-77a9-4875-8741-9b4170a622e5"
+      ],
+      "settings": {
+        "layout": "marquee",
+        "padding": 15,
+        "bg_color": "#76892f",
+        "color": "#ffffff",
+        "marquee_speed": 100,
+        "slider_speed": 7,
+        "text_size": 110,
+        "message_spacing": 40,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "888bc330-f9b4-404a-ae5c-f2b810c7bb24": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--15169561100361__888bc330-f9b4-404a-ae5c-f2b810c7bb24-1684125380e375bfaa-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "top-left",
+            "image": "shopify:\/\/shop_images\/Cgear-58-Web-EDIT_28659a57-ffe8-4c58-abfc-859cd1d3d61e.jpg",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Camping",
+            "heading_size": 100,
+            "text": "Sand-free multimats for the great outdoors.",
+            "button_text": "Shop Camping",
+            "button_link": "shopify:\/\/collections\/camping",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        },
+        "3d3945a5-0163-4a90-bbef-2fb0788aed71": {
+          "type": "image",
+          "settings": {
+            "text_position": "top-left",
+            "image": "shopify:\/\/shop_images\/Cgear-10-Web-EDIT_ddbdeb4c-3335-4473-987a-dd3cc05f94a0.jpg",
+            "overlay_opacity": 5,
+            "text_color": "text-light",
+            "title": "Beach",
+            "heading_size": 100,
+            "text": "Sand-free mats for long days at the beach.",
+            "button_text": "Shop Beach",
+            "button_link": "shopify:\/\/collections\/beach",
+            "button_color": "btn--secondary",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__888bc330-f9b4-404a-ae5c-f2b810c7bb24-1684125380e375bfaa-0",
+        "3d3945a5-0163-4a90-bbef-2fb0788aed71"
+      ],
+      "settings": {
+        "height": "five-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "a767e1e1-e9be-408a-ac9d-c926c0f937fc": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "all-cgear-products",
+        "products_layout": "grid",
+        "number_of_products": 4,
+        "text_alignment": "text-left",
+        "title": "Best Sellers",
+        "heading_size": 110,
+        "text": "<p>Tried and tested in some of the harshest conditions Mother Nature has to throw at us - the Aussie outback. <\/p>",
+        "text_size": 100,
+        "button_text": "Shop All Products",
+        "button_color": "btn--primary",
+        "button_style": "btn--solid-border",
+        "button_size": "btn--large",
+        "bg_color_secondary": false,
+        "enable_slider_mobile": false,
+        "columns_mobile": "2",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "d0e545f7-a1bd-4335-a0c4-413f7c468eeb": {
+      "type": "section-text",
+      "blocks": {
+        "21cc617b-4c41-4b90-b02b-c44b543fc1b8": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>We use a patented multi-layered knit technology. <\/p>",
+            "size": 100,
+            "heading_highlight_type": "circle",
+            "highlight_color": "#3c4147"
+          }
+        },
+        "f4754cc0-96d7-4f36-9523-284c20ae056d": {
+          "type": "subheading",
+          "settings": {
+            "text": "",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "8bd5f4a9-ac94-496e-927c-5df923f82f13": {
+          "type": "text",
+          "settings": {
+            "text": "<p>What the bloody hell does that mean? Simply put,  sand and dirt will fall right through the mat without coming back up. Pretty handy considering 70% of Australia is arid sand and dirt.<\/p>",
+            "size": 155
+          }
+        }
+      },
+      "block_order": [
+        "21cc617b-4c41-4b90-b02b-c44b543fc1b8",
+        "f4754cc0-96d7-4f36-9523-284c20ae056d",
+        "8bd5f4a9-ac94-496e-927c-5df923f82f13"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "ff6f7b5b-0d20-43bb-8ee5-dd8ec0ec51f5": {
+      "type": "section-video",
+      "disabled": true,
+      "settings": {
+        "video_height": "six-fifty-height",
+        "text_position": "middle-center",
+        "video_link_bg": "https:\/\/www.youtube.com\/watch?v=O5zmZke0RQE&t=15s&ab_channel=Volume2211",
+        "video_link": "https:\/\/www.youtubehttps:\/\/www.youtube.com\/watch?v=O5zmZke0RQE&t=15s&ab_channel=Volume2211.com\/watch?v=O5zmZke0RQE&t=15s&ab_channel=Volume2211",
+        "image": "shopify:\/\/shop_images\/CGear-Demo-Hand_b8c113e4-cf3f-4f00-899d-bbdde8aa133a.jpg",
+        "overlay_opacity": 10,
+        "text_color": "text-light",
+        "title": "",
+        "heading_highlight_type": "italics",
+        "highlight_color": "#d43747",
+        "text": "",
+        "heading_size": 100,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--white",
+        "button_style": "btn--solid",
+        "button_size": "btn--small"
+      }
+    },
+    "3de16b6a-c1c4-4f3e-841b-fa9dec92bf16": {
+      "type": "section-custom-content",
+      "blocks": {
+        "f7f07a01-0b23-4af5-b36e-3ffc91bf9a0a": {
+          "type": "video",
+          "settings": {
+            "text_position": "middle-center",
+            "video_link_bg": "",
+            "video_link": "https:\/\/www.youtube.com\/watch?v=O5zmZke0RQE&t=15s&ab_channel=Volume2211",
+            "image": "shopify:\/\/shop_images\/CGear-Demo-Hand_b8c113e4-cf3f-4f00-899d-bbdde8aa133a.jpg",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "See the Multimat Magic",
+            "text": "",
+            "heading_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "f7f07a01-0b23-4af5-b36e-3ffc91bf9a0a"
+      ],
+      "settings": {
+        "height": "six-fifty-height",
+        "bg_color": "#ededea",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "25faf9ab-6e56-4c3a-9625-78e0dcde3dec": {
+      "type": "section-icons-row",
+      "blocks": {
+        "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-0": {
+          "type": "text",
+          "settings": {
+            "icon_name": "truck",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
+            "title": "Free Shipping",
+            "text": "<p>on AUS orders over $250<\/p>"
+          }
+        },
+        "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-1": {
+          "type": "text",
+          "settings": {
+            "icon_name": "check",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_0b9a65bb-dc69-4db9-adc8-3c23f7266f06.png",
+            "title": "12 Month Warranty",
+            "text": "<p>on all orders<\/p>"
+          }
+        },
+        "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-2": {
+          "type": "text",
+          "settings": {
+            "icon_name": "eco-friendly",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
+            "title": "Aussie Through & Through",
+            "text": "<p>family owned & operated<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-0",
+        "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-1",
+        "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-2"
+      ],
+      "settings": {
+        "alignment": "center",
+        "columns": 3,
+        "icons_width": 55,
+        "heading": "",
+        "subheading": "",
+        "bg_color": "#ededea",
+        "text_color": "#333333",
+        "box_color": "",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "enable_slider_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "b6e93a53-1952-42e2-8dcb-eaf2589badb3": {
+      "type": "section-columns",
+      "blocks": {
+        "610924da-3ae4-43e5-8849-e5cafb0ac392": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Camped-by-the-river.jpg",
+            "title": "\"In fine sand, you wont get a better mat\".",
+            "text": "<p>4WDing Australia<\/p>",
+            "button_text": "",
+            "button_link": "https:\/\/www.4wdingaustralia.com\/camping\/cgear-mat-review\/",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "b6ecb93c-2158-4331-b8c0-edf6ec43e082": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cgear-mat-test-results.jpg",
+            "title": "\"This mat is virtually bullet proof\".",
+            "text": "<p>Caravans Plus<\/p>",
+            "button_text": "",
+            "button_link": "https:\/\/www.caravansplus.com.au\/reviews\/awnings\/camping-mats\/cgear\/",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "962e6a14-d1dc-4a65-b9e4-75c347378b44": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/elite_lc200.png",
+            "title": "\"One of the first things I pack for a trip\".",
+            "text": "<p>Adventure Rig<\/p>",
+            "button_text": "",
+            "button_link": "https:\/\/www.youtube.com\/watch?v=SU1PorZr280&ab_channel=AdventureRig",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        }
+      },
+      "block_order": [
+        "610924da-3ae4-43e5-8849-e5cafb0ac392",
+        "b6ecb93c-2158-4331-b8c0-edf6ec43e082",
+        "962e6a14-d1dc-4a65-b9e4-75c347378b44"
+      ],
+      "settings": {
+        "title": "What the experts are saying",
+        "align_text": "text-left",
+        "columns": 3,
+        "equalize_height": true,
+        "image_aspect_ratio": 0.8,
+        "show_images": true,
+        "heading_size": 120,
+        "text_size": 100,
+        "bg_color_secondary": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-grid": {
+      "type": "section-grid",
+      "disabled": true,
+      "blocks": {
+        "section-grid-0": {
+          "type": "image",
+          "settings": {
+            "width": "50",
+            "image": "shopify:\/\/shop_images\/Cgear-43-Web.jpg",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Camping & Caravan",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-grid-1": {
+          "type": "image",
+          "settings": {
+            "width": "50",
+            "image": "shopify:\/\/shop_images\/caravan-drum_a430a1ba-917b-4f37-92f0-adc976d9773e.jpg",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Privacy Screens",
+            "text": "Shade protection for the harsh Aussie sun",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-grid-2": {
+          "type": "image",
+          "settings": {
+            "width": "100",
+            "image": "shopify:\/\/shop_images\/Cgear-58.jpg",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Door Mats",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-grid-3": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "width": "66.66",
+            "image": "shopify:\/\/shop_images\/Cgear-71-Web.jpg",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Beach Mats",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        }
+      },
+      "block_order": [
+        "section-grid-0",
+        "section-grid-1",
+        "section-grid-2",
+        "section-grid-3"
+      ],
+      "settings": {
+        "height": "350",
+        "heading_size": 100,
+        "button_1_color": "btn--white",
+        "button_1_style": "btn--text",
+        "button_1_size": "btn--small",
+        "button_2_color": "btn--black",
+        "button_2_style": "btn--text",
+        "button_2_size": "btn--small",
+        "bg_color_secondary": false,
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "91d1df7b-5aca-4add-9e70-7812b5fee1fa": {
+      "type": "section-testimonials",
+      "disabled": true,
+      "blocks": {
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-0": {
+          "type": "text",
+          "settings": {
+            "heading": "Our products speak for themselves, but out customers love to talk about us too.",
+            "text_size": 125,
+            "subheading": "<p>4.98 average<br\/>213 reviews<\/p>",
+            "block_color": "#76892f",
+            "text_color": "text-light",
+            "text_alignment": "text-left"
+          }
+        },
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-1": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "John Edmonson",
+            "subheading": "<p>Grey Nomad<\/p>"
+          }
+        },
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-2": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Lindsay Smith",
+            "subheading": "<p>Los Angeles, CA<\/p>"
+          }
+        },
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-3": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Eric Lopez",
+            "subheading": "<p>12 days ago<\/p>"
+          }
+        },
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-4": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Sandy Boone",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        },
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-5": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Dmitri Kristov",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        },
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-6": {
+          "type": "testimonial",
+          "settings": {
+            "star_rating": 5,
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "customer_name": "Amelia Ngoy",
+            "subheading": "<p>Verified customer<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-0",
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-1",
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-2",
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-3",
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-4",
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-5",
+        "template--15169561100361__91d1df7b-5aca-4add-9e70-7812b5fee1fa-16841301242ef985a8-6"
+      ],
+      "settings": {
+        "title": "Word from out Yonder",
+        "text_size": 100,
+        "text_alignment": "text-left",
+        "bg_color": "rgba(0,0,0,0)",
+        "testimonial_block_color": "#fffffa",
+        "testimonial_text_color": "text-dark",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-look": {
+      "type": "section-look",
+      "disabled": true,
+      "blocks": {
+        "section-look-0": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "position_x": 31,
+            "position_y": 41
+          }
+        },
+        "section-look-1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "position_x": 50,
+            "position_y": 63
+          }
+        },
+        "section-look-2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "position_x": 73,
+            "position_y": 47
+          }
+        }
+      },
+      "block_order": [
+        "section-look-0",
+        "section-look-1",
+        "section-look-2"
+      ],
+      "settings": {
+        "enable_aspect_ratio": true,
+        "main_image_aspect_ratio": 1,
+        "title": "Shop the Look",
+        "text": "<p>Our most popular looks of the season<\/p>",
+        "text_alignment": "text-left",
+        "show_hotspots": true,
+        "content_color": "text-dark",
+        "hotspot_color": "",
+        "bg_color_secondary": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-press": {
+      "type": "section-press",
+      "disabled": true,
+      "blocks": {
+        "section-press-0": {
+          "type": "press",
+          "settings": {
+            "text": "<p>In fine sand, you won't get a better mat. <\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Camped-by-the-river.jpg",
+            "logo_width": 180
+          }
+        },
+        "section-press-1": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Don't take our word for it. See what the industry professionals are saying about CGear. <\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Cgear-mat-test-results.jpg",
+            "logo_width": 180
+          }
+        },
+        "section-press-2": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Provide some information about what the company below thinks about your brand.<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Cgear-quality.jpg",
+            "logo_width": 180
+          }
+        }
+      },
+      "block_order": [
+        "section-press-0",
+        "section-press-1",
+        "section-press-2"
+      ],
+      "settings": {
+        "title": "Press",
+        "show_quotations": true,
+        "bg_color_secondary": false,
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-promotion-row-0": {
+      "type": "section-promotion-row",
+      "disabled": true,
+      "blocks": {
+        "section-promotion-row-0": {
+          "type": "column",
+          "settings": {
+            "subheading": "<p>In-store and online<\/p>",
+            "subheading_size": 90,
+            "heading": "<p>25% OFF<\/p>",
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "heading_size": 295,
+            "description": "Share details about the promotion",
+            "description_size": 100,
+            "disclaimer": "*Use this text for a disclaimer.",
+            "disclaimer_size": 75,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--primary btn--small",
+            "button_size": "btn--small",
+            "bg_color": "",
+            "gradient_background": "",
+            "text_color": "",
+            "overlay_opacity": 0
+          }
+        },
+        "section-promotion-row-1": {
+          "type": "column",
+          "settings": {
+            "subheading": "<p>Extra<\/p>",
+            "subheading_size": 80,
+            "heading": "<p><em>10% off<\/em><\/p>",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "heading_size": 350,
+            "description": "Share details about the promotion",
+            "description_size": 85,
+            "disclaimer": "*Use this text for a disclaimer.",
+            "disclaimer_size": 75,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--primary btn--small",
+            "button_size": "btn--small",
+            "bg_color": "",
+            "gradient_background": "",
+            "text_color": "",
+            "overlay_opacity": 0
+          }
+        },
+        "section-promotion-row-2": {
+          "type": "column",
+          "settings": {
+            "subheading": "<p>Flash deal<\/p>",
+            "subheading_size": 100,
+            "heading": "<p><em>Free<\/em> gift<\/p>",
+            "heading_highlight_type": "squiggle",
+            "highlight_color": "#d43747",
+            "heading_size": 240,
+            "description": "With every purchase",
+            "description_size": 100,
+            "disclaimer": "",
+            "disclaimer_size": 75,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--primary btn--small",
+            "button_size": "btn--small",
+            "bg_color": "#000000",
+            "gradient_background": "",
+            "text_color": "#ffffff",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "section-promotion-row-0",
+        "section-promotion-row-1",
+        "section-promotion-row-2"
+      ],
+      "settings": {
+        "layout": "3",
+        "height": "250",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-collection-1": {
+      "type": "section-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "",
+        "products_layout": "split-left",
+        "number_of_products": 4,
+        "text_alignment": "text-left",
+        "title": "Best Sellers",
+        "heading_size": 300,
+        "text": "<p>Use this text to share information about your collection with your customers.<\/p>",
+        "text_size": 150,
+        "button_text": "Shop the collection",
+        "button_color": "btn--black",
+        "button_style": "btn--primary",
+        "button_size": "btn--large",
+        "bg_color_secondary": false,
+        "enable_slider_mobile": true,
+        "columns_mobile": "2",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "section-products-list": {
+      "type": "section-products-list",
+      "disabled": true,
+      "blocks": {
+        "section-products-list-0": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "",
+            "product_description": "",
+            "button_text": "View Product",
+            "show_second_image": true,
+            "show_circle": true,
+            "hide_on_mobile": false,
+            "circle_text_color": "#000000",
+            "circle_rotate_animation": "rotate",
+            "circle_text": "New Arrival ~ New Arrival ~",
+            "circle_word_spacing": 3,
+            "circle_size": 150
+          }
+        },
+        "section-products-list-1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "",
+            "product_description": "",
+            "button_text": "View Product",
+            "show_second_image": true,
+            "show_circle": true,
+            "hide_on_mobile": false,
+            "circle_text_color": "#000000",
+            "circle_rotate_animation": "rotate",
+            "circle_text": "New Arrival ~ New Arrival ~",
+            "circle_word_spacing": 3,
+            "circle_size": 150
+          }
+        },
+        "section-products-list-2": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "",
+            "title": "",
+            "product_description": "",
+            "button_text": "View Product",
+            "show_second_image": true,
+            "show_circle": true,
+            "hide_on_mobile": false,
+            "circle_text_color": "#000000",
+            "circle_rotate_animation": "rotate",
+            "circle_text": "New Arrival ~ New Arrival ~",
+            "circle_word_spacing": 3,
+            "circle_size": 150
+          }
+        }
+      },
+      "block_order": [
+        "section-products-list-0",
+        "section-products-list-1",
+        "section-products-list-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": 120,
+        "button_color": "btn--black",
+        "button_style": "btn--primary btn--small",
+        "button_size": "btn--small",
+        "image_aspect_ratio": 1,
+        "bg_color_secondary": false,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "7e08aea3-8d64-45f2-ad45-b3aed504884c": {
+      "type": "section-banner-image",
+      "blocks": {
+        "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>The gear for out here.<\/p>",
+            "size": 180,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747"
+          }
+        },
+        "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We back our own products so much, that every Cgear product includes a 12 month warranty against all manufacturing defects - so the only thing you need to worry about is what you're catching for dinner.<\/p>",
+            "size": 115
+          }
+        },
+        "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-3": {
+          "type": "button",
+          "settings": {
+            "button_1_text": "About Us",
+            "button_1_link": "shopify:\/\/collections\/all",
+            "button_1_color": "btn--secondary",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-1",
+        "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-2",
+        "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-3"
+      ],
+      "settings": {
+        "height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "four-fifty-height-mobile",
+        "image": "shopify:\/\/shop_images\/georgia-dixon-wuHPFRWtDLI-unsplash.jpg",
+        "overlay_opacity": 10,
+        "enable_zoom_animation": true,
+        "text_width": "wide",
+        "text_position": "center",
+        "text_color": "text-light"
+      }
+    },
+    "0439a52d-f580-44d5-bbf7-a5c178cfed0c": {
+      "type": "section-columns",
+      "blocks": {
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-1": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/themadrig.png",
+            "title": "",
+            "text": "",
+            "button_text": "@themadrig",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "c184ef13-a90a-4fcf-8987-b22474010634": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/dads_and_lads_outdoors.png",
+            "title": "",
+            "text": "",
+            "button_text": "@dads_and_lads_outdoors",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "cb64889c-d63b-42c3-aa0a-daf7a7a92870": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
+            "title": "",
+            "text": "",
+            "button_text": "@a247gear",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "22d9c714-d2a1-4b57-a54b-7e1052538a97": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/vet.in.a.van.png",
+            "title": "",
+            "text": "",
+            "button_text": "@vet.in.a.van",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "7cee34ef-a6e4-4034-b357-aa3f5480b9f2": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/elite_lc200_226c7f7c-1f1f-4b11-9b49-0e44b571987f.png",
+            "title": "",
+            "text": "",
+            "button_text": "@elite_lc200",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-0": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/thesteels4wheels-02.png",
+            "title": "",
+            "text": "",
+            "button_text": "@thesteels4wheels",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "89c0f09a-703b-417c-8ad4-a3944bef81ec": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/our.wild.tribe.png",
+            "title": "",
+            "text": "",
+            "button_text": "@our.wild.tribe",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-2": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sarahandtribe.png",
+            "title": "",
+            "text": "",
+            "button_text": "@sarahandtribe",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-3": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lostwithnoworries.png",
+            "title": "",
+            "text": "",
+            "button_text": "@lostwithnoworries",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "3d1cf6dd-d17b-4a45-a152-0f5928c4684a": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/79series.png",
+            "title": "",
+            "text": "",
+            "button_text": "@79series",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "6cbdfb5e-cd8a-49ca-bd3c-2496af7a2222": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ourwhittleadventure.png",
+            "title": "",
+            "text": "",
+            "button_text": "@ourwhittleadventure",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-1",
+        "c184ef13-a90a-4fcf-8987-b22474010634",
+        "cb64889c-d63b-42c3-aa0a-daf7a7a92870",
+        "22d9c714-d2a1-4b57-a54b-7e1052538a97",
+        "7cee34ef-a6e4-4034-b357-aa3f5480b9f2",
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-0",
+        "89c0f09a-703b-417c-8ad4-a3944bef81ec",
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-2",
+        "template--15169561100361__0439a52d-f580-44d5-bbf7-a5c178cfed0c-1685679629d9fd4c54-3",
+        "3d1cf6dd-d17b-4a45-a152-0f5928c4684a",
+        "6cbdfb5e-cd8a-49ca-bd3c-2496af7a2222"
+      ],
+      "settings": {
+        "title": "Our community",
+        "align_text": "text-left",
+        "columns": 4,
+        "equalize_height": true,
+        "image_aspect_ratio": 1,
+        "show_images": true,
+        "heading_size": 120,
+        "text_size": 100,
+        "bg_color_secondary": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "e666d54c-2b3d-4831-a456-fead2b8f851f": {
+      "type": "section-newsletter",
+      "disabled": true,
+      "settings": {
+        "flex_align": "align--middle-left",
+        "text_color": "text-dark",
+        "title": "Newsletter",
+        "text": "<p>Sign up for exclusive deals and early access to new products.<\/p>",
+        "extra_fields": "",
+        "button_text": "",
+        "bg_color": "",
+        "image_height": "three-fifty-height",
+        "overlay_opacity": 10,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "b1cf3d88-fbfd-47e3-92a9-a5c126962c9e": {
+      "type": "section-locations",
+      "disabled": true,
+      "blocks": {
+        "template--15169561100361__b1cf3d88-fbfd-47e3-92a9-a5c126962c9e-1684130110c24f36ed-0": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "template--15169561100361__b1cf3d88-fbfd-47e3-92a9-a5c126962c9e-1684130110c24f36ed-1": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "template--15169561100361__b1cf3d88-fbfd-47e3-92a9-a5c126962c9e-1684130110c24f36ed-2": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__b1cf3d88-fbfd-47e3-92a9-a5c126962c9e-1684130110c24f36ed-0",
+        "template--15169561100361__b1cf3d88-fbfd-47e3-92a9-a5c126962c9e-1684130110c24f36ed-1",
+        "template--15169561100361__b1cf3d88-fbfd-47e3-92a9-a5c126962c9e-1684130110c24f36ed-2"
+      ],
+      "settings": {
+        "subheading": "Our stores",
+        "title": "Locations & hours",
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "3f05ce95-1ddf-45fd-aa92-0c1ae9f9d5e2": {
+      "type": "section-marquee",
+      "disabled": true,
+      "blocks": {
+        "template--15169561100361__3f05ce95-1ddf-45fd-aa92-0c1ae9f9d5e2-168500368340035676-0": {
+          "type": "message",
+          "settings": {
+            "message": "Finding comfort in the uncomfortable.",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__3f05ce95-1ddf-45fd-aa92-0c1ae9f9d5e2-168500368340035676-0"
+      ],
+      "settings": {
+        "layout": "marquee",
+        "padding": 20,
+        "bg_color": "#76892f",
+        "color": "#ffffff",
+        "marquee_speed": 100,
+        "slider_speed": 7,
+        "text_size": 200,
+        "message_spacing": 25,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "section-slideshow",
+    "section-marquee",
+    "888bc330-f9b4-404a-ae5c-f2b810c7bb24",
+    "a767e1e1-e9be-408a-ac9d-c926c0f937fc",
+    "d0e545f7-a1bd-4335-a0c4-413f7c468eeb",
+    "ff6f7b5b-0d20-43bb-8ee5-dd8ec0ec51f5",
+    "3de16b6a-c1c4-4f3e-841b-fa9dec92bf16",
+    "25faf9ab-6e56-4c3a-9625-78e0dcde3dec",
+    "b6e93a53-1952-42e2-8dcb-eaf2589badb3",
+    "section-grid",
+    "91d1df7b-5aca-4add-9e70-7812b5fee1fa",
+    "section-look",
+    "section-press",
+    "section-promotion-row-0",
+    "section-collection-1",
+    "section-products-list",
+    "7e08aea3-8d64-45f2-ad45-b3aed504884c",
+    "0439a52d-f580-44d5-bbf7-a5c178cfed0c",
+    "e666d54c-2b3d-4831-a456-fead2b8f851f",
+    "b1cf3d88-fbfd-47e3-92a9-a5c126962c9e",
+    "3f05ce95-1ddf-45fd-aa92-0c1ae9f9d5e2"
+  ]
+}

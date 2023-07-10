@@ -1,0 +1,654 @@
+{
+  "sections": {
+    "f49d8287-203f-43a8-9f43-bd8a5087373d": {
+      "type": "section-slideshow",
+      "blocks": {
+        "template--15169561231433__f49d8287-203f-43a8-9f43-bd8a5087373d-1684121075a980a4a0-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cgear-43-Web.jpg",
+            "overlay_opacity": 0,
+            "text_width": "normal",
+            "text_position": "left",
+            "text_color": "text-light",
+            "subheading": "",
+            "title": "Frequently Asked Questions",
+            "text": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_color": "btn--primary",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--large",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        },
+        "template--15169561231433__f49d8287-203f-43a8-9f43-bd8a5087373d-1684121075a980a4a0-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "overlay_opacity": 10,
+            "text_width": "normal",
+            "text_position": "center",
+            "text_color": "text-light",
+            "subheading": "",
+            "title": "Welcome to Palo Alto",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop All",
+            "button_1_link": "shopify:\/\/collections\/all",
+            "button_1_color": "btn--white",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--large",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561231433__f49d8287-203f-43a8-9f43-bd8a5087373d-1684121075a980a4a0-0",
+        "template--15169561231433__f49d8287-203f-43a8-9f43-bd8a5087373d-1684121075a980a4a0-1"
+      ],
+      "settings": {
+        "slide_height": "six-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_slide_height": "four-fifty-height-mobile",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "wipe",
+        "enable_zoom_animation": true,
+        "heading_size": 120
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "accordion-section-1": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_block_1_1": {
+          "type": "text",
+          "settings": {
+            "title": "What is a multimat?",
+            "text": "<p>Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.<\/p>"
+          }
+        },
+        "71dd2632-fdf8-439f-9362-f573d9e14b45": {
+          "type": "text",
+          "settings": {
+            "title": "What Is multimat made from?",
+            "text": "<p>Multimat is made from high density polypropylene, knitted mono\/mono and fully bound all the way around the mat and peg pointed approximately every half metre.<\/p>"
+          }
+        },
+        "3884cc35-b160-4dcc-99c0-536a082b8f38": {
+          "type": "text",
+          "settings": {
+            "title": "Can I put tent pegs through the multimat?",
+            "text": "<p>Tent pegs can be pegged into multimat, but it's not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.<\/p>"
+          }
+        },
+        "7b335bbc-d8b4-412d-a4c6-25504bb9ec07": {
+          "type": "text",
+          "settings": {
+            "title": "What if I rip or tear my multimat, is it repairable?",
+            "text": "<p>Multimat can be repaired with a patch and uv polyester thread.<\/p>"
+          }
+        },
+        "9234c0f3-a32d-49fb-b86b-8ce30e4bdd70": {
+          "type": "text",
+          "settings": {
+            "title": "Can the multimat be glued?",
+            "text": "<p>While polypropylene is usually resistant to standard glues, it can be glued with polypropylene-based adhesive found at large hardware stores.<\/p>"
+          }
+        },
+        "c31c4eca-9c4e-4c73-8478-f72644f341d3": {
+          "type": "text",
+          "settings": {
+            "title": "Do I have to peg the multimat down to the ground?",
+            "text": "<p>Multimat is designed to be pegged at all d-ring’s for maximum efficiency.<\/p>"
+          }
+        },
+        "a0cd9926-e66b-4b2f-b4f9-612c48e6d080": {
+          "type": "text",
+          "settings": {
+            "title": "Does it matter what side of the multimat is up?",
+            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.<\/p>"
+          }
+        },
+        "0f866eca-72e4-493c-9013-bcd9238100bb": {
+          "type": "text",
+          "settings": {
+            "title": "Will camp furniture damage the multimat?",
+            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.<\/p>"
+          }
+        },
+        "5a74156b-2519-4591-9217-ab3788514722": {
+          "type": "text",
+          "settings": {
+            "title": "Why doesn’t the sand rise to the top of the multimat?",
+            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.<\/p>"
+          }
+        },
+        "351aa164-a8f2-412c-9743-acf7f1f52044": {
+          "type": "text",
+          "settings": {
+            "title": "What about mud?",
+            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the multimat will dry out, return to dust and dissipate through the multimat back to the ground.<\/p>"
+          }
+        },
+        "eef490c5-0291-4ceb-b479-f9fcab838e70": {
+          "type": "text",
+          "settings": {
+            "title": "Does the sand and dust get caught between the multimat layers?",
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground. <\/p>"
+          }
+        },
+        "86906cd6-6cee-49d2-bfdf-9ee66c839776": {
+          "type": "text",
+          "settings": {
+            "title": "I have a dog. Will the dog’s claws damage the multimat?",
+            "text": "<p>Multimat is extremely robust and will endure the claws of a dog.<\/p>"
+          }
+        },
+        "a70da97e-701e-4871-8155-510792a336c9": {
+          "type": "text",
+          "settings": {
+            "title": "What things can’t I do with multimat?",
+            "text": "<p>Multimat is not designed to be laid loosely over hard surfaces i.e. concrete or other hard surfaces unless it can be pegged down firmly. Leather sole footwear should not be worn on multimat as it may cause you to slip. Avoid spilling any liquid that contains acetone (e.g. Nail polish remover) as it will melt a hole in the material.<\/p>"
+          }
+        },
+        "e3ba2919-3a96-41c3-800b-ec3b9252d25f": {
+          "type": "text",
+          "settings": {
+            "title": "Multimat seems to be slippery. Why?",
+            "text": "<p>This would indicate multimat has not been pegged out firmly or you’re wearing leather sole footwear. <\/p>"
+          }
+        },
+        "49e563cc-5323-4710-8274-04624db1fd87": {
+          "type": "text",
+          "settings": {
+            "title": "What if I accidentally pour petrol or oil on the multimat?",
+            "text": "<p>Multimat will not be harmed by petrol or oil spillage.<\/p>"
+          }
+        },
+        "ccbe33ce-75d3-4fe8-b021-cad7d8fcaa1a": {
+          "type": "text",
+          "settings": {
+            "title": "What if a spark or ash from a cigarette or a mosquito ring falls on the multimat?",
+            "text": "<p>This may burn a hole in either one or both the layers of multimat. This can be repaired with a patch and uv thread.<\/p>"
+          }
+        },
+        "e33c8de1-115e-4ac7-b35e-e94c4c063481": {
+          "type": "text",
+          "settings": {
+            "title": "Will multimat kill the grass beneath it?",
+            "text": "<p>Multimat allows grass to breathe and grow through the multimat, unlike tarps, carpet and dome tent bases which kill grass because the air and sunlight can’t get to the grass.<\/p>"
+          }
+        },
+        "e83ed6b1-8076-4b4b-a85c-8a97861a649a": {
+          "type": "text",
+          "settings": {
+            "title": "Can I drive my car over the multimat?",
+            "text": "<p>Multimat will not be damaged by driving your vehicle over it.<\/p>"
+          }
+        },
+        "d22b4d73-ece4-493b-bae1-1a48c2fc8575": {
+          "type": "text",
+          "settings": {
+            "title": "What about Bindie Eye?",
+            "text": "<p>Bindie eye’s do not attach to a multimat, although “dog paws” do.<\/p>"
+          }
+        },
+        "0f992554-4c68-4e01-8918-09f20204f708": {
+          "type": "text",
+          "settings": {
+            "title": "Will I still have to sweep the mat when I go away camping?",
+            "text": "<p>Yes, but multimat keeps sweeping to a minimum.<\/p>"
+          }
+        },
+        "68d934c6-92cd-4346-affe-72198b7aa3ad": {
+          "type": "text",
+          "settings": {
+            "title": "Will it keep me dry?",
+            "text": "<p>Multimat was not designed to keep you dry. It was designed to allow the water to fall through the multimat.and company details.<\/p>"
+          }
+        },
+        "9d6d9a86-8cc6-4122-b234-ea98914496a5": {
+          "type": "text",
+          "settings": {
+            "title": "Can you hang multimat on to the side of the caravan as a shade mat and will this affect the life span of the mat?",
+            "text": "<p>Multimat works well as a shade mat hung to the side of the caravan. It provides 90% UV protection so it won’t affect the life span of the multimat.<\/p>"
+          }
+        },
+        "d008edb5-acc2-45e4-bfa7-09c6b145811b": {
+          "type": "text",
+          "settings": {
+            "title": "Can I use the multimat over my trailer?",
+            "text": "<p>Using multimat over the trailer will prevent your load from falling off. It won’t buff or flap around whilst you drive as the wind travels straight through the multimat, providing tied down correctly using drings.<\/p>"
+          }
+        },
+        "10ab7282-611e-40b8-9046-1acdf9b47896": {
+          "type": "text",
+          "settings": {
+            "title": "Does the multimat come in a carry bag?",
+            "text": "<p>Multimat is supplied with a complimentary reusable, breathable, heavy duty carry bag with handles.<\/p>"
+          }
+        },
+        "cc65cda4-ce78-491d-a863-917f1f39047d": {
+          "type": "text",
+          "settings": {
+            "title": "Do the multimat edges curl up?",
+            "text": "<p>Multimat is bound all the way around the mat preventing the edges from curling.<\/p>"
+          }
+        },
+        "6d972c83-bffc-4e70-8ac6-9ac96c54b431": {
+          "type": "text",
+          "settings": {
+            "title": "Can you wash the multimat?",
+            "text": "<p>Multimat can be hosed down or jet washed. Use a mild detergent and for more stubborn stains, we recommend you use a high pressure hose.<\/p>"
+          }
+        },
+        "81ea3e6b-389f-4caf-9523-67594ec7ebc5": {
+          "type": "text",
+          "settings": {
+            "title": "What if I pack the multimat away when it’s wet?",
+            "text": "<p>Multimat is porous and doesn’t absorb moisture. This prevents mould or mildew forming unlike other products. Shake off excess moisture from the multimat, fold it and place it back into its storage bag. When you have returned home, hang wet multimat and bag out to dry thoroughly.<\/p>"
+          }
+        },
+        "1abe425e-afa6-449b-90b9-b6b34bee5e48": {
+          "type": "text",
+          "settings": {
+            "title": "Mat Measurements",
+            "text": "<ol><li>Measurement of mat sizes are metric and conversion to feet has been rounded up eg 6.0m x 2.4m mat is 19.687’ x 7.874’ rounded up to 20’ x 8’.2. <\/li><li>Mats can shrink 1% when 1st exposed to heat over 33C the 1st time.<\/li><\/ol>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_block_1_1",
+        "71dd2632-fdf8-439f-9362-f573d9e14b45",
+        "3884cc35-b160-4dcc-99c0-536a082b8f38",
+        "7b335bbc-d8b4-412d-a4c6-25504bb9ec07",
+        "9234c0f3-a32d-49fb-b86b-8ce30e4bdd70",
+        "c31c4eca-9c4e-4c73-8478-f72644f341d3",
+        "a0cd9926-e66b-4b2f-b4f9-612c48e6d080",
+        "0f866eca-72e4-493c-9013-bcd9238100bb",
+        "5a74156b-2519-4591-9217-ab3788514722",
+        "351aa164-a8f2-412c-9743-acf7f1f52044",
+        "eef490c5-0291-4ceb-b479-f9fcab838e70",
+        "86906cd6-6cee-49d2-bfdf-9ee66c839776",
+        "a70da97e-701e-4871-8155-510792a336c9",
+        "e3ba2919-3a96-41c3-800b-ec3b9252d25f",
+        "49e563cc-5323-4710-8274-04624db1fd87",
+        "ccbe33ce-75d3-4fe8-b021-cad7d8fcaa1a",
+        "e33c8de1-115e-4ac7-b35e-e94c4c063481",
+        "e83ed6b1-8076-4b4b-a85c-8a97861a649a",
+        "d22b4d73-ece4-493b-bae1-1a48c2fc8575",
+        "0f992554-4c68-4e01-8918-09f20204f708",
+        "68d934c6-92cd-4346-affe-72198b7aa3ad",
+        "9d6d9a86-8cc6-4122-b234-ea98914496a5",
+        "d008edb5-acc2-45e4-bfa7-09c6b145811b",
+        "10ab7282-611e-40b8-9046-1acdf9b47896",
+        "cc65cda4-ce78-491d-a863-917f1f39047d",
+        "6d972c83-bffc-4e70-8ac6-9ac96c54b431",
+        "81ea3e6b-389f-4caf-9523-67594ec7ebc5",
+        "1abe425e-afa6-449b-90b9-b6b34bee5e48"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Multimat Product & Usage",
+        "subheading": "",
+        "text": "<p>Check out some of our commonly asked questions about Australia's favourite multimat.<\/p>",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "3828219b-9750-4291-880c-8629a3b24ee0": {
+      "type": "section-accordions",
+      "blocks": {
+        "c4237792-e01d-47fa-81bc-2e18ab8d5d90": {
+          "type": "text",
+          "settings": {
+            "title": "Is my payment data safe with you?",
+            "text": "<p>All direct payment gateways adhere to the standards set by PCI-DSS as managed by the PCI Security Standards Council, which is a joint effort of brands like Visa, MasterCard, American Express, and Discover.<\/p>"
+          }
+        },
+        "2930ad47-24ac-4d66-81fa-776af226eb50": {
+          "type": "text",
+          "settings": {
+            "title": "Do you accept online payments?",
+            "text": "<p>Yes, we accept online payments. All payment processing and vital customer information is quick, easy, and secure.<br\/><\/p><p>Learn more about our store's safe checkout experience (powered by Shopify) <a href=\"https:\/\/www.shopify.com\/legal\/terms#DataProtection\" target=\"_blank\" title=\"https:\/\/www.shopify.com\/legal\/terms#DataProtection\">here<\/a>.<\/p>"
+          }
+        },
+        "a849b9ef-ddf2-4088-a448-4f86e525dedc": {
+          "type": "text",
+          "settings": {
+            "title": "Where can I learn more about the payment and processing on your store?",
+            "text": "<p>For more insight, you may also want to read Shopify’s Terms of Service <a href=\"https:\/\/www.shopify.com\/legal\/terms\" target=\"_blank\" title=\"https:\/\/www.shopify.com\/legal\/terms\">here<\/a> or Privacy Statement <a href=\"https:\/\/www.shopify.com\/legal\/privacy\" target=\"_blank\" title=\"https:\/\/www.shopify.com\/legal\/privacy\">here<\/a>.<\/p>"
+          }
+        },
+        "1c4f27b0-680f-47a6-bc88-5a7396c4be29": {
+          "type": "text",
+          "settings": {
+            "title": "What forms of payment do you accept?",
+            "text": "<p>We accept payments from major credit card companies like Visa, Mastercard, and American Express.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c4237792-e01d-47fa-81bc-2e18ab8d5d90",
+        "2930ad47-24ac-4d66-81fa-776af226eb50",
+        "a849b9ef-ddf2-4088-a448-4f86e525dedc",
+        "1c4f27b0-680f-47a6-bc88-5a7396c4be29"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Payments & Safety",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "accordion-section-2": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_block_2_0": {
+          "type": "text",
+          "settings": {
+            "title": "How long does it take to get my products?",
+            "text": "<p>Domestic shipping can take up to 5 business days.<br\/><br\/>Foreign shipping could take up to 14 business days.<br\/><br\/>Due to global supply chain challenges, shipping times could be longer than usual.<\/p>"
+          }
+        },
+        "accordion_block_2_1": {
+          "type": "text",
+          "settings": {
+            "title": "How much does it cost?",
+            "text": "<p>Shipping rates can vary depending on your region and are calculated at checkout.<br\/><br\/>Here are the full details of our <a href=\"\/policies\/shipping-policy\" title=\"Shipping Policy\">Shipping Policy<\/a>.<\/p>"
+          }
+        },
+        "accordion_block_2_2": {
+          "type": "text",
+          "settings": {
+            "title": "Is there free shipping?",
+            "text": "<p>Yes, we offer free shipping for large domestic orders.  Check the cart to see the current deal on free shipping..<\/p>"
+          }
+        },
+        "accordion_block_2_3": {
+          "type": "text",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>Yes, we ship our products all over the globe.<br\/><br\/>Please note that free shipping is not applicable for international orders and that shipping rates could vary depending on your region.<\/p>"
+          }
+        },
+        "accordion_block_2_4": {
+          "type": "text",
+          "settings": {
+            "title": "Do you ship to my area?",
+            "text": "<p>A full list of all of our shipping areas can be found <a href=\"\/policies\/shipping-policy\" title=\"Shipping Policy\">here<\/a>.<br\/><br\/>If your country or region is not mentioned, please feel free to reach out to see if we can work out the details.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_block_2_0",
+        "accordion_block_2_1",
+        "accordion_block_2_2",
+        "accordion_block_2_3",
+        "accordion_block_2_4"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Shipping & Delivery",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "accordion-section-3": {
+      "type": "section-accordions",
+      "blocks": {
+        "accordion_block_3_0": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer warranty for your products?",
+            "text": "<p>All our products are subject to quality control.<br\/><br\/>Our warranty provides a guarantee against manufacturer defects.<br\/><br\/>The guarantee covers any manufacturing, design, or material defect. Please notify us within 2 months of noticing any defects.<br\/><br\/>It does not cover blows, improper use, or other issues that are not attributable to a manufacturer defects.<\/p>"
+          }
+        },
+        "accordion_block_3_1": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer extended warranty?",
+            "text": "<p>An extended warranty can be added to your products for an additional cost.<br\/><br\/>Please get in touch for more information about extended warranties.<\/p>"
+          }
+        },
+        "accordion_block_3_2": {
+          "type": "text",
+          "settings": {
+            "title": "How much does extended warranty cost?",
+            "text": "<p>The extended warranty could come at a different cost depending on the type of product and extended period.<br\/><br\/>Please get in touch for more information.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_block_3_0",
+        "accordion_block_3_1",
+        "accordion_block_3_2"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Warranty & Repair",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "accordion-section-4": {
+      "type": "section-accordions",
+      "blocks": {
+        "3c16b87a-c27f-4ae4-ad81-93de6747d84a": {
+          "type": "text",
+          "settings": {
+            "title": "What is the multimat warranty?",
+            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.<\/p>"
+          }
+        },
+        "accordion_block_4_0": {
+          "type": "text",
+          "settings": {
+            "title": "Do you offer refunds?",
+            "text": "<p>Yes, we offer full and partial refunds.<br\/><br\/>Please enquire for more information about our Refund policy.<\/p>"
+          }
+        },
+        "accordion_block_4_1": {
+          "type": "text",
+          "settings": {
+            "title": "How long after I complete a purchase can I ask for a refund?",
+            "text": "<p>A refund request can be submitted within a month after the purchase is made.<\/p>"
+          }
+        },
+        "accordion_block_4_2": {
+          "type": "text",
+          "settings": {
+            "title": "How much can I get refunded?",
+            "text": "<p>In the case when the<strong>product and packaging are unopened and undamaged<\/strong>, you are<strong>eligible<\/strong>for a full refund.<br\/><br\/>In the case when<strong>the packaging has been opened and the product has been used<\/strong>, you are<strong>eligible<\/strong>for a partial refund.<br\/><br\/>In the case when a<strong>product has been damaged<\/strong>, and the damage is not covered by your warranty, you are<strong>not eligible<\/strong>for a refund.<br\/><br\/>Please check our <a href=\"\/policies\/terms-of-service\" title=\"Terms of Service\">Terms of Service<\/a> to see if you're eligible for a refund.<\/p>"
+          }
+        },
+        "accordion_block_4_3": {
+          "type": "text",
+          "settings": {
+            "title": "Who pays the shipping costs in the case of a refund when the order doesn't have free shipping?",
+            "text": "<p>When an order does not include free shipping, all shipping costs (including the return shipping) are handled by the customer.<\/p>"
+          }
+        },
+        "accordion_block_4_4": {
+          "type": "text",
+          "settings": {
+            "title": "Who pays the shipping costs in the case of a refund when the order has free shipping?",
+            "text": "<p>When an order includes free shipping, only the cost of the return shipping is handled by the customer.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "3c16b87a-c27f-4ae4-ad81-93de6747d84a",
+        "accordion_block_4_0",
+        "accordion_block_4_1",
+        "accordion_block_4_2",
+        "accordion_block_4_3",
+        "accordion_block_4_4"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Returns & Refunds",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "964bb2b7-10e1-49da-a592-c2dd4f7d783d": {
+      "type": "section-text",
+      "blocks": {
+        "template--15169561231433__964bb2b7-10e1-49da-a592-c2dd4f7d783d-16862777250e8182de-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Need something else?<\/p>",
+            "size": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747"
+          }
+        },
+        "template--15169561231433__964bb2b7-10e1-49da-a592-c2dd4f7d783d-16862777250e8182de-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tips for the best marinade? Secret camping spots? Favourite campsite yarn? Reach out to us below and we will get back to you.<\/p>",
+            "size": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561231433__964bb2b7-10e1-49da-a592-c2dd4f7d783d-16862777250e8182de-1",
+        "template--15169561231433__964bb2b7-10e1-49da-a592-c2dd4f7d783d-16862777250e8182de-2"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a": {
+      "type": "section-contact-form",
+      "blocks": {
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "Need something else?"
+          }
+        },
+        "dd979478-eae0-427b-8e9f-0c875b706ac6": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "Tips for the best marinade? Secret camping spots? Favourite campsite yarn? Reach out to us below and we will get back to you.",
+            "required": false
+          }
+        },
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-1": {
+          "type": "text",
+          "settings": {
+            "title": "Name",
+            "required": false
+          }
+        },
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-2": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "required": true
+          }
+        },
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-3": {
+          "type": "body",
+          "settings": {
+            "title": "Message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-0",
+        "dd979478-eae0-427b-8e9f-0c875b706ac6",
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-1",
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-2",
+        "template--15169561231433__a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a-16861966427222bcd0-3"
+      ],
+      "settings": {
+        "button_color": "btn--secondary",
+        "button_style": "btn--solid",
+        "button_size": "btn--medium",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "f49d8287-203f-43a8-9f43-bd8a5087373d",
+    "main",
+    "accordion-section-1",
+    "3828219b-9750-4291-880c-8629a3b24ee0",
+    "accordion-section-2",
+    "accordion-section-3",
+    "accordion-section-4",
+    "964bb2b7-10e1-49da-a592-c2dd4f7d783d",
+    "a0b4ffd1-24cc-443e-ab6e-bd0fdd637e7a"
+  ]
+}

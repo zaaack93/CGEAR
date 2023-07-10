@@ -1,0 +1,198 @@
+{
+  "sections": {
+    "main": {
+      "type": "list-collections",
+      "disabled": true,
+      "settings": {
+        "layout": "grid",
+        "alignment": "left",
+        "image_shape": "circle",
+        "image_width": 200,
+        "image_height": 100,
+        "title": "Collections",
+        "heading_size": 100,
+        "text_size": 110,
+        "overlay_text": false,
+        "layout_mobile": "carousel",
+        "image_width_mobile": 150,
+        "image_height_mobile": 100,
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "e459bbd3-8f04-4333-821b-6c96c8e60533": {
+      "type": "section-promotion-row",
+      "disabled": true,
+      "blocks": {
+        "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-0": {
+          "type": "column",
+          "settings": {
+            "subheading": "<p>IN-STORE AND ONLINE<\/p>",
+            "subheading_size": 90,
+            "heading": "<p>20% OFF<\/p>",
+            "heading_highlight_type": "italics",
+            "highlight_color": "#D43747",
+            "heading_size": 295,
+            "description": "Share details about the promotion",
+            "description_size": 100,
+            "disclaimer": "*Use this text for a disclaimer.",
+            "disclaimer_size": 75,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "bg_color": "",
+            "gradient_background": "",
+            "text_color": "",
+            "overlay_opacity": 10
+          }
+        },
+        "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-1": {
+          "type": "column",
+          "settings": {
+            "subheading": "<p>WEEKEND SALE<\/p>",
+            "subheading_size": 80,
+            "heading": "<p>BOGO<\/p>",
+            "heading_highlight_type": "italics",
+            "highlight_color": "#D43747",
+            "heading_size": 260,
+            "description": "Share details about the promotion",
+            "description_size": 85,
+            "disclaimer": "*Use this text for a disclaimer.",
+            "disclaimer_size": 75,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "bg_color": "",
+            "gradient_background": "",
+            "text_color": "",
+            "overlay_opacity": 10
+          }
+        },
+        "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-2": {
+          "type": "column",
+          "settings": {
+            "subheading": "",
+            "subheading_size": 100,
+            "heading": "<p><em>FREE<\/em> GIFT<\/p>",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "heading_size": 205,
+            "description": "WITH EVERY PURCHASE",
+            "description_size": 100,
+            "disclaimer": "",
+            "disclaimer_size": 75,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "bg_color": "#000000",
+            "gradient_background": "",
+            "text_color": "#ffffff",
+            "overlay_opacity": 10
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-0",
+        "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-1",
+        "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-2"
+      ],
+      "settings": {
+        "layout": "none",
+        "height": "250",
+        "bg_color": "",
+        "enable_slider_mobile": true,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "4fa8be34-148a-483c-951f-afb3a460eb4c": {
+      "type": "section-products-list",
+      "disabled": true,
+      "blocks": {
+        "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-0": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "",
+            "product_description": "",
+            "button_text": "View Product",
+            "show_second_image": true,
+            "show_circle": true,
+            "hide_on_mobile": false,
+            "circle_text_color": "#000000",
+            "circle_rotate_animation": "rotate-on-scroll",
+            "circle_text": "New Arrival ~ New Arrival ~",
+            "circle_word_spacing": 3,
+            "circle_size": 150
+          }
+        },
+        "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "",
+            "product_description": "",
+            "button_text": "View Product",
+            "show_second_image": true,
+            "show_circle": true,
+            "hide_on_mobile": false,
+            "circle_text_color": "#000000",
+            "circle_rotate_animation": "rotate-on-scroll",
+            "circle_text": "New Arrival ~ New Arrival ~",
+            "circle_word_spacing": 3,
+            "circle_size": 150
+          }
+        },
+        "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "title": "",
+            "product_description": "",
+            "button_text": "View Product",
+            "show_second_image": true,
+            "show_circle": true,
+            "hide_on_mobile": false,
+            "circle_text_color": "#000000",
+            "circle_rotate_animation": "rotate-on-scroll",
+            "circle_text": "New Arrival ~ New Arrival ~",
+            "circle_word_spacing": 3,
+            "circle_size": 150
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-0",
+        "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-1",
+        "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": 100,
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "image_aspect_ratio": 1,
+        "bg_color_secondary": false,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e459bbd3-8f04-4333-821b-6c96c8e60533",
+    "4fa8be34-148a-483c-951f-afb3a460eb4c"
+  ]
+}

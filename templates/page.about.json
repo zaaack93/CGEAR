@@ -1,0 +1,272 @@
+{
+  "sections": {
+    "slideshow": {
+      "type": "section-slideshow",
+      "blocks": {
+        "slideshow-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cgear-62-Web-1500x1125.jpg",
+            "overlay_opacity": 0,
+            "text_width": "normal",
+            "text_position": "left",
+            "text_color": "text-light",
+            "subheading": "",
+            "title": "About CGear",
+            "text": "",
+            "button_1_text": "",
+            "button_1_link": "shopify:\/\/collections\/all",
+            "button_1_color": "btn--white",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--medium",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slideshow-0"
+      ],
+      "settings": {
+        "slide_height": "six-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_slide_height": "four-fifty-height-mobile",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "wipe",
+        "enable_zoom_animation": true,
+        "heading_size": 120
+      }
+    },
+    "ce2df312-d889-4d37-b04b-aba15946304b": {
+      "type": "section-image-with-text",
+      "settings": {
+        "section_height": "five-fifty-height",
+        "layout": "inline",
+        "image_location": "left",
+        "image_width": "standard",
+        "image": "shopify:\/\/shop_images\/dylan-shaw-4LJh9TAcImw-unsplash-EDIT.jpg",
+        "subheading": "",
+        "title": "<p>The gear for out here.<\/p>",
+        "heading_highlight_type": "circle",
+        "highlight_color": "#d43747",
+        "heading_size": 130,
+        "text_content": "Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company. Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company.",
+        "text_alignment": "left",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_link": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "section_width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "5f0a85a4-6cba-4029-963f-526062296974": {
+      "type": "section-image-with-text",
+      "settings": {
+        "section_height": "five-fifty-height",
+        "layout": "inline",
+        "image_location": "right",
+        "image_width": "standard",
+        "image": "shopify:\/\/shop_images\/Cgear-23-Web.jpg",
+        "subheading": "",
+        "title": "<p>Engineered for adventure.<\/p>",
+        "heading_highlight_type": "circle",
+        "highlight_color": "#d43747",
+        "heading_size": 130,
+        "text_content": "We are committed to creating high quality pieces. We believe in fair trade and supporting the workers who make our clothing. We also believe in giving back to the community.",
+        "text_alignment": "left",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_link": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "section_width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "a5edf133-c7fb-45ab-8ef2-ec81d903c34c": {
+      "type": "section-text",
+      "blocks": {
+        "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company.<\/p>",
+            "size": 100,
+            "heading_highlight_type": "circle",
+            "highlight_color": "#3c4147"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 90,
+        "padding_bottom": 90
+      }
+    },
+    "97500463-1f25-4585-85ab-aec47372797d": {
+      "type": "section-image-with-text",
+      "settings": {
+        "section_height": "five-fifty-height",
+        "layout": "inline",
+        "image_location": "left",
+        "image_width": "standard",
+        "image": "shopify:\/\/shop_images\/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
+        "subheading": "",
+        "title": "<p>Our Guarantee<\/p>",
+        "heading_highlight_type": "circle",
+        "highlight_color": "#a0bdcb",
+        "heading_size": 130,
+        "text_content": "We take incredible care in our design and manufacturing and stand proudly by the quality of our equipment. We also know just how far some of you push yourselves during your adventures.\n\nThat’s why every Cgear product includes a XX Warranty against all manufacturing defects - so the only thing you need to worry about is what your having for dinner.",
+        "text_alignment": "left",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_link": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "section_width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "3608b4d3-540d-4e1b-9c84-2f3b000db6a9": {
+      "type": "section-image-with-text",
+      "settings": {
+        "section_height": "five-fifty-height",
+        "layout": "inline",
+        "image_location": "right",
+        "image_width": "standard",
+        "image": "shopify:\/\/shop_images\/Cgear-43-Web.jpg",
+        "subheading": "",
+        "title": "<p>Our History<\/p>",
+        "heading_highlight_type": "circle",
+        "highlight_color": "#d43747",
+        "heading_size": 130,
+        "text_content": "CGear Multimat was originally designed as a deployable helimat to eliminate dirt, dust and debris from being kicked up by the helicopters rotors when landing. The product was so successful in eliminating sand, dirt and dust from helicopter landings that we applied it to camping sites.",
+        "text_alignment": "left",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_link": "",
+        "text_color": "text-dark",
+        "bg_color": "",
+        "section_width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "6ef338fb-eb1b-498c-880d-4de0d0375389": {
+      "type": "section-press",
+      "blocks": {
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-1": {
+          "type": "press",
+          "settings": {
+            "text": "<p>SA Parks<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-SA-Parks.jpg",
+            "logo_width": 120
+          }
+        },
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-2": {
+          "type": "press",
+          "settings": {
+            "text": "<p>CRVA<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-CRVA.jpg",
+            "logo_width": 120
+          }
+        },
+        "206e6594-f448-4f79-a746-a9b25e0336e5": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Caravanning Industry of Australia.<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-CIA.jpg",
+            "logo_width": 120
+          }
+        },
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-0": {
+          "type": "press",
+          "settings": {
+            "text": "<p>VIC Parks<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-VIC-Parks.jpg",
+            "logo_width": 120
+          }
+        },
+        "7c8369bd-31fe-4f48-b44d-0f32f97f56f1": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Caravaning QLD<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-Caravan-QLD.jpg",
+            "logo_width": 120
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-1",
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-2",
+        "206e6594-f448-4f79-a746-a9b25e0336e5",
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-0",
+        "7c8369bd-31fe-4f48-b44d-0f32f97f56f1"
+      ],
+      "settings": {
+        "title": "CGear is a proud member of:",
+        "show_quotations": false,
+        "bg_color_secondary": false,
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "ce2df312-d889-4d37-b04b-aba15946304b",
+    "5f0a85a4-6cba-4029-963f-526062296974",
+    "main",
+    "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
+    "97500463-1f25-4585-85ab-aec47372797d",
+    "3608b4d3-540d-4e1b-9c84-2f3b000db6a9",
+    "6ef338fb-eb1b-498c-880d-4de0d0375389"
+  ]
+}

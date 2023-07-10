@@ -1,0 +1,1354 @@
+{
+  "sections": {
+    "main": {
+      "type": "product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "subheading": "none",
+            "show_rating": true,
+            "show_rating_count": true,
+            "padding_bottom": 20
+          }
+        },
+        "inventory_countdown": {
+          "type": "inventory_countdown",
+          "disabled": true,
+          "settings": {
+            "max_inventory": 10,
+            "hide_inventory_count": true,
+            "padding_bottom": 20
+          }
+        },
+        "c144a3fa-28a2-4fd4-95ac-9c193e6e52c4": {
+          "type": "text",
+          "settings": {
+            "title": "<p>{{ product.metafields.custom.short_description | metafield_tag }}<\/p>",
+            "text_alignment": "left",
+            "padding_bottom": 30
+          }
+        },
+        "4bca6f5b-06b5-46cc-b55a-500e073fd91d": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "none",
+            "icon_color": "#76892f",
+            "icon_image": "{{ product.metafields.custom.pdp_icon_image_1.value }}",
+            "icon_width": 20,
+            "icon_text": "{{ product.metafields.custom.short_key_benefit_1.value }}",
+            "text_size": 90,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "660d31fa-1ba5-49de-8f6b-26fe9fbb574c": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "none",
+            "icon_color": "#76892f",
+            "icon_image": "{{ product.metafields.custom.icon_image_2.value }}",
+            "icon_width": 20,
+            "icon_text": "{{ product.metafields.custom.short_key_benefit_2.value }}",
+            "text_size": 90,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "8e6d6509-570d-44a5-a41b-15ac542deec8": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "none",
+            "icon_color": "#76892f",
+            "icon_image": "{{ product.metafields.custom.icon_image_3.value }}",
+            "icon_width": 20,
+            "icon_text": "{{ product.metafields.custom.short_key_benefit_3.value }}",
+            "text_size": 90,
+            "width": "full",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "show_labels": true,
+            "show_quantity": true,
+            "show_payment_button": false,
+            "enable_subscriptions_selectors": false,
+            "padding_bottom": 28
+          }
+        },
+        "f02b417a-f4ed-4dec-9e5a-b2568422e078": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
+            "icon_width": 30,
+            "icon_text": "Dispatched within 24 hrs*",
+            "text_size": 90,
+            "width": "half",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "81346c75-bdb4-41d0-84bf-117ca0901222": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
+            "icon_width": 30,
+            "icon_text": "Free Aus Shipping (Ex. WA & NT)*",
+            "text_size": 90,
+            "width": "half",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "4a9a1abd-5ed9-4f6b-baac-919a67074cfc": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
+            "icon_width": 30,
+            "icon_text": "12 Month Warranty*",
+            "text_size": 90,
+            "width": "half",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "818ea8ca-df8c-4430-9189-4c8b38575d4a": {
+          "type": "icon",
+          "settings": {
+            "icon_name": "check",
+            "icon_color": "",
+            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
+            "icon_width": 30,
+            "icon_text": "Free 30 day returns*",
+            "text_size": 90,
+            "width": "half",
+            "text_alignment": "left",
+            "bg_color": "",
+            "padding_bottom": 20
+          }
+        },
+        "icon_row": {
+          "type": "icon_row",
+          "disabled": true,
+          "settings": {
+            "icon_name_1": "truck",
+            "icon_color_1": "",
+            "icon_image_1": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_dd16fb74-7b34-47c6-b22c-a235babc676c.png",
+            "icon_width_1": 39,
+            "icon_text_1": "Free shipping",
+            "icon_name_2": "check",
+            "icon_color_2": "",
+            "icon_image_2": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
+            "icon_width_2": 39,
+            "icon_text_2": "Free returns",
+            "icon_name_3": "heart",
+            "icon_color_3": "",
+            "icon_image_3": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
+            "icon_width_3": 39,
+            "icon_text_3": "12-month warranty",
+            "icon_name_4": "none",
+            "icon_color_4": "",
+            "icon_width_4": 20,
+            "icon_text_4": "",
+            "alignment": "center",
+            "bg_color": "#ffffff",
+            "padding_bottom": 40
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "padding_bottom": 20
+          }
+        },
+        "product_accordions": {
+          "type": "product_accordions",
+          "settings": {
+            "accordion_heading_1": "Features",
+            "accordion_text_1": "<p>{{ product.metafields.custom.features | metafield_tag }}<\/p>",
+            "accordion_page_1": "",
+            "accordion_heading_2": "Benefits",
+            "accordion_text_2": "{{ product.metafields.custom.benefits | metafield_tag }}",
+            "accordion_page_2": "",
+            "accordion_heading_3": "Care & Usage",
+            "accordion_text_3": "<p>{{ product.metafields.custom.care_and_usage | metafield_tag }}<\/p>",
+            "accordion_page_3": "",
+            "accordion_heading_4": "Shipping & Returns",
+            "accordion_text_4": "<p>{{ product.metafields.custom.shipping_and_returns | metafield_tag }}<\/p>",
+            "accordion_page_4": "",
+            "accordion_heading_5": "",
+            "accordion_text_5": "",
+            "accordion_page_5": "",
+            "padding_bottom": 30
+          }
+        },
+        "upsell": {
+          "type": "upsell",
+          "settings": {
+            "product_list": [
+
+            ],
+            "padding_bottom": 20
+          }
+        },
+        "c6c1e66b-3eb1-4df7-ac86-360f4bc65469": {
+          "type": "feature",
+          "settings": {
+            "icon_name": "support",
+            "icon_width": 25,
+            "title": "Have questions?",
+            "text": "<p>No worries - <a href=\"https:\/\/palo-alto-theme-luxe.myshopify.com\/pages\/contact\" title=\"Contact\">Get in touch<\/a> with us at any time.<\/p><p><\/p>",
+            "bg_color": "#f7f9fa",
+            "text_color": "#000000",
+            "padding_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "inventory_countdown",
+        "c144a3fa-28a2-4fd4-95ac-9c193e6e52c4",
+        "4bca6f5b-06b5-46cc-b55a-500e073fd91d",
+        "660d31fa-1ba5-49de-8f6b-26fe9fbb574c",
+        "8e6d6509-570d-44a5-a41b-15ac542deec8",
+        "form",
+        "f02b417a-f4ed-4dec-9e5a-b2568422e078",
+        "81346c75-bdb4-41d0-84bf-117ca0901222",
+        "4a9a1abd-5ed9-4f6b-baac-919a67074cfc",
+        "818ea8ca-df8c-4430-9189-4c8b38575d4a",
+        "icon_row",
+        "description",
+        "product_accordions",
+        "upsell",
+        "c6c1e66b-3eb1-4df7-ac86-360f4bc65469"
+      ],
+      "settings": {
+        "product_sticky_enable": true,
+        "image_layout": "carousel",
+        "image_width": "standard",
+        "product_image_aspect_ratio": false,
+        "enable_zoom": true,
+        "enable_video_looping": false,
+        "bg_color": "",
+        "width": "wrapper--full-padded",
+        "padding_top": 40,
+        "padding_bottom": 60
+      }
+    },
+    "56b3988b-bb0a-46ca-99ac-733daa37bea9": {
+      "type": "section-columns",
+      "blocks": {
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-0": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/themadrig.png",
+            "title": "",
+            "text": "",
+            "button_text": "@themadrig",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-1": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/dads_and_lads_outdoors.png",
+            "title": "",
+            "text": "",
+            "button_text": "@dads_and_lads_outdoors",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-2": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
+            "title": "",
+            "text": "",
+            "button_text": "@a247gear",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-3": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/vet.in.a.van.png",
+            "title": "",
+            "text": "",
+            "button_text": "@vet.in.a.van",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "d4424942-069a-4ec0-bff8-d99edc30932d": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/elite_lc200.png",
+            "title": "",
+            "text": "",
+            "button_text": "@elite_lc200",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "4530463d-4bb2-4134-bec6-8db3f7991fe1": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/thesteels4wheels-02.png",
+            "title": "",
+            "text": "",
+            "button_text": "@thesteels4wheels",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "e0aae6b1-49b0-4f0a-b4c3-b96da0792c63": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sarahandtribe.png",
+            "title": "",
+            "text": "",
+            "button_text": "@sarahandtribe",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "9f3494fd-fa73-4350-b354-a0073e348e1b": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/our.wild.tribe.png",
+            "title": "",
+            "text": "",
+            "button_text": "@our.wild.tribe",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "26190666-2102-4088-9fea-8d40b1914464": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lostwithnoworries.png",
+            "title": "",
+            "text": "",
+            "button_text": "@lostwithnoworries",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "76c659e8-dc67-4c89-9e6c-989b75fd9f6a": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/79series.png",
+            "title": "",
+            "text": "",
+            "button_text": "@79series",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "baa18033-1301-467b-b083-78fbd82db761": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ourwhittleadventure.png",
+            "title": "",
+            "text": "",
+            "button_text": "@ourwhittleadventure",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-0",
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-1",
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-2",
+        "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-3",
+        "d4424942-069a-4ec0-bff8-d99edc30932d",
+        "4530463d-4bb2-4134-bec6-8db3f7991fe1",
+        "e0aae6b1-49b0-4f0a-b4c3-b96da0792c63",
+        "9f3494fd-fa73-4350-b354-a0073e348e1b",
+        "26190666-2102-4088-9fea-8d40b1914464",
+        "76c659e8-dc67-4c89-9e6c-989b75fd9f6a",
+        "baa18033-1301-467b-b083-78fbd82db761"
+      ],
+      "settings": {
+        "title": "CGear Community",
+        "align_text": "text-left",
+        "columns": 3,
+        "equalize_height": true,
+        "image_aspect_ratio": 0.8,
+        "show_images": true,
+        "heading_size": 120,
+        "text_size": 100,
+        "bg_color_secondary": true,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "14799a60-0c01-42df-b31a-f2d6a12cefa5": {
+      "type": "section-text",
+      "blocks": {
+        "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-0": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>Features<\/p>",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>The Bells & Whistles<\/p>",
+            "size": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747"
+          }
+        },
+        "4bcd7f11-3960-4f3f-97f4-1ee978a94828": {
+          "type": "text",
+          "settings": {
+            "text": "<p>  <\/p>",
+            "size": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-0",
+        "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-1",
+        "4bcd7f11-3960-4f3f-97f4-1ee978a94828"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "dfe599df-d4d8-496c-8175-47713b950feb": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--15169561329737__dfe599df-d4d8-496c-8175-47713b950feb-16862001889be27a8f-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "{{ product.metafields.custom.key_benefit_callout_1_image.value }}",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        },
+        "template--15169561329737__dfe599df-d4d8-496c-8175-47713b950feb-16862001889be27a8f-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 50,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.key_benefit_callout_1_heading.value }}",
+            "heading_size": 100,
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_1_text | metafield_tag }}<\/p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--white",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--small",
+            "bg_color": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561329737__dfe599df-d4d8-496c-8175-47713b950feb-16862001889be27a8f-0",
+        "template--15169561329737__dfe599df-d4d8-496c-8175-47713b950feb-16862001889be27a8f-1"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 32,
+        "padding_bottom": 18
+      }
+    },
+    "efa730fc-cc08-4ce7-b645-b65b7a749691": {
+      "type": "section-custom-content",
+      "blocks": {
+        "bf85c675-d71e-49a1-8b24-ea169b666a4e": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 50,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.key_benefit_callout_2_heading.value }}",
+            "heading_size": 100,
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_2_text | metafield_tag }}<\/p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--white",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--small",
+            "bg_color": "rgba(0,0,0,0)"
+          }
+        },
+        "da759528-0e3c-43e8-92a3-af6a5d70d70a": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "{{ product.metafields.custom.key_benefit_callout_2_image.value }}",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "bf85c675-d71e-49a1-8b24-ea169b666a4e",
+        "da759528-0e3c-43e8-92a3-af6a5d70d70a"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 18,
+        "padding_bottom": 18
+      }
+    },
+    "957d002a-db78-465f-8b25-031469cfc999": {
+      "type": "section-custom-content",
+      "blocks": {
+        "52c5e93f-727a-4b64-8d53-4682a7ee0b5f": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "{{ product.metafields.custom.key_benefit_callout_3_image.value }}",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        },
+        "fa39c931-adf7-4103-9ddb-86578ceb5691": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 50,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.key_benefit_callout_3_heading.value }}",
+            "heading_size": 100,
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_3_text | metafield_tag }}<\/p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--white",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--small",
+            "bg_color": "rgba(0,0,0,0)"
+          }
+        }
+      },
+      "block_order": [
+        "52c5e93f-727a-4b64-8d53-4682a7ee0b5f",
+        "fa39c931-adf7-4103-9ddb-86578ceb5691"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 18,
+        "padding_bottom": 60
+      }
+    },
+    "49a4b8e9-0438-4f3c-976c-4245e7381a13": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "34f38547-cb15-438f-b749-27dc63717f36": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 50,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.key_benefit_callout_4_heading.value }}",
+            "heading_size": 100,
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_4_text | metafield_tag }}<\/p>",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--white",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--small",
+            "bg_color": "rgba(0,0,0,0)"
+          }
+        },
+        "5a8edc8b-5a47-4029-9a1a-a511caf832d1": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "{{ product.metafields.custom.key_benefit_callout_4_image.value }}",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "34f38547-cb15-438f-b749-27dc63717f36",
+        "5a8edc8b-5a47-4029-9a1a-a511caf832d1"
+      ],
+      "settings": {
+        "height": "four-fifty-height",
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 18,
+        "padding_bottom": 60
+      }
+    },
+    "748f1396-4cf8-49b6-adfb-55e964abb405": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "template--15169561329737__748f1396-4cf8-49b6-adfb-55e964abb405-1685670709f25008e4-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Cgear-58-Web-1x1.jpg",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        },
+        "f25798cd-8a38-4efd-8d33-1ec9b2872cae": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2023-06-02_at_12.08.18_pm.png",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561329737__748f1396-4cf8-49b6-adfb-55e964abb405-1685670709f25008e4-0",
+        "f25798cd-8a38-4efd-8d33-1ec9b2872cae"
+      ],
+      "settings": {
+        "height": "six-fifty-height",
+        "bg_color": "",
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "360ef5f0-e2d8-4a7e-a3e1-c50f4468ac7c": {
+      "type": "section-custom-content",
+      "disabled": true,
+      "blocks": {
+        "5c79d655-8440-47fe-859e-231944be76d9": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
+            "overlay_opacity": 10,
+            "text_color": "text-light",
+            "title": "Finding comfort in the uncomfortable",
+            "heading_size": 100,
+            "text": "The only thing you need to worry about is what you're having for dinner.",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "5c79d655-8440-47fe-859e-231944be76d9"
+      ],
+      "settings": {
+        "height": "five-fifty-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "tabs": {
+      "type": "section-accordions",
+      "blocks": {
+        "acordion-0": {
+          "type": "text",
+          "settings": {
+            "title": "What is a Multimat?",
+            "text": "<p>The Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.<\/p>"
+          }
+        },
+        "94e75911-f75d-405b-8226-1c2f65643a4c": {
+          "type": "text",
+          "settings": {
+            "title": "What Is Multimat made from?",
+            "text": "<p>Multimat is made from high density polypropylene, knitted mono\/mono and fully bound all the way around the mat and peg pointed approximately every half metre.<\/p>"
+          }
+        },
+        "811ba464-11c9-4282-bf18-5e7cf1e2ee9b": {
+          "type": "text",
+          "settings": {
+            "title": "Why doesn’t the sand rise to the top of the Multimat?",
+            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.<\/p>"
+          }
+        },
+        "acordion-1": {
+          "type": "text",
+          "settings": {
+            "title": "Can I put pegs through the mats?",
+            "text": "<p>Tent pegs can be pegged into multimat, but not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.<\/p>"
+          }
+        },
+        "b48aea37-98e6-40b5-af34-46d7eff5c646": {
+          "type": "text",
+          "settings": {
+            "title": "Do I have to peg the Multimat down to the ground?",
+            "text": "<p>Multimat is designed to be pegged at all dring’s for maximum efficiency.<\/p>"
+          }
+        },
+        "acordion-2": {
+          "type": "text",
+          "settings": {
+            "title": "Do you include a warranty?",
+            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.<\/p>"
+          }
+        },
+        "80eb8a84-90e9-4ac2-b3a5-5d6d1e72e12a": {
+          "type": "text",
+          "settings": {
+            "title": "Will camp furniture damage the Multimat?",
+            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.<\/p>"
+          }
+        },
+        "f649e455-3a9f-4927-9afe-355d6eb19d5c": {
+          "type": "text",
+          "settings": {
+            "title": "Will mud ruin the mat?",
+            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the Multimat will dry out, return to dust and dissipate through the Multimat back to the ground.<\/p>"
+          }
+        },
+        "e7982ff6-a9b8-40c7-8ded-f32b3b20a28d": {
+          "type": "text",
+          "settings": {
+            "title": "Does it matter what side of the Multimat you use?",
+            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.<\/p>"
+          }
+        },
+        "2fb093fd-5f24-4496-b5e8-da6e57781731": {
+          "type": "text",
+          "settings": {
+            "title": "Does the sand and dust get caught between the Multimat layers?",
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "acordion-0",
+        "94e75911-f75d-405b-8226-1c2f65643a4c",
+        "811ba464-11c9-4282-bf18-5e7cf1e2ee9b",
+        "acordion-1",
+        "b48aea37-98e6-40b5-af34-46d7eff5c646",
+        "acordion-2",
+        "80eb8a84-90e9-4ac2-b3a5-5d6d1e72e12a",
+        "f649e455-3a9f-4927-9afe-355d6eb19d5c",
+        "e7982ff6-a9b8-40c7-8ded-f32b3b20a28d",
+        "2fb093fd-5f24-4496-b5e8-da6e57781731"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Frequently Asked Questions",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "e30e86d1-5c16-4c16-8d94-bee79006d8ee": {
+      "type": "section-accordions",
+      "disabled": true,
+      "blocks": {
+        "818fd74d-0ba7-45c8-8458-e3c50def9ff9": {
+          "type": "text",
+          "settings": {
+            "title": "What is a Multimat?",
+            "text": "<p>The Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.<\/p>"
+          }
+        },
+        "d958156c-ab77-4b16-a641-c3964d498dd0": {
+          "type": "text",
+          "settings": {
+            "title": "What Is Multimat made from?",
+            "text": "<p>Multimat is made from high density polypropylene, knitted mono\/mono and fully bound all the way around the mat and peg pointed approximately every half metre.<\/p>"
+          }
+        },
+        "d454c67d-fa37-4146-b9de-c2394a881c0b": {
+          "type": "text",
+          "settings": {
+            "title": "Why doesn’t the sand rise to the top of the Multimat?",
+            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.<\/p>"
+          }
+        },
+        "a18870fe-3352-446f-919d-23b8932a4b64": {
+          "type": "text",
+          "settings": {
+            "title": "Can I put pegs through the mats?",
+            "text": "<p>Tent pegs can be pegged into multimat, but not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.<\/p>"
+          }
+        },
+        "a33850a5-1395-4c4c-9af9-060b6e091c08": {
+          "type": "text",
+          "settings": {
+            "title": "Do I have to peg the Multimat down to the ground?",
+            "text": "<p>Multimat is designed to be pegged at all dring’s for maximum efficiency.<\/p>"
+          }
+        },
+        "5070ad8e-34a3-4729-b186-a3d14ee100a4": {
+          "type": "text",
+          "settings": {
+            "title": "Do you include a warranty?",
+            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.<\/p>"
+          }
+        },
+        "6d71124a-3274-4c9b-82fa-f648618c97cb": {
+          "type": "text",
+          "settings": {
+            "title": "Will camp furniture damage the Multimat?",
+            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.<\/p>"
+          }
+        },
+        "df2ef14c-c518-45e8-9018-e75d659df286": {
+          "type": "text",
+          "settings": {
+            "title": "Will mud ruin the mat?",
+            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the Multimat will dry out, return to dust and dissipate through the Multimat back to the ground.<\/p>"
+          }
+        },
+        "fa0a9575-6edf-4dc8-af0e-16163b232e90": {
+          "type": "text",
+          "settings": {
+            "title": "Does it matter what side of the Multimat you use?",
+            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.<\/p>"
+          }
+        },
+        "93cf24a1-64ab-43c1-b60e-e7a183a34586": {
+          "type": "text",
+          "settings": {
+            "title": "Does the sand and dust get caught between the Multimat layers?",
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "818fd74d-0ba7-45c8-8458-e3c50def9ff9",
+        "d958156c-ab77-4b16-a641-c3964d498dd0",
+        "d454c67d-fa37-4146-b9de-c2394a881c0b",
+        "a18870fe-3352-446f-919d-23b8932a4b64",
+        "a33850a5-1395-4c4c-9af9-060b6e091c08",
+        "5070ad8e-34a3-4729-b186-a3d14ee100a4",
+        "6d71124a-3274-4c9b-82fa-f648618c97cb",
+        "df2ef14c-c518-45e8-9018-e75d659df286",
+        "fa0a9575-6edf-4dc8-af0e-16163b232e90",
+        "93cf24a1-64ab-43c1-b60e-e7a183a34586"
+      ],
+      "settings": {
+        "layout": "two-columns",
+        "show_accordion_divider": false,
+        "title": "Frequently Asked Questions",
+        "subheading": "",
+        "text": "",
+        "tabs_bg_color": "#fafafa",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "1e732b75-7029-49b1-b9ce-6fdda8f21f9d": {
+      "type": "section-text",
+      "blocks": {
+        "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Can't find what you're looking for? View our full list of FAQs below.<\/p>",
+            "size": 100
+          }
+        },
+        "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-3": {
+          "type": "button",
+          "settings": {
+            "button_text": "Read More",
+            "button_link": "shopify:\/\/pages\/faqs",
+            "button_color": "btn--primary",
+            "button_style": "btn--solid",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-2",
+        "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-3"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "1686198917e89f223e": {
+      "type": "apps",
+      "blocks": {
+        "c5a71b63-7a84-4f97-9041-c11163547db8": {
+          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "c5a71b63-7a84-4f97-9041-c11163547db8"
+      ],
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "overlapping-images-0": {
+      "type": "section-overlapping-images",
+      "disabled": true,
+      "settings": {
+        "text_position": "right",
+        "text_alignment": "center",
+        "images_width": 750,
+        "images_offset": 60,
+        "image_link_1": "",
+        "image_link_2": "",
+        "hide_image_2": false,
+        "heading": "Our Story, Our Promise",
+        "description": "<p>Use this text to describe a product, promotion, or your company.<\/p>",
+        "heading_size": 100,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_text": "",
+        "video_link": "",
+        "bg_color_secondary": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "overlapping-images-1": {
+      "type": "section-overlapping-images",
+      "disabled": true,
+      "settings": {
+        "text_position": "left",
+        "text_alignment": "center",
+        "images_width": 750,
+        "images_offset": 60,
+        "image_link_1": "",
+        "image_link_2": "",
+        "hide_image_2": false,
+        "heading": "Our Story, Our Promise",
+        "description": "<p>Use this text to describe a product, promotion, or your company.<\/p>",
+        "heading_size": 100,
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "video_text": "",
+        "video_link": "",
+        "bg_color_secondary": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "grid": {
+      "type": "section-grid",
+      "disabled": true,
+      "blocks": {
+        "section-grid-0": {
+          "type": "image",
+          "settings": {
+            "width": "66.66",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Shop Trending",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-grid-1": {
+          "type": "image",
+          "settings": {
+            "width": "33.33",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Shop Clearance",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-grid-2": {
+          "type": "image",
+          "settings": {
+            "width": "33.33",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Shop Best Sellers",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        },
+        "section-grid-3": {
+          "type": "image",
+          "settings": {
+            "width": "66.66",
+            "overlay_opacity": 10,
+            "text_position": "center",
+            "subheading": "",
+            "title": "Shop New",
+            "text": "Add more info or delete this text",
+            "button_1_text": "Shop Now",
+            "button_1_link": "",
+            "button_2_text": "",
+            "button_2_link": "",
+            "text_color": "text-light"
+          }
+        }
+      },
+      "block_order": [
+        "section-grid-0",
+        "section-grid-1",
+        "section-grid-2",
+        "section-grid-3"
+      ],
+      "settings": {
+        "height": "350",
+        "heading_size": 100,
+        "button_1_color": "btn--white",
+        "button_1_style": "btn--text",
+        "button_1_size": "btn--small",
+        "button_2_color": "btn--black",
+        "button_2_style": "btn--text",
+        "button_2_size": "btn--small",
+        "bg_color_secondary": false,
+        "enable_slider_mobile": true,
+        "width": "wrapper",
+        "add_gutter": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "icons": {
+      "type": "section-icons-row",
+      "disabled": true,
+      "blocks": {
+        "icon-0": {
+          "type": "text",
+          "settings": {
+            "icon_name": "truck",
+            "title": "Free Shipping",
+            "text": "<p>on all order over $99<\/p>"
+          }
+        },
+        "icon-1": {
+          "type": "text",
+          "settings": {
+            "icon_name": "check",
+            "title": "Free Returns",
+            "text": "<p>within 30 days of purchase<\/p>"
+          }
+        },
+        "icon-2": {
+          "type": "text",
+          "settings": {
+            "icon_name": "eco-friendly",
+            "title": "1% Donated Annually",
+            "text": "<p>to forest conservation<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon-0",
+        "icon-1",
+        "icon-2"
+      ],
+      "settings": {
+        "alignment": "center",
+        "columns": 3,
+        "icons_width": 30,
+        "heading": "",
+        "subheading": "",
+        "bg_color": "",
+        "text_color": "#333333",
+        "box_color": "",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "enable_slider_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "related": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "limit": 4,
+        "product_recommendations_heading": "You May Also Like",
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "6febb719-70d0-4a4d-bc91-0d81c1aeaf52": {
+      "type": "section-collection",
+      "settings": {
+        "collection": "all-cgear-products",
+        "products_layout": "grid",
+        "number_of_products": 8,
+        "text_alignment": "text-center",
+        "title": "Shop Our Community Favourites",
+        "heading_size": 100,
+        "text": "<p>Loved by over 100,000 Aussie adventurers. <\/p>",
+        "text_size": 100,
+        "button_text": "Shop All Products",
+        "button_color": "btn--secondary",
+        "button_style": "btn--solid-border",
+        "button_size": "btn--large",
+        "bg_color_secondary": false,
+        "enable_slider_mobile": true,
+        "columns_mobile": "2",
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "loox-product-reviews-app-section": {
+      "type": "apps",
+      "disabled": true,
+      "blocks": {
+        "loox-product-reviews": {
+          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "loox-product-reviews"
+      ],
+      "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "56b3988b-bb0a-46ca-99ac-733daa37bea9",
+    "14799a60-0c01-42df-b31a-f2d6a12cefa5",
+    "dfe599df-d4d8-496c-8175-47713b950feb",
+    "efa730fc-cc08-4ce7-b645-b65b7a749691",
+    "957d002a-db78-465f-8b25-031469cfc999",
+    "49a4b8e9-0438-4f3c-976c-4245e7381a13",
+    "748f1396-4cf8-49b6-adfb-55e964abb405",
+    "360ef5f0-e2d8-4a7e-a3e1-c50f4468ac7c",
+    "tabs",
+    "e30e86d1-5c16-4c16-8d94-bee79006d8ee",
+    "1e732b75-7029-49b1-b9ce-6fdda8f21f9d",
+    "1686198917e89f223e",
+    "overlapping-images-0",
+    "overlapping-images-1",
+    "grid",
+    "icons",
+    "related",
+    "6febb719-70d0-4a4d-bc91-0d81c1aeaf52",
+    "loox-product-reviews-app-section"
+  ]
+}

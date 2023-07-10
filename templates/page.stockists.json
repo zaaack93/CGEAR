@@ -1,0 +1,155 @@
+{
+  "sections": {
+    "slideshow": {
+      "type": "section-slideshow",
+      "blocks": {
+        "slideshow-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/georgia-dixon-wuHPFRWtDLI-unsplash.jpg",
+            "overlay_opacity": 0,
+            "text_width": "normal",
+            "text_position": "left",
+            "text_color": "text-light",
+            "subheading": "",
+            "title": "Stockists",
+            "text": "",
+            "button_1_text": "",
+            "button_1_link": "shopify:\/\/collections\/all",
+            "button_1_color": "btn--white",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--medium",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slideshow-0"
+      ],
+      "settings": {
+        "slide_height": "five-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_slide_height": "four-fifty-height-mobile",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "wipe",
+        "enable_zoom_animation": true,
+        "heading_size": 120
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "show_page_title": true,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "a5edf133-c7fb-45ab-8ef2-ec81d903c34c": {
+      "type": "section-text",
+      "blocks": {
+        "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company.<\/p>",
+            "size": 100,
+            "heading_highlight_type": "circle",
+            "highlight_color": "#3c4147"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": true,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 90,
+        "padding_bottom": 90
+      }
+    },
+    "6ef338fb-eb1b-498c-880d-4de0d0375389": {
+      "type": "section-press",
+      "blocks": {
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-1": {
+          "type": "press",
+          "settings": {
+            "text": "<p>SA Parks<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-SA-Parks.jpg",
+            "logo_width": 120
+          }
+        },
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-2": {
+          "type": "press",
+          "settings": {
+            "text": "<p>CRVA<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-CRVA.jpg",
+            "logo_width": 120
+          }
+        },
+        "206e6594-f448-4f79-a746-a9b25e0336e5": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Caravanning Industry of Australia.<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-CIA.jpg",
+            "logo_width": 120
+          }
+        },
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-0": {
+          "type": "press",
+          "settings": {
+            "text": "<p>VIC Parks<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-VIC-Parks.jpg",
+            "logo_width": 120
+          }
+        },
+        "7c8369bd-31fe-4f48-b44d-0f32f97f56f1": {
+          "type": "press",
+          "settings": {
+            "text": "<p>Caravaning QLD<\/p>",
+            "link": "",
+            "press_logo": "shopify:\/\/shop_images\/Logo-Caravan-QLD.jpg",
+            "logo_width": 120
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-1",
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-2",
+        "206e6594-f448-4f79-a746-a9b25e0336e5",
+        "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-0",
+        "7c8369bd-31fe-4f48-b44d-0f32f97f56f1"
+      ],
+      "settings": {
+        "title": "CGear is a proud member of:",
+        "show_quotations": false,
+        "bg_color_secondary": false,
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "main",
+    "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
+    "6ef338fb-eb1b-498c-880d-4de0d0375389"
+  ]
+}

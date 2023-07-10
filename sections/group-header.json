@@ -1,0 +1,117 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-0": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Free AUS Shipping +$250 (excl. NT & WA)<\/strong><\/p>",
+            "icon_name": "package",
+            "icon_color": "#ffffff",
+            "icon_width": 20,
+            "target_url_enabled": false,
+            "target_url": "",
+            "target_referrer_enabled": false,
+            "target_referrer": "",
+            "target_device_enabled": false,
+            "target_device": "mobile"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-0"
+      ],
+      "settings": {
+        "bg_color": "#a0bdcb",
+        "color": "#ffffff",
+        "layout": "slider",
+        "padding": 10,
+        "slider_speed": 7,
+        "marquee_speed": 100,
+        "text_size": 100,
+        "message_spacing": 25
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "213e57de-d4a1-4e99-8814-f83880992841": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image": "shopify:\/\/shop_images\/Cgear-52-Web_4f2320c4-d495-477a-a44e-4a89e3f97a36.jpg",
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "title": "Shop All",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "7a84bef6-11af-4d78-b55e-71d200318301": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image": "shopify:\/\/shop_images\/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "title": "Shop Camping",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "077952c5-3313-4f2b-ae09-ba513d1ff924": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image": "shopify:\/\/shop_images\/Cgear-9-Web-1x1.jpg",
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "title": "Shop Beach",
+            "link_text": "",
+            "link": ""
+          }
+        },
+        "82a27ed1-a560-4755-9bcf-46c0ac74bfa2": {
+          "type": "image",
+          "settings": {
+            "position": "1",
+            "image": "shopify:\/\/shop_images\/Super_Stallion.jpg",
+            "aspect_ratio": 0.8,
+            "wide_image": true,
+            "title": "Browse Military",
+            "link_text": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "213e57de-d4a1-4e99-8814-f83880992841",
+        "7a84bef6-11af-4d78-b55e-71d200318301",
+        "077952c5-3313-4f2b-ae09-ba513d1ff924",
+        "82a27ed1-a560-4755-9bcf-46c0ac74bfa2"
+      ],
+      "settings": {
+        "sticky_header": true,
+        "header_border": false,
+        "logo_not_home": "shopify:\/\/shop_images\/CGear-Logo-Outlined-01.png",
+        "logo_max_width": 150,
+        "main-menu": "new-menu",
+        "show_images": true,
+        "image_aspect_ratio": 1,
+        "menu_alignment": "left",
+        "highlight_item": "Sale",
+        "highlight_item_color": "#f92c1f",
+        "header_transparent": true,
+        "header_text_color": "white",
+        "header_gradient": false
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

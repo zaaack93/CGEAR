@@ -1,0 +1,213 @@
+{
+  "sections": {
+    "d7500f76-3bf1-422a-a811-a46f0dc76b02": {
+      "type": "section-slideshow",
+      "blocks": {
+        "template--15169561198665__d7500f76-3bf1-422a-a811-a46f0dc76b02-1687419522f730b89c-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
+            "overlay_opacity": 0,
+            "text_width": "normal",
+            "text_position": "left",
+            "text_color": "text-light",
+            "subheading": "",
+            "title": "Contact Us",
+            "text": "",
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_color": "btn--white",
+            "button_1_style": "btn--solid-border",
+            "button_1_size": "btn--large",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--black",
+            "button_2_style": "btn--solid",
+            "button_2_size": "btn--large",
+            "video_text": "",
+            "video_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561198665__d7500f76-3bf1-422a-a811-a46f0dc76b02-1687419522f730b89c-0"
+      ],
+      "settings": {
+        "slide_height": "six-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_slide_height": "four-fifty-height-mobile",
+        "show_nav_dots": true,
+        "show_nav_arrows": true,
+        "show_arrow_down": false,
+        "autoplay": false,
+        "duration": 4,
+        "transition": "wipe",
+        "enable_zoom_animation": true,
+        "heading_size": 120
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": false,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "bc9dd045-a0fd-4fa8-9c49-fc44cc57dbee": {
+      "type": "section-image",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
+        "height": "five-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "five-fifty-height-mobile",
+        "enable_stretch": true,
+        "image_position": "center",
+        "bg_color_secondary": false,
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "184419b4-34ea-4390-9e4d-73586d512bdc": {
+      "type": "section-text",
+      "blocks": {
+        "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "size": 100,
+            "margin_bottom": 16
+          }
+        },
+        "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-1": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Need questions answered? <\/p>",
+            "size": 100,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747"
+          }
+        },
+        "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tips for the best marinade? Secret camping spots? Favourite campsite yarn? <\/p><p>Drop us a line below and bluey will get back to you shortly.<\/p>",
+            "size": 100
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-0",
+        "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-1",
+        "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-2"
+      ],
+      "settings": {
+        "text_position": "center",
+        "bg_color_secondary": false,
+        "text_color": "text-dark",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "contact-form": {
+      "type": "section-contact-form",
+      "blocks": {
+        "contact-form-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "title": "Contact us"
+          }
+        },
+        "contact-form-1": {
+          "type": "text",
+          "settings": {
+            "title": "Name",
+            "required": false
+          }
+        },
+        "contact-form-2": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "required": true
+          }
+        },
+        "contact-form-3": {
+          "type": "body",
+          "settings": {
+            "title": "Message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "contact-form-0",
+        "contact-form-1",
+        "contact-form-2",
+        "contact-form-3"
+      ],
+      "settings": {
+        "button_color": "btn--secondary",
+        "button_style": "btn--solid",
+        "button_size": "btn--large",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "locations": {
+      "type": "section-locations",
+      "disabled": true,
+      "blocks": {
+        "locations-0": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "locations-1": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        },
+        "locations-2": {
+          "type": "locations",
+          "settings": {
+            "title": "566 Emerson Street Palo Alto, California",
+            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "locations-0",
+        "locations-1",
+        "locations-2"
+      ],
+      "settings": {
+        "subheading": "Our stores",
+        "title": "Locations & hours",
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "d7500f76-3bf1-422a-a811-a46f0dc76b02",
+    "main",
+    "bc9dd045-a0fd-4fa8-9c49-fc44cc57dbee",
+    "184419b4-34ea-4390-9e4d-73586d512bdc",
+    "contact-form",
+    "locations"
+  ]
+}
