@@ -11,7 +11,7 @@
   {{ 'theme.css' | asset_url | preload_tag: as: 'style' }}
   {{ 'lazysizes.min.js' | asset_url | preload_tag: as: 'script' }}
   {{ 'vendor.js' | asset_url | preload_tag: as: 'script' }}
-  {{ 'theme.js' | asset_url | preload_tag: as: 'script' }}
+  {{ 'theme.dev.js' | asset_url | preload_tag: as: 'script' }}
 
   <link rel="preload" as="image" href="{{ 'loading.svg' | asset_url }}">{%- liquid
   assign loading_appearance = settings.loading_appearance
@@ -222,7 +222,7 @@
   {%- endif -%}
 
   <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'theme.dev.js' | asset_url }}" defer="defer"></script>
 
   {%- comment -%}
     If you need to do some edits in Theme JS use theme.dev.js file

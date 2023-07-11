@@ -118,7 +118,17 @@
           {%- comment -%} Loop product media skipping the featured {%- endcomment -%}
           {%- for media in product.media -%}
             {%- if media.id != featured_media_id -%}
-              {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type -%}
+              {% assign colorOption = 'Colour' %}
+              {% assign selectedVariant = product.selected_or_first_available_variant %}
+              {% assign selectedColor = product.selected_or_first_available_variant.options %}
+              {% if media.alt contains '(' and media.alt contains ')' %}
+                {% assign mediaColor = media.alt | split: '(' | last | split: ')' | first  %}
+                {% if selectedColor contains mediaColor %}
+                  {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type -%}
+                {% endif %}
+              {% else %}
+                {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type -%}
+              {% endif %}
             {%- endif -%}
           {%- endfor -%}
         {%- else -%}
@@ -175,7 +185,17 @@
           {%- comment -%} Loop product media skipping the featured media thumbnail {%- endcomment -%}
           {%- for media in product.media -%}
             {%- if media.id != featured_media_id -%}
+              {% assign colorOption = 'Colour' %}
+              {% assign selectedVariant = product.selected_or_first_available_variant %}
+              {% assign selectedColor = product.selected_or_first_available_variant.options %}
+              {% if media.alt contains '(' and media.alt contains ')' %}
+                {% assign mediaColor = media.alt | split: '(' | last | split: ')' | first  %}
+                {% if selectedColor contains mediaColor %}
+                  {%- render 'media-thumb', media: media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+                {% endif %}
+              {% else %}
               {%- render 'media-thumb', media: media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+              {% endif %}
             {%- endif -%}
           {%- endfor -%}
         </div>
