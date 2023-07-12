@@ -1,0 +1,3 @@
+const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = await (await fetch(`${window.Shopify.routes.root}?section_id=cart-drawer`)).text();
+    this.replaceChildren(...tempDiv.querySelector("#cart-drawer").children);

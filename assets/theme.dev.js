@@ -3831,7 +3831,7 @@
 
     onOptionChange(evt) {
       this.pushState(evt.dataset);
-      this.updateProductImage(evt);
+      if(this.productState.available) this.updateProductImage(evt);
     }
 
     onPlanChange(evt) {
@@ -4301,54 +4301,58 @@
       return productState;
     }
 
-    updateProductImage(evt) {
-      const variant = evt.dataset.variant;
+    async updateProductImage(evt) {
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = await (await fetch(`${window.location.href}?section_id=${this.container.id} `)).text();
+      document.querySelector(`#${this.container.id} div.media_gallery_container`).replaceChildren(...tempDiv.querySelector(`#${this.container.id} div.media_gallery_container`).children);
+      document.dispatchEvent(new Event('theme:init:gallery'));
+      // const variant = evt.dataset.variant;
 
-      if (!variant || !variant?.featured_media) {
-        return;
-      }
+      // if (!variant || !variant?.featured_media) {
+      //   return;
+      // }
 
-      // Update variant image, if one is set
-      const newImg = this.container.querySelector(`${selectors$N.productImage}[${attributes$x.productImageId}="${variant.featured_media.id}"]`);
-      const newImageParent = newImg?.closest(selectors$N.productSlide);
+      // // Update variant image, if one is set
+      // const newImg = this.container.querySelector(`${selectors$N.productImage}[${attributes$x.productImageId}="${variant.featured_media.id}"]`);
+      // const newImageParent = newImg?.closest(selectors$N.productSlide);
 
-      if (newImageParent) {
-        const newImagePos = parseInt([...newImageParent.parentElement.children].indexOf(newImageParent));
-        const imgSlider = this.container.querySelector(selectors$N.productMediaSlider);
-        const flkty = Flickity.data(imgSlider);
+      // if (newImageParent) {
+      //   const newImagePos = parseInt([...newImageParent.parentElement.children].indexOf(newImageParent));
+      //   const imgSlider = this.container.querySelector(selectors$N.productMediaSlider);
+      //   const flkty = Flickity.data(imgSlider);
 
-        // Activate image slide in mobile view
-        if (flkty && flkty.isActive) {
-          const variantSlide = imgSlider.querySelector(`[data-id="${variant.featured_media.id}"]`);
+      //   // Activate image slide in mobile view
+      //   if (flkty && flkty.isActive) {
+      //     const variantSlide = imgSlider.querySelector(`[data-id="${variant.featured_media.id}"]`);
 
-          if (variantSlide) {
-            const slideIndex = parseInt([...variantSlide.parentNode.children].indexOf(variantSlide));
-            flkty.select(slideIndex);
-          }
-          return;
-        }
+      //     if (variantSlide) {
+      //       const slideIndex = parseInt([...variantSlide.parentNode.children].indexOf(variantSlide));
+      //       flkty.select(slideIndex);
+      //     }
+      //     return;
+      //   }
 
-        if (this.tallLayout) {
-          // We know its a tall layout, if it's sticky
-          // scroll to the images
-          // Scroll to/reorder image unless it's the first photo on load
-          const newImgTop = newImg.getBoundingClientRect().top;
+      //   if (this.tallLayout) {
+      //     // We know its a tall layout, if it's sticky
+      //     // scroll to the images
+      //     // Scroll to/reorder image unless it's the first photo on load
+      //     const newImgTop = newImg.getBoundingClientRect().top;
 
-          if (newImagePos === 0 && newImgTop + window.scrollY > window.pageYOffset) return;
+      //     if (newImagePos === 0 && newImgTop + window.scrollY > window.pageYOffset) return;
 
-          // Scroll to variant image
-          document.dispatchEvent(
-            new CustomEvent('theme:tooltip:close', {
-              bubbles: false,
-              detail: {
-                hideTransition: false,
-              },
-            })
-          );
+      //     // Scroll to variant image
+      //     document.dispatchEvent(
+      //       new CustomEvent('theme:tooltip:close', {
+      //         bubbles: false,
+      //         detail: {
+      //           hideTransition: false,
+      //         },
+      //       })
+      //     );
 
-          scrollTo(newImgTop);
-        }
-      }
+      //     scrollTo(newImgTop);
+      //   }
+      // }
     }
 
     /**
@@ -13640,6 +13644,7 @@
       this.isFlickityDragging = false;
       this.enableHistoryState = !this.container.classList.contains(classes$6.featuredProduct);
       this.checkSliderOnResize = () => this.checkSlider();
+      this.checkSlideGallery = () => this.checkSliderGallery();
       this.flktyNavOnResize = () => this.resizeFlickityNav();
 
       this.scrollToReviews();
@@ -13665,8 +13670,19 @@
     productSlider() {
       this.checkSlider();
       document.addEventListener('theme:resize:width', this.checkSliderOnResize);
+      document.addEventListener('theme:init:gallery', this.checkSlideGallery);
     }
 
+
+    checkSliderGallery(){
+      if (!this.tallLayout || window.innerWidth < theme.sizes.large) {
+        this.initProductSlider();
+        new Zoom(this.container);
+        return;
+      }
+
+      this.destroyProductSlider();
+    }
     checkSlider() {
       if (!this.tallLayout || window.innerWidth < theme.sizes.large) {
         this.initProductSlider();
