@@ -1,0 +1,75 @@
+.template--product {
+        --form-margin: 25px;
+        --form-margin-mobile: 18px;
+    .product-single__gallery{
+        @media only screen and (min-width: 768px){
+            height: fit-content;
+            position: sticky;
+            top: 0px;
+        }
+    }
+    .product-single__details {
+        .product__price-and-rating {
+            flex-wrap: wrap;
+            .loox-rating-content {
+                column-gap: 3px;
+
+                svg {
+                    width: 15px;
+                    height: 15px;
+                    color: #353435;
+                }
+
+                .loox-rating-label {
+                    font-family: Inter;
+                    font-size: 15px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 15px;
+                    top: 0.5px;
+                    position: relative;
+                }
+            }
+        }
+        .product__selectors{
+            .selector-wrapper{
+                .radio__fieldset{
+                    margin-left: 0px;
+                    margin-right: 0px;
+                }
+            }
+        }
+
+        .buy_box_container {
+            display: flex;
+            column-gap: 12px;
+            @media only screen and (max-width: 767px){
+                column-gap: 7px;
+            }
+            .product__submit__holder{
+                padding-top: 0px;
+                flex: 1;
+            }
+
+            .select__fieldset {
+                width: 120px;
+                height: 100%;
+                @media only screen and (max-width: 767px){
+                    width: 90px;
+                }
+
+                .select__label {
+                    display: none;
+                }
+
+                .select-popout {
+                    height: 100%;
+
+                    .select-popout__toggle {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
