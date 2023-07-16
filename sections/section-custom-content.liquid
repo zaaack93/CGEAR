@@ -1,4 +1,12 @@
+{% assign isFind = false%}
+
+{%for block in section.blocks%}
+  {% if block.settings.image!=blank or block.settings.title!=blank or block.settings.description!=blank or block.settings.text!=blank or block.settings.video!=blank or block.settings.external_video_url_metafield!=blank  %}
+    {% assign isFind = true%}
+  {%endif%}
+{%endfor%}
 <!-- /sections/section-custom-content.liquid -->
+
 {%- liquid
   assign section_width = section.settings.width
   assign animations_enabled = settings.animations_enabled
@@ -25,6 +33,7 @@
   }
 {%- endstyle -%}
 
+{% if isFind %}
 <section id="brick-section--{{ section.id }}"
   class="section-padding brick__section"
   data-section-id="{{ section.id }}"
@@ -331,7 +340,7 @@
     </div>
   </div>
 </section>
-
+{%endif%}
 {% schema %}
 {
   "name": "Custom content",
