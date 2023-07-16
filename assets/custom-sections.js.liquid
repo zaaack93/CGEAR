@@ -1,0 +1,57 @@
+class KlaviyoFormComponent extends HTMLElement {
+    constructor() {
+      super();
+    }
+  
+    connectedCallback() {
+      this.form = this.querySelector('.form-klaviyo-newsletter');
+      this.form.addEventListener('submit', this.onSubmit.bind(this));
+    }
+  
+    onSubmit(event) {
+      event.preventDefault();
+      // Add any additional logic or validation here
+      
+      debugger
+      const emailInput = this.form.querySelector('input[name="contact[email]"]').value;
+  
+      const url = 'https://a.klaviyo.com/client/subscriptions/?company_id=X54Pmz';
+  
+      const data = {
+        data: {
+          type: "subscription",
+          attributes: {
+            list_id: "RLZFdS",
+            email: emailInput,
+          }
+        }
+      };
+  
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Revision': '2023-06-15'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(data => {
+          if(data.ok){
+            this.querySelector('.form_on_success').style.display = "block";
+            this.querySelector('.fieldset-with-submit').style.display = "none";
+          }
+          else{
+            this.querySelector('.form_on_danger').style.display = "block";
+            const submitButton = this.form.querySelector('button[type="submit"]');
+  
+          }
+        })
+        .catch(errors => {
+          this.querySelector('form-klaviyo-newsletter .form_on_danger').style.display = "block";
+          const submitButton = this.form.querySelector('button[type="submit"]');
+          submitButton.setAttribute('aria-busy', 'false');
+        });
+    }
+  }
+  
+  customElements.define('form-klaviyo-newsletter', KlaviyoFormComponent);

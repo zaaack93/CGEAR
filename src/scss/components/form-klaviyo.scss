@@ -1,0 +1,28 @@
+form-klaviyo-newsletter{
+    .form-klaviyo-newsletter{
+        .form_on_success{
+            display: none;
+        }
+        .form_submit_container{
+            .form_on_danger{
+                display: none;
+                margin-bottom: var(--spacing-6);
+            }
+        }
+    }
+    .form-success,.form_on_danger{
+        display: initial !important;
+    }
+}
+.footer__block--newsletter{
+    form-klaviyo-newsletter{
+        .form-klaviyo-newsletter{
+            .form_submit_container{
+                grid-template-columns: initial;
+                .form_on_danger{
+                    margin-bottom: initial;
+                }
+            }
+        }
+    }
+}
