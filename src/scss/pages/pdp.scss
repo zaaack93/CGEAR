@@ -1,7 +1,11 @@
 .template--product {
+    @media only screen and (min-width: 480px){
+        .product__block--half {
+            display: inline-block;
+            width: 49.5%;
+        }
+    }
     //exactly
-        --form-margin: 25px;
-        --form-margin-mobile: 18px;
     .product-single__gallery{
         @media only screen and (min-width: 768px){
             height: fit-content;
