@@ -1,9 +1,65 @@
 .template--index{
     @media only screen and (max-width: 767px){
         .shopify-section.slideshow{
+            .original-height-mobile {
+                .slide__image__container{
+              min-height: auto;
+                }
+            }
+            .full-height-mobile {
+                .slide__image__container{
+              min-height: var(--full-height);
+                }
+            }
+            .three-quarters-height-mobile {
+                .slide__image__container{
+              min-height: var(--three-quarters);
+                }
+            }
+            .two-thirds-height-mobile {
+                .slide__image__container{
+              min-height: var(--two-thirds);
+                }
+            }
+            .one-half-height-mobile {
+                .slide__image__container{
+              min-height: var(--one-half);
+                }
+            }
+            .one-third-height-mobile {
+                .slide__image__container{
+              min-height: var(--one-third);
+                }
+            }
+            .one-fifth-height-mobile {
+                .slide__image__container{
+              min-height: var(--one-fifth);
+                }
+            }
+            .seven-fifty-height-mobile {
+                .slide__image__container{
+              min-height: 750px;
+                }
+            }
+            .six-fifty-height-mobile {
+                .slide__image__container{
+              min-height: 650px;
+                }
+            }
+            .five-fifty-height-mobile {
+                .slide__image__container{
+              min-height: 550px;
+                }
+            }
+            .four-fifty-height-mobile {
+                .slide__image__container{
+              min-height: 450px;
+                }
+            }
+
             .slider .item{
                 grid-template-rows: repeat(2,minmax(0,1fr));
-
+                   
                 .slide__image__container{
                     position: relative;
                 }
