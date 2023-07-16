@@ -4,6 +4,10 @@
     order: 1;
   }
 }
+.popup-chart__content th, .popup-chart__content td {
+  text-align: center;
+}
+
 .template--product {
   --form-margin: 25px;
   --form-margin-mobile: 18px;
@@ -73,4 +77,64 @@
 }
 .template--product .product-single__details .buy_box_container .select__fieldset .select-popout .select-popout__toggle {
   height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .template--index .shopify-section.slideshow .slider .item {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__image__container {
+    position: relative;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container {
+    grid-row-start: 2;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container .slide__text__wrapper {
+    margin-bottom: 0px;
+    padding-top: 30px !important;
+    padding-bottom: 28px;
+    color: #000;
+    font-family: Inter;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container .slide__text__wrapper .slide__subheading .subheading-text {
+    margin-top: 0px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.6px;
+    margin-bottom: 14px;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container .slide__text__wrapper .slide__heading {
+    color: #000;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1.28px;
+    margin-bottom: 14px;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container .slide__text__wrapper .slide__text {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    margin-bottom: 14px;
+    color: #000;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container .slide__text__wrapper .main-buttons__item {
+    margin: 0px;
+  }
+  .template--index .shopify-section.slideshow .slider .item .slide__text__container .slide__text__wrapper .main-buttons__item .slide__btn {
+    border-radius: 7px;
+    border: 1px solid #FFF;
+    background: #3C4147;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
 }

@@ -1,0 +1,67 @@
+.template--index{
+    @media only screen and (max-width: 767px){
+        .shopify-section.slideshow{
+            .slider .item{
+                grid-template-rows: repeat(2,minmax(0,1fr));
+
+                .slide__image__container{
+                    position: relative;
+                }
+                .slide__text__container{
+                    grid-row-start: 2;
+                    .slide__text__wrapper {
+                        margin-bottom: 0px;
+                        padding-top: 30px !important;
+                        padding-bottom: 28px;
+                        color: #000;
+                        font-family: Inter;
+                        .slide__subheading {
+                            .subheading-text{
+                                margin-top: 0px;
+                                font-size: 15px;
+                                font-style: normal;
+                                font-weight: 700;
+                                line-height: normal;
+                                letter-spacing: -0.6px;
+                                margin-bottom: 14px;
+                            }
+                        }
+                        .slide__heading {
+                            color: #000;
+                            font-family: Inter;
+                            font-size: 32px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                            letter-spacing: -1.28px;
+                            margin-bottom: 14px;
+                        }
+                        .slide__text {
+                            font-size: 18px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 26px;
+                            margin-bottom: 14px;
+                            color: #000;
+                        }
+                        .main-buttons__item{
+                            margin: 0px;
+                            .slide__btn {
+                                border-radius: 7px;
+                                border: 1px solid #FFF;
+                                background: #3C4147;
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: 28px;
+                                padding-top: 9px;
+                                padding-bottom: 9px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
