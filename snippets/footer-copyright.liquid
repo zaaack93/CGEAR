@@ -1,7 +1,7 @@
-{% capture powered_by_link %} <a target="_blank" rel="nofollow" href="http://yonder-studio.com">Designed by Younder</a>.{% endcapture %}
+{% capture powered_by_link %} <a target="_blank" rel="nofollow" href="http://yonder-studio.com">Site Design by Yonder Studio</a>.{% endcapture %}
 
 <div class="footer-copyright">
-  <span>&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</span>
+  <span>{{ shop.name | link_to: routes.root_url }}.</span>
   <span>{{ powered_by_link }}</span>
 
   {%- for link in linklists[section.settings.bottom_menu].links -%}
