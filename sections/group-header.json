@@ -47,7 +47,7 @@
             "wide_image": true,
             "title": "Shop All",
             "link_text": "",
-            "link": ""
+            "link": "shopify:\/\/collections\/all-cgear-products"
           }
         },
         "7a84bef6-11af-4d78-b55e-71d200318301": {
@@ -59,7 +59,7 @@
             "wide_image": true,
             "title": "Shop Camping",
             "link_text": "",
-            "link": ""
+            "link": "shopify:\/\/collections\/camping"
           }
         },
         "077952c5-3313-4f2b-ae09-ba513d1ff924": {
@@ -71,7 +71,7 @@
             "wide_image": true,
             "title": "Shop Beach",
             "link_text": "",
-            "link": ""
+            "link": "shopify:\/\/collections\/beach"
           }
         },
         "82a27ed1-a560-4755-9bcf-46c0ac74bfa2": {
@@ -83,7 +83,7 @@
             "wide_image": true,
             "title": "Browse Military",
             "link_text": "",
-            "link": ""
+            "link": "shopify:\/\/pages\/military"
           }
         }
       },

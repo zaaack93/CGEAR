@@ -438,6 +438,64 @@
         "padding_bottom": 60
       }
     },
+    "8c3359a9-b53d-4d67-9cac-b84af7cfbf20": {
+      "type": "section-custom-content",
+      "blocks": {
+        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-1": {
+          "type": "text",
+          "settings": {
+            "text_position": "center",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "Sand-free. Stress-free.",
+            "title": "Say goodbye to the hassle of sand sticking to your beach towel or picnic mat.",
+            "heading_size": 100,
+            "text": "",
+            "text_size": 100,
+            "button_text": "Shop Quicksand Range",
+            "button_link": "shopify:\/\/products\/quicksand-mat-sandlite",
+            "button_color": "btn--secondary",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--white",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--small",
+            "bg_color": "#efefef"
+          }
+        },
+        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-0": {
+          "type": "image",
+          "settings": {
+            "text_position": "middle-center",
+            "image": "shopify:\/\/shop_images\/Quicksand-Stack.gif",
+            "overlay_opacity": 0,
+            "text_color": "text-light",
+            "title": "",
+            "heading_size": 100,
+            "text": "",
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-1",
+        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-0"
+      ],
+      "settings": {
+        "height": "full-height",
+        "bg_color": "",
+        "width": "wrapper--full",
+        "add_gutter": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "section-grid": {
       "type": "section-grid",
       "disabled": true,
@@ -934,9 +992,9 @@
         "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-3": {
           "type": "button",
           "settings": {
-            "button_1_text": "About Us",
-            "button_1_link": "shopify:\/\/collections\/all",
-            "button_1_color": "btn--secondary",
+            "button_1_text": "Read Our Reviews",
+            "button_1_link": "shopify:\/\/pages\/reviews",
+            "button_1_color": "btn--primary",
             "button_1_style": "btn--solid-border",
             "button_1_size": "btn--small",
             "button_2_text": "",
@@ -1258,6 +1316,7 @@
     "3de16b6a-c1c4-4f3e-841b-fa9dec92bf16",
     "25faf9ab-6e56-4c3a-9625-78e0dcde3dec",
     "b6e93a53-1952-42e2-8dcb-eaf2589badb3",
+    "8c3359a9-b53d-4d67-9cac-b84af7cfbf20",
     "section-grid",
     "91d1df7b-5aca-4add-9e70-7812b5fee1fa",
     "section-look",

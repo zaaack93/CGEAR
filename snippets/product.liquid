@@ -441,13 +441,13 @@
         </span>
       {% endif %}
     </div>
-    {%- if block.settings.show_rating or settings.show_rating -%}
-      {% comment %} {%- unless product == blank -%}
+
+    {%- if block.settings.show_rating or settings.show_rating and section_type == 'quickview' -%}
+      {%- unless product == blank -%}
         {%- render 'rating', show_rating_count: block.settings.show_rating_count, single_star: true, reviews: product.metafields.reviews -%}
       {%- else -%}
         {%- render 'rating', show_rating_count: block.settings.show_rating_count, single_star: true, onboarding: true -%}
-      {%- endunless -%} {% endcomment %}
-      <a href="#looxReviews"><div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div></a>
+      {%- endunless -%}
     {%- endif -%}
   </div>
 
@@ -648,7 +648,7 @@
     <input type="hidden" name="quantity" value="1">
   {%- endunless -%}
 
-  {% comment %} {%- unless show_size_link_as_label or size_chart_button == blank -%}
+  {%- unless show_size_link_as_label or size_chart_button == blank -%}
     <div class="product__form__size-chart"
       {% if animations_enabled %}
         data-aos="fade-up"
@@ -658,7 +658,7 @@
       {% endif %}>
       {{- size_chart_button -}}
     </div>
-  {%- endunless -%} {% endcomment %}
+  {%- endunless -%}
 
   {% comment %} Shop pay split payment terms {% endcomment %}
   <div class="shop-pay-terms">{{ form | payment_terms }}</div>
@@ -907,7 +907,7 @@
     {%- comment -%} Delete the following line to block the theme from updating subscription prices {%- endcomment -%}
     <span data-subscription-watch-price></span>
   {%- endif -%}
-<div class="buy_box_container">
+
   {%- if quantity_position_bottom and show_quantity -%}
     <div class="selector-wrapper selector-wrapper--qty"
       {% if animations_enabled %}
@@ -973,7 +973,6 @@
     </div>
 
     <div data-cart-errors-container class="product__form__errors"></div>
-  </div>
   </div>
 {%- endform -%}</div>
               {%- else -%}
@@ -1457,7 +1456,6 @@
 
             {%- when 'text' -%}
               {%- assign text_alignment = block.settings.text_alignment -%}
-              {%- if block.settings.title != blank -%}
               <div class="product__block"
                 {% if animations_enabled %}
                   data-aos="fade-up"
@@ -1473,7 +1471,6 @@
                   </div>
                 {%- endif -%}
               </div>
-              {%endif%}
 
             {%- when 'icon' -%}
               {%- liquid
@@ -1515,40 +1512,39 @@
               {%- capture text_style -%}
                 --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }});
               {%- endcapture -%}
-              {% if icon_image != blank or block.settings.icon_text != blank %}
-                <div class="product__block{% if width == 'half' %} product__block--half{% endif %}"
-                  {% if animations_enabled %}
-                    data-aos="fade-up"
-                    data-aos-anchor="{{ animation_anchor }}"
-                    data-aos-delay="{{ animation_delay }}"
-                    {%- assign animation_delay = animation_delay | plus: 150 -%}
-                  {% endif %}
-                  {{ block_style }}
-                  {{ block.shopify_attributes }}>
-                  <div class="product__icon__row{% if text_alignment == 'center' %} product__icon__row--center{% endif %}" style="{{ text_style }} {{ background_style }}">
-                    {%- unless icon_image == blank and icon_name == 'none' -%}
-                      <div class="product__icon icon-stroke" style="{{ icon_style }}">
-                        {%- if icon_image != blank -%}
-                          <div class="product__icon__holder">
-                            {%- render 'image',
-                              image: icon_image,
-                              width: retina_size,
-                              widths: image_widths,
-                              sizes: 'auto',
-                              classes: 'product__icon__img' -%}
-                          </div>
-                        {%- else -%}
-                          {%- render 'icons', icon: icon_name -%}
-                        {%- endif -%}
-                      </div>
-                    {%- endunless -%}
 
-                    {%- if block.settings.icon_text != blank -%}
-                      <div class="product__icon__text">{{ block.settings.icon_text }}</div>
-                    {%- endif -%}
-                  </div>
+              <div class="product__block{% if width == 'half' %} product__block--half{% endif %}"
+                {% if animations_enabled %}
+                  data-aos="fade-up"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-delay="{{ animation_delay }}"
+                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                {% endif %}
+                {{ block_style }}
+                {{ block.shopify_attributes }}>
+                <div class="product__icon__row{% if text_alignment == 'center' %} product__icon__row--center{% endif %}" style="{{ text_style }} {{ background_style }}">
+                  {%- unless icon_image == blank and icon_name == 'none' -%}
+                    <div class="product__icon icon-stroke" style="{{ icon_style }}">
+                      {%- if icon_image != blank -%}
+                        <div class="product__icon__holder">
+                          {%- render 'image',
+                            image: icon_image,
+                            width: retina_size,
+                            widths: image_widths,
+                            sizes: 'auto',
+                            classes: 'product__icon__img' -%}
+                        </div>
+                      {%- else -%}
+                        {%- render 'icons', icon: icon_name -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endunless -%}
+
+                  {%- if block.settings.icon_text != blank -%}
+                    <div class="product__icon__text">{{ block.settings.icon_text }}</div>
+                  {%- endif -%}
                 </div>
-              {%endif%}
+              </div>
 
             {%- when 'icon_row' -%}
               {%- assign bg_color = block.settings.bg_color -%}

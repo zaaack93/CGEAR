@@ -248,7 +248,7 @@ template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
 {% if settings.color_body_bg == '#ffffff' or settings.color_body_bg == '#fff' %} palette--light{% endif %}
   no-outline
 {%- endcapture -%}
-{%- assign body_classes = body_classes | strip_newlines | strip -%}<body id="{{ page_title | handle }}" class="{{ body_classes }} template--{{template.name}}" data-animations="{{ settings.animations_enabled }}">
+{%- assign body_classes = body_classes | strip_newlines | strip -%}<body id="{{ page_title | handle }}" class="{{ body_classes }}" data-animations="{{ settings.animations_enabled }}">
   {%- render 'loading' -%}
 
   <a class="in-page-link skip-link" data-skip-content href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
