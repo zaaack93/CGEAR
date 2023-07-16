@@ -6,14 +6,15 @@
         "section-slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Cgear-10-Web-EDIT-2.jpg",
+            "image": "shopify:\/\/shop_images\/Hero_Desktop.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/Cropped_hero.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
-            "text_position": "top-left",
+            "text_position": "left",
             "text_color": "text-light",
             "subheading": "Loved by over 100,000 Aussies.",
             "title": "Sand-free. Stress-free.",
-            "text": "Find comfort in the uncomfortable with Australia's favourite sand and dirt free mats.",
+            "text": "Australia's favourite sand and dirt free mats.",
             "button_1_text": "Shop All Products",
             "button_1_link": "shopify:\/\/collections\/all-cgear-products",
             "button_1_color": "btn--primary",
@@ -33,7 +34,7 @@
         "section-slideshow-0"
       ],
       "settings": {
-        "slide_height": "six-fifty-height",
+        "slide_height": "seven-fifty-height",
         "enable_mobile_height": true,
         "mobile_slide_height": "original-height-mobile",
         "show_nav_dots": true,
@@ -43,7 +44,7 @@
         "duration": 4,
         "transition": "slide",
         "enable_zoom_animation": true,
-        "heading_size": 180
+        "heading_size": 170
       }
     },
     "section-marquee": {

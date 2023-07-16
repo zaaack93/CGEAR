@@ -58,19 +58,21 @@
             }
 
             .slider .item{
-                grid-template-rows: repeat(2,minmax(0,1fr));
-                   
+                grid-template-rows: repeat(2, minmax(0, auto));
+  
                 .slide__image__container{
                     position: relative;
                 }
                 .slide__text__container{
                     grid-row-start: 2;
                     .slide__text__wrapper {
-                        margin-bottom: 0px;
-                        padding-top: 30px !important;
+                        margin-bottom: 0;
+                        padding-top: 30px!important;
                         padding-bottom: 28px;
                         color: #000;
                         font-family: Inter;
+                        margin-top: 0px;
+                        width: 100%;
                         .slide__subheading {
                             .subheading-text{
                                 margin-top: 0px;
@@ -100,6 +102,8 @@
                             margin-bottom: 14px;
                             color: #000;
                         }
+                        .slide__buttons {
+                            margin: 0px;
                         .main-buttons__item{
                             margin: 0px;
                             .slide__btn {
@@ -114,6 +118,7 @@
                                 padding-bottom: 9px;
                             }
                         }
+                    }
                     }
                 }
             }
