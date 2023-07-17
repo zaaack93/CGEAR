@@ -1,14 +1,5 @@
 {%- comment -%} Accordions section {%- endcomment -%}
-{% assign isFound = false%}
-{%- for block in section.blocks -%}
-        {%- assign title = block.settings.title -%}
-        {%- assign block_text = pages[block.settings.raw_content].content | default: block.settings.text -%}
-        {% if title !=blank or block_text != blank %}
-          {% assign isFound = true%}
-        {%endif%}
-{%endfor}
 
-{% if isFound %}
 {%- liquid
   assign section_width = section.settings.width
   assign animations_enabled = settings.animations_enabled
@@ -210,7 +201,7 @@
     {%- render 'no-blocks' -%}
   {%- endif -%}
 </section>
-{%endif%}
+
 {% schema %}
 {
   "name": "Tabs",
