@@ -35,7 +35,7 @@
       - icon-squiggle.svg (assets)
       - icon-circle.liquid (snippet)
 {% endcomment %}
-
+{% if video_link != blank or image != blank or background_video !=blank  %}
 {%- liquid
   assign icon_url = ''
   assign icon_color = 'var(--text)'
@@ -134,6 +134,7 @@
     -%}
   </div>
 </section>
+{%endif%}
 
 {% schema %}
 {
