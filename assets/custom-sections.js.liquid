@@ -12,7 +12,6 @@ class KlaviyoFormComponent extends HTMLElement {
       event.preventDefault();
       // Add any additional logic or validation here
       
-      debugger
       const emailInput = this.form.querySelector('input[name="contact[email]"]').value;
   
       const url = 'https://a.klaviyo.com/client/subscriptions/?company_id=X54Pmz';
@@ -37,6 +36,12 @@ class KlaviyoFormComponent extends HTMLElement {
       })
         .then(data => {
           if(data.ok){
+            if(this.closest('.newsletter-section__content')){
+              this.closest('.newsletter-section__content').querySelector('.newsletter-section__entry p').style.display = "none";
+            }
+            else if(this.closest('.footer-block--newsletter')){
+              this.closest('.footer-block--newsletter').querySelector('.rte p').style.display = "none";
+            }
             this.querySelector('.form_on_success').style.display = "block";
             this.querySelector('.fieldset-with-submit').style.display = "none";
           }
