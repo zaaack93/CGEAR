@@ -1364,7 +1364,7 @@
                   assign upsell_slider = true
                 endif
               -%}
-
+              {% if legacy_upsell_product != blank or upsell_products != blank %}
               {%- if upsell_items != '' -%}
                 <div id="Block--{{ block.id }}"
                   class="product__block upsell__products{% if upsell_slider %} upsell__products--slider{% endif %}"
@@ -1384,6 +1384,7 @@
                     {{- upsell_items -}}
                   {%- endif -%}
                 </div>
+                {%endif%}
               {%- endif -%}
 
             {%- when 'complementary-products' -%}
