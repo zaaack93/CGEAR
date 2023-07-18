@@ -91,7 +91,7 @@
             "icon_color": "",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
             "icon_width": 30,
-            "icon_text": "Dispatched within 24 hrs*",
+            "icon_text": "Dispatched within 24 hrs",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -106,7 +106,7 @@
             "icon_color": "",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
             "icon_width": 30,
-            "icon_text": "Free Aus Shipping (Ex. WA & NT)*",
+            "icon_text": "Free Aus Shipping Exc. WA\/NT",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -121,7 +121,7 @@
             "icon_color": "",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
             "icon_width": 30,
-            "icon_text": "12 Month Warranty*",
+            "icon_text": "12 Month Warranty",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -136,7 +136,7 @@
             "icon_color": "",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
             "icon_width": 30,
-            "icon_text": "Free 30 day returns*",
+            "icon_text": "Free 30 Day Returns",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -254,6 +254,7 @@
     },
     "a53634e9-b4df-48a5-8b3d-314fdc32a419": {
       "type": "section-video",
+      "disabled": true,
       "settings": {
         "video_height": "six-fifty-height",
         "text_position": "middle-center",
@@ -477,7 +478,7 @@
         "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-0": {
           "type": "subheading",
           "settings": {
-            "text": "<p>Features<\/p>",
+            "text": "<p>{{ product.metafields.custom.sub_heading_features_.value }}<\/p>",
             "size": 100,
             "margin_bottom": 16
           }
@@ -485,7 +486,7 @@
         "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>The Bells & Whistles<\/p>",
+            "text": "<p>{{ product.metafields.custom.heading_the_bells_whistles_.value }}<\/p>",
             "size": 100,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747"
