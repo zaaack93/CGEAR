@@ -35,7 +35,6 @@
     assign controls = false
   endif
 -%}
-
 <div id="{{ media_wrapper_id }}"
   class="product-single__media-slide{% unless featured_media == media %} media--hidden{% endunless %}"
   data-product-slide
@@ -43,6 +42,9 @@
   data-aspectratio="{{ media_aspect_ratio }}"
   data-media-id="{{ unique }}-{{ media.id }}"
   data-type="{{ media.media_type }}"
+  {% if product.featured_media.id == media.id %}
+  is-featured-image
+  {% endif %}
   {% if media.media_type == 'video' or media.media_type == 'external_video' %}
     data-video
     data-video-id="{{ media.id }}"

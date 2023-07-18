@@ -4301,58 +4301,73 @@
       return productState;
     }
 
+    hasColorProperty(objectArray) {
+      for (const obj of objectArray) {
+        if (obj.name === "Colour") {
+          return true;
+        }
+      }
+      return false;
+    }
+
     async updateProductImage(evt) {
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = await (await fetch(`${window.location.href}?section_id=${this.container.id} `)).text();
-      document.querySelector(`#${this.container.id} div.media_gallery_container`).replaceChildren(...tempDiv.querySelector(`#${this.container.id} div.media_gallery_container`).children);
-      document.dispatchEvent(new Event('theme:init:gallery'));
-      // const variant = evt.dataset.variant;
 
-      // if (!variant || !variant?.featured_media) {
-      //   return;
-      // }
+      const hasColor = this.hasColorProperty(evt.dataset.options);
+      if(hasColor){
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = await (await fetch(`${window.location.href}?section_id=${this.container.id} `)).text();
+        document.querySelector(`#${this.container.id} div.media_gallery_container`).replaceChildren(...tempDiv.querySelector(`#${this.container.id} div.media_gallery_container`).children);
+        document.dispatchEvent(new Event('theme:init:gallery'));
+      }
+      else{
+        const variant = evt.dataset.variant;
 
-      // // Update variant image, if one is set
-      // const newImg = this.container.querySelector(`${selectors$N.productImage}[${attributes$x.productImageId}="${variant.featured_media.id}"]`);
-      // const newImageParent = newImg?.closest(selectors$N.productSlide);
+        if (!variant || !variant?.featured_media) {
+          return;
+        }
 
-      // if (newImageParent) {
-      //   const newImagePos = parseInt([...newImageParent.parentElement.children].indexOf(newImageParent));
-      //   const imgSlider = this.container.querySelector(selectors$N.productMediaSlider);
-      //   const flkty = Flickity.data(imgSlider);
+        // Update variant image, if one is set
+        const newImg = this.container.querySelector(`${selectors$N.productImage}[${attributes$x.productImageId}="${variant.featured_media.id}"]`);
+        const newImageParent = newImg?.closest(selectors$N.productSlide);
 
-      //   // Activate image slide in mobile view
-      //   if (flkty && flkty.isActive) {
-      //     const variantSlide = imgSlider.querySelector(`[data-id="${variant.featured_media.id}"]`);
+        if (newImageParent) {
+          const newImagePos = parseInt([...newImageParent.parentElement.children].indexOf(newImageParent));
+          const imgSlider = this.container.querySelector(selectors$N.productMediaSlider);
+          const flkty = Flickity.data(imgSlider);
 
-      //     if (variantSlide) {
-      //       const slideIndex = parseInt([...variantSlide.parentNode.children].indexOf(variantSlide));
-      //       flkty.select(slideIndex);
-      //     }
-      //     return;
-      //   }
+          // Activate image slide in mobile view
+          if (flkty && flkty.isActive) {
+            const variantSlide = imgSlider.querySelector(`[data-id="${variant.featured_media.id}"]`);
 
-      //   if (this.tallLayout) {
-      //     // We know its a tall layout, if it's sticky
-      //     // scroll to the images
-      //     // Scroll to/reorder image unless it's the first photo on load
-      //     const newImgTop = newImg.getBoundingClientRect().top;
+            if (variantSlide) {
+              const slideIndex = parseInt([...variantSlide.parentNode.children].indexOf(variantSlide));
+              flkty.select(slideIndex);
+            }
+            return;
+          }
 
-      //     if (newImagePos === 0 && newImgTop + window.scrollY > window.pageYOffset) return;
+          if (this.tallLayout) {
+            // We know its a tall layout, if it's sticky
+            // scroll to the images
+            // Scroll to/reorder image unless it's the first photo on load
+            const newImgTop = newImg.getBoundingClientRect().top;
 
-      //     // Scroll to variant image
-      //     document.dispatchEvent(
-      //       new CustomEvent('theme:tooltip:close', {
-      //         bubbles: false,
-      //         detail: {
-      //           hideTransition: false,
-      //         },
-      //       })
-      //     );
+            if (newImagePos === 0 && newImgTop + window.scrollY > window.pageYOffset) return;
 
-      //     scrollTo(newImgTop);
-      //   }
-      // }
+            // Scroll to variant image
+            document.dispatchEvent(
+              new CustomEvent('theme:tooltip:close', {
+                bubbles: false,
+                detail: {
+                  hideTransition: false,
+                },
+              })
+            );
+
+            scrollTo(newImgTop);
+          }
+        }
+      }
     }
 
     /**
@@ -13665,6 +13680,14 @@
       this.initProductVideo();
       this.initProductModel();
       this.initShopifyXrLaunch();
+
+
+      //select featured image
+      const imgSlider = this.container.querySelector("div[is-featured-image]");
+      if(imgSlider){
+        const slideIndex = parseInt([...imgSlider.parentNode.children].indexOf(imgSlider));
+        this.flkty.select(slideIndex);
+      }
     }
 
     productSlider() {
