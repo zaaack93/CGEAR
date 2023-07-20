@@ -106,7 +106,7 @@
             "icon_color": "",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
             "icon_width": 30,
-            "icon_text": "Free Aus Shipping exc. WA\/NT",
+            "icon_text": "Free Aus Shipping Exc. WA\/NT",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -783,6 +783,7 @@
     },
     "tabs": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "acordion-0": {
           "type": "text",
@@ -883,6 +884,7 @@
     },
     "e30e86d1-5c16-4c16-8d94-bee79006d8ee": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "818fd74d-0ba7-45c8-8458-e3c50def9ff9": {
           "type": "text",
@@ -1070,7 +1072,7 @@
       "settings": {
         "layout": "two-columns",
         "show_accordion_divider": false,
-        "title": "Frequently Asked Questions (Screens)",
+        "title": "Frequently Asked Questions",
         "subheading": "",
         "text": "",
         "tabs_bg_color": "#fafafa",

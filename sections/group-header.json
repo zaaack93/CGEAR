@@ -8,7 +8,7 @@
         "announcement-0": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Free AUS Shipping +$250 (excl. NT & WA)<\/strong><\/p>",
+            "text": "<p><strong>Free AUS Shipping (excl. NT & WA)<\/strong><\/p>",
             "icon_name": "package",
             "icon_color": "#ffffff",
             "icon_width": 20,

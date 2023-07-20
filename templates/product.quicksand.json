@@ -106,7 +106,7 @@
             "icon_color": "",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
             "icon_width": 30,
-            "icon_text": "Free Aus Shipping exc. WA\/NT",
+            "icon_text": "Free Aus Shipping Exc. WA\/NT",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -783,6 +783,7 @@
     },
     "tabs": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "acordion-0": {
           "type": "text",
@@ -970,7 +971,7 @@
       "settings": {
         "layout": "two-columns",
         "show_accordion_divider": false,
-        "title": "Frequently Asked Questions (Quicksand Mat)",
+        "title": "Frequently Asked Questions",
         "subheading": "",
         "text": "",
         "tabs_bg_color": "#fafafa",
@@ -983,6 +984,7 @@
     },
     "a1e2ba11-1497-422a-9399-9800d3edbac6": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "d8313b90-eb90-422c-b2df-70f0cce66263": {
           "type": "text",

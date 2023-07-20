@@ -197,7 +197,7 @@
       "settings": {
         "collection": "all-cgear-products",
         "products_layout": "grid",
-        "number_of_products": 4,
+        "number_of_products": 8,
         "text_alignment": "text-left",
         "title": "Best Sellers",
         "heading_size": 110,
@@ -324,7 +324,7 @@
             "icon_name": "truck",
             "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
             "title": "Free Shipping",
-            "text": "<p>on AUS orders over $250<\/p>"
+            "text": "<p>on AUS orders except WA\/NT<\/p>"
           }
         },
         "template--15169561100361__25faf9ab-6e56-4c3a-9625-78e0dcde3dec-1685013555cdf11359-1": {

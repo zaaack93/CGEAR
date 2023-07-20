@@ -46,7 +46,7 @@
     "show_empty_cart_buttons": true,
     "empty_cart_buttons": "new-menu",
     "message": "Spend ||amount|| more for FREE AUS shipping.",
-    "free_shipping_limit": "250",
+    "free_shipping_limit": "0",
     "cart_custom_message_text": "",
     "show_spacer_lines": false,
     "line_thickness": "normal",
