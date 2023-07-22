@@ -97,6 +97,11 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
 .template--product .product-single__details .buy_box_container .select__fieldset .select-popout .select-popout__toggle {
   height: 100%;
 }
+@media only screen and (min-width: 768px) {
+  .template--product .product__form {
+    gap: 20px;
+  }
+}
 
 @media only screen and (max-width: 767px) {
   .template--index .shopify-section.slideshow .original-height-mobile .slide__image__container {
