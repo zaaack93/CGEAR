@@ -4,6 +4,7 @@
   "sections": {
     "popup": {
       "type": "popup",
+      "disabled": true,
       "blocks": {
         "popup-0": {
           "type": "popup-with-image",

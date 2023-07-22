@@ -2,14 +2,27 @@
   "sections": {
     "main": {
       "type": "list-collections",
-      "disabled": true,
+      "blocks": {
+        "c9df9e43-1412-4a1b-816b-5662015c8daf": {
+          "type": "collection",
+          "settings": {
+            "collection": "all-cgear-products",
+            "bg_color": "",
+            "text_color": "text-light",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "c9df9e43-1412-4a1b-816b-5662015c8daf"
+      ],
       "settings": {
-        "layout": "grid",
-        "alignment": "left",
-        "image_shape": "circle",
+        "layout": "carousel",
+        "alignment": "center",
+        "image_shape": "square",
         "image_width": 200,
         "image_height": 100,
-        "title": "Collections",
+        "title": "",
         "heading_size": 100,
         "text_size": 110,
         "overlay_text": false,
@@ -34,7 +47,7 @@
             "subheading_size": 90,
             "heading": "<p>20% OFF<\/p>",
             "heading_highlight_type": "italics",
-            "highlight_color": "#D43747",
+            "highlight_color": "#d43747",
             "heading_size": 295,
             "description": "Share details about the promotion",
             "description_size": 100,
@@ -58,7 +71,7 @@
             "subheading_size": 80,
             "heading": "<p>BOGO<\/p>",
             "heading_highlight_type": "italics",
-            "highlight_color": "#D43747",
+            "highlight_color": "#d43747",
             "heading_size": 260,
             "description": "Share details about the promotion",
             "description_size": 85,

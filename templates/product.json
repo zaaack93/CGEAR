@@ -214,7 +214,7 @@
             "icon_name": "support",
             "icon_width": 25,
             "title": "Have questions?",
-            "text": "<p>No worries - <a href=\"https:\/\/palo-alto-theme-luxe.myshopify.com\/pages\/contact\" title=\"Contact\">Get in touch<\/a> with us at any time.<\/p><p><\/p>",
+            "text": "<p>No worries - <a href=\"\/pages\/contact\" title=\"Contact\">Get in touch<\/a> with us at any time.<\/p><p><\/p>",
             "bg_color": "#f7f9fa",
             "text_color": "#000000",
             "padding_bottom": 20
@@ -783,6 +783,7 @@
     },
     "tabs": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "acordion-0": {
           "type": "text",
@@ -883,6 +884,7 @@
     },
     "e30e86d1-5c16-4c16-8d94-bee79006d8ee": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "818fd74d-0ba7-45c8-8458-e3c50def9ff9": {
           "type": "text",
@@ -983,6 +985,7 @@
     },
     "a1e2ba11-1497-422a-9399-9800d3edbac6": {
       "type": "section-accordions",
+      "disabled": true,
       "blocks": {
         "d8313b90-eb90-422c-b2df-70f0cce66263": {
           "type": "text",
@@ -1083,6 +1086,7 @@
     },
     "1e732b75-7029-49b1-b9ce-6fdda8f21f9d": {
       "type": "section-text",
+      "disabled": true,
       "blocks": {
         "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-2": {
           "type": "text",
