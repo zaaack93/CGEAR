@@ -19684,7 +19684,7 @@ search-form mark {
 }
 
 .product__accordion__title {
-  font-size: calc(0.9rem * var(--adjust-body));
+  //font-size: calc(0.9rem * var(--adjust-body));
   display: block;
   position: relative;
   width: 100%;

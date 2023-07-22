@@ -11,7 +11,7 @@
       {{- accordions -}}
 
       <div class="product__accordion">
-        <button class="product__accordion__title" aria-controls="ProductAccordion--page-{{ accordion_title | handle }}-{{ forloop.index }}-{{ section.id }}" data-collapsible-trigger>
+          <button class="product__accordion__title h6" aria-controls="ProductAccordion--page-{{ accordion_title | handle }}-{{ forloop.index }}-{{ section.id }}" data-collapsible-trigger>
           {{- accordion_title -}}
           {%- render 'icon-toggle-plus' -%}
           {%- render 'icon-toggle-minus' -%}
@@ -26,5 +26,21 @@
     {%- endcapture -%}
   {%- endif -%}
 {%- endfor -%}
+
+{% if block_settings.show_description_accordion %}
+<div class="product__accordion">
+  <button class="product__accordion__title is-expanded h6" aria-controls="ProductAccordion--page-for-description" data-collapsible-trigger aria-expanded="true">
+    {{- 'products.general.accord_description' | t -}}
+    {%- render 'icon-toggle-plus' -%}
+    {%- render 'icon-toggle-minus' -%}
+  </button>
+
+  <div class="product__accordion__content is-expanded" style="height: auto;" id="ProductAccordion--page-for-description" data-collapsible-container aria-expanded="true">
+    <div class="product__accordion__inner rte" data-collapsible-content>
+      {{- product.description -}}
+    </div>
+  </div>
+</div>
+{%endif%}
 
 {{- accordions -}}
