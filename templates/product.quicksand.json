@@ -174,6 +174,7 @@
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "padding_bottom": 20
           }
@@ -181,11 +182,12 @@
         "product_accordions": {
           "type": "product_accordions",
           "settings": {
+            "show_description_accordion": true,
             "accordion_heading_1": "Features",
             "accordion_text_1": "<p>{{ product.metafields.custom.features | metafield_tag }}<\/p>",
             "accordion_page_1": "",
             "accordion_heading_2": "Benefits",
-            "accordion_text_2": "{{ product.metafields.custom.benefits | metafield_tag }}",
+            "accordion_text_2": "<p>{{ product.metafields.custom.benefits | metafield_tag }}<\/p>",
             "accordion_page_2": "",
             "accordion_heading_3": "Care & Usage",
             "accordion_text_3": "<p>{{ product.metafields.custom.care_and_usage | metafield_tag }}<\/p>",
