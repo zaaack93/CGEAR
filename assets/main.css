@@ -102,6 +102,11 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
     gap: 20px;
   }
 }
+@media only screen and (max-width: 767px) {
+  .template--product .product__form {
+    gap: 15px;
+  }
+}
 
 @media only screen and (max-width: 767px) {
   .template--index .shopify-section.slideshow .original-height-mobile .slide__image__container {
