@@ -81,7 +81,7 @@
             "show_quantity": true,
             "show_payment_button": false,
             "enable_subscriptions_selectors": false,
-            "padding_bottom": 28
+            "padding_bottom": 20
           }
         },
         "f02b417a-f4ed-4dec-9e5a-b2568422e078": {
@@ -126,7 +126,7 @@
             "width": "half",
             "text_alignment": "left",
             "bg_color": "",
-            "padding_bottom": 20
+            "padding_bottom": 40
           }
         },
         "818ea8ca-df8c-4430-9189-4c8b38575d4a": {
@@ -141,7 +141,7 @@
             "width": "half",
             "text_alignment": "left",
             "bg_color": "",
-            "padding_bottom": 20
+            "padding_bottom": 40
           }
         },
         "icon_row": {

@@ -55,6 +55,60 @@
         "padding_bottom": 60
       }
     },
+    "bb52a44c-c63b-4dca-a77d-bb76d04bf162": {
+      "type": "section-contact-form",
+      "blocks": {
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-heading-1": {
+          "type": "heading",
+          "settings": {
+            "title": "Interested about becoming a stockist? Get in touch below."
+          }
+        },
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-text-1": {
+          "type": "text",
+          "settings": {
+            "title": "Name",
+            "required": false
+          }
+        },
+        "7f93248f-b2df-40a8-a62f-c6438e5ba188": {
+          "type": "telephone",
+          "settings": {
+            "title": "Phone Number",
+            "required": false
+          }
+        },
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-email-1": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "required": true
+          }
+        },
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-body-1": {
+          "type": "body",
+          "settings": {
+            "title": "Message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-heading-1",
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-text-1",
+        "7f93248f-b2df-40a8-a62f-c6438e5ba188",
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-email-1",
+        "template--15200363282505__bb52a44c-c63b-4dca-a77d-bb76d04bf162-body-1"
+      ],
+      "settings": {
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--large",
+        "width": "wrapper--narrow",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c": {
       "type": "section-text",
       "blocks": {
@@ -149,6 +203,7 @@
   "order": [
     "slideshow",
     "main",
+    "bb52a44c-c63b-4dca-a77d-bb76d04bf162",
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
     "6ef338fb-eb1b-498c-880d-4de0d0375389"
   ]
