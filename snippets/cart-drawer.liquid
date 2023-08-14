@@ -360,8 +360,11 @@
               </fieldset>
             </div>
           </div>
-
-          <p class="cart__text">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+        <div class="cart__text_container">
+          <p class="cart__text">{{ 'cart.general.shipping_at_checkout_1' | t }}</p>
+          <span class="separator_text"></span>
+          <p class="cart__text">{{ 'cart.general.shipping_at_checkout_2' | t }}</p>
+        </div>
         </div>
       </form>
     </div>

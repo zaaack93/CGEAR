@@ -5,6 +5,10 @@
             width: 49.5%;
         }
     }
+    //radio buttons 
+    .radio__button.sold-out .radio__label, .radio__button.unavailable .radio__label{
+        text-decoration: initial;
+    }
     //exactly
     .product-single__gallery{
         @media only screen and (min-width: 768px){
@@ -41,6 +45,31 @@
                     margin-left: 0px;
                     margin-right: 0px;
                 }
+            }
+            @media only screen and (max-width: 767px){
+                row-gap: 24px;
+            }
+        }
+
+        //fiamma button
+        .inline-display{
+            @media only screen and (max-width: 767px){
+                display: inline-block;
+            }
+        }
+        
+        .fiamma_button{
+            display: inline-block;
+            float: right;
+            color: #3D4146;
+            font-family: Inter;
+            
+            font-style: italic;
+            font-weight: 400;
+            line-height: normal;
+            text-decoration-line: underline;
+            @media only screen and (min-width: 768px){
+                font-size: 16px;
             }
         }
 
@@ -79,12 +108,12 @@
 
     @media only screen and (min-width: 768px){
         .product__form {
-            gap: 20px;
+            gap: 35px;
         }
     }
     @media only screen and (max-width: 767px){
         .product__form {
-            gap: 15px;
+            gap: 35px;
         }
     }
 }

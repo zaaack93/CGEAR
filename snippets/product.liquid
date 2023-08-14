@@ -794,9 +794,11 @@
               {%- assign current_value = current_variant.options[forloop.index0] -%}
               <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                 <legend class="radio__legend{% if is_size_option and info_page != blank %} radio__legend--flex{% endif %}">
-                  <span class="radio__legend__label">{{ option.name | escape_once }}</span>
+                  <span class="radio__legend__label {% if option.name == 'FIAMMA Compatible' %} inline-display {% endif %}">{{ option.name | escape_once }}</span>
                   {%- if is_size_option and show_labels and info_page != blank -%}
                     {{- size_chart_button -}}
+                  {% elsif option.name == 'FIAMMA Compatible' %}
+                    <a href="#" class="fiamma_button">What’s FIAMMA?</a>
                   {%- endif -%}
                 </legend>
                 {%- for value in option.values -%}
