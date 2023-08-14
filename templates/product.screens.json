@@ -71,7 +71,7 @@
             "width": "full",
             "text_alignment": "left",
             "bg_color": "",
-            "padding_bottom": 20
+            "padding_bottom": 30
           }
         },
         "form": {
@@ -126,7 +126,7 @@
             "width": "half",
             "text_alignment": "left",
             "bg_color": "",
-            "padding_bottom": 20
+            "padding_bottom": 32
           }
         },
         "818ea8ca-df8c-4430-9189-4c8b38575d4a": {
@@ -141,7 +141,7 @@
             "width": "half",
             "text_alignment": "left",
             "bg_color": "",
-            "padding_bottom": 20
+            "padding_bottom": 40
           }
         },
         "icon_row": {
@@ -245,7 +245,7 @@
         "product_sticky_enable": true,
         "image_layout": "carousel",
         "image_width": "standard",
-        "product_image_aspect_ratio": false,
+        "product_image_aspect_ratio": true,
         "enable_zoom": true,
         "enable_video_looping": false,
         "bg_color": "",

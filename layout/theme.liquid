@@ -239,6 +239,10 @@
     {{ content_for_header }}
   
     {{ shop.metafields.loox["global_html_head"] }}
+
+    <meta name="google-site-verification" content="m4S4DeFW_HEi_Itk4ql_3evV11oIcozy11IUAVUEKM4" />
+    <meta name="facebook-domain-verification" content="rsjidsap8othil2w0d4svbilh2zz91" />
+    
   </head>{%- capture body_classes -%}
   template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
   {% if customer %} customer-logged-in{% endif %}
@@ -273,6 +277,9 @@
     {%- endif -%}
   
     {{ shop.metafields.loox["global_html_body"] }}
+
+    <script src="https://t.cometlytrack.com?uid=d43e6c-4503599634000029-89a00b-s"></script>
+                                    
   </body>
   </html>
   

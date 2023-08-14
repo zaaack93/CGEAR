@@ -34,7 +34,7 @@
         "section-slideshow-0"
       ],
       "settings": {
-        "slide_height": "seven-fifty-height",
+        "slide_height": "full-height",
         "enable_mobile_height": true,
         "mobile_slide_height": "original-height-mobile",
         "show_nav_dots": true,

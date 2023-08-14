@@ -96,8 +96,8 @@
       "settings": {
         "sticky_header": true,
         "header_border": false,
-        "logo_not_home": "shopify:\/\/shop_images\/CGear-Logo-Outlined-01.png",
-        "logo_max_width": 150,
+        "logo_not_home": "shopify:\/\/shop_images\/CGear-Logo-03.png",
+        "logo_max_width": 160,
         "main-menu": "new-menu",
         "show_images": true,
         "image_aspect_ratio": 1,
