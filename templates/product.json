@@ -37,7 +37,7 @@
             "icon_image": "{{ product.metafields.custom.pdp_icon_image_1.value }}",
             "icon_width": 20,
             "icon_text": "{{ product.metafields.custom.short_key_benefit_1.value }}",
-            "text_size": 90,
+            "text_size": 100,
             "width": "full",
             "text_alignment": "left",
             "bg_color": "",
@@ -52,7 +52,7 @@
             "icon_image": "{{ product.metafields.custom.icon_image_2.value }}",
             "icon_width": 20,
             "icon_text": "{{ product.metafields.custom.short_key_benefit_2.value }}",
-            "text_size": 90,
+            "text_size": 100,
             "width": "full",
             "text_alignment": "left",
             "bg_color": "",
@@ -67,7 +67,7 @@
             "icon_image": "{{ product.metafields.custom.icon_image_3.value }}",
             "icon_width": 20,
             "icon_text": "{{ product.metafields.custom.short_key_benefit_3.value }}",
-            "text_size": 90,
+            "text_size": 100,
             "width": "full",
             "text_alignment": "left",
             "bg_color": "",
@@ -141,7 +141,7 @@
             "width": "half",
             "text_alignment": "left",
             "bg_color": "",
-            "padding_bottom": 20
+            "padding_bottom": 40
           }
         },
         "icon_row": {

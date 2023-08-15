@@ -216,7 +216,7 @@
             "icon_name": "support",
             "icon_width": 25,
             "title": "Have questions?",
-            "text": "<p>No worries - <a href=\"https:\/\/palo-alto-theme-luxe.myshopify.com\/pages\/contact\" title=\"Contact\">Get in touch<\/a> with us at any time.<\/p><p><\/p>",
+            "text": "<p>Drop us a line on our contact page <a href=\"\/pages\/contact\" title=\"Contact\">here<\/a> or simply give us a buzz on 03 9645 4447. And don't worry - there's no such thing as a dumb question. <\/p>",
             "bg_color": "#f7f9fa",
             "text_color": "#000000",
             "padding_bottom": 20
@@ -692,7 +692,6 @@
     },
     "49a4b8e9-0438-4f3c-976c-4245e7381a13": {
       "type": "section-custom-content",
-      "disabled": true,
       "blocks": {
         "34f38547-cb15-438f-b749-27dc63717f36": {
           "type": "text",
@@ -740,6 +739,7 @@
         "34f38547-cb15-438f-b749-27dc63717f36",
         "5a8edc8b-5a47-4029-9a1a-a511caf832d1"
       ],
+      "disabled": true,
       "settings": {
         "height": "four-fifty-height",
         "bg_color": "rgba(0,0,0,0)",
@@ -751,7 +751,6 @@
     },
     "360ef5f0-e2d8-4a7e-a3e1-c50f4468ac7c": {
       "type": "section-custom-content",
-      "disabled": true,
       "blocks": {
         "5c79d655-8440-47fe-859e-231944be76d9": {
           "type": "image",
@@ -774,6 +773,7 @@
       "block_order": [
         "5c79d655-8440-47fe-859e-231944be76d9"
       ],
+      "disabled": true,
       "settings": {
         "height": "five-fifty-height",
         "bg_color": "",
@@ -885,7 +885,6 @@
     },
     "e30e86d1-5c16-4c16-8d94-bee79006d8ee": {
       "type": "section-accordions",
-      "disabled": true,
       "blocks": {
         "818fd74d-0ba7-45c8-8458-e3c50def9ff9": {
           "type": "text",
@@ -970,6 +969,7 @@
         "fa0a9575-6edf-4dc8-af0e-16163b232e90",
         "93cf24a1-64ab-43c1-b60e-e7a183a34586"
       ],
+      "disabled": true,
       "settings": {
         "layout": "two-columns",
         "show_accordion_divider": false,
@@ -986,7 +986,6 @@
     },
     "a1e2ba11-1497-422a-9399-9800d3edbac6": {
       "type": "section-accordions",
-      "disabled": true,
       "blocks": {
         "d8313b90-eb90-422c-b2df-70f0cce66263": {
           "type": "text",
@@ -1071,6 +1070,7 @@
         "51c8cbdb-b8d5-4980-811f-c3ca0b5c09fb",
         "01d8d817-f709-4888-b845-29c726856879"
       ],
+      "disabled": true,
       "settings": {
         "layout": "two-columns",
         "show_accordion_divider": false,
@@ -1157,7 +1157,6 @@
     },
     "icons": {
       "type": "section-icons-row",
-      "disabled": true,
       "blocks": {
         "icon-0": {
           "type": "text",
@@ -1189,6 +1188,7 @@
         "icon-1",
         "icon-2"
       ],
+      "disabled": true,
       "settings": {
         "alignment": "center",
         "columns": 3,
