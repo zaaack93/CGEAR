@@ -44,7 +44,7 @@
     "cart_icon": "shopping_cart",
     "enable_cart_notes": false,
     "enable_gift_notes": false,
-    "enable_additional_buttons": true,
+    "enable_additional_buttons": false,
     "show_empty_cart_buttons": true,
     "empty_cart_buttons": "new-menu",
     "show_free_shipping_message": false,

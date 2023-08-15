@@ -75,6 +75,9 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
   border: 50%;
 }
 
+.template--product {
+  overflow-x: hidden;
+}
 @media only screen and (min-width: 480px) {
   .template--product .product__block--half {
     display: inline-block;
