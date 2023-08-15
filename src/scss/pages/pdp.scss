@@ -50,7 +50,9 @@
                 row-gap: 24px;
             }
         }
-
+        .radio__legend{
+            align-items: center;
+        }
         //fiamma button
         .inline-display{
             @media only screen and (max-width: 767px){
@@ -63,11 +65,13 @@
             float: right;
             color: #3D4146;
             font-family: Inter;
-            
+            cursor: pointer;
             font-style: italic;
             font-weight: 400;
             line-height: normal;
             text-decoration-line: underline;
+            position: relative;
+            top: 5px;
             @media only screen and (min-width: 768px){
                 font-size: 16px;
             }
@@ -115,5 +119,10 @@
         .product__form {
             gap: 35px;
         }
+    }
+
+    //tooltip text
+    .tooltip-default__arrow{
+        left: 90% !important;
     }
 }

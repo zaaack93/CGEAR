@@ -121,6 +121,9 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
     row-gap: 24px;
   }
 }
+.template--product .product-single__details .radio__legend {
+  align-items: center;
+}
 @media only screen and (max-width: 767px) {
   .template--product .product-single__details .inline-display {
     display: inline-block;
@@ -131,10 +134,13 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
   float: right;
   color: #3D4146;
   font-family: Inter;
+  cursor: pointer;
   font-style: italic;
   font-weight: 400;
   line-height: normal;
   text-decoration-line: underline;
+  position: relative;
+  top: 5px;
 }
 @media only screen and (min-width: 768px) {
   .template--product .product-single__details .fiamma_button {
@@ -183,6 +189,9 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
   .template--product .product__form {
     gap: 35px;
   }
+}
+.template--product .tooltip-default__arrow {
+  left: 90% !important;
 }
 
 @media only screen and (max-width: 767px) {

@@ -798,7 +798,7 @@
                   {%- if is_size_option and show_labels and info_page != blank -%}
                     {{- size_chart_button -}}
                   {% elsif option.name == 'FIAMMA Compatible' %}
-                    <a href="#" class="fiamma_button">What’s FIAMMA?</a>
+                    <span class="fiamma_button" data-tooltip="The Fiamma Privacy Screen is compatible with F45, F65 and F85. The Fiamma has a smaller sail track than the Dometic Privacy Screens. " data-tooltip-arrow="right">What’s FIAMMA?</span>
                   {%- endif -%}
                 </legend>
                 {%- for value in option.values -%}
