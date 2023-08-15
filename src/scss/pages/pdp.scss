@@ -123,7 +123,11 @@
     }
 
     //tooltip text
-    .tooltip-default__arrow{
-        left: 90% !important;
+    .tooltip-default__inner{
+            right: 10px;
+            max-width: 90%;
+        .tooltip-default__arrow{
+            left: 90% !important;
+        }
     }
 }

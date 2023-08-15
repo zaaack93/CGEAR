@@ -193,7 +193,11 @@ form-klaviyo-newsletter .form-success, form-klaviyo-newsletter .form_on_danger {
     gap: 35px;
   }
 }
-.template--product .tooltip-default__arrow {
+.template--product .tooltip-default__inner {
+  right: 10px;
+  max-width: 90%;
+}
+.template--product .tooltip-default__inner .tooltip-default__arrow {
   left: 90% !important;
 }
 
