@@ -345,6 +345,13 @@
                     <a href="{{ product_url }}" title="{{ product_title }}">{{ product_title }}</a>
                   {%- endif -%}
                 </h1>
+
+                {% comment %} option select {% endcomment %}
+                {{option.values}}
+                <div class="selectedOptions"></div>
+                
+
+
               </div>{%- assign currency_code_enable = settings.currency_code_enable -%}
 
 <div class="product__block product__price-and-badge"
@@ -794,7 +801,7 @@
               {%- assign current_value = current_variant.options[forloop.index0] -%}
               <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                 <legend class="radio__legend{% if is_size_option and info_page != blank %} radio__legend--flex{% endif %}">
-                  <span class="radio__legend__label {% if option.name == 'FIAMMA Compatible' %} inline-display {% endif %}">{{ option.name | escape_once }}</span>
+                  <span class="radio__legend__label {% if option.name == 'FIAMMA Compatible' %} inline-display {% endif %}">{{ option.name | escape_once }}: <span data-current data-option-input="{{option.name}}">{{current_value}}</span></span>
                   {%- if is_size_option and show_labels and info_page != blank -%}
                     {{- size_chart_button -}}
                   {% elsif option.name == 'FIAMMA Compatible' %}

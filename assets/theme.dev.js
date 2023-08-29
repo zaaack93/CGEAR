@@ -3860,6 +3860,29 @@
           this.storeAvailability.clearContent();
         }
       }
+
+      console.log(formState.options)
+      if(formState.options.length!=0){
+        let optionsText = ""
+        //update options
+        formState.options.forEach((option,i)=>{
+          document.querySelector(`span[data-option-input="${option.name}"]`).innerHTML=option.value;
+          if(option.name != 'FIAMMA Compatible'){
+            optionsText= `${optionsText}${String(option.name).substring(0,1)}: ${option.value }`
+          }
+          else{
+            optionsText= `${optionsText}FIAMMA: ${option.value }`
+          }
+          
+          if(i<formState.options.length-1){
+            optionsText = optionsText + ' / '
+          }
+        })
+        document.querySelector('.selectedOptions').innerHTML=`<b>Size Selected</b>: ${optionsText}`
+      }
+      else{
+        document.querySelector('.selectedOptions').style.display='none'
+      }
     }
 
     updateAddToCartState(formState) {
