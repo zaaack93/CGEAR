@@ -3866,7 +3866,8 @@
         let optionsText = ""
         //update options
         formState.options.forEach((option,i)=>{
-          document.querySelector(`span[data-option-input="${option.name}"]`).innerHTML=option.value;
+          if(document.querySelector(`span[data-option-input="${option.name}"]`))
+            document.querySelector(`span[data-option-input="${option.name}"]`).innerHTML=option.value;
           if(option.name != 'FIAMMA Compatible'){
             optionsText= `${optionsText}${String(option.name).substring(0,1)}: ${option.value }`
           }
@@ -3878,10 +3879,12 @@
             optionsText = optionsText + ' / '
           }
         })
-        document.querySelector('.selectedOptions').innerHTML=`<b>Size Selected</b>: ${optionsText}`
+        if(document.querySelector('.selectedOptions'))
+          document.querySelector('.selectedOptions').innerHTML=`<b>Size Selected</b>: ${optionsText}`
       }
       else{
-        document.querySelector('.selectedOptions').style.display='none'
+        if(document.querySelector('.selectedOptions'))
+          document.querySelector('.selectedOptions').style.display='none'
       }
     }
 
