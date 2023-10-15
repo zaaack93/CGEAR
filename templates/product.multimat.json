@@ -205,7 +205,9 @@
           "type": "upsell",
           "settings": {
             "product_list": [
-
+              "privacy-screen-2m-drop",
+              "quicksand-mat-sandlite",
+              "the-multimat"
             ],
             "padding_bottom": 20
           }
@@ -444,6 +446,21 @@
             "video_link_popup": "",
             "video_link_color": "text-dark"
           }
+        },
+        "319c14b9-9e30-4ae4-a1ad-6ae88d015fff": {
+          "type": "text_block",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/scoffton_adventures.jpg",
+            "title": "",
+            "text": "",
+            "button_text": "@scottnuffin_adventuresr tagline",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
         }
       },
       "block_order": [
@@ -457,7 +474,8 @@
         "9f3494fd-fa73-4350-b354-a0073e348e1b",
         "26190666-2102-4088-9fea-8d40b1914464",
         "76c659e8-dc67-4c89-9e6c-989b75fd9f6a",
-        "baa18033-1301-467b-b083-78fbd82db761"
+        "baa18033-1301-467b-b083-78fbd82db761",
+        "319c14b9-9e30-4ae4-a1ad-6ae88d015fff"
       ],
       "settings": {
         "title": "CGear Community",

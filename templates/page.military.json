@@ -160,6 +160,58 @@
         "padding_bottom": 90
       }
     },
+    "4e2bdda2-5fdf-4be6-9099-6f1167180725": {
+      "type": "section-icons-row",
+      "blocks": {
+        "template--15216231448649__4e2bdda2-5fdf-4be6-9099-6f1167180725-text-1": {
+          "type": "text",
+          "settings": {
+            "icon_name": "clipboard",
+            "title": "VIEW PDF CAPABILITIES PROFILE",
+            "text": "<p>64 Apache, Tiger, Bell Viper 412<br\/><br\/><a href=\"https:\/\/www.cgear-military.com.au\/Capablities_Profile_PDF\/TACTICAL_HELIMAT_Capabilities_Profile_Tiger.pdf\" target=\"_blank\" title=\"https:\/\/www.cgear-military.com.au\/Capablities_Profile_PDF\/TACTICAL_HELIMAT_Capabilities_Profile_Tiger.pdf\"><strong>View here<\/strong><\/a><\/p>"
+          }
+        },
+        "template--15216231448649__4e2bdda2-5fdf-4be6-9099-6f1167180725-text-2": {
+          "type": "text",
+          "settings": {
+            "icon_name": "clipboard",
+            "title": "VIEW PDF CAPABILITIES PROFILE",
+            "text": "<p>UH-60 Blackhawk, NH90, CH-53 SS, Supa Puma, Mi-17, Caracal\/H225M<\/p><p><a href=\"https:\/\/www.cgear-military.com.au\/Capablities_Profile_PDF\/TACTICAL_HELIMAT_Capabilities_Profile_Black_Hawk.pdf\" target=\"_blank\" title=\"https:\/\/www.cgear-military.com.au\/Capablities_Profile_PDF\/TACTICAL_HELIMAT_Capabilities_Profile_Black_Hawk.pdf\"><strong>View here<\/strong><\/a><\/p>"
+          }
+        },
+        "template--15216231448649__4e2bdda2-5fdf-4be6-9099-6f1167180725-text-3": {
+          "type": "text",
+          "settings": {
+            "icon_name": "clipboard",
+            "title": "VIEW PDF CAPABILITIES PROFILE",
+            "text": "<p>Chinook CH-47<\/p><p><a href=\"https:\/\/www.cgear-military.com.au\/Capablities_Profile_PDF\/TACTICAL_HELIMAT_Capabilities_Profile_Chinook.pdf\" target=\"_blank\" title=\"https:\/\/www.cgear-military.com.au\/Capablities_Profile_PDF\/TACTICAL_HELIMAT_Capabilities_Profile_Chinook.pdf\"><strong>View here<\/strong><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15216231448649__4e2bdda2-5fdf-4be6-9099-6f1167180725-text-1",
+        "template--15216231448649__4e2bdda2-5fdf-4be6-9099-6f1167180725-text-2",
+        "template--15216231448649__4e2bdda2-5fdf-4be6-9099-6f1167180725-text-3"
+      ],
+      "settings": {
+        "alignment": "left",
+        "columns": 3,
+        "icons_width": 30,
+        "heading": "",
+        "subheading": "",
+        "bg_color": "#ededea",
+        "text_color": "#333",
+        "box_color": "",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "btn--black",
+        "button_style": "btn--solid",
+        "button_size": "btn--small",
+        "enable_slider_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "8a3be47d-b8e8-4a92-a03a-b81162222698": {
       "type": "section-image-accordions",
       "blocks": {
@@ -303,7 +355,6 @@
     },
     "4ece2c47-faf9-49f2-bd77-503fe1caa631": {
       "type": "section-text",
-      "disabled": true,
       "blocks": {
         "96db51d8-5e46-46a4-962e-354f2c8bcd4c": {
           "type": "heading",
@@ -318,6 +369,7 @@
       "block_order": [
         "96db51d8-5e46-46a4-962e-354f2c8bcd4c"
       ],
+      "disabled": true,
       "settings": {
         "text_position": "center",
         "bg_color_secondary": true,
@@ -329,7 +381,6 @@
     },
     "5a4be997-d1db-41ac-a834-be037566af00": {
       "type": "section-text",
-      "disabled": true,
       "blocks": {
         "template--15181640171593__5a4be997-d1db-41ac-a834-be037566af00-1686207946e7bfa614-1": {
           "type": "heading",
@@ -364,6 +415,7 @@
         "template--15181640171593__5a4be997-d1db-41ac-a834-be037566af00-1686207946e7bfa614-2",
         "template--15181640171593__5a4be997-d1db-41ac-a834-be037566af00-1686207946e7bfa614-3"
       ],
+      "disabled": true,
       "settings": {
         "text_position": "center",
         "bg_color_secondary": false,
@@ -418,6 +470,88 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "2e13a5e8-eabb-48d3-9866-4378ddda8603": {
+      "type": "section-columns",
+      "blocks": {
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-1": {
+          "type": "text_block",
+          "settings": {
+            "title": "VIEW PDF CAPABILITES PROFILE",
+            "text": "<p>AH-64 Apache, Tiger, Bell Viper 412<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-2": {
+          "type": "text_block",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, etc<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-3": {
+          "type": "text_block",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, etc<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        },
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-4": {
+          "type": "text_block",
+          "settings": {
+            "title": "Add a title or tagline",
+            "text": "<p>Use this text to describe products, share details on availability and style, etc<\/p>",
+            "button_text": "Learn More",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--text",
+            "button_size": "btn--small",
+            "video_link_popup": "",
+            "video_link_color": "text-dark"
+          }
+        }
+      },
+      "block_order": [
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-1",
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-2",
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-3",
+        "template--15216231448649__2e13a5e8-eabb-48d3-9866-4378ddda8603-text_block-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "align_text": "text-left",
+        "columns": 3,
+        "equalize_height": true,
+        "image_aspect_ratio": 0.8,
+        "show_images": true,
+        "heading_size": 120,
+        "text_size": 100,
+        "bg_color_secondary": false,
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
@@ -427,11 +561,13 @@
     "a16d1a04-8fef-484a-95ca-8e246996d4a7",
     "97500463-1f25-4585-85ab-aec47372797d",
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
+    "4e2bdda2-5fdf-4be6-9099-6f1167180725",
     "8a3be47d-b8e8-4a92-a03a-b81162222698",
     "3608b4d3-540d-4e1b-9c84-2f3b000db6a9",
     "c734ab72-3811-421f-a397-57f7ec9e9952",
     "4ece2c47-faf9-49f2-bd77-503fe1caa631",
     "5a4be997-d1db-41ac-a834-be037566af00",
-    "c516a38f-ce21-4fcb-8cb0-a0bd4c73c572"
+    "c516a38f-ce21-4fcb-8cb0-a0bd4c73c572",
+    "2e13a5e8-eabb-48d3-9866-4378ddda8603"
   ]
 }

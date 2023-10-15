@@ -79,7 +79,7 @@
           "settings": {
             "show_labels": true,
             "show_quantity": true,
-            "show_payment_button": false,
+            "show_payment_button": true,
             "enable_subscriptions_selectors": false,
             "padding_bottom": 28
           }
@@ -1241,6 +1241,7 @@
           "settings": {
             "only_photos": false,
             "aggregated": false,
+            "limit": 20,
             "hide_thumbnails": false,
             "maxwidth": 1080
           }
@@ -1250,6 +1251,10 @@
         "loox-product-reviews"
       ],
       "settings": {
+        "bg_color": "",
+        "width": "wrapper",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
