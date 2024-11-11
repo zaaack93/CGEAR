@@ -68,19 +68,22 @@
   </div>
 
   {%- comment -%} Mobile Navigation {%- endcomment -%}
-  <ul class="mobile-nav mobile-nav--weight-{{ settings.nav_font_weight }}{% unless settings.nav_caps_letter_spacing %} letter-spacing-nav{% endunless %}">
-    {%- for link in linklists[section.settings.main-menu].links -%}
-      {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
-    {%- endfor -%}
+  <div class="primary_nav">
+    {%- render 'promo-banner', section: section -%}
+    <ul class="mobile-nav mobile-nav--weight-{{ settings.nav_font_weight }}{% unless settings.nav_caps_letter_spacing %} letter-spacing-nav{% endunless %}">
+      {%- for link in linklists[section.settings.main-menu].links -%}
+        {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
+      {%- endfor -%}
 
-    {%- for link in linklists[section.settings.main_menu_secondary].links -%}
-      {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
-    {%- endfor -%}
-  </ul>
+      {% comment %} {%- for link in linklists[section.settings.main_menu_secondary].links -%}
+        {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
+      {%- endfor -%} {% endcomment %}
+    </ul>
+  </div>
 
-  {%- if shop.customer_accounts_enabled or settings.show_header_search -%}
+  {% comment %} {%- if shop.customer_accounts_enabled or settings.show_header_search -%}
     <ul class="mobile-nav mobile-nav--bottom mobile-nav--weight-{{ settings.nav_font_weight }}">
-      {%- if shop.customer_accounts_enabled -%}
+      {% comment %} {%- if shop.customer_accounts_enabled -%}
         {%- if customer -%}
           <li class="mobile-menu__item{% if request.path contains routes.account_url %} mobile-menu__item--active{% endif %}"><a href="{{ routes.account_url }}" class="mobile-navlink mobile-navlink--small">{{ 'customer.account.title' | t }}</a></li>
           <li class="mobile-menu__item{% if request.path contains routes.account_logout_url %} mobile-menu__item--active{% endif %}"><a href="{{ routes.account_logout_url }}" class="mobile-navlink mobile-navlink--small">{{ 'layout.customer.log_out' | t }}</a></li>
@@ -88,11 +91,34 @@
           <li class="mobile-menu__item{% if request.path contains routes.account_login_url %} mobile-menu__item--active{% endif %}"><a href="{{ routes.account_login_url }}" class="mobile-navlink mobile-navlink--small" id="customer_login_link">{{ 'layout.customer.log_in' | t }}</a></li>
           <li class="mobile-menu__item{% if request.path contains routes.account_register_url %} mobile-menu__item--active{% endif %}"><a href="{{ routes.account_register_url }}" class="mobile-navlink mobile-navlink--small" id="customer_register_link">{{ 'layout.customer.create_account' | t }}</a></li>
         {%- endif -%}
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
 
-      {%- if settings.show_header_search -%}
+      {% comment %} {%- if settings.show_header_search -%}
         <li class="mobile-menu__item{% if request.path contains routes.search_url %} mobile-menu__item--active{% endif %}"><a href="{{ routes.search_url }}" class="mobile-navlink mobile-navlink--small" data-nav-search-open>{{ 'layout.navigation.search' | t }}</a></li>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
     </ul>
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
+
+  <div class="secondary-menus">
+    {% if linklists[section.settings.main_menu_secondary].links.size > 0 %}
+      <ul class="mobile-nav mobile-nav--weight-{{ settings.nav_font_weight }}{% unless settings.nav_caps_letter_spacing %} letter-spacing-nav{% endunless %}">
+        {%- for link in linklists[section.settings.main_menu_secondary].links -%}
+          {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
+        {%- endfor -%}
+      </ul>
+    {% endif %}
+    {% if linklists[section.settings.main_menu_secondary_mobile].links.size > 0 %}
+    <ul class="mobile-nav mobile-nav--weight-{{ settings.nav_font_weight }}{% unless settings.nav_caps_letter_spacing %} letter-spacing-nav{% endunless %}">
+      {%- for link in linklists[section.settings.main_menu_secondary_mobile].links -%}
+        {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
+      {%- endfor -%}
+    </ul>
+    {% endif %}
+
+    <div class="mobile-nav__search">
+      <form action="{{ routes.search_url }}" method="get" class="search-form" role="search">
+        <input type="search" name="q" value="{{ search.terms }}" placeholder="{{ 'layout.navigation.search' | t }}" class="search-form__input" aria-label="{{ 'layout.navigation.search' | t }}">
+      </form>
+    </div>
+  </div>
 </div>

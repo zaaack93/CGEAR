@@ -1,0 +1,144 @@
+#nav-drawer{
+    background: #E9E9E9;
+    display: flex;
+    flex-direction: column;
+    .drawer__header{
+        padding-block: 14px;
+        background: white;
+    }
+
+
+        .promo-banner{
+            height: auto;
+            aspect-ratio: 2.67;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #cacaca;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            .promo-banner__content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                .promo-banner__subheading{
+                    color: var(--WHITE, #FFF);
+                    text-align: center;
+                    font-family: "Work Sans";
+                    font-size: 13.648px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    text-transform: uppercase;
+                    margin-bottom: 0px;
+                }
+                .promo-banner__heading{
+                    color: var(--WHITE, #FFF);
+                    text-align: center;
+                    font-family: "Barlow Condensed";
+                    font-size: 40px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 100%; /* 40px */
+                    text-transform: uppercase;
+                    margin-bottom: 11px;
+                }
+                .promo-banner__button{
+                    color: var(--WHITE, #FFF);
+                    font-family: "Work Sans";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                    text-transform: uppercase;
+                    display: inline-flex;
+                    height: 31px;
+                    padding: 5px 16px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    flex-shrink: 0;
+                    border-radius: 5px;
+                    background: #8BAC0E;
+                }
+            }
+        }
+
+    .primary_nav{
+        padding:20px var(--inner);
+        ul{
+            margin-top: 0px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            li a{
+                padding: 0px;
+                color: var(--WHITE, #FFF);
+                text-align: center;
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 110%;
+                text-transform: uppercase;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                background: #3C4146;
+            }
+        }
+    }
+
+    .secondary-menus{
+        display: flex;
+        padding: 20px var(--inner) 10px;
+        margin-top: auto;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        ul{
+            margin: 0px;
+            display: flex;
+            flex-direction: column;
+            &:nth-child(2){
+                width: 45%;
+            }
+            li{
+                padding: 0px;
+                a{
+                    padding: 0px;
+                    color: #3C4147;
+                    font-family: Inter;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 35px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+    }
+
+    .mobile-nav__search{
+        margin-top: 24px;
+        width: 100%;
+        input{
+            border-radius: 10px;
+            background: #FFF;
+            color: #3C4147;
+            font-family: "Work Sans";
+            font-size: 16.431px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 29.794px;
+            padding: 5.5px 20px;
+            
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<a href="{{ section.settings.button_link | default: '/' }}" class="promo-banner__link">
+    <div class="promo-banner" {% if section.settings.additional_image %}style="background-image: url('{{ section.settings.additional_image | img_url: 'master' }}');"{% endif %}>
+        <div class="promo-banner__content">
+            <h2 class="promo-banner__subheading">{{ section.settings.subheading | default: "Your Subheading Here" }}</h2>
+            <h1 class="promo-banner__heading">{{ section.settings.heading | default: "Your Heading Here" }}</h1>
+            <span class="promo-banner__button">
+                {{ section.settings.button_text | default: "Click Here" }}
+            </span>
+        </div>
+    </div>
+</a>
