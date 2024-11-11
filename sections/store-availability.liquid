@@ -71,7 +71,7 @@
 				</div>
 			</div>
 
-			<ul class="store-availabilities-list" role="list" data-store-availability-list>
+			<ul class="store-availabilities-list" role="list" data-store-availability-list tabindex="0">
 				{%- for availability in pick_up_availabilities -%}
 					<li class="store-availability-list__item">
 						<div class="store-availability-list-header">
@@ -104,7 +104,7 @@
 
 {% schema %}
 {
-	"name": {},
+	"name": "Store availability",
 	"settings": []
 }
 {% endschema %}

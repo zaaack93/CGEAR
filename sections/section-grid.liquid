@@ -12,18 +12,40 @@
       },
       {
         "type": "select",
-        "id": "height",
-        "label": "Height",
-        "default": "350",
+        "id": "desktop_height",
+        "label": "Desktop height",
+        "default": "five-fifty-height",
         "options": [
-          { "value": "fullscreen", "label": "Full screen" },
-          { "value": "750", "label": "750px" },
-          { "value": "650", "label": "650px" },
-          { "value": "550", "label": "550px" },
-          { "value": "450", "label": "450px" },
-          { "value": "350", "label": "350px" },
-          { "value": "250", "label": "250px" },
-          { "value": "auto", "label": "Image height" }
+          { "value": "full-height", "label": "Full screen" },
+          { "value": "seven-fifty-height", "label": "750px" },
+          { "value": "six-fifty-height", "label": "650px" },
+          { "value": "five-fifty-height", "label": "550px" },
+          { "value": "four-fifty-height", "label": "450px" },
+          { "value": "three-fifty-height", "label": "350px" },
+          { "value": "two-fifty-height", "label": "250px" },
+          { "value": "original-height", "label": "Image height" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_mobile_height",
+        "label": "Enable mobile height",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "mobile_height",
+        "label": "Mobile height",
+        "default": "four-fifty-height-mobile",
+        "options": [
+          { "value": "full-height-mobile", "label": "Full screen" },
+          { "value": "seven-fifty-height-mobile", "label": "750px" },
+          { "value": "six-fifty-height-mobile", "label": "650px" },
+          { "value": "five-fifty-height-mobile", "label": "550px" },
+          { "value": "four-fifty-height-mobile", "label": "450px" },
+          { "value": "three-fifty-height-mobile", "label": "350px" },
+          { "value": "two-fifty-height-mobile", "label": "250px" },
+          { "value": "original-height-mobile", "label": "Image height" }
         ]
       },
       {
@@ -127,7 +149,7 @@
       },
       {
         "type": "header",
-        "content": "Mobile slider"
+        "content": "Mobile"
       },
       {
         "type": "checkbox",
@@ -135,6 +157,22 @@
         "label": "Enable slider",
         "default": true,
         "info": "Horizontal slider in mobile layout."
+      },
+      {
+        "type": "select",
+        "id": "columns_mobile",
+        "label": "Items per row",
+        "default": "1",
+        "options": [
+          { "label": "1", "value": "1" },
+          { "label": "2", "value": "2" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "overlay_text",
+        "label": "Overlay text on images",
+        "default": true
       },
       {
         "type": "header",
@@ -268,8 +306,9 @@
           },
           {
             "type": "select",
-            "id": "text_color",
-            "label": "Text",
+            "id": "overlay_text_color",
+            "label": "Overlay text",
+            "info": "Applies on desktop and when mobile is set to \"Overlay text on images\"",
             "default": "text-light",
             "options": [
               {
@@ -372,8 +411,9 @@
           },
           {
             "type": "select",
-            "id": "text_color",
-            "label": "Text",
+            "id": "overlay_text_color",
+            "label": "Overlay text",
+            "info": "Applies on desktop and when mobile is set to \"Overlay text on images\"",
             "default": "text-light",
             "options": [
               {
@@ -493,8 +533,9 @@
           },
           {
             "type": "select",
-            "id": "text_color",
-            "label": "Text",
+            "id": "overlay_text_color",
+            "label": "Overlay text",
+            "info": "Applies on desktop and when mobile is set to \"Overlay text on images\"",
             "default": "text-light",
             "options": [
               {
@@ -598,8 +639,8 @@
           },
           {
             "type": "select",
-            "id": "text_color",
-            "label": "Text",
+            "id": "overlay_text_color",
+            "label": "Overlay text",
             "default": "text-light",
             "options": [
               {
@@ -621,7 +662,7 @@
         ]
       }
     ],
-     "presets": [
+    "presets": [
       {
         "name": "Grid",
         "category": "Image",

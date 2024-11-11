@@ -3,34 +3,98 @@
 {%- liquid
   assign section_width = section.settings.width
   assign section_height = section.settings.height
+  assign enable_mobile_height = section.settings.enable_mobile_height
+  assign mobile_height = section.settings.mobile_height
   assign bg_color = section.settings.bg_color
+  assign enable_slider_mobile = section.settings.enable_slider_mobile
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
   assign block_count = section.blocks.size
+  assign count_up_enabled = section.settings.count_up_enabled
+  assign count_up_duration = section.settings.count_up_duration
+  assign id = 'SectionPromotionRow--' | append: section.id
+  assign selector_id = '#' | append: id
+  assign animation_anchor = selector_id
   assign animations_enabled = settings.animations_enabled
-  assign animation_anchor = '#SectionPromotionRow--' | append: section.id
-  assign animation_delay = 150
   assign layout = section.settings.layout
+  assign increase_border_radius = settings.increase_border_radius
 
   assign mobile_class = ' grid--mobile'
   assign mobile_item_class = ' grid__item'
-  if section.settings.enable_slider_mobile
+  if enable_slider_mobile
     assign mobile_class = ' carousel--mobile'
     assign mobile_item_class = ' carousel__item'
+  endif
+
+  case columns_mobile
+    when 1
+      assign mobile_item_class = mobile_item_class | append: ' mobile--one-whole'
+    when 2
+      assign mobile_item_class = mobile_item_class | append: ' mobile--one-half'
+  endcase
+
+  comment
+    Images sizes
+  endcomment
+  assign blocks_count = section.blocks.size
+  assign blocks_gaps = blocks_count | minus: 1
+  assign gaps_calc = 20 | times: blocks_gaps | append: 'px'
+
+  # Desktop widths
+  if section_width == 'wrapper--full-padded'
+    assign wrapper_width_lg = '(100vw - 120px)'
+  endif
+  if section_width == 'wrapper'
+    assign wrapper_width_lg = '(1440px - 120px)'
+  endif
+  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / ' | append: blocks_count | append: ')'
+
+  # Tablet widths
+  assign wrapper_width_md = '(100vw - 2 * 20px)'
+  unless blocks_count == 4
+    assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - ' | append: gaps_calc | append: ') / ' | append: blocks_count | append: ')'
+  else
+    if enable_slider_mobile
+      assign img_width_md = 'calc((' | append: wrapper_width_md | append: ') / 2.2' | append: ')'
+    else
+      assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - 20px) / 2' | append: ')'
+    endif
+  endunless
+
+  # Mobile widths
+  assign img_width_sm = 'calc(' | append: wrapper_width_md | append: ')'
+  if enable_slider_mobile
+    assign img_width_sm = 'calc(' | append: wrapper_width_md | append: ' - 20px)'
   endif
 -%}
 
 {%- style -%}
-  #SectionPromotionRow--{{ section.id }} {
+  {{ selector_id }} {
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
     --min-height: {{ section_height }}px;
+
+    {%- if increase_border_radius -%}
+      --radius: 34px;
+    {%- endif %}
 
     {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
       --bg: {{ bg_color }};
     {%- endif -%}
   }
+
+  @media screen and (max-width: 767px) {
+    {%- if columns_mobile > 1 -%}
+      {{ selector_id }} .carousel--mobile { --item-width-mobile: calc(90% / {{ columns_mobile }} - var(--grid-gutter)); }
+      {{ selector_id }} .grid--mobile { --grid--mobile: repeat(2, minmax(0, 1fr)) }
+    {%- endif -%}
+
+    {%- if enable_mobile_height and mobile_height != section_height %}
+      {{ selector_id }} { --min-height: {{ mobile_height }}px; }
+    {%- endif %}
+  }
 {%- endstyle -%}
 
-<section id="SectionPromotionRow--{{ section.id }}"
+<section id="{{ id }}"
   class="promotion-row section-padding"
   data-section-id="{{ section.id }}"
   data-section-type="promotion-row">
@@ -48,7 +112,9 @@
               assign title = block.settings.heading
               assign heading_highlight_type = block.settings.heading_highlight_type
               assign highlight_color = block.settings.highlight_color
+              assign highlight_text_color = block.settings.highlight_text_color
               assign heading_size = block.settings.heading_size | times: 0.01
+              assign heading_size_mobile = heading_size
               assign description = block.settings.description
               assign description_size = block.settings.description_size | times: 0.01
               assign button_text = block.settings.button_text
@@ -60,7 +126,6 @@
               assign disclaimer_size = block.settings.disclaimer_size | times: 0.01
               assign bg_color = block.settings.bg_color
               assign text_color = block.settings.text_color
-              assign animation_delay = forloop.index | times: 150
               assign gradient_background = block.settings.gradient_background | default: 'none'
 
               assign image_link = false
@@ -68,10 +133,52 @@
                 assign image_link = true
               endif
 
+              assign hover_scale = false
+              if button_link != blank or button_text != blank
+                assign hover_scale = true
+              endif
+
               assign empty_bg_color = true
               if bg_color != 'rgba(0,0,0,0)' and bg_color != ''
                 assign empty_bg_color = false
               endif
+
+              if heading_size > 2.5
+                assign heading_size_mobile = 2.5
+              endif
+
+              assign enlarge_block = layout | times: 1
+              case blocks_count
+                when 1
+                  # 100%
+                when 2
+                  # 66.66% / 33.33%
+                  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / 1.5)'
+                  unless forloop.index == enlarge_block
+                    assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / 3)'
+                  endunless
+                when 3
+                  # 50% / 25% / 25%
+                  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / 2)'
+                  unless forloop.index == enlarge_block
+                    assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / 4)'
+                  endunless
+                when 4
+                  # 100% / 33.33% / 33.33% / 33.33%
+                  assign img_width_lg = 'calc(' | append: wrapper_width_lg | append: ')'
+                  unless forloop.index == enlarge_block
+                    assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / 3)'
+                  endunless
+
+                  if enable_slider_mobile == false
+                    assign img_width_md = 'calc(' | append: wrapper_width_md | append: ')'
+                    unless forloop.index == enlarge_block
+                      assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - ' | append: gaps_calc | append: ') / 3)'
+                    endunless
+                  endif
+              endcase
+
+              assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
             -%}
 
             {%- style -%}
@@ -80,7 +187,6 @@
                 --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ description_size }});
                 --overlay: {{ gradient_background }};
                 --overlay-opacity: {{ overlay_opacity }};
-                --highlight-color: var(--text);
 
                 {%- if empty_bg_color == false and image == blank -%}
                   --overlay: {{ bg_color }};
@@ -90,15 +196,29 @@
                   --text: {{ text_color }};
                 {%- endif -%}
 
+                {%- if heading_highlight_type != 'highlight' -%}
+                  --highlight-color: var(--text);
+                {%- endif -%}
+
                 {%- if highlight_color != 'rgba(0,0,0,0)' and highlight_color != '' -%}
                   --highlight-color: {{ highlight_color }};
+                {%- endif -%}
+
+                {%- if highlight_text_color != 'rgba(0,0,0,0)' and highlight_text_color != '' -%}
+                  --highlight-text-color: {{ highlight_text_color }};
                 {%- endif -%}
               }
 
               #SectionPromotionRow--{{ block_id }} .promotion-row__item__subheading { --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ subheading_size }}); }
               #SectionPromotionRow--{{ block_id }} .promotion-row__item__disclaimer { --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ disclaimer_size }}); }
+
+              @media only screen and (max-width: 767px) {
+                #SectionPromotionRow--{{ block_id }} {
+                  --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size_mobile }});
+                }
+              }
             {%- endstyle -%}{% comment %}
-  Enhanced text decorations options - Liqiud variables
+  Enhanced text decorations options - Liquid variables
 
   Dependencies:
     - Title liquid object from settings: `assign title = section.settings.title`
@@ -110,6 +230,34 @@
 {% endcomment %}
 
 {%- liquid
+  comment
+   Highlighted words count
+  endcomment
+  assign title_temp = title | split: '<em>'
+  assign em_arr = ''
+  if title_temp.size > 1
+    for text_part in title_temp offset: 1
+      assign em_text = text_part | split: '</em>' | first
+      assign em_arr = em_arr | append: '#separator#' | append: em_text
+    endfor
+  endif
+  assign em_arr = em_arr | split: '#separator#'
+  assign words_count_arr = ''
+  assign letters_count_arr = ''
+  if em_arr.size > 0
+    for words in em_arr offset: 1
+      assign word = words | split: ' '
+      assign words_count_arr = words_count_arr | append: word.size | append: ', '
+      assign letters_count_arr = letters_count_arr | append: words.size | append: ', '
+    endfor
+  endif
+
+  assign words_count_arr = words_count_arr | replace_last: ', ', '' | split: ', '
+  assign letters_count_arr = letters_count_arr | replace_last: ', ', '' | split: ', '
+
+  comment
+   Main highlight types logic
+  endcomment
   assign icon_url = ''
   assign icon_color = 'var(--text)'
 
@@ -124,12 +272,20 @@
       case heading_highlight_type
         when 'squiggle'
           assign icon_url = 'icon-squiggle.svg' | asset_url
-          echo '<span class="text-highlight__icon"></span>'
-        when 'circle'
-          echo '<span class="text-highlight__icon">'
-          render 'icon-circle', color: icon_color
+        when 'circle' or 'circle-hand-drawn' or 'underline-hand-drawn'
+          echo '<span class="text-highlight__icon" data-highlight-holder>'
+
+            when 'circle'
+              render 'icon-circle'
+            when 'circle-hand-drawn'
+              render 'icon-circle-hand-drawn'
+            when 'underline-hand-drawn'
+              render 'icon-underline-hand-drawn'
+
           echo '</span>'
-        when 'stroke' or 'circle' or 'squiggle'
+        when 'highlight' or 'squiggle'
+          echo '<span class="text-highlight__icon text-highlight__icon--pseudo" data-highlight-holder></span>'
+        when 'stroke' or 'circle' or 'circle-hand-drawn' or 'squiggle' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
           assign has_text_highlight = true
       endcase
     endif
@@ -149,27 +305,68 @@
 
   assign text_highlight_wrapper_class = 'text-highlight-wrapper' | append: ' text-highlight-wrapper--' | append: heading_highlight_type
   capture text_highlight_start
-    echo '<span class="text-highlight" ' | append: icon_styles | append: '>'
+    echo '<text-highlight class="text-highlight" ' | append: icon_styles | append: ' data-highlight-type="' | append: heading_highlight_type | append: '">'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '<span class="text-highlight__string" data-highlight-holder>'
+    endcase
   endcapture
   capture text_highlight_end
     echo text_highlight_icon
-    echo '</span>'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '</span>'
+    endcase
+    echo '</text-highlight>'
   endcapture
 
   if title != blank and title contains '<em>'
     case heading_highlight_type
-      when 'squiggle' or 'circle' or 'stroke'
+      when 'squiggle' or 'circle' or 'circle-hand-drawn' or 'stroke' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
         assign title = title | replace: '<em>', text_highlight_start | replace: '</em>', text_highlight_end
+
+      when 'circle' or 'circle-hand-drawn'
+        comment
+          Update icon's holder class based on the italicised words count
+        endcomment
+        assign title = title | split: 'class="text-highlight"'
+        assign title_mod = ''
+        for title_part in title offset: 1
+          assign current_part = title_part
+
+          if title_part contains 'text-highlight__icon'
+            capture highlight_icon_classes
+              echo 'text-highlight__icon'
+              assign current_count = words_count_arr[forloop.index0] | times: 1
+              assign letters_count = letters_count_arr[forloop.index0] | times: 1
+              if current_count == 1
+                echo ' text-highlight__icon--single-word'
+              endif
+              if letters_count < 6
+                echo ' text-highlight__icon--short'
+                echo ' text-highlight__icon--l' | append: letters_count
+              endif
+              if letters_count > 15
+                echo ' text-highlight__icon--long'
+              endif
+            endcapture
+
+            assign current_part = title_part | replace: 'text-highlight__icon', highlight_icon_classes
+          endif
+
+          unless forloop.last
+            assign title_mod = title_mod | append: current_part | append: 'class="text-highlight"'
+          else
+            assign title_mod = title_mod | append: current_part
+          endunless
+        endfor
+        assign title_first_part = title | first | append: 'class="text-highlight"'
+        assign title_mod = title_mod | prepend: title_first_part
+        assign title = title_mod
     endcase
   endif
 -%}<div id="SectionPromotionRow--{{ block_id }}"
-              class="promotion-row__item promotion-row__item--{{ forloop.index }} text-center{{ mobile_item_class }}"
-              {% if animations_enabled %}
-                data-aos="fade"
-                data-aos-anchor="{{ animation_anchor }}"
-                data-aos-delay="{{ animation_delay }}"
-                {%- assign animation_delay = animation_delay | plus: 150 -%}
-              {% endif %}
+              class="promotion-row__item promotion-row__item--{{ forloop.index }} text-center{{ mobile_item_class }}{% if hover_scale %} hover-scale{% endif %}"
               {{ block.shopify_attributes }}>
                 {%- if image_link -%}
                   <a class="promotion-row__item__link" href="{{ button_link }}">
@@ -179,57 +376,90 @@
 
                 <div class="overlay"></div>
 
-                {%- if image != blank -%}
-                  {%- render 'image-fill', is_background: true, img_object: image, classes: 'promotion-row__item__image-bg' -%}
-                {%- else -%}
-                  {%- render 'image-fill', is_background: true, img_object: '', classes: 'promotion-row__item__image-bg' -%}
-                {%- endif -%}
+                {%- render 'image-fill', is_background: true, img_object: image, sizes: sizes, classes: 'promotion-row__item__image-bg' -%}
 
                 <div class="promotion-row__item__content">
                   {%- if subheading != blank -%}
                     <div class="promotion-row__item__subheading subheading-text"
                       {% if animations_enabled %}
-                        data-aos="fade-up"
+                        data-aos="hero"
                         data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
+                        data-aos-order="1"
                       {% endif %}>{{ subheading }}</div>
                   {%- endif -%}
 
-                  {%- if title != blank -%}
-                    {%- liquid
-                      assign hasPercentOff = false
-                      if title contains '% off' or title contains '% OFF' or title contains '% Off'
-                        assign hasPercentOff = true
-                      endif
-                      assign title = title | replace: '%', '<sup>%</sup>'
-                      assign title = title | replace: '<sup>%</sup> off', '<sup>%</sup> <small>off</small>'
-                      assign title = title | replace: '<sup>%</sup> OFF', '<sup>%</sup> <small>OFF</small>'
-                      assign title = title | replace: '<sup>%</sup> Off', '<sup>%</sup> <small>Off</small>'
-                    -%}
+                  {%- if title != blank -%}{% comment %}
+  Modify text in title whenever there is a percentage off string, such as "20% off", so that output will include HTML tags with which to style promo texts better
 
-                    <h3 class="promotion-row__item__heading{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}{% if hasPercentOff %} promotion-row__item__heading--haspercentoff{% endif %}"
-                      {% if animations_enabled %}
-                        data-aos="fade-up"
-                        data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
-                      {% endif %}>
-                      {% render 'title-with-highlights',
-                        title: title,
-                        heading_highlight_type: heading_highlight_type,
-                        highlight_color: highlight_color,
-                        has_text_highlight: has_text_highlight %}
-                    </h3>
+  Dependencies:
+    - title: {Object} Liquid object from settings that contains the heading that would be modified and rendered - `assign title = section.settings.title`
+
+  Returns variables:
+    - has_percent_off: {Boolean}
+    - has_number_percent: {Boolean}
+{%- endcomment -%}
+
+{%- liquid
+  assign numbers_string = '0%,1%,2%,3%,4%,5%,6%,7%,8%,9%' | split: ','
+  assign has_percent_off = false
+  assign has_number_percent = false
+  for num in numbers_string
+    if title contains num
+      assign has_number_percent = true
+    endif
+  endfor
+
+  if has_number_percent
+    assign title = title | replace: '%', '<sup>%</sup>'
+
+    if title contains '<sup>%</sup> off' or title contains '<sup>%</sup> OFF' or title contains '<sup>%</sup> Off'
+      assign has_percent_off = true
+      assign title = title | replace: '<sup>%</sup> off', '<sup>%</sup> <small>off</small>'
+      assign title = title | replace: '<sup>%</sup> OFF', '<sup>%</sup> <small>OFF</small>'
+      assign title = title | replace: '<sup>%</sup> Off', '<sup>%</sup> <small>Off</small>'
+    endif
+  endif
+-%}{%- comment -%}
+  This partial checks if a given string contains any numbers.
+  Input:
+  - text (String): The text to check for numbers.
+  Output:
+  - has_count_up (Boolean): True if the text contains numbers, false otherwise.
+{%- endcomment -%}
+
+{%- liquid
+  assign numbers_string = '0,1,2,3,4,5,6,7,8,9' | split: ','
+  assign has_count_up = false
+  assign title_stripped = title | strip_html | strip_newlines
+
+  for num in numbers_string
+    if title_stripped contains num and count_up_enabled
+      assign has_count_up = true
+    endif
+  endfor
+-%}
+{%- capture title_attributes -%}
+                      class="h3 promotion-row__item__heading{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}{% if has_percent_off %} haspercentoff{% elsif has_number_percent %} hasnumberpercent{% endif %}"
+                    {%- endcapture -%}
+
+                    {% render 'title-text-reveal-and-highlights',
+                      title: title,
+                      title_attributes: title_attributes,
+                      text_reveal: true,
+                      has_count_up: has_count_up,
+                      count_up_duration: count_up_duration,
+                      has_text_highlight: has_text_highlight,
+                      animation_anchor: animation_anchor,
+                      animation_order: 1
+                    %}
                   {%- endif -%}
 
                   {%- if description != blank -%}
                     <p class="promotion-row__item__description"
                       {% if animations_enabled %}
-                        data-aos="fade-up"
+                        data-aos="hero"
                         data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
+                        data-aos-order="1"
                       {% endif %}>{{ description }}</p>
                   {%- endif -%}
 
@@ -237,10 +467,9 @@
                     {%- assign button_link = button_link | default: '#' -%}
                     <div class="promotion-row__item__button main-buttons__item"
                       {% if animations_enabled %}
-                        data-aos="fade-up"
+                        data-aos="hero"
                         data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
+                        data-aos-order="1"
                       {% endif %}>
                       <a class="btn {{ button_style }} {{ button_size }} {{ button_color }}" href="{{ button_link }}">{{ button_text }}</a>
                     </div>
@@ -249,10 +478,9 @@
                   {%- if disclaimer != blank -%}
                     <p class="promotion-row__item__disclaimer"
                       {% if animations_enabled %}
-                        data-aos="fade-up"
+                        data-aos="hero"
                         data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
-                        {%- assign animation_delay = animation_delay | plus: 150 -%}
+                        data-aos-order="1"
                       {% endif %}>{{ disclaimer }}</p>
                   {%- endif -%}
                 </div>
@@ -279,7 +507,7 @@
         "type": "select",
         "id": "layout",
         "label": "Modify selected block width",
-        "default": "none",
+        "default": "1",
         "options": [
           {"label": "First", "value": "1"},
           {"label": "Second", "value": "2"},
@@ -290,10 +518,51 @@
         "info": "Change the layout by increasing the width of one selected block"
       },
       {
+        "type": "header",
+        "content": "Number animation"
+      },
+      {
+        "type": "checkbox",
+        "id": "count_up_enabled",
+        "label": "Show count up animation",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "count_up_duration",
+        "label": "Count up animation speed",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "unit": "%",
+        "default": 100
+      },
+      {
         "type": "select",
         "id": "height",
-        "label": "Height",
-        "default": "250",
+        "label": "Desktop height",
+        "default": "400",
+        "options": [
+          {"label": "450px", "value": "450"},
+          {"label": "400px", "value": "400"},
+          {"label": "350px", "value": "350"},
+          {"label": "300px", "value": "300"},
+          {"label": "250px", "value": "250"},
+          {"label": "200px", "value": "200"},
+          {"label": "150px", "value": "150"}
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_mobile_height",
+        "label": "Enable mobile height",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "mobile_height",
+        "label": "Mobile height",
+        "default": "400",
         "options": [
           {"label": "450px", "value": "450"},
           {"label": "400px", "value": "400"},
@@ -323,6 +592,16 @@
         "label": "Enable slider",
         "default": true,
         "info": "Horizontal slider in mobile layout."
+      },
+      {
+        "type": "select",
+        "id": "columns_mobile",
+        "label": "Promos per row",
+        "default": "1",
+        "options": [
+          { "label": "1", "value": "1" },
+          { "label": "2", "value": "2" }
+        ]
       },
       {
         "type": "header",
@@ -396,34 +675,36 @@
             "default": "<p>50% OFF</p>"
           },
           {
+            "type": "header",
+            "content": "Highlight"
+          },
+          {
             "type": "select",
             "id": "heading_highlight_type",
-            "label": "Highlight type",
-            "default": "italics",
+            "label": "Type",
+            "default": "underline-hand-drawn",
             "options": [
-              {
-                "value": "italics",
-                "label": "Italics (no decoration)"
-              },
-              {
-                "value": "squiggle",
-                "label": "Squiggle"
-              },
-              {
-                "value": "circle",
-                "label": "Circle"
-              },
-              {
-                "value": "stroke",
-                "label": "Stroke (outlined text)"
-              }
+              { "value": "italics", "label": "Italics (no decoration)" },
+              { "value": "highlight", "label": "Highlight" },
+              { "value": "highlight-color", "label": "Text color" },
+              { "value": "underline", "label": "Underline (digital)" },
+              { "value": "underline-hand-drawn", "label": "Underline (hand-drawn)" },
+              { "value": "squiggle", "label": "Squiggle" },
+              { "value": "circle", "label": "Circle (digital)" },
+              { "value": "circle-hand-drawn", "label": "Circle (hand-drawn)" },
+              { "value": "stroke", "label": "Stroke (outlined text)" }
             ]
           },
           {
             "type": "color",
             "id": "highlight_color",
             "label": "Highlight color",
-            "default": "#D43747"
+            "default": "#000"
+          },
+          {
+            "type": "color",
+            "id": "highlight_text_color",
+            "label": "Text color"
           },
           {
             "type": "range",
@@ -473,7 +754,8 @@
           {
             "type": "text",
             "id": "button_text",
-            "label": "Button text"
+            "label": "Button text",
+            "info": "Leave blank to link entire block"
           },
           {
             "type": "url",
@@ -558,34 +840,27 @@
             "type": "column",
             "settings": {
               "subheading": "<p>IN-STORE AND ONLINE</p>",
-              "subheading_size": 90,
+              "subheading_size": 75,
               "heading": "<p>20% OFF</p>",
               "heading_size": 295,
+              "highlight_color": "#000",
               "description": "Share details about the promotion",
-              "disclaimer": "*Use this text for a disclaimer."
+              "disclaimer": "*Use this text for a disclaimer.",
+              "text_color": "#ffffff"
             }
           },
           {
             "type": "column",
             "settings": {
-              "subheading": "<p>WEEKEND SALE</p>",
-              "subheading_size": 80,
-              "heading": "<p>BOGO</p>",
-              "heading_size": 260,
-              "description": "Share details about the promotion",
-              "description_size": 85,
-              "disclaimer": "*Use this text for a disclaimer."
-            }
-          },
-          {
-            "type": "column",
-            "settings": {
-              "heading": "<p><em>FREE</em> GIFT</p>",
-              "heading_highlight_type": "circle",
-              "highlight_color": "#D43747",
+              "subheading": "<p>For a limited time</p>",
+              "subheading_size": 75,
+              "heading": "<p><em>FREE PRODUCT</em></p>",
               "heading_size": 205,
-              "description": "WITH EVERY PURCHASE",
-              "bg_color": "#000000",
+              "heading_highlight_type": "underline-hand-drawn",
+              "highlight_color": "#000",
+              "description": "With every purchase over $99",
+              "description_size": 80,
+              "overlay_opacity": 50,
               "text_color": "#ffffff"
             }
           }

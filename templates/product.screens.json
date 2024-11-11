@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,8 +16,6 @@
           "type": "title",
           "settings": {
             "subheading": "none",
-            "show_rating": true,
-            "show_rating_count": true,
             "padding_bottom": 20
           }
         },
@@ -24,7 +31,7 @@
         "c144a3fa-28a2-4fd4-95ac-9c193e6e52c4": {
           "type": "text",
           "settings": {
-            "title": "<p>{{ product.metafields.custom.short_description | metafield_tag }}<\/p>",
+            "title": "<p>{{ product.metafields.custom.short_description | metafield_tag }}</p>",
             "text_alignment": "left",
             "padding_bottom": 30
           }
@@ -89,9 +96,9 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
             "icon_width": 30,
-            "icon_text": "Dispatched within 24 hrs",
+            "icon_text": "Christmas Season - Expected Shipping Delays",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -104,9 +111,9 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Aussie_4164d222-a4d0-4fe9-ae06-0ed76d363b3d.png",
             "icon_width": 30,
-            "icon_text": "Free Aus Shipping Exc. WA\/NT",
+            "icon_text": "Free Aus Shipping Exc. WA/NT",
             "text_size": 90,
             "width": "half",
             "text_alignment": "left",
@@ -119,7 +126,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
             "icon_width": 30,
             "icon_text": "12 Month Warranty",
             "text_size": 90,
@@ -134,7 +141,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Returns.png",
             "icon_width": 30,
             "icon_text": "Free 30 Day Returns",
             "text_size": 90,
@@ -150,17 +157,17 @@
           "settings": {
             "icon_name_1": "truck",
             "icon_color_1": "",
-            "icon_image_1": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_dd16fb74-7b34-47c6-b22c-a235babc676c.png",
+            "icon_image_1": "shopify://shop_images/CGear-Icons_Green-Delivery_dd16fb74-7b34-47c6-b22c-a235babc676c.png",
             "icon_width_1": 39,
             "icon_text_1": "Free shipping",
             "icon_name_2": "check",
             "icon_color_2": "",
-            "icon_image_2": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
+            "icon_image_2": "shopify://shop_images/CGear-Icons_Green-Returns.png",
             "icon_width_2": 39,
             "icon_text_2": "Free returns",
             "icon_name_3": "heart",
             "icon_color_3": "",
-            "icon_image_3": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
+            "icon_image_3": "shopify://shop_images/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
             "icon_width_3": 39,
             "icon_text_3": "12-month warranty",
             "icon_name_4": "none",
@@ -179,34 +186,10 @@
             "padding_bottom": 20
           }
         },
-        "product_accordions": {
-          "type": "product_accordions",
-          "settings": {
-            "show_description_accordion": true,
-            "accordion_heading_1": "Features",
-            "accordion_text_1": "<p>{{ product.metafields.custom.features | metafield_tag }}<\/p>",
-            "accordion_page_1": "",
-            "accordion_heading_2": "Benefits",
-            "accordion_text_2": "{{ product.metafields.custom.benefits | metafield_tag }}",
-            "accordion_page_2": "",
-            "accordion_heading_3": "Care & Usage",
-            "accordion_text_3": "<p>{{ product.metafields.custom.care_and_usage | metafield_tag }}<\/p>",
-            "accordion_page_3": "",
-            "accordion_heading_4": "Shipping & Returns",
-            "accordion_text_4": "<p>{{ product.metafields.custom.shipping_and_returns | metafield_tag }}<\/p>",
-            "accordion_page_4": "",
-            "accordion_heading_5": "",
-            "accordion_text_5": "",
-            "accordion_page_5": "",
-            "padding_bottom": 30
-          }
-        },
         "upsell": {
           "type": "upsell",
           "settings": {
-            "product_list": [
-
-            ],
+            "product_list": [],
             "padding_bottom": 20
           }
         },
@@ -216,7 +199,7 @@
             "icon_name": "support",
             "icon_width": 25,
             "title": "Have questions?",
-            "text": "<p>Drop us a line on our contact page <a href=\"\/pages\/contact\" title=\"Contact\">here<\/a> or simply give us a buzz on 03 9645 4447. And don't worry - there's no such thing as a dumb question. <\/p>",
+            "text": "<p>Drop us a line on our contact page <a href=\"/pages/contact\" title=\"Contact\">here</a> or simply give us a buzz on 03 9645 4447. And don't worry - there's no such thing as a dumb question. </p>",
             "bg_color": "#f7f9fa",
             "text_color": "#000000",
             "padding_bottom": 20
@@ -237,7 +220,6 @@
         "818ea8ca-df8c-4430-9189-4c8b38575d4a",
         "icon_row",
         "description",
-        "product_accordions",
         "upsell",
         "c6c1e66b-3eb1-4df7-ac86-360f4bc65469"
       ],
@@ -283,7 +265,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-0": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/themadrig.png",
+            "image": "shopify://shop_images/themadrig.png",
             "title": "",
             "text": "",
             "button_text": "@themadrig",
@@ -298,7 +280,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-1": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dads_and_lads_outdoors.png",
+            "image": "shopify://shop_images/dads_and_lads_outdoors.png",
             "title": "",
             "text": "",
             "button_text": "@dads_and_lads_outdoors",
@@ -313,7 +295,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-2": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
+            "image": "shopify://shop_images/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
             "title": "",
             "text": "",
             "button_text": "@a247gear",
@@ -328,7 +310,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-3": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/vet.in.a.van.png",
+            "image": "shopify://shop_images/vet.in.a.van.png",
             "title": "",
             "text": "",
             "button_text": "@vet.in.a.van",
@@ -343,7 +325,7 @@
         "d4424942-069a-4ec0-bff8-d99edc30932d": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/elite_lc200.png",
+            "image": "shopify://shop_images/elite_lc200.png",
             "title": "",
             "text": "",
             "button_text": "@elite_lc200",
@@ -358,7 +340,7 @@
         "4530463d-4bb2-4134-bec6-8db3f7991fe1": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/thesteels4wheels-02.png",
+            "image": "shopify://shop_images/thesteels4wheels-02.png",
             "title": "",
             "text": "",
             "button_text": "@thesteels4wheels",
@@ -373,7 +355,7 @@
         "e0aae6b1-49b0-4f0a-b4c3-b96da0792c63": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sarahandtribe.png",
+            "image": "shopify://shop_images/sarahandtribe.png",
             "title": "",
             "text": "",
             "button_text": "@sarahandtribe",
@@ -388,7 +370,7 @@
         "9f3494fd-fa73-4350-b354-a0073e348e1b": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/our.wild.tribe.png",
+            "image": "shopify://shop_images/our.wild.tribe.png",
             "title": "",
             "text": "",
             "button_text": "@our.wild.tribe",
@@ -403,7 +385,7 @@
         "26190666-2102-4088-9fea-8d40b1914464": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/lostwithnoworries.png",
+            "image": "shopify://shop_images/lostwithnoworries.png",
             "title": "",
             "text": "",
             "button_text": "@lostwithnoworries",
@@ -418,7 +400,7 @@
         "76c659e8-dc67-4c89-9e6c-989b75fd9f6a": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/79series.png",
+            "image": "shopify://shop_images/79series.png",
             "title": "",
             "text": "",
             "button_text": "@79series",
@@ -433,7 +415,7 @@
         "baa18033-1301-467b-b083-78fbd82db761": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ourwhittleadventure.png",
+            "image": "shopify://shop_images/ourwhittleadventure.png",
             "title": "",
             "text": "",
             "button_text": "@ourwhittleadventure",
@@ -463,9 +445,8 @@
         "title": "CGear Community",
         "align_text": "text-left",
         "columns": 3,
-        "equalize_height": true,
-        "image_aspect_ratio": 0.8,
         "show_images": true,
+        "equalize_height": true,
         "heading_size": 120,
         "text_size": 100,
         "bg_color_secondary": true,
@@ -480,7 +461,7 @@
         "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-0": {
           "type": "subheading",
           "settings": {
-            "text": "<p>{{ product.metafields.custom.sub_heading_features_.value }}<\/p>",
+            "text": "<p>{{ product.metafields.custom.sub_heading_features_.value }}</p>",
             "size": 100,
             "margin_bottom": 16
           }
@@ -488,7 +469,7 @@
         "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>{{ product.metafields.custom.heading_the_bells_whistles_.value }}<\/p>",
+            "text": "<p>{{ product.metafields.custom.heading_the_bells_whistles_.value }}</p>",
             "size": 100,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747"
@@ -497,7 +478,7 @@
         "4bcd7f11-3960-4f3f-97f4-1ee978a94828": {
           "type": "text",
           "settings": {
-            "text": "<p>  <\/p>",
+            "text": "<p>  </p>",
             "size": 100
           }
         }
@@ -528,7 +509,6 @@
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -545,7 +525,7 @@
             "subheading": "",
             "title": "{{ product.metafields.custom.key_benefit_callout_1_heading.value }}",
             "heading_size": 100,
-            "text": "<p>{{ product.metafields.custom.key_benefit_callout_1_text | metafield_tag }}<\/p>",
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_1_text | metafield_tag }}</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -586,7 +566,7 @@
             "subheading": "",
             "title": "{{ product.metafields.custom.key_benefit_callout_2_heading.value }}",
             "heading_size": 100,
-            "text": "<p>{{ product.metafields.custom.key_benefit_callout_2_text | metafield_tag }}<\/p>",
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_2_text | metafield_tag }}</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -610,7 +590,6 @@
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -644,7 +623,6 @@
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -661,7 +639,7 @@
             "subheading": "",
             "title": "{{ product.metafields.custom.key_benefit_callout_3_heading.value }}",
             "heading_size": 100,
-            "text": "<p>{{ product.metafields.custom.key_benefit_callout_3_text | metafield_tag }}<\/p>",
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_3_text | metafield_tag }}</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -702,7 +680,7 @@
             "subheading": "",
             "title": "{{ product.metafields.custom.key_benefit_callout_4_heading.value }}",
             "heading_size": 100,
-            "text": "<p>{{ product.metafields.custom.key_benefit_callout_4_text | metafield_tag }}<\/p>",
+            "text": "<p>{{ product.metafields.custom.key_benefit_callout_4_text | metafield_tag }}</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -726,7 +704,6 @@
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -756,12 +733,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
+            "image": "shopify://shop_images/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
             "overlay_opacity": 10,
             "text_color": "text-light",
             "title": "Finding comfort in the uncomfortable",
             "heading_size": 100,
-            "text": "The only thing you need to worry about is what you're having for dinner.",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -790,70 +766,70 @@
           "type": "text",
           "settings": {
             "title": "What is a Multimat?",
-            "text": "<p>The Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.<\/p>"
+            "text": "<p>The Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.</p>"
           }
         },
         "94e75911-f75d-405b-8226-1c2f65643a4c": {
           "type": "text",
           "settings": {
             "title": "What Is Multimat made from?",
-            "text": "<p>Multimat is made from high density polypropylene, knitted mono\/mono and fully bound all the way around the mat and peg pointed approximately every half metre.<\/p>"
+            "text": "<p>Multimat is made from high density polypropylene, knitted mono/mono and fully bound all the way around the mat and peg pointed approximately every half metre.</p>"
           }
         },
         "811ba464-11c9-4282-bf18-5e7cf1e2ee9b": {
           "type": "text",
           "settings": {
             "title": "Why doesn’t the sand rise to the top of the Multimat?",
-            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.<\/p>"
+            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.</p>"
           }
         },
         "acordion-1": {
           "type": "text",
           "settings": {
             "title": "Can I put pegs through the mats?",
-            "text": "<p>Tent pegs can be pegged into multimat, but not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.<\/p>"
+            "text": "<p>Tent pegs can be pegged into multimat, but not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.</p>"
           }
         },
         "b48aea37-98e6-40b5-af34-46d7eff5c646": {
           "type": "text",
           "settings": {
             "title": "Do I have to peg the Multimat down to the ground?",
-            "text": "<p>Multimat is designed to be pegged at all dring’s for maximum efficiency.<\/p>"
+            "text": "<p>Multimat is designed to be pegged at all dring’s for maximum efficiency.</p>"
           }
         },
         "acordion-2": {
           "type": "text",
           "settings": {
             "title": "Do you include a warranty?",
-            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.<\/p>"
+            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.</p>"
           }
         },
         "80eb8a84-90e9-4ac2-b3a5-5d6d1e72e12a": {
           "type": "text",
           "settings": {
             "title": "Will camp furniture damage the Multimat?",
-            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.<\/p>"
+            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.</p>"
           }
         },
         "f649e455-3a9f-4927-9afe-355d6eb19d5c": {
           "type": "text",
           "settings": {
             "title": "Will mud ruin the mat?",
-            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the Multimat will dry out, return to dust and dissipate through the Multimat back to the ground.<\/p>"
+            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the Multimat will dry out, return to dust and dissipate through the Multimat back to the ground.</p>"
           }
         },
         "e7982ff6-a9b8-40c7-8ded-f32b3b20a28d": {
           "type": "text",
           "settings": {
             "title": "Does it matter what side of the Multimat you use?",
-            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.<\/p>"
+            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.</p>"
           }
         },
         "2fb093fd-5f24-4496-b5e8-da6e57781731": {
           "type": "text",
           "settings": {
             "title": "Does the sand and dust get caught between the Multimat layers?",
-            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.<\/p>"
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.</p>"
           }
         }
       },
@@ -891,70 +867,70 @@
           "type": "text",
           "settings": {
             "title": "What is a Quicksand Mat?",
-            "text": "<p>The Quicksand Mat is a lightweight, portable outdoor mat designed to keep sand, dirt, and even crumbs away from your space. It features a patented multi-weave technology that allows particles to fall through the mat while not coming back up!<\/p>"
+            "text": "<p>The Quicksand Mat is a lightweight, portable outdoor mat designed to keep sand, dirt, and even crumbs away from your space. It features a patented multi-weave technology that allows particles to fall through the mat while not coming back up!</p>"
           }
         },
         "d958156c-ab77-4b16-a641-c3964d498dd0": {
           "type": "text",
           "settings": {
             "title": "What Is the Quicksand Mat made from?",
-            "text": "<p>The Quicksand Mat is constructed using high-quality materials. It combines durable polyethylene and polyester to create a robust mat that can withstand the harshest of Aussie outdoor conditions. <\/p>"
+            "text": "<p>The Quicksand Mat is constructed using high-quality materials. It combines durable polyethylene and polyester to create a robust mat that can withstand the harshest of Aussie outdoor conditions. </p>"
           }
         },
         "d454c67d-fa37-4146-b9de-c2394a881c0b": {
           "type": "text",
           "settings": {
             "title": "Why doesn’t the sand rise to the top of the Quicksand Mat?",
-            "text": "<p>It's not magic! This is due to the dual layers, multi-knit weave and the law of gravity. The sand and dirt won’t rise to the top of the Quicksand Mat because the multiple layers create maximum resistance. <\/p>"
+            "text": "<p>It's not magic! This is due to the dual layers, multi-knit weave and the law of gravity. The sand and dirt won’t rise to the top of the Quicksand Mat because the multiple layers create maximum resistance. </p>"
           }
         },
         "a33850a5-1395-4c4c-9af9-060b6e091c08": {
           "type": "text",
           "settings": {
             "title": "What's the difference between The Multimat and The Quicksand Mat.",
-            "text": "<p>While both mats utilise the same patented multi-weave technology, The Quicksand mats top layer is slightly softer than The Multimat, making it a more comfortable space to sit, lay and relax on.<\/p>"
+            "text": "<p>While both mats utilise the same patented multi-weave technology, The Quicksand mats top layer is slightly softer than The Multimat, making it a more comfortable space to sit, lay and relax on.</p>"
           }
         },
         "a18870fe-3352-446f-919d-23b8932a4b64": {
           "type": "text",
           "settings": {
             "title": "Is it just for the beach?",
-            "text": "<p>Absolutely not! The Quicksand Mat is versatile and suitable for a wide range of outdoor activities. Whether you're camping, picnicking, or spending time in your backyard, the mat will help keep sand, dirt and debris at bay.<\/p>"
+            "text": "<p>Absolutely not! The Quicksand Mat is versatile and suitable for a wide range of outdoor activities. Whether you're camping, picnicking, or spending time in your backyard, the mat will help keep sand, dirt and debris at bay.</p>"
           }
         },
         "5070ad8e-34a3-4729-b186-a3d14ee100a4": {
           "type": "text",
           "settings": {
             "title": "Does it include warranty?",
-            "text": "<p>All of CGear's products include a 12 month warranty from the date of purchase. This is a manufacturer’s warranty and includes any fault to the product (such as faulty sewing or material). <\/p>"
+            "text": "<p>All of CGear's products include a 12 month warranty from the date of purchase. This is a manufacturer’s warranty and includes any fault to the product (such as faulty sewing or material). </p>"
           }
         },
         "6d71124a-3274-4c9b-82fa-f648618c97cb": {
           "type": "text",
           "settings": {
             "title": "Will my esky or beach chair damage the material?",
-            "text": "<p>Esky's, beach chairs and and surfboards are no problem for the Quicksand mat. Avoid using any sharp or hot materials on the mat.<\/p>"
+            "text": "<p>Esky's, beach chairs and and surfboards are no problem for the Quicksand mat. Avoid using any sharp or hot materials on the mat.</p>"
           }
         },
         "df2ef14c-c518-45e8-9018-e75d659df286": {
           "type": "text",
           "settings": {
             "title": "How do I clean it?",
-            "text": "<p>Cleaning the Quicksand Mat is simple. You can easily shake off any sand and loose debris, and if necessary, hose it down with water. For stubborn stains, gentle scrubbing with mild soap and water should do the trick.<\/p>"
+            "text": "<p>Cleaning the Quicksand Mat is simple. You can easily shake off any sand and loose debris, and if necessary, hose it down with water. For stubborn stains, gentle scrubbing with mild soap and water should do the trick.</p>"
           }
         },
         "fa0a9575-6edf-4dc8-af0e-16163b232e90": {
           "type": "text",
           "settings": {
             "title": "Does it matter what side of the Quicksand mat you use?",
-            "text": "<p>For the Quicksand mat, it sure does. We're <\/p>"
+            "text": "<p>For the Quicksand mat, it sure does. We're </p>"
           }
         },
         "93cf24a1-64ab-43c1-b60e-e7a183a34586": {
           "type": "text",
           "settings": {
             "title": "Does the sand and dust get caught between the Multimat layers?",
-            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.<\/p>"
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.</p>"
           }
         }
       },
@@ -992,70 +968,70 @@
           "type": "text",
           "settings": {
             "title": "What are they used for?",
-            "text": "<p>CGear Privacy Screens and End Drops and Angled End Drops are accessories designed to provide additional protection and privacy to your outdoor space. They are specifically designed to complement CGear Outdoor mats and your current set up.<\/p>"
+            "text": "<p>CGear Privacy Screens and End Drops and Angled End Drops are accessories designed to provide additional protection and privacy to your outdoor space. They are specifically designed to complement CGear Outdoor mats and your current set up.</p>"
           }
         },
         "ad14dfab-adcc-47bd-a2cc-a4a80a8d9e3e": {
           "type": "text",
           "settings": {
             "title": "What are they made from?",
-            "text": "<p>Like The Multimat, it is constructed using high-quality materials. It combines durable polyethylene and polyester to create a robust mat that can withstand the harshest of Aussie outdoor conditions. <\/p>"
+            "text": "<p>Like The Multimat, it is constructed using high-quality materials. It combines durable polyethylene and polyester to create a robust mat that can withstand the harshest of Aussie outdoor conditions. </p>"
           }
         },
         "6ebc210d-4ac6-48b7-b867-7460909bb9e6": {
           "type": "text",
           "settings": {
             "title": "What makes this screen so good?",
-            "text": "<p>It comes down to CGear's patented dual layers of multi-knit weave. It offers privacy and protection without feeling like you're trapped in a tarp sauna. And it's build to last, designed by Aussies for Aussie conditions.<\/p>"
+            "text": "<p>It comes down to CGear's patented dual layers of multi-knit weave. It offers privacy and protection without feeling like you're trapped in a tarp sauna. And it's build to last, designed by Aussies for Aussie conditions.</p>"
           }
         },
         "3cfcef26-d56e-4999-8943-72bb3683beeb": {
           "type": "text",
           "settings": {
             "title": "Are the Privacy Screens and End Drops resistant to outdoor conditions?",
-            "text": "<p>Yes, the Privacy Screens and End Drops are designed and built to withstand the harshest Aussie outdoor conditions. They are made from durable materials that are resistant to UV rays, water, and mildew. This ensures their longevity and performance even when exposed to the elements.<\/p>"
+            "text": "<p>Yes, the Privacy Screens and End Drops are designed and built to withstand the harshest Aussie outdoor conditions. They are made from durable materials that are resistant to UV rays, water, and mildew. This ensures their longevity and performance even when exposed to the elements.</p>"
           }
         },
         "1fb00086-5a75-4d3d-8f99-a49bd20e8912": {
           "type": "text",
           "settings": {
             "title": "Can they be adjusted for different heights?",
-            "text": "<p>Our Privacy Screens and End Drops are designed to have a fixed drop length, but they can be adapted to different heights by adjusting the attachment points and securing them at different levels. This allows for some customization based on your specific needs.<\/p>"
+            "text": "<p>Our Privacy Screens and End Drops are designed to have a fixed drop length, but they can be adapted to different heights by adjusting the attachment points and securing them at different levels. This allows for some customization based on your specific needs.</p>"
           }
         },
         "510b0d39-2e96-4c26-9e30-0b79ac2bebd2": {
           "type": "text",
           "settings": {
             "title": "Does it include warranty?",
-            "text": "<p>All of CGear's products include a 12 month warranty from the date of purchase. This is a manufacturer’s warranty and includes any fault to the product (such as faulty sewing or material). <\/p>"
+            "text": "<p>All of CGear's products include a 12 month warranty from the date of purchase. This is a manufacturer’s warranty and includes any fault to the product (such as faulty sewing or material). </p>"
           }
         },
         "b64638f9-3fce-48ec-8cc9-f4f77d203980": {
           "type": "text",
           "settings": {
             "title": "Does it product from the sun?",
-            "text": "<p>You betcha. The unique patented meshing material provides 90%+ UV protection from the sun. Keep your site cool and well-ventilated while filtering dust and dirt blown through the air.<\/p>"
+            "text": "<p>You betcha. The unique patented meshing material provides 90%+ UV protection from the sun. Keep your site cool and well-ventilated while filtering dust and dirt blown through the air.</p>"
           }
         },
         "4f7d9d5f-b4b3-4b1c-99dc-a05695451b77": {
           "type": "text",
           "settings": {
             "title": "How do I clean it?",
-            "text": "<p>Cleaning is simple. Shake off any sand, dirt and loose debris, and if necessary, hose it down with water. For stubborn stains, gentle scrubbing with mild soap and water will do the trick.<\/p>"
+            "text": "<p>Cleaning is simple. Shake off any sand, dirt and loose debris, and if necessary, hose it down with water. For stubborn stains, gentle scrubbing with mild soap and water will do the trick.</p>"
           }
         },
         "51c8cbdb-b8d5-4980-811f-c3ca0b5c09fb": {
           "type": "text",
           "settings": {
             "title": "Are they that easy to install?",
-            "text": "<p>Absolutey! The installation process is straightforward and the products come with easy to manage attachment points and hooks that allow you to secure them to the ground or other structures. <\/p>"
+            "text": "<p>Absolutey! The installation process is straightforward and the products come with easy to manage attachment points and hooks that allow you to secure them to the ground or other structures. </p>"
           }
         },
         "01d8d817-f709-4888-b845-29c726856879": {
           "type": "text",
           "settings": {
             "title": "Does the sand and dust get caught between layers?",
-            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground. <\/p>"
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground. </p>"
           }
         }
       },
@@ -1091,7 +1067,7 @@
         "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Can't find what you're looking for? View our full list of FAQs below.<\/p>",
+            "text": "<p>Can't find what you're looking for? View our full list of FAQs below.</p>",
             "size": 100
           }
         },
@@ -1099,7 +1075,7 @@
           "type": "button",
           "settings": {
             "button_text": "Read More",
-            "button_link": "shopify:\/\/pages\/faqs",
+            "button_link": "shopify://pages/faqs",
             "button_color": "btn--primary",
             "button_style": "btn--solid",
             "button_size": "btn--small"
@@ -1123,7 +1099,7 @@
       "type": "apps",
       "blocks": {
         "c5a71b63-7a84-4f97-9041-c11163547db8": {
-          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "only_photos": false,
             "aggregated": false,
@@ -1147,8 +1123,6 @@
       "type": "related-products",
       "disabled": true,
       "settings": {
-        "limit": 4,
-        "product_recommendations_heading": "You May Also Like",
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 60,
@@ -1163,7 +1137,7 @@
           "settings": {
             "icon_name": "truck",
             "title": "Free Shipping",
-            "text": "<p>on all order over $99<\/p>"
+            "text": "<p>on all order over $99</p>"
           }
         },
         "icon-1": {
@@ -1171,7 +1145,7 @@
           "settings": {
             "icon_name": "check",
             "title": "Free Returns",
-            "text": "<p>within 30 days of purchase<\/p>"
+            "text": "<p>within 30 days of purchase</p>"
           }
         },
         "icon-2": {
@@ -1179,7 +1153,7 @@
           "settings": {
             "icon_name": "eco-friendly",
             "title": "1% Donated Annually",
-            "text": "<p>to forest conservation<\/p>"
+            "text": "<p>to forest conservation</p>"
           }
         }
       },
@@ -1190,11 +1164,11 @@
       ],
       "disabled": true,
       "settings": {
+        "heading": "",
+        "subheading": "",
         "alignment": "center",
         "columns": 3,
         "icons_width": 30,
-        "heading": "",
-        "subheading": "",
         "bg_color": "",
         "text_color": "#333333",
         "box_color": "",
@@ -1203,7 +1177,6 @@
         "button_color": "btn--black",
         "button_style": "btn--solid",
         "button_size": "btn--small",
-        "enable_slider_mobile": false,
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -1214,10 +1187,11 @@
         "collection": "all-cgear-products",
         "products_layout": "grid",
         "number_of_products": 4,
+        "columns_mobile": "2",
         "text_alignment": "text-center",
-        "title": "Shop Our Community Favourites",
+        "title": "<p>Shop Our Community Favourites</p>",
         "heading_size": 100,
-        "text": "<p>Loved by over 100,000 Aussie adventurers. <\/p>",
+        "text": "<p>Loved by over 100,000 Aussie adventurers. </p>",
         "text_size": 100,
         "button_text": "Shop All Products",
         "button_color": "btn--secondary",
@@ -1225,7 +1199,6 @@
         "button_size": "btn--large",
         "bg_color_secondary": false,
         "enable_slider_mobile": true,
-        "columns_mobile": "2",
         "width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 60

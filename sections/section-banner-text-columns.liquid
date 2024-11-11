@@ -1,5 +1,8 @@
 {%- liquid
   assign unique = section.id
+  assign appearance = section.settings.appearance
+  assign content_alignment = section.settings.content_alignment
+  assign text_alignment = section.settings.text_alignment
   assign section_height = section.settings.section_height
   if section.settings.enable_mobile_height
     assign mobile_section_height = ' ' | append: section.settings.mobile_section_height
@@ -9,30 +12,89 @@
   assign button_style = section.settings.button_style
   assign button_color = section.settings.button_color
   assign button_size = section.settings.button_size
+  assign show_single_image = section.settings.show_single_image
+  assign heading_size = section.settings.heading_size | times: 0.01
   assign animations_enabled = settings.animations_enabled
   assign animation_anchor = '#BannerWithTextColumns--' | append: unique
   assign animation_delay = 150
   assign padding_top = section.settings.padding_top | append: 'px'
   assign padding_bottom = section.settings.padding_bottom | append: 'px'
+
+  capture content_alignment_class
+    case content_alignment
+      when 'top'
+        echo 'banners--top'
+      when 'center'
+        echo 'banners--center'
+      when 'bottom'
+        echo 'banners--bottom'
+    endcase
+  endcapture
+
+  assign appearance_row = false
+  assign appearance_columns = false
+  case appearance
+    when 'row'
+      assign appearance_row = true
+    when 'columns'
+      assign appearance_columns = true
+  endcase
+
+  capture banners_classes
+    echo 'banners'
+    echo ' ' | append: content_alignment_class
+    echo ' ' | append: text_alignment
+    if appearance_row
+      echo ' ' | append: section_height | append: mobile_section_height
+      echo ' banners--row'
+    endif
+    if appearance_columns
+      echo ' banners--cols'
+    endif
+    if show_single_image
+      echo ' banners--single-image'
+    endif
+  endcapture
+
+  capture banner_classes
+    echo 'banner'
+    if appearance_row
+      echo ' banner--row'
+    endif
+    if appearance_columns
+      echo ' ' | append: section_height | append: mobile_section_height
+      echo ' banner--col'
+    endif
+  endcapture
 -%}
 
 {%- style -%}
   #BannerWithTextColumns--{{ unique }} {
     --PT: {{ padding_top }};
     --PB: {{ padding_bottom }};
-    --item-count: {{ section.blocks.size }};
+
+    {% if appearance_columns %}
+      --item-count: {{ section.blocks.size }};
+    {% endif %}
+  }
+  #BannerWithTextColumns--{{ unique }} .banner__heading {
+    --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }});
   }
 {%- endstyle -%}
 
 <section id="BannerWithTextColumns--{{ unique }}"
   class="section-banner-with-text-columns section-padding {{ text_color }}"
   data-section-id="{{ unique }}"
-  data-section-type="banner-with-text-columns">
-
+  data-section-type="banner-with-text-columns"
+  data-appearance="{{ appearance }}"
+  {% if animations_enabled %}
+    data-aos-watch-anchors
+  {% endif %}
+>
   {%- if section.blocks.size > 0 -%}
     <div class="{{ section_width }}">
-      <div class="banners {{ section_height }}{{ mobile_section_height }}">
-        <div class="banners__media" data-banners-media
+      <div class="{{ banners_classes }}">
+        <div class="banners__media" data-slider-media
           {% if animations_enabled %}
             data-aos="fade-in"
             data-aos-anchor="{{ animation_anchor }}"
@@ -41,44 +103,45 @@
 
           {%- for block in section.blocks -%}
             {%- liquid
+              assign image_id = 'bannerImage--' | append: block.id
               assign image = block.settings.image
               assign image_alt = image.alt | strip_html | escape
-              assign image_width = image.width
               assign image_widths = '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100'
               assign overlay_opacity = block.settings.overlay_opacity | times: 0.01
+
+              capture placeholder_svg
+                echo 'collection-'
+                cycle 1, 2, 3, 5
+              endcapture
             -%}
 
-            <div class="banners__image">
+            <div class="banners__image" id="{{ image_id }}">
               <div class="overlay" style="--overlay-opacity: {{ overlay_opacity }}"></div>
 
-              <div class="banners__image-inner lazy-image"
-                data-banner-image
-                style="background-image: url('{{ image | img_url: '1x1' }}');">
-                {%- if image != blank -%}
-                  {%- render 'image',
-                    image: image,
-                    width: image_width,
-                    widths: image_widths,
-                    alt: image_alt,
-                    sizes: 'auto' -%}
-                {%- else -%}
-                  <div class="svg-placeholder placeholder-svg--overlayed">
-                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg-filled' }}
-                  </div>
-                {%- endif -%}
-              </div>
+              {%- render 'image-fill',
+                is_background: true,
+                img_object: image,
+                widths: image_widths,
+                sizes: 'auto',
+                alt: image_alt,
+                cover: false,
+                classes: 'banners__image-inner',
+                placeholder_svg: placeholder_svg -%}
             </div>
 
-            {%- if section.settings.show_single_image -%}
+            {%- if show_single_image -%}
               {%- break -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
 
-        <div class="banners__content banners__slider"
-          data-slider
-          data-slider-id="slider--{{ section.id }}"
-          {% if section.settings.show_single_image %} data-slider-single-image{% endif %}>
+        <div class="banners__content"
+          {% if appearance_columns %}
+            data-slider-content
+            data-slider-id="slider--{{ section.id }}"
+            {% if show_single_image %} data-slider-single-image{% endif %}
+          {% endif %}
+        >
           {%- for block in section.blocks -%}
             {%- liquid
               assign subheading = block.settings.subheading
@@ -86,16 +149,35 @@
               assign text = block.settings.text
               assign button_text = block.settings.button_text
               assign button_link = block.settings.button_link | default: '#'
+              assign image_id = 'bannerImage--' | append: block.id
             -%}
 
-            <div class="banner"
+            {%- capture entire_content_link -%}
+              {%- if button_link != blank and button_text == blank -%}
+                <a href="{{ button_link }}"
+                  class="banner__link"
+                  {% if heading != blank -%}
+                    aria-labelledby="mainHeading--{{ block.id }}"
+                  {%- else -%}
+                    aria-label="{{ 'general.accessibility.view' | t }}"
+                  {%- endif -%}
+                ></a>
+              {%- endif -%}
+            {%- endcapture -%}
+
+            <div class="{{ banner_classes }}"
               data-banner
               data-index={{ forloop.index0 }}
+              {% if appearance_row %}
+                data-scroll-spy="#{{ image_id }}"
+                data-scroll-spy-mobile
+              {% endif %}
               {{ block.shopify_attributes }}>
               <div class="banner__content"
                 {% if animations_enabled %}
+                  id="bannerContent--{{ block.id }}"
                   data-aos="fade-up"
-                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-anchor="#bannerContent--{{ block.id }}"
                   data-aos-delay="{{ animation_delay }}"
                 {% endif %}
                 data-banner-content>
@@ -104,7 +186,7 @@
                 {%- endif -%}
 
                 {%- if heading != blank -%}
-                  <h3 class="banner__heading">{{ heading }}</h3>
+                  <h2 id="mainHeading--{{ block.id }}" class="banner__heading">{{ heading }}</h2>
                 {%- endif -%}
 
                 {%- if text != blank -%}
@@ -115,6 +197,10 @@
 
                 {%- if button_text != blank -%}
                   <a class="banner__btn btn {{ button_style }} {{ button_size }} {{ button_color }}" href="{{ button_link }}">{{ button_text | escape }}</a>
+                {%- endif -%}
+
+                {%- if entire_content_link != blank -%}
+                  {{ entire_content_link }}
                 {%- endif -%}
               </div>
             </div>
@@ -137,6 +223,38 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "appearance",
+      "label": "Appearance",
+      "default": "columns",
+      "options": [
+        { "label": "Row", "value": "row" },
+        { "label": "Columns", "value": "columns" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "info": "Content is always centered on mobile when Appearance is \"Row\"",
+      "default": "center",
+      "options": [
+        { "label": "Top", "value": "top" },
+        { "label": "Center", "value": "center" },
+        { "label": "Bottom", "value": "bottom" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "text-center",
+      "options": [
+        { "label": "Center", "value": "text-center" },
+        { "label": "Left", "value": "text-left" }
+      ]
     },
     {
       "type": "select",
@@ -246,6 +364,20 @@
     },
     {
       "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Size",
+      "default": 100,
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "unit": "%"
+    },
+    {
+      "type": "header",
       "content": "Section spacing"
     },
     {
@@ -320,8 +452,7 @@
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text",
-          "default": "<p>Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+          "label": "Text"
         },
         {
           "type": "header",
@@ -331,7 +462,7 @@
           "type": "text",
           "id": "button_text",
           "label": "Text",
-          "default": "Learn More"
+          "info": "Leave blank to link entire content"
         },
         {
           "type": "url",

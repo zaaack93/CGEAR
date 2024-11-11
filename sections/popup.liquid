@@ -21,10 +21,6 @@
           assign position = block.settings.position
           assign button_text = block.settings.button_text
 
-          if image != blank
-            assign image_padding_top = 1 | divided_by: image.aspect_ratio | times: 100 | round: 1
-          endif
-
           if block.type == 'cookie'
             assign classes = 'cookies '
           endif
@@ -53,10 +49,6 @@
         -%}
 
         {%- capture style -%}
-          {%- if image_aspect_ratio -%}
-            --image-aspect-ratio: {{ image_aspect_ratio | times: 100 | round: 1 }}%;
-          {%- endif -%}
-
           {%- if bg_color != blank and bg_color != 'rgba(0,0,0,0)' -%}
             --bg: {{ bg_color }};
           {%- endif -%}
@@ -86,36 +78,6 @@
           {{ block.shopify_attributes }}
         {%- endcapture -%}
 
-        {%- if 'popup-with-image' -%}
-          {%- capture popup_content -%}
-            <div class="popup__content">
-              <div class="popup__inner">
-                {%- if title != blank and text != blank -%}
-                  <div class="popup__text">
-                    {%- unless title == blank -%}
-                      <h3 class="popup__title">{{ title | strip_html | escape }}</h3>
-                    {%- endunless -%}
-
-                    {%- unless text == blank -%}
-                      <div class="popup__description rte">{{ text }}</div>
-                    {%- endunless -%}
-                  </div>
-                {%- endif -%}
-
-                {%- if block.settings.show_newsletter_form -%}
-                  <div class="popup__form">
-                    {%- render 'newsletter-form'
-                      unique: block.id,
-                      extra_fields: block.settings.extra_fields,
-                      button_text: button_text,
-                      is_popup: true -%}
-                  </div>
-                {%- endif -%}
-              </div>
-            </div>
-          {%- endcapture -%}
-        {%- endif -%}
-
         {%- if show_popup -%}
           {%- case block.type -%}
             {%- when 'popup-with-image' -%}
@@ -125,19 +87,43 @@
                     <div class="popup__body" data-popup-body>
                       <div class="popup__container">
                         {%- if image -%}
-                          <div class="popup__image">
-                            <div class="popup__image__outer {{ height }}">
-                              <div class="popup__image__mobile" style="padding-top: {{ image_padding_top }}%;"></div>
-
-                              {%- render 'image-fill',
-                                is_background: true,
-                                img_object: image,
-                                classes: 'popup__image__img' -%}
-                            </div>
+                          {%- liquid
+                            assign fill = true
+                            if height == 'original-height'
+                              assign fill = false
+                            endif
+                          -%}
+                          <div class="popup__image {{ height }}">
+                            {%- assign sizes = '(min-width: 768px) 370px, min((100vw - 20px), 480px)' -%}
+                            {%- render 'image-fill', is_background: fill, img_object: image, sizes: sizes, classes: 'popup__image__img' -%}
                           </div>
                         {%- endif -%}
 
-                        {{- popup_content -}}
+                        <div class="popup__content">
+                          <div class="popup__inner">
+                            {%- if title != blank or text != blank -%}
+                              <div class="popup__text">
+                                {%- unless title == blank -%}
+                                  <h3 class="popup__title">{{ title | strip_html | escape }}</h3>
+                                {%- endunless -%}
+
+                                {%- unless text == blank -%}
+                                  <div class="popup__description rte">{{ text }}</div>
+                                {%- endunless -%}
+                              </div>
+                            {%- endif -%}
+
+                            {%- if block.settings.show_newsletter_form -%}
+                              <div class="popup__form">
+                                {%- render 'newsletter-form'
+                                  unique: block.id,
+                                  extra_fields: block.settings.extra_fields,
+                                  button_text: button_text,
+                                  is_popup: true -%}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </div>
                       </div>
 
                       <button class="popup__close" type="button" data-popup-close>
@@ -183,9 +169,9 @@
                       <div class="popup__container">
                         {%- if image != blank -%}
                           <div class="popup__image">
-                            <div class="popup__image__img">
-                              {%- render 'image-fill', is_background: true, img_object: image -%}
-                            </div>
+                            {%- assign sizes = '(min-width: 1440px) 360px, (min-width: 1024px) calc((100vw - 120px) * 0.3333), (min-width: 768px) calc((100vw - 40px) * 0.3333), (min-width: 480px) calc((100vw - 40px) * 0.5), calc(100vw - 40px)' -%}
+                            {%- assign image_aspect_ratio = 1 | divided_by: image_aspect_ratio -%}
+                            {%- render 'image-fill', is_background: false, img_object: image, aspect_ratio: image_aspect_ratio, sizes: sizes, classes: 'popup__image__img' -%}
                           </div>
                         {%- endif -%}
 

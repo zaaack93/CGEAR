@@ -5,6 +5,14 @@
   assign animation_anchor = '#Article--' | append: section.id
   assign animation_delay = 150
   assign bg_color_secondary = section.settings.bg_color_secondary
+
+  comment
+    Images sizes
+  endcomment
+  assign img_width_lg = 'calc(840px - 2 * 60px)'
+  assign img_width_md = 'min(800px, (100vw - 2 * 20px)'
+  assign img_width_sm = 'calc(100vw - 2 * 20px)'
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
@@ -25,7 +33,10 @@
 <div id="Article--{{ section.id }}"
   class="section-padding section-article{% if bg_color_secondary %} bg-secondary{% endif %}"
   data-section-type="article"
-  data-section-id="{{ section.id }}">
+  data-section-id="{{ section.id }}"
+  {% if animations_enabled %}
+    data-aos-intersection="0.01"
+  {% endif %}>
   <div class="wrapper--narrow">
     <article class="article__wrapper">
 
@@ -66,11 +77,11 @@
             data-aos-delay="{{ animation_delay }}"
             {%- assign animation_delay = animation_delay | plus: 150 -%}
           {% endif %}>
-          {%- render 'responsive-image', image: article.image, image_class: 'article__image', image_alt: article.image.alt -%}
+          {%- render 'image-fill', img_object: article.image, sizes: sizes, classes: 'article__image', alt: article.image.alt -%}
         </div>
       {%- endif -%}
 
-      <div class="rte"
+      <div class="article__content rte"
         {% if animations_enabled %}
           data-aos="fade-up"
           data-aos-anchor="{{ animation_anchor }}"
@@ -353,7 +364,7 @@
         "id": "text",
         "label": "Text",
         "default": "Share",
-        "info": "If you include a link in social media posts, the page\’s featured image will be shown as the preview image.[Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)"
+        "info": "If you include a link in social media posts, the page’s featured image will be shown as the preview image.[Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)"
       },
       {
         "type": "paragraph",

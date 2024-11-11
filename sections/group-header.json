@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header",
@@ -8,7 +17,11 @@
         "announcement-0": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Free AUS Shipping (excl. NT & WA)<\/strong><\/p>",
+            "text": "<p><strong>Free AUS Shipping (excl. NT & WA) </strong></p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#D43747",
+            "highlight_text_color": "#000",
             "icon_name": "package",
             "icon_color": "#ffffff",
             "icon_width": 20,
@@ -25,14 +38,23 @@
         "announcement-0"
       ],
       "settings": {
-        "bg_color": "#a0bdcb",
-        "color": "#ffffff",
         "layout": "slider",
+        "show_top_border": false,
+        "show_bottom_border": false,
         "padding": 10,
         "slider_speed": 7,
+        "show_arrows": false,
         "marquee_speed": 100,
+        "direction": "ticker-ltr",
+        "text_caps": false,
+        "type_style": "subheading-text",
         "text_size": 100,
-        "message_spacing": 25
+        "letter_spacing": 0,
+        "message_spacing": 25,
+        "bg_color": "#a0bdcb",
+        "gradient": "",
+        "color": "#ffffff",
+        "border_color": "#000"
       }
     },
     "header": {
@@ -42,48 +64,56 @@
           "type": "image",
           "settings": {
             "position": "1",
-            "image": "shopify:\/\/shop_images\/Cgear-52-Web_4f2320c4-d495-477a-a44e-4a89e3f97a36.jpg",
+            "image_second_menu": false,
+            "image": "shopify://shop_images/Cgear-52-Web_4f2320c4-d495-477a-a44e-4a89e3f97a36.jpg",
             "aspect_ratio": 0.8,
             "wide_image": true,
             "title": "Shop All",
+            "heading_size": 100,
             "link_text": "",
-            "link": "shopify:\/\/collections\/all-cgear-products"
+            "link": "shopify://collections/all-cgear-products"
           }
         },
         "7a84bef6-11af-4d78-b55e-71d200318301": {
           "type": "image",
           "settings": {
             "position": "1",
-            "image": "shopify:\/\/shop_images\/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
+            "image_second_menu": false,
+            "image": "shopify://shop_images/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
             "aspect_ratio": 0.8,
             "wide_image": true,
             "title": "Shop Camping",
+            "heading_size": 100,
             "link_text": "",
-            "link": "shopify:\/\/collections\/camping"
+            "link": "shopify://collections/camping"
           }
         },
         "077952c5-3313-4f2b-ae09-ba513d1ff924": {
           "type": "image",
           "settings": {
             "position": "1",
-            "image": "shopify:\/\/shop_images\/Cgear-9-Web-1x1.jpg",
+            "image_second_menu": false,
+            "image": "shopify://shop_images/Cgear-10-Web-EDIT_ddbdeb4c-3335-4473-987a-dd3cc05f94a0.jpg",
             "aspect_ratio": 0.8,
             "wide_image": true,
             "title": "Shop Beach",
+            "heading_size": 100,
             "link_text": "",
-            "link": "shopify:\/\/collections\/beach"
+            "link": "shopify://collections/beach"
           }
         },
         "82a27ed1-a560-4755-9bcf-46c0ac74bfa2": {
           "type": "image",
           "settings": {
             "position": "1",
-            "image": "shopify:\/\/shop_images\/Super_Stallion.jpg",
+            "image_second_menu": false,
+            "image": "shopify://shop_images/Super_Stallion.jpg",
             "aspect_ratio": 0.8,
             "wide_image": true,
             "title": "Browse Military",
+            "heading_size": 100,
             "link_text": "",
-            "link": "shopify:\/\/pages\/military"
+            "link": "shopify://pages/military"
           }
         }
       },
@@ -96,12 +126,15 @@
       "settings": {
         "sticky_header": true,
         "header_border": false,
-        "logo_not_home": "shopify:\/\/shop_images\/CGear-Logo-03.png",
+        "link_hover_effect": "dot",
+        "logo_not_home": "shopify://shop_images/CGear-Logo-03.png",
         "logo_max_width": 160,
         "main-menu": "new-menu",
+        "main_menu_secondary": "",
         "show_images": true,
         "image_aspect_ratio": 1,
         "menu_alignment": "left",
+        "header_icons_as_text": false,
         "highlight_item": "Sale",
         "highlight_item_color": "#f92c1f",
         "header_transparent": true,

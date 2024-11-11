@@ -15,33 +15,27 @@
 {%- endcomment -%}
 
 {%- liquid
+  assign line_thickness = settings.line_thickness
+  case line_thickness
+    when 'normal'
+      assign border_width = 1
+    when 'bold'
+      assign border_width = 2
+  endcase
+
   assign thumbnail = media.preview_image
-  assign url_pattern = thumbnail | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
-  assign widths = '[98, 196, 294, 392, 588]'
+  assign thumbnail_width = 90 | minus: border_width
+  assign retina_size = thumbnail_width | times: 2
+  assign image_widths = thumbnail_width | append: ', ' | append: retina_size
+  assign sizes = thumbnail_width | append: 'px'
   assign media_id = media.id
   assign unique = unique | default: section.id
+  assign alt = thumbnail.alt | escape | default: product_title
 
   capture thumbnail_id
     echo unique | append: '-' | append: media_id
   endcapture
 -%}
-
-{%- capture thumbnail_markup -%}
-  <img src="{{ 'blank.gif' | asset_img_url: '1x1' }}"
-    class="product-single__thumbnail-img lazyload"
-    data-src="{{ url_pattern }}"
-    data-widths= "{{ widths }}"
-    data-aspectratio="{{ thumbnail.aspect_ratio }}"
-    data-sizes="auto"
-    width="98"
-    height="98"
-    data-object-fit="cover"
-    alt="{{ thumbnail.alt | escape }}">
-
-  <noscript>
-    <img src="{{ thumbnail.src | img_url: '98x' }}" alt="{{ thumbnail.alt | escape }}" class="product-single__thumbnail-img">
-  </noscript>
-{%- endcapture -%}
 
 {%- capture additional_icons -%}
   {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
@@ -58,7 +52,15 @@
       aria-label="{{ product_title | strip_html | escape }}">
   {%- endif -%}
 
-    {{- thumbnail_markup -}}
+    {%- render 'image',
+      image: thumbnail,
+      width: retina_size,
+      widths: image_widths,
+      sizes: sizes,
+      alt: alt,
+      classes: 'product-single__thumbnail-img'
+    -%}
+
     {{- additional_icons -}}
 
   {%- if has_link -%}

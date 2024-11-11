@@ -1,23 +1,34 @@
 <!-- /snippets/video.liquid -->
-<div class="video__container video__container--{{ unique }} {{ text_color }}" id="video-{{ unique }}-container">
-  {%- capture image_attributes -%}
-    {%- if animations_enabled -%}
-      data-aos="fade"
-      data-aos-anchor="{{ animation_anchor }}"
-      data-aos-delay="{{ animation_delay }}"
-    {%- endif -%}
-  {%- endcapture -%}
+{%- liquid
+  assign title_highlights = title_highlights | default: false
+  assign video_size = video_size | default: 'video-cover'
+  assign sizes = image_sizes | default: '100vw'
+  capture image_classes
+    echo 'video-background video-background--image'
+    if image == blank
+      echo ' placeholder-bg'
+    endif
+  endcapture
+-%}
 
-  {%- capture image_classes -%}
-    video-background {% if image == blank %}placeholder-bg{% endif %}
-  {%- endcapture -%}
+{%- capture image_attributes -%}
+  {%- if animations_enabled -%}
+    data-aos="fade"
+    data-aos-anchor="{{ animation_anchor }}"
+    data-aos-delay="{{ animation_delay }}"
+  {%- endif -%}
+{%- endcapture -%}
 
-  {%- render 'image-fill',
-    is_background: true,
-    img_object: image,
-    image_attributes: image_attributes,
-    classes: image_classes,
-    placeholder_svg: 'lifestyle-1' -%}
+<div class="video__container video__container--{{ unique }} {{ text_color }}{% unless image %} img-in{% endunless %}" id="video-{{ unique }}-container">
+  {%- if background_video == blank -%}
+    {%- render 'image-fill',
+      is_background: true,
+      img_object: image,
+      image_attributes: image_attributes,
+      sizes: sizes,
+      classes: image_classes,
+      placeholder_svg: 'lifestyle-1' -%}
+  {%- endif -%}
 
   {%- assign video_bg_show = false -%}
   {%- if background_video != blank -%}
@@ -25,6 +36,20 @@
 
     {%- if video_link_bg_downcase contains '.mp4' -%}
       {%- assign video_bg_show = true -%}
+
+      {%- capture additional_video_button -%}
+        <a href="#" class="video-text-link" data-video-bg-play>
+          {%- render 'icon-play' -%}
+        </a>
+      {%- endcapture -%}
+
+      {%- if video_link != blank -%}
+        {%- capture additional_video_button -%}
+          <a href="#" class="btn {{ button_style }} {{ button_size }} {{ button_color }}" data-video-bg-play>
+            {{ 'video.play_bg_video' | t }}
+          </a>
+        {%- endcapture -%}
+      {%- endif -%}
     {%- endif -%}
   {%- endif -%}
 
@@ -36,6 +61,7 @@
         <template data-video-template>
           <video
             id="{{ unique }}-video-background"
+            class="{{ video_size }}"
             data-video-type="native"
             data-video-autoplay
             playsinline
@@ -51,10 +77,16 @@
     </div>
   {%- endif -%}
 
-  <div class="overlay video__overlay" style="--overlay-opacity: {{ overlay_opacity }};"></div>
+  {%- if video_size == 'video-cover' -%}
+    <div class="overlay video__overlay" style="--overlay-opacity: {{ overlay_opacity }};"></div>
+  {%- endif -%}
 </div>
 
 <div class="align--{{ text_position }} {{ text_color }} text-inside">
+  {%- if video_size == 'video-fit' -%}
+    <div class="overlay video__overlay" style="--overlay-opacity: {{ overlay_opacity }};"></div>
+  {%- endif -%}
+
   {% comment %} Text {% endcomment %}
   <div class="video-text-wrapper wrapper--narrow{% if show_text_shadow %} backdrop--radial{% endif %}">
     {%- if video_link != blank -%}
@@ -124,32 +156,53 @@
       </div>
     {%- endif -%}
 
+    {%- if video_bg_show -%}
+      <div class="main-buttons main-buttons--video main-buttons--video-bg align--{{ text_position }}">
+        <div class="main-buttons__item"
+          {% if animations_enabled %}
+            data-aos="fade-up"
+            data-aos-anchor="{{ animation_anchor }}"
+            data-aos-delay="{{ animation_delay }}"
+            {%- assign animation_delay = animation_delay | plus: 150 -%}
+          {% endif %}>
+          {{- additional_video_button -}}
+        </div>
+      </div>
+    {%- endif -%}
+
     {%- if title != blank -%}
-      <h1 class="main-heading {{ text_color }}{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
+      {%- capture title_attributes -%}
+        class="h1 main-heading {{ text_color }}{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
         {% if animations_enabled %}
           data-aos="fade-up"
           data-aos-anchor="{{ animation_anchor }}"
           data-aos-delay="{{ animation_delay }}"
           {%- assign animation_delay = animation_delay | plus: 150 -%}
         {% endif %}
-        style="font-size: calc({{ heading_size }} * 3rem * var(--FONT-ADJUST-HEADING))">
-        {% render 'title-with-highlights',
+        style="font-size: calc({{ heading_size }} * 3rem * var(--FONT-ADJUST-HEADING))"
+      {%- endcapture -%}
+
+      {%- if title_highlights -%}
+        {% render 'title-text-reveal-and-highlights',
           title: title,
-          heading_highlight_type: heading_highlight_type,
-          has_text_highlight: has_text_highlight %}
-      </h1>
+          title_attributes: title_attributes,
+          has_text_highlight: has_text_highlight
+        %}
+      {%- else -%}
+        <div {{ title_attributes }}>{{- title -}}</div>
+      {%- endif -%}
     {%- endif -%}
 
     {%- if text != blank -%}
-      <h2 class="main-text"
+      <div class="main-text h2"
         {% if animations_enabled %}
           data-aos="fade-up"
           data-aos-anchor="{{ animation_anchor }}"
           data-aos-delay="{{ animation_delay }}"
           {%- assign animation_delay = animation_delay | plus: 150 -%}
         {% endif %}>
-        {{- text | escape -}}
-      </h2>
+        {{- text -}}
+      </div>
     {%- endif -%}
 
     {% comment %} Button {% endcomment %}

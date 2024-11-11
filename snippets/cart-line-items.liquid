@@ -3,23 +3,27 @@
 
     Accepts:
     - part: {String} Accepts 'line-items' or 'upsell-items' (required)
-    - animation_delay: {Number} Animation delay that items are supposed to start from
+    - aos_anchor: {String} Hook for the AOS animation
+    - aos_order: {Number} Sets the starting number of all elements that would be animated in order
 
     Usage:
-    {%- render 'cart-line-items', part: 'line-items' -%}
+    {%- render 'cart-line-items', part: 'line-items', aos_anchor: '#cartItemsHolder', aos_order: 1 -%}
 {%- endcomment -%}
 
 {%- liquid
   assign animations_enabled = settings.animations_enabled
-  assign animation_anchor = '.cart__items'
+  assign aos_anchor_default = section.id | prepend: '#'
+  assign aos_anchor = aos_anchor | default: aos_anchor_default
   assign cart_products = ''
   assign upsell_products = ''
   assign line_items_html = ''
-  assign item_animation_delay = animation_delay | default: 150
+  assign item_aos_order = aos_order | default: 1
 -%}
 
 {%- for line_item in cart.items -%}
-  {%- assign cart_products = cart_products | append: line_item.product.id | append: ',' -%}
+  {%- liquid
+    assign cart_products = cart_products | append: line_item.product.id | append: ','
+  -%}
 
   {%- capture cart_line_item -%}
     <div class="cart__item{% if forloop.last %} cart__item--no-border{% endif %}"
@@ -27,30 +31,29 @@
       data-item-index="{{ forloop.index }}"
       data-item-title="{{ line_item.title | strip_html }}"
       {% if animations_enabled %}
-        data-aos="fade-left"
-        data-aos-anchor="{{ animation_anchor }}"
-        data-aos-delay="{{ item_animation_delay }}"
-        {%- assign item_animation_delay = item_animation_delay | plus: 150 -%}
+        data-aos="come-in-from-right"
+        data-aos-anchor="{{ aos_anchor }}"
+        data-aos-order="{{ item_aos_order }}"
+        {%- assign item_aos_order = item_aos_order | plus: 1 -%}
       {% endif %}
       data-cart-item>
       <div class="cart__item__image">
         <a href="{{ line_item.url }}">
           {%- liquid
             assign image = line_item.image
-            assign image_url_pattern = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
-            assign image_widths = "[90,160,180,270,320]"
+            assign image_alt = line_item.title | strip_html | escape
+            assign retina_size = 200
+            assign image_widths = '100, 150, 200'
+            assign sizes = '100px'
           -%}
-          <img
-            class="lazyload"
-            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-            data-src="{{ image_url_pattern }}"
-            data-aspectratio="{{ image.aspect_ratio | default: 1 }}"
-            data-widths= "{{ image_widths }}"
-            data-sizes="auto"
-            alt="{{ line_item.title | strip_html | escape }}">
-          <noscript>
-            <img src="{{ image | img_url: '160x' }}" alt="{{ line_item.title | strip_html | escape }}">
-          </noscript>
+
+          {%- render 'image',
+            image: image,
+            width: retina_size,
+            widths: image_widths,
+            sizes: sizes,
+            alt: image_alt,
+            placeholder_svg: 'product-apparel-1' -%}
         </a>
       </div>
 
@@ -258,7 +261,7 @@
 
   {%- when 'upsell-items' -%}
     {%- if upsell_products != '' -%}
-      <div data-pair-products>
+      <div data-pair-products {% render 'upsells-fallback-styles', section: section %}>
         {% render 'upsell-products' with upsell_products as upsell_products %}
       </div>
     {%- endif -%}

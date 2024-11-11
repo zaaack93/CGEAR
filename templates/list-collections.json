@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -8,7 +17,6 @@
           "settings": {
             "collection": "all-cgear-products",
             "bg_color": "",
-            "text_color": "text-light",
             "overlay_opacity": 0
           }
         }
@@ -17,20 +25,13 @@
         "c9df9e43-1412-4a1b-816b-5662015c8daf"
       ],
       "settings": {
+        "title": "",
+        "heading_size": 100,
         "layout": "carousel",
         "alignment": "center",
         "image_shape": "square",
-        "image_width": 200,
-        "image_height": 100,
-        "title": "",
-        "heading_size": 100,
         "text_size": 110,
         "overlay_text": false,
-        "layout_mobile": "carousel",
-        "image_width_mobile": 150,
-        "image_height_mobile": 100,
-        "bg_color_secondary": false,
-        "text_color": "text-dark",
         "width": "wrapper",
         "padding_top": 60,
         "padding_bottom": 60
@@ -38,14 +39,13 @@
     },
     "e459bbd3-8f04-4333-821b-6c96c8e60533": {
       "type": "section-promotion-row",
-      "disabled": true,
       "blocks": {
         "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-0": {
           "type": "column",
           "settings": {
-            "subheading": "<p>IN-STORE AND ONLINE<\/p>",
+            "subheading": "<p>IN-STORE AND ONLINE</p>",
             "subheading_size": 90,
-            "heading": "<p>20% OFF<\/p>",
+            "heading": "<p>20% OFF</p>",
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747",
             "heading_size": 295,
@@ -67,9 +67,9 @@
         "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-1": {
           "type": "column",
           "settings": {
-            "subheading": "<p>WEEKEND SALE<\/p>",
+            "subheading": "<p>WEEKEND SALE</p>",
             "subheading_size": 80,
-            "heading": "<p>BOGO<\/p>",
+            "heading": "<p>BOGO</p>",
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747",
             "heading_size": 260,
@@ -93,7 +93,7 @@
           "settings": {
             "subheading": "",
             "subheading_size": 100,
-            "heading": "<p><em>FREE<\/em> GIFT<\/p>",
+            "heading": "<p><em>FREE</em> GIFT</p>",
             "heading_highlight_type": "circle",
             "highlight_color": "#d43747",
             "heading_size": 205,
@@ -118,6 +118,7 @@
         "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-1",
         "template--15169561133129__e459bbd3-8f04-4333-821b-6c96c8e60533-16860181177cd16642-2"
       ],
+      "disabled": true,
       "settings": {
         "layout": "none",
         "height": "250",
@@ -130,7 +131,6 @@
     },
     "4fa8be34-148a-483c-951f-afb3a460eb4c": {
       "type": "section-products-list",
-      "disabled": true,
       "blocks": {
         "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-0": {
           "type": "product",
@@ -189,6 +189,7 @@
         "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-1",
         "template--15169561133129__4fa8be34-148a-483c-951f-afb3a460eb4c-1686017980fa722070-2"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": 100,

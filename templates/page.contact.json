@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "d7500f76-3bf1-422a-a811-a46f0dc76b02": {
@@ -6,13 +15,12 @@
         "template--15169561198665__d7500f76-3bf1-422a-a811-a46f0dc76b02-1687419522f730b89c-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
+            "image": "shopify://shop_images/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
             "text_color": "text-light",
             "subheading": "",
-            "title": "Contact Us",
             "text": "",
             "button_1_text": "",
             "button_1_link": "",
@@ -60,7 +68,7 @@
       "type": "section-image",
       "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
+        "image": "shopify://shop_images/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
         "height": "five-fifty-height",
         "enable_mobile_height": false,
         "mobile_height": "five-fifty-height-mobile",
@@ -87,7 +95,7 @@
         "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>Need questions answered? <\/p>",
+            "text": "<p>Need questions answered? </p>",
             "size": 100,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747"
@@ -96,7 +104,7 @@
         "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Tips for the best marinade? Secret camping spots? Favourite campsite yarn? <\/p><p>Drop us a line below or simply give us a buzz on 03 9645 4447.<\/p>",
+            "text": "<p>Tips for the best marinade? Secret camping spots? Favourite campsite yarn? </p><p>Drop us a line below or simply give us a buzz on 03 9645 4447.</p>",
             "size": 100
           }
         }
@@ -164,27 +172,26 @@
     },
     "locations": {
       "type": "section-locations",
-      "disabled": true,
       "blocks": {
         "locations-0": {
           "type": "locations",
           "settings": {
             "title": "566 Emerson Street Palo Alto, California",
-            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+            "working_time": "<p>Mon - Fri: 8am - 5pm</p><p>Sat: Closed</p><p>Sun: Closed</p>"
           }
         },
         "locations-1": {
           "type": "locations",
           "settings": {
             "title": "566 Emerson Street Palo Alto, California",
-            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+            "working_time": "<p>Mon - Fri: 8am - 5pm</p><p>Sat: Closed</p><p>Sun: Closed</p>"
           }
         },
         "locations-2": {
           "type": "locations",
           "settings": {
             "title": "566 Emerson Street Palo Alto, California",
-            "working_time": "<p>Mon - Fri: 8am - 5pm<\/p><p>Sat: Closed<\/p><p>Sun: Closed<\/p>"
+            "working_time": "<p>Mon - Fri: 8am - 5pm</p><p>Sat: Closed</p><p>Sun: Closed</p>"
           }
         }
       },
@@ -193,6 +200,7 @@
         "locations-1",
         "locations-2"
       ],
+      "disabled": true,
       "settings": {
         "subheading": "Our stores",
         "title": "Locations & hours",

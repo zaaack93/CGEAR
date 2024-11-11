@@ -40,8 +40,6 @@
       echo ' is-static-text'
     elsif rotate_animation == 'rotate'
       echo ' is-rotating'
-    elsif rotate_animation == 'rotate-on-scroll'
-      echo ' is-rotating-on-scroll'
     endif
   endcapture
 -%}
@@ -53,17 +51,18 @@
       style="{{ styles }}"
       data-circle-text
       {% if rotate_animation == 'rotate-on-scroll' %}
-        data-circle-text-parallax
+        data-parallax="circle"
       {% endif %}
     >
       <div class="circle-text__content">
         {%- if image != blank -%}
           {%- liquid
-            assign image_widths = '190, 400, 540, 720'
+            assign image_widths = size | append: ', ' | append: retina_size
             assign image_alt = image.alt | escape
-          -%}
+            assign sizes = '(min-width: 768px) ' | append: size | append: 'px, 125px'
 
-          {%- render 'image', image: image, width: retina_size, widths: image_widths, alt: image_alt -%}
+            render 'image', image: image, width: retina_size, widths: image_widths, sizes: sizes, alt: image_alt, cover: false
+          -%}
         {%- else -%}
           <svg viewBox="0 0 100 100">
             <defs>

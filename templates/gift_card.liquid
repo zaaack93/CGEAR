@@ -5,7 +5,7 @@
   assign currency_code_enable = settings.currency_code_enable
 
   if currency_code_enable
-    assign formatted_initial_value = gift_card.initial_value | money_with_currency | remove: '.00' | remove: ',00'
+    assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | append: ' ' | append: cart.currency.iso_code
     assign formatted_initial_value_stripped = formatted_initial_value | strip_html
   else
     assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros
@@ -23,7 +23,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   {%- if settings.favicon != blank -%}
-    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
   {%- endif -%}
 
   <!-- Title and description ================================================== -->

@@ -1,9 +1,11 @@
 {% comment %} Icons row {% endcomment %}
 {%- liquid
+  assign section_width = section.settings.width
   assign bg_color = section.settings.bg_color
   assign color_body_bg = settings.color_body_bg
   assign box_color = section.settings.box_color
   assign text_color = section.settings.text_color
+  assign color_border = section.settings.color_border
   assign alignment = section.settings.alignment
   assign columns = section.settings.columns
   assign animations_enabled = settings.animations_enabled
@@ -11,12 +13,17 @@
   assign animation_delay = 150
   assign heading = section.settings.heading
   assign subheading = section.settings.subheading
+  assign heading_size = section.settings.heading_size | times: 0.01
+  assign text_size = section.settings.text_size | times: 0.01
+  assign show_vertical_borders = section.settings.show_vertical_borders
+  assign show_horizontal_borders = section.settings.show_horizontal_borders
   assign button_text = section.settings.button_text
   assign button_link = section.settings.button_link | default: '#!'
   assign button_style = section.settings.button_style
   assign button_color = section.settings.button_color
   assign button_size = section.settings.button_size
   assign icons_width = section.settings.icons_width
+  assign layout_mobile = section.settings.layout_mobile
   assign has_subheading = false
   assign blocks_size = section.blocks.size
 
@@ -54,46 +61,91 @@
 
   assign mobile_class = ' grid--mobile'
   assign mobile_item_class = ' grid__item'
-  if section.settings.enable_slider_mobile
+  if layout_mobile == 'carousel'
     assign mobile_class = ' carousel--mobile'
     assign mobile_item_class = ' carousel__item'
+  elsif layout_mobile == 'stacked'
+    assign mobile_class = ' stacked--mobile'
   endif
+
+  assign items_on_last_row = blocks_size | modulo: columns
+  assign items_on_last_row_mobile = blocks_size | modulo: 2
+  if items_on_last_row == 0
+    assign items_on_last_row = columns
+  endif
+
+  capture section_classes
+    echo 'section-padding icons-row'
+
+    if show_vertical_borders
+      echo ' icons-row--borders-vertical'
+    endif
+
+    if show_horizontal_borders
+      echo ' icons-row--borders-horizontal'
+    endif
+
+    unless section_width == 'wrapper--full'
+      echo ' icons-row--spaced'
+    endunless
+
+    comment
+      Remove mobile section padding when there is no text, borders are enabled and mobile layout is grid
+    endcomment
+    if layout_mobile == 'grid' and heading == blank and subheading == blank and show_vertical_borders and show_horizontal_borders
+      echo ' icons-row--no-mobile-top-space'
+    endif
+    if layout_mobile == 'grid' and button_text == blank and show_vertical_borders and show_horizontal_borders
+      echo ' icons-row--no-mobile-bottom-space'
+    endif
+
+    render 'button-fallback-classes', primary_color: button_color, section_bg_color: bg_color
+  endcapture
 -%}
 
 {%- style -%}
   #IconsRow--{{ section.id }} {
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
-    {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
+    --icon-size: {{ icons_width }}px;
+    --icon-max-size: {{ icon_max_size }}px;
+
+    {%- if bg_color.alpha != 0.0 and bg_color != '' -%}
       --bg: {{ bg_color }};
       background: {{ bg_color }};
     {%- endif -%}
+
+    {%- if color_border.alpha != 0.0 and color_border != '' -%}
+      --border: {{ color_border }};
+    {%- endif -%}
   }
 
-  {%- if box_color != 'rgba(0,0,0,0)' and box_color != '' -%}
-    #IconsRow--{{ section.id }} .icons-row__item--box {
-      --bg: {{ box_color }}
-    }
-  {%- endif -%}
-  {%- if text_color != 'rgba(0,0,0,0)' and text_color != '' -%}
-    #IconsRow--{{ section.id }} {
-      --text: {{ text_color }};
-      --text-lighten: {{ text_color | color_lighten: 20 }};
-    }
-  {%- endif -%}
-  #IconsRow--{{ section.id }} {
-    --icon-size: {{ icons_width }}px;
-    --icon-max-size: {{ icon_max_size }}px;
-  }
   @media screen and (max-width: 767px) {
     #IconsRow--{{ section.id }} {
       --icon-max-size: 40px;
     }
   }
+
+  #IconsRow--{{ section.id }} .icons-row__slider {
+      --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }});
+      --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }});
+    }
+
+  {%- if box_color.alpha != 0.0 and box_color != '' -%}
+    #IconsRow--{{ section.id }} .icons-row-item--box {
+      --bg: {{ box_color }}
+    }
+  {%- endif -%}
+  {%- if text_color.alpha != 0.0 and text_color != '' -%}
+    #IconsRow--{{ section.id }} {
+      --text: {{ text_color }};
+      --text-lighten: {{ text_color | color_lighten: 20 }};
+    }
+  {%- endif -%}
 {%- endstyle -%}
 
-<section id="IconsRow--{{ section.id }}" class="section-padding icons-row" data-section-id="{{ section.id }}" data-section-type="icons-row">
-  <div class="wrapper">
+<section id="IconsRow--{{ section.id }}" class="{{ section_classes }}" data-section-id="{{ section.id }}" data-section-type="icons-row">
+  <div class="{{ section_width }}">
     <div class="icons-row__wrapper{% if single_block %} icons-row__wrapper--single-block-center{% endif %} text-{{ alignment }}">
       {%- if heading != blank or subheading != blank -%}
         <div class="icons-row__headings">
@@ -127,43 +179,118 @@
         <div class="icons-row__slider{{ mobile_class }} text-{{ alignment }}{% if flex %} icons-row__slider--flex{% endif %} items--{{ columns }}" data-slider>
           {%- for block in section.blocks -%}
             {%- liquid
+              assign index = forloop.index
               assign title = block.settings.title
               assign text = block.settings.text
               assign image = block.settings.icon_image
               assign icon = block.settings.icon_name
+              assign retina_size = icons_width | times: 2
+              assign image_widths = icons_width | append: ', ' | append: retina_size
+              assign sizes = icons_width | append: 'px'
+              assign border_class = ''
+              assign no_image = false
+              assign no_render = false
+
+              if image == blank and icon == 'none'
+                assign no_image = true
+              endif
+
+              if title == blank and no_image and text == blank
+                assign no_render = true
+                assign items_on_last_row = items_on_last_row | minus: 1
+              endif
+
+              if show_horizontal_borders and blocks_size > columns
+                assign border_class = ' icons-row-item--border-bottom'
+
+                assign last_item_on_full_row = blocks_size | minus: items_on_last_row
+
+                if last_item_on_full_row == index
+                  assign show_horizontal_borders = false
+                endif
+              endif
+
+              assign position_on_row = index | modulo: columns
+              assign even_item = index | modulo: 2
+              assign position_pre_last_item = section.blocks.size | minus: 1
+
+              capture item_classes
+                echo 'icons-row-item'
+                echo mobile_item_class
+
+                if boxes
+                  echo ' icons-row-item--box'
+                endif
+
+                if has_subheading
+                  echo ' icons-row-item--center'
+                endif
+
+                echo border_class
+
+                if items_on_last_row_mobile == 1 and layout_mobile == 'grid' and index == 1
+                  echo ' icons-row-item--full'
+                endif
+
+                case position_on_row
+                  when 0
+                    echo ' icons-row-item--last-on-row'
+                  when 1
+                    echo ' icons-row-item--first-on-row'
+                endcase
+
+                if even_item == 0
+                  echo ' icons-row-item--even'
+                else
+                  echo ' icons-row-item--odd'
+                endif
+
+                case index
+                  when 1
+                    echo ' icons-row-item--first'
+                  when section.blocks.size
+                    echo ' icons-row-item--last'
+                  when position_pre_last_item
+                    echo ' icons-row-item--pre-last'
+                endcase
+              endcapture
             -%}
 
-            <div class="icons-row__item{{ mobile_item_class }}{% if boxes %} icons-row__item--box{% endif %}{% if has_subheading %} icons-row__item--center{% endif %}"
-              {{ block.shopify_attributes }}
-              {% if animations_enabled %}
-                data-aos="fade-up"
-                data-aos-anchor="{{ animation_anchor }}"
-                data-aos-delay="{{ animation_delay }}"
-                {%- assign animation_delay = animation_delay | plus: 150 -%}
-              {% endif %}>
+            {%- unless no_render -%}
+              <div class="{{ item_classes }}" {{ block.shopify_attributes }}>
+                <div class="icons-row-item__wrapper"
+                  {% if animations_enabled %}
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ animation_anchor }}"
+                    data-aos-delay="{{ animation_delay }}"
+                    {%- assign animation_delay = animation_delay | plus: 150 -%}
+                  {% endif %}>
+                  {%- unless no_image -%}
+                    <div class="icons-row-item__icon icon-stroke">
+                      {%- liquid
+                        if image != blank
+                          render 'image-fill', img_object: image, width: retina_size, widths: image_widths, sizes: sizes, classes: 'icons-row-item__image'
+                        else
+                          render 'icons', icon: icon
+                        endif
+                      -%}
+                    </div>
+                  {%- endunless -%}
 
-              {%- if image != blank or icon != 'none' -%}
-                <div class="icons-row__icon icon-stroke">
-                  {%- if image != blank -%}
-                    {%- render 'image-fill', img_object: image, classes: 'icons-row__image' -%}
-                  {%- else -%}
-                    {%- render 'icons', icon: icon -%}
+                  {%- if title != blank or text != blank -%}
+                    <div class="icons-row-item__content">
+                      {%- if title != blank -%}
+                        <h3 class="icons-row-item__title">{{ title }}</h3>
+                      {%- endif -%}
+
+                      {%- if text != blank -%}
+                        <div class="icons-row-item__text">{{ text }}</div>
+                      {%- endif -%}
+                    </div>
                   {%- endif -%}
                 </div>
-              {%- endif -%}
-
-              {%- if title != blank or text != blank -%}
-                <div class="icons-row__content">
-                  {%- if title != blank -%}
-                    <h3 class="icons-row__title">{{ title }}</h3>
-                  {%- endif -%}
-
-                  {%- if text != blank -%}
-                    <div class="icons-row__text">{{ text }}</div>
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
-            </div>
+              </div>
+            {%- endunless -%}
           {%- endfor -%}
         </div>
       {%- else -%}
@@ -171,7 +298,7 @@
       {%- endif -%}
 
       {%- if button_text != blank -%}
-        <div class="icons-row__actions" {{ block.shopify_attributes }}
+        <div class="icons-row__actions"
           {% if animations_enabled %}
             data-aos="fade-up"
             data-aos-anchor="{{ animation_anchor }}"
@@ -191,6 +318,20 @@
   "settings": [
     {
       "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading text"
+    },
+    {
+      "type": "header",
       "content": "Layout"
     },
     {
@@ -203,7 +344,7 @@
         { "label": "Inline center", "value": "inline-center" },
         { "label": "Inline left", "value": "inline-left" }
       ],
-      "default": "left"
+      "default": "center"
     },
     {
       "type": "range",
@@ -222,22 +363,44 @@
       "max": 100,
       "step": 5,
       "unit": "px",
-      "default": 30,
+      "default": 20,
       "info": "Max size on mobile is 40px"
     },
     {
+      "type": "checkbox",
+      "id": "show_vertical_borders",
+      "label": "Show vertical borders",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_horizontal_borders",
+      "label": "Show horizontal borders",
+      "default": true
+    },
+    {
       "type": "header",
-      "content": "Heading"
+      "content": "Text"
     },
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading"
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": 120,
+      "min": 70,
+      "max": 200,
+      "step": 10,
+      "unit": "%"
     },
     {
-      "type": "richtext",
-      "id": "subheading",
-      "label": "Subheading text"
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "default": 100,
+      "min": 70,
+      "max": 150,
+      "step": 10,
+      "unit": "%"
     },
     {
       "type": "header",
@@ -258,6 +421,12 @@
       "type": "color",
       "id": "box_color",
       "label": "Boxes"
+    },
+    {
+      "type": "color",
+      "id": "color_border",
+      "label": "Border",
+      "default": "#333"
     },
     {
       "type": "header",
@@ -310,18 +479,33 @@
     },
     {
       "type": "header",
-      "content": "Mobile slider"
+      "content": "Mobile"
     },
     {
-      "type": "checkbox",
-      "id": "enable_slider_mobile",
-      "label": "Enable slider",
-      "default": false,
-      "info": "Horizontal slider in mobile layout."
+      "type": "select",
+      "id": "layout_mobile",
+      "label": "Layout",
+      "default": "grid",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "stacked", "label": "Stacked" },
+        { "value": "carousel", "label": "Slider" }
+      ]
     },
     {
       "type": "header",
       "content": "Section spacing"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "wrapper",
+      "options": [
+        { "value": "wrapper--full", "label": "Full width" },
+        { "value": "wrapper--full-padded", "label": "Full width padded" },
+        { "value": "wrapper", "label": "Page width" }
+      ]
     },
     {
       "type": "range",
@@ -458,7 +642,7 @@
           "type": "text",
           "settings": {
           "icon_name": "eco-friendly",
-            "title": "1% Donated Annually",
+            "title": "1% Donated",
             "text": "<p>to forest conservation</p>"
           }
         }

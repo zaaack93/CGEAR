@@ -7,7 +7,7 @@
     assign mobile_section_height = ' ' | append: section.settings.mobile_section_height
   endif
   assign animations_enabled = settings.animations_enabled
-  assign animation_anchor = "#ImageAccordions--" | append: section.id
+  assign animation_anchor = '#ImageAccordions--' | append: section.id
   assign animation_delay = 150
   assign show_text_shadow = settings.show_text_shadow
   assign blocks_size = section.blocks.size
@@ -18,6 +18,28 @@
   if section_width == 'wrapper--full'
     assign cover = true
   endif
+
+  comment
+    Images sizes
+  endcomment
+  capture container_width_percentage
+    case blocks_size
+      when 1
+        echo 1
+      when 2
+        echo 0.833
+      when 3
+        echo 0.714
+      when 4
+        echo 0.625
+    endcase
+  endcapture
+  # Desktop widths
+  assign img_width_lg = 'calc(100vw * ' | append: container_width_percentage | append: ')'
+  # Mobile widths
+  assign img_width_sm = 'calc(100vw - 20px)'
+
+  assign sizes = '(min-width: 768px) ' | append: img_width_lg | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
@@ -34,7 +56,7 @@
 {%- endstyle -%}
 
 <section id="ImageAccordions--{{ section.id }}"
-  class="section-padding"
+  class="section-padding section-image-accordions{% if animations_enabled %} to-animate{% endif %}"
   {% unless cover %} data-prevent-transparent-header{% endunless %}
   data-section-id="{{ section.id }}"
   data-section-type="image-accordions"
@@ -46,7 +68,7 @@
       <div class="image-accordions image-accordions--{{ blocks_size }} {{ accordion_height }}{{ mobile_section_height }}{% unless cover %} image-accordions--spacing{% endunless %}">
         {%- for block in section.blocks -%}
           {%- liquid
-            assign image = block.settings.image
+            assign image_desktop = block.settings.image
             assign image_mobile = block.settings.image_mobile
             assign title = block.settings.title
             assign text = block.settings.text
@@ -65,18 +87,19 @@
             assign button_2_color = block.settings.button_2_color
             assign button_2_style = block.settings.button_2_style
             assign button_2_size = block.settings.button_2_size
-            assign animation_delay = 400
+            assign animation_order = 1
 
-            assign image_link = false
-            if button_1_link != blank and button_2_text == blank
+            if button_1_link != blank and button_1_text == blank and button_2_text == blank
               assign image_link = true
-            elsif button_1_text == blank and button_1_link == blank and button_2_link != blank
-              assign image_link = true
-              assign button_1_link = button_2_link
+            endif
+
+            assign img_in_class = false
+            if image_desktop == null and image_mobile == null
+              assign img_in_class = true
             endif
           -%}
 
-          <div class="image-accordion image-accordion--{{ block.id }} item--{{ text_position }} {{ text_color }}{% unless animations_enabled %} image-accordion--no-animation{% endunless %}{% if forloop.first %} is-expanded{% endif %}" data-accordion-item {{ block.shopify_attributes }}>
+          <div class="image-accordion image-accordion--{{ block.id }} item--{{ text_position }} {{ text_color }}{% unless animations_enabled %} image-accordion--no-animation{% endunless %}{% if forloop.last %} is-active{% endif %}{% if img_in_class %} img-in{% endif %}" data-accordion-item {{ block.shopify_attributes }}>
             {%- style -%}
               #ImageAccordions--{{ section.id }} .image-accordion--{{ block.id }} { --overlay-opacity: {{ overlay_opacity }}; }
             {%- endstyle -%}
@@ -88,33 +111,21 @@
 
               <div class="overlay"></div>
 
-              <div class="image-accordion__image__wrapper">
-                {%- if image_mobile -%}
-                  <div class="image-accordion__image__container image-accordion__image__container--mobile lazy-image" style="background: url({{ image_mobile | img_url: '1x1' }});">
-                    {%- render 'image-fill', is_background: true, img_object: image_mobile, classes: 'image-accordion__image__bg' -%}
-                  </div>
-                {%- endif -%}
-
-                <div class="image-accordion__image__container image-accordion__image__container--desktop lazy-image" style="background: url({{ image | img_url: '1x1' }});">
-                  {%- if image -%}
-                    {%- render 'image-fill', is_background: true, img_object: image, classes: 'image-accordion__image__bg' -%}
-                  {%- else -%}
-                    <div class="image-accordion__image__bg background-size-cover">
-                      <div class="image-accordion__image__svg">
-                        {%- capture index -%}{% cycle 1, 2 %}{%- endcapture -%}
-                        {{- 'lifestyle-' | append: index | placeholder_svg_tag: 'placeholder-svg-filled' -}}
-                      </div>
-                    </div>
-                  {%- endif -%}
-                </div>
-              </div>
+              {%- liquid
+                capture placeholder_svg
+                  echo 'lifestyle-'
+                  cycle 1, 2
+                endcapture
+                render 'image-fill', is_background: true, image_desktop: image_desktop, image_mobile: image_mobile, sizes: sizes, classes: 'image-accordion__image__container', placeholder_svg: placeholder_svg
+              -%}
 
               {%- unless title == blank and text == blank -%}
                 <div class="image-accordion__text {% if show_text_shadow %} backdrop--radial{% endif %}"
                   {% if animations_enabled %}
-                    data-aos="fade"
+                    data-aos="when-active-animate-up"
                     data-aos-anchor="{{ animation_anchor }}"
-                    data-aos-delay="{{ animation_delay }}"
+                    data-aos-order="{{ animation_order }}"
+                    {%- assign animation_order = animation_order | plus: 1 -%}
                   {% endif %}>
                   <div class="slide__text__wrapper slide__text__wrapper--{{ text_width }}">
                     {%- if title != blank -%}
@@ -123,16 +134,16 @@
                           if animations_enabled
                             assign title_lines = title | escape | newline_to_br | split: '<br />'
                             for line in title_lines
-                              echo '<span class="text-reveal__cropper"><span data-aos="come-up" data-aos-anchor="' | append: animation_anchor | append: '" data-aos-delay="' | append: animation_delay | append: '">'
+                              echo '<span class="text-reveal__cropper"><span data-aos="when-active-animate-up" data-aos-anchor="' | append: animation_anchor | append: '" data-aos-order="' | append: animation_order | append: '">'
                               echo line
                               echo '</span></span>'
 
                               unless forloop.last
-                                assign animation_delay = animation_delay | plus: 150
+                                assign animation_order = animation_order | plus: 1
                               endunless
                             endfor
 
-                            assign animation_delay = animation_delay | plus: 150
+                            assign animation_order = animation_order | plus: 1
                           else
                             echo title | escape
                           endif
@@ -146,16 +157,16 @@
                           if animations_enabled
                             assign text_lines = text | escape | newline_to_br | split: '<br />'
                             for line in text_lines
-                              echo '<span class="text-reveal__cropper"><span data-aos="come-up" data-aos-delay="' | append: animation_delay | append: '">'
+                              echo '<span class="text-reveal__cropper"><span data-aos="when-active-animate-up" data-aos-order="' | append: animation_order | append: '">'
                               echo line
                               echo '</span></span>'
 
                               unless forloop.last
-                                assign animation_delay = animation_delay | plus: 150
+                                assign animation_order = animation_order | plus: 1
                               endunless
                             endfor
 
-                            assign animation_delay = animation_delay | plus: 150
+                            assign animation_order = animation_order | plus: 1
                           else
                             echo text | escape | newline_to_br
                           endif
@@ -168,31 +179,31 @@
                         {%- if button_1_text != blank -%}
                           <div class="main-buttons__item"
                             {% if animations_enabled %}
-                              data-aos="fade-up"
+                              data-aos="when-active-animate-up"
                               data-aos-anchor="{{ animation_anchor }}"
-                              data-aos-delay="{{ animation_delay }}"
-                              {%- assign animation_delay = animation_delay | plus: 150 -%}
+                              data-aos-order="{{ animation_order }}"
+                              {%- assign animation_order = animation_order | plus: 1 -%}
                             {% endif %}>
-                            {%- unless image_link -%}
+                            {%- if button_1_link != blank -%}
                               <a class="slide__btn btn {{ button_1_style }} {{ button_1_size }} {{ button_1_color }}" href="{{ button_1_link | default: '#!' }}" data-accordion-button>{{ button_1_text }}</a>
                             {%- else -%}
                               <span class="slide__btn btn {{ button_1_style }} {{ button_1_size }} {{ button_1_color }}">{{ button_1_text }}</span>
-                            {%- endunless -%}
+                            {%- endif -%}
                           </div>
                         {%- endif -%}
 
                         {%- if button_2_text != blank -%}
                           <div class="main-buttons__item"
                             {% if animations_enabled %}
-                              data-aos="fade-up"
+                              data-aos="when-active-animate-up"
                               data-aos-anchor="{{ animation_anchor }}"
-                              data-aos-delay="{{ animation_delay }}"
+                              data-aos-order="{{ animation_order }}"
                             {% endif %}>
-                            {%- unless image_link -%}
+                            {%- if button_2_link != blank -%}
                               <a class="slide__btn btn {{ button_2_style }} {{ button_2_size }} {{ button_2_color }}" href="{{ button_2_link | default: '#!' }}" data-accordion-button>{{ button_2_text }}</a>
                             {%- else -%}
                               <span class="slide__btn btn {{ button_2_style }} {{ button_2_size }} {{ button_2_color }}">{{ button_2_text }}</span>
-                            {%- endunless -%}
+                            {%- endif -%}
                           </div>
                         {%- endif -%}
                       </div>
@@ -222,7 +233,7 @@
     "settings": [
       {
         "type": "header",
-        "content": "layout"
+        "content": "Layout"
       },
       {
         "type": "select",

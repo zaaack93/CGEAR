@@ -1,8 +1,8 @@
 <div class="product__subs__wrap"
   {% if animations_enabled %}
-    data-aos="fade-up"
+    data-aos="hero"
     data-aos-anchor="{{ animation_anchor }}"
-    data-aos-delay="{{ animation_delay }}"
+    data-aos-order="{{ animation_order }}"
   {% endif %}>
   <fieldset class="product__subs" data-subscription-selectors>
     {% comment %} The input with name="selling_plan" submits to cart

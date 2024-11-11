@@ -3,6 +3,7 @@
   assign attributes = attributes | prepend: ' ' | default: ''
   assign in_header = in_header | default: false
   assign summary_classes = summary_classes | prepend: ' ' | default: ''
+  assign search_types = search_types | default: ''
 
   assign has_details = false
   if in_header
@@ -57,8 +58,11 @@
         <search-form>
       {%- endif -%}
 
-        <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+        <form class="search-form" action="{{ routes.search_url }}" method="get" role="search" data-search-form>
           <input name="options[prefix]" type="hidden" value="last">
+          {%- if search_types != '' or template.name == 'search' -%}
+            <input type="hidden" name="type" value="{{ search_types }}">
+          {%- endif -%}
 
           <div class="search-form__inner" data-search-form-inner>
             <div class="search-form__input-holder">
@@ -130,7 +134,11 @@
   {%- if has_details -%}
     <details>
       <summary class="search-popdown__toggle{{ summary_classes }}" aria-haspopup="dialog" data-popdown-toggle title="{{ 'general.accessibility.open_search_bar' | t }}">
-        {%- render 'icon-search' -%}
+        {%- if header_icons_as_text -%}
+          <span class="icon-search navtext{% if settings.nav_caps_toplevel %} caps{% endif %}">{{ 'layout.navigation.search' | t }}</span>
+        {%- else -%}
+          {%- render 'icon-search' -%}
+        {%- endif -%}
         {%- render 'icon-close' -%}
         <span class="visually-hidden">{{ 'general.accessibility.open_search_bar' | t }}</span>
       </summary>

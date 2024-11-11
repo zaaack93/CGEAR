@@ -17,30 +17,25 @@
         data-aos-delay="{{ animation_delay }}"
       {% endif %}>
       {%- liquid
-        assign image_url_pattern = top_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.'
-        assign image_widths = "[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]"
         assign animation_delay = animation_delay | plus: 150
         assign image_alt = top_image.alt | escape
+        assign retina_size = top_image_width | times: 2
+        assign image_widths = top_image_width | append: ', ' | append: retina_size
+        assign sizes = 'min((100vw - 60px - 40px), ' | append: top_image_width | append: 'px' | append: ')'
 
         capture styles
           echo 'width: ' | append: top_image_width | append: 'px;'
         endcapture
       -%}
 
-      <img class="rich-text__top-image-img lazyload"
-        src="{{ 'blank.gif' | asset_img_url: '1x1' }}"
-        data-src="{{ image_url_pattern }}"
-        data-widths= "{{ image_widths }}"
-        data-aspectratio="{{ top_image.aspect_ratio }}"
-        data-sizes="auto"
-        style="{{ styles }}"
-        alt="{{ image_alt }}">
-      <noscript>
-        {{- top_image
-          | image_url: width: top_image.width
-          | image_tag: class: 'rich-text__top-image-img img-object-contain', style: styles, alt: image_alt
-        -}}
-      </noscript>
+      {%- render 'image',
+        image: top_image,
+        widths: image_widths,
+        sizes: sizes,
+        alt: image_alt,
+        classes: 'rich-text__top-image-img',
+        cover: false,
+        styles: styles -%}
     </div>
   {%- endif -%}
 
@@ -113,7 +108,7 @@
   {%- endif -%}
 {%- endcapture -%}
 
-<div class="rich-text text-{{ text_position }}">
+<div class="rich-text text-{{ text_position }}{%- render 'button-fallback-classes', primary_color: button_color, secondary_color: button_2_color, section_bg_color: block_bg_color -%}">
   <div class="{{ section_width }}">
     <div class="rich-text__container">
       {{- content -}}

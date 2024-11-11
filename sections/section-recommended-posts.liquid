@@ -2,6 +2,7 @@
 {%- liquid
   assign id = 'RecommendedPosts--' | append: section.id
   assign selector_id = '#' | append: id
+  assign section_width = section.settings.width
   assign blog_style = section.settings.blog_style
   assign default_image = section.settings.default_image
   assign default_color = section.settings.default_color
@@ -29,14 +30,36 @@
   endcase
 
   if blog_style == 'photo'
-    assign blog_style = 'blog--photo'
+    assign blog_style_class = 'blog--photo'
   else
-    assign blog_style = 'blog--standard'
+    assign blog_style_class = 'blog--standard'
   endif
 
   assign animations_enabled = settings.animations_enabled
   assign animation_anchor = selector_id
   assign animation_delay = 150
+
+  comment
+    Images sizes
+  endcomment
+  assign desktop_space = 120
+  assign tablet_space = 40
+  assign mobile_space = 40
+
+  case section_width
+    when 'wrapper--full-padded'
+      assign wrapper_width = '100vw'
+    when 'wrapper'
+      assign wrapper_width = '1440px'
+    when 'wrapper--narrow'
+      assign wrapper_width = '840px'
+  endcase
+
+  assign img_width_lg = 'calc((' | append: wrapper_width | append: ' - ' | append: desktop_space | append: 'px) / 2)'
+  assign img_width_md = 'calc((100vw - ' | append: tablet_space | append: 'px) / 2)'
+  assign img_width_sm = 'calc(100vw - ' | append: mobile_space | append: 'px)'
+
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 480px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- capture recommended_posts -%}
@@ -47,6 +70,8 @@
 
         {%- render 'blog-post-grid-item',
           article: post,
+          article_style: blog_style,
+          img_sizes: sizes,
           animation_delay: animation_delay,
           animation_anchor: animation_anchor,
           default_color: default_color,
@@ -66,6 +91,8 @@
 
         {%- render 'blog-post-grid-item',
           article: post,
+          article_style: blog_style,
+          img_sizes: sizes,
           animation_delay: animation_delay,
           animation_anchor: animation_anchor,
           default_color: default_color,
@@ -88,6 +115,8 @@
 
         {%- render 'blog-post-grid-item',
           article: post,
+          article_style: blog_style,
+          img_sizes: sizes,
           animation_delay: animation_delay,
           animation_anchor: animation_anchor,
           default_color: default_color,
@@ -125,6 +154,8 @@
 
         {%- render 'blog-post-grid-item',
           article: post,
+          article_style: blog_style,
+          img_sizes: sizes,
           animation_delay: animation_delay,
           animation_anchor: animation_anchor,
           default_color: default_color,
@@ -154,14 +185,14 @@
       --PB: {{ section.settings.padding_bottom }}px;
     }
 
-    .recommended-posts .blog__post-image { padding-top: {{ section.settings.image_aspect_ratio | times: 100 | append: '%' }}; }
+    .recommended-posts .blog__post-image-link { padding-top: {{ section.settings.image_aspect_ratio | times: 100 | append: '%' }}; }
   {%- endstyle -%}
 
   <section id="{{ id }}"
-    class="recommended-posts blog {{ blog_style }} section-padding{% if bg_color_secondary %} bg-secondary{% endif %}"
+    class="recommended-posts blog {{ blog_style_class }} section-padding{% if bg_color_secondary %} bg-secondary{% endif %}"
     data-section-type="recommended-posts"
     data-section-id="{{ section.id }}">
-    <div class="wrapper">
+    <div class="{{ section_width }}">
       {%- if title != empty or section.settings.show_rss_icon -%}
         <h2 class="section__heading text-center"
           {% if animations_enabled %}
@@ -189,7 +220,6 @@
 {% schema %}
   {
     "name": "Recommended posts",
-    "templates": ["article"],
     "settings": [
       {
         "type": "select",
@@ -291,6 +321,17 @@
         "content": "Section spacing"
       },
       {
+        "type": "select",
+        "id": "width",
+        "label": "Width",
+        "default": "wrapper",
+        "options": [
+          { "value": "wrapper--full-padded", "label": "Full width padded" },
+          { "value": "wrapper", "label": "Page width" },
+          { "value": "wrapper--narrow", "label": "Page width narrow" }
+        ]
+      },
+      {
         "type": "range",
         "id": "padding_top",
         "min": 0,
@@ -310,6 +351,9 @@
         "label": "Padding bottom",
         "default": 60
       }
-    ]
+    ],
+    "enabled_on": {
+      "templates": ["article"]
+    }
   }
 {% endschema %}

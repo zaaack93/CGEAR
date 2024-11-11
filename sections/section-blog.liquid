@@ -13,6 +13,7 @@
   assign button_size = section.settings.button_size
   assign rows = section.settings.rows | plus: 0
   assign columns = section.settings.columns | plus: 0
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
   assign articles_count = columns | times: rows
   assign show_spacer_lines = settings.show_spacer_lines
   assign default_image = section.settings.default_image
@@ -21,6 +22,8 @@
   assign show_date = section.settings.show_date
   assign show_tags = section.settings.show_tags
   assign show_comments_count = section.settings.show_comments_count
+  assign id = 'FeaturedBlog--' | append: section.id
+  assign selector_id = '#' | append: id
 
   unless show_comments_count or blog.comments_enabled?
     assign show_comments_count = false
@@ -31,13 +34,20 @@
   endif
 
   assign animations_enabled = settings.animations_enabled
-  assign animation_anchor = '#FeaturedBlog--' | append: section.id
+  assign animation_anchor = selector_id
   assign animation_delay = 150
 
+  case columns_mobile
+    when 1
+      assign classes = 'mobile--one-whole'
+    when 2
+      assign classes = 'mobile--one-half'
+  endcase
+
   if blog_style == 'photo'
-    assign blog_style = 'blog--photo'
+    assign blog_style_class = 'blog--photo'
   else
-    assign blog_style = 'blog--standard'
+    assign blog_style_class = 'blog--standard'
   endif
 
   case default_color
@@ -46,10 +56,40 @@
     when 'default'
       assign default_color = 'blog__post-image--default'
   endcase
+
+  comment
+    Images sizes
+  endcomment
+  assign blocks_gaps = columns | minus: 1
+  assign gaps_calc = 20 | times: blocks_gaps | append: 'px'
+
+  # Desktop widths
+  if section_width == 'wrapper--full-padded'
+    assign wrapper_width_lg = '(100vw - 120px)'
+  endif
+  if section_width == 'wrapper'
+    assign wrapper_width_lg = '(1440px - 120px)'
+  endif
+  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / ' | append: columns | append: ')'
+
+  # Tablet widths
+  assign wrapper_width_md = '(100vw - 2 * 20px)'
+  assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - 2 * 20px) / 3)'
+  if columns == 2
+    assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - 20px) / 2)'
+  endif
+
+  # Mobile widths
+  assign img_width_sm = 'calc(' | append: wrapper_width_md | append: ')'
+  if section.blocks.size > 1
+    assign img_width_sm = 'calc(' | append: wrapper_width_md | append: ' - 20px)'
+  endif
+
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
-  #FeaturedBlog--{{ section.id }} {
+  {{ selector_id }} {
     --image-height: {{ image_aspect_ratio | times: 100 }}%;
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
@@ -59,17 +99,27 @@
     {%- else -%}
       --grid: repeat({{ articles_count }}, calc(100% / {{ columns }}));
     {%- endif -%}
+
+    {%- if columns == 2 -%}
+      --grid-tablet: repeat({{ columns }}, minmax(0, 1fr));
+    {%- endif -%}
   }
 
   {%- if bg_color_secondary -%}
-    #FeaturedBlog--{{ section.id }} {
+    {{ selector_id }} {
       --bg: var(--bg-secondary);
     }
   {%- endif -%}
+
+  @media screen and (max-width: 767px) {
+    {%- if columns_mobile > 1 -%}
+      {{ selector_id }} .carousel--mobile { --item-width-mobile: calc(90% / {{ columns_mobile }} - var(--grid-gutter)); }
+    {%- endif -%}
+  }
 {%- endstyle -%}
 
 <div id="FeaturedBlog--{{ section.id }}"
-  class="featured-blog {{ blog_style }} {{ text_color }} section-padding"
+  class="featured-blog {{ blog_style_class }} {{ text_color }} section-padding{%- render 'button-fallback-classes', primary_color: button_color, bg_color_secondary: bg_color_secondary -%}"
   data-section-id="{{ section.id }}"
   data-section-type="featured-blog">
   <div class="{{ section_width }}">
@@ -102,6 +152,9 @@
             {%- assign animation_delay = 150 | times: forloop.index -%}
             {%- render 'blog-post-grid-item',
               article: article,
+              article_style: blog_style,
+              img_sizes: sizes,
+              classes: classes,
               animation_anchor: animation_anchor,
               animation_delay: animation_delay,
               default_color: default_color,
@@ -117,6 +170,9 @@
             {%- assign animation_delay = 150 | times: forloop.index -%}
             {%- render 'blog-post-grid-item',
               article: article,
+              article_style: blog_style,
+              img_sizes: sizes,
+              classes: classes,
               animation_anchor: animation_anchor,
               animation_delay: animation_delay,
               default_color: default_color,
@@ -192,11 +248,21 @@
       {
         "type": "range",
         "id": "columns",
-        "label": "Articles per row",
+        "label": "Articles per row on desktop",
         "default": 3,
         "min": 2,
         "max": 4,
         "step": 1
+      },
+      {
+        "type": "select",
+        "id": "columns_mobile",
+        "label": "Articles per row on mobile",
+        "default": "1",
+        "options": [
+          { "label": "1", "value": "1" },
+          { "label": "2", "value": "2" }
+        ]
       },
       {
         "type": "checkbox",

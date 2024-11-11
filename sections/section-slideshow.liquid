@@ -5,6 +5,8 @@
   assign autoplay = section.settings.autoplay
   assign duration = section.settings.duration | times: 1000
   assign enable_zoom_animation = section.settings.enable_zoom_animation
+  assign enable_card_scrolling = section.settings.enable_card_scrolling
+  assign increase_border_radius = section.settings.increase_border_radius
   assign slide_height = section.settings.slide_height
   assign enable_mobile_height = section.settings.enable_mobile_height
   assign mobile_slide_height = section.settings.mobile_slide_height
@@ -14,6 +16,49 @@
   assign show_text_shadow = settings.show_text_shadow
   assign heading_size = section.settings.heading_size | times: 0.01
   assign current_style = section.blocks[0].text_color | default: 'text-light'
+
+  assign image_in_first_block = section.blocks[0].settings.image
+  assign image_mobile_in_first_block = section.blocks[0].settings.image_mobile
+
+  assign image_block = section.blocks | map: 'settings' | where: 'image'
+  assign image_mobile_block = section.blocks | map: 'settings' | where: 'image_mobile'
+
+  assign img_in_class = false
+  if image_block.size == 0 and image_mobile_block.size == 0
+    assign img_in_class = true
+  endif
+  if image_in_first_block == null and image_mobile_in_first_block == null
+    assign img_in_class = true
+  endif
+
+  capture slider_classes
+    echo 'slider'
+    echo ' slider--' | append: transition
+    if section.settings.show_arrow_down
+      echo ' slider--has-arrow'
+    endif
+    if section.settings.show_nav_dots
+      echo ' slider--has-dots'
+    endif
+    if section.index < 3
+      echo ' slider--first'
+    endif
+    unless animations_enabled
+      echo ' slider--no-animation'
+    endunless
+    if img_in_class
+      echo ' img-in'
+    endif
+    if enable_card_scrolling
+      echo ' card-scrolling-effect'
+    endif
+    if increase_border_radius
+      echo ' card-scrolling-effect--rounded-large'
+    endif
+    if enable_mobile_height
+      echo ' has-mobile-height'
+    endif
+  endcapture
 -%}
 
 {%- style -%}
@@ -22,7 +67,7 @@
   }
 {%- endstyle -%}
 
-<div class="slider slider--{{ transition }}{% if section.settings.show_arrow_down %} slider--has-arrow{% endif %}{% if section.settings.show_nav_dots %} slider--has-dots{% endif %}{% unless animations_enabled %} slider--no-animation{% endunless %}"
+<div class="{{ slider_classes }}"
   id="Slideshow--{{ section.id }}"
   data-slider
   data-section-type="slider"
@@ -34,27 +79,40 @@
   data-image-height="{{ slide_height }}"
   data-page-dots="{{ section.settings.show_nav_dots }}"
   data-nav-arrows="{{ section.settings.show_nav_arrows }}"
-  data-zoom-animation="{{ enable_zoom_animation }}"
   data-slides="{{ slides_count }}"
   {% if animations_enabled and transition == 'fade' %}
     data-aos="fade-in"
     data-aos-anchor="{{ animation_anchor }}"
-    data-aos-delay="{{ animation_delay }}"
-  {% endif %}>
-
+  {% endif %}
+  {% if enable_zoom_animation or enable_card_scrolling %}
+    data-parallax="
+      {%- if enable_zoom_animation -%}zoom-on-scroll{%- endif -%}
+      {%- if enable_zoom_animation and enable_card_scrolling -%},{%- endif -%}
+      {%- if enable_card_scrolling -%}card-scrolling{%- endif -%}
+    "
+  {% endif %}
+>
   {%- if section.blocks.size > 0 -%}
     {%- for block in section.blocks -%}
       {%- liquid
-        assign image = block.settings.image
-        assign image_aspect_ratio = image.aspect_ratio | default: 2.63
+        assign image_desktop = block.settings.image
+        assign image_aspect_ratio = image_desktop.aspect_ratio | default: 2.63
         assign image_mobile = block.settings.image_mobile
-        assign image_mobile_aspect_ratio = image_mobile.aspect_ratio | default: 0.66
+        assign image_mobile_aspect_ratio = image_mobile.aspect_ratio | default: image_aspect_ratio | default: 0.66
+        if image_desktop == blank and image_mobile != blank
+          assign image_aspect_ratio = image_mobile_aspect_ratio
+        endif
         assign subheading = block.settings.subheading
         assign title = block.settings.title
+        assign heading_highlight_type = block.settings.heading_highlight_type
+        assign highlight_color = block.settings.highlight_color
+        assign highlight_text_color = block.settings.highlight_text_color
         assign text = block.settings.text
         assign text_color = block.settings.text_color
         assign text_position = block.settings.text_position
+        assign text_alignment = block.settings.text_alignment
         assign text_width = block.settings.text_width
+        assign stacked_button = block.settings.stacked_button
         assign button_1_text = block.settings.button_1_text
         assign button_1_link = block.settings.button_1_link
         assign button_1_color = block.settings.button_1_color
@@ -87,75 +145,225 @@
             assign text_position = 'item--top-right'
         endcase
 
-        assign animation_delay = 150
-        case transition
-          when 'slide'
-            assign animation_delay = 400
-          when 'fade'
-            assign animation_delay = 250
-          when 'zoom-out'
-            assign animation_delay = 250
-          when 'wipe'
-            assign animation_delay = 500
-        endcase
-
         assign image_link = false
-        if button_1_link != blank and button_1_text == blank and button_2_text == blank and video_text == blank and video_link == blank
+        if button_1_link != blank and button_1_text == blank and button_2_text == blank
           assign image_link = true
         endif
-      -%}
 
-      {%- style -%}
-        #Slideshow--{{ section.id }} .item--{{ block.id }} {
+        if forloop.index0 < 3 and section.index < 3
+          assign loading = 'eager'
+          assign fetchpriority = 'high'
+          assign preload = true
+        else
+          assign loading = 'lazy'
+          assign fetchpriority = 'auto'
+          assign preload = false
+        endif
+      -%}{% comment %}
+  Enhanced text decorations options - Liquid variables
+
+  Dependencies:
+    - Title liquid object from settings: `assign title = section.settings.title`
+    - Highlight type from settings: `assign heading_highlight_type = section.settings.heading_highlight_type`
+    - Highlight color from settings: `assign highlight_color = section.settings.highlight_color or assign highlight_color = block.settings.highlight_color`
+    - SVG icons:
+      - icon-squiggle.svg (assets)
+      - icon-circle.liquid (snippet)
+{% endcomment %}
+
+{%- liquid
+  comment
+   Highlighted words count
+  endcomment
+  assign title_temp = title | split: '<em>'
+  assign em_arr = ''
+  if title_temp.size > 1
+    for text_part in title_temp offset: 1
+      assign em_text = text_part | split: '</em>' | first
+      assign em_arr = em_arr | append: '#separator#' | append: em_text
+    endfor
+  endif
+  assign em_arr = em_arr | split: '#separator#'
+  assign words_count_arr = ''
+  assign letters_count_arr = ''
+  if em_arr.size > 0
+    for words in em_arr offset: 1
+      assign word = words | split: ' '
+      assign words_count_arr = words_count_arr | append: word.size | append: ', '
+      assign letters_count_arr = letters_count_arr | append: words.size | append: ', '
+    endfor
+  endif
+
+  assign words_count_arr = words_count_arr | replace_last: ', ', '' | split: ', '
+  assign letters_count_arr = letters_count_arr | replace_last: ', ', '' | split: ', '
+
+  comment
+   Main highlight types logic
+  endcomment
+  assign icon_url = ''
+  assign icon_color = 'var(--text)'
+
+  if highlight_color != 'rgba(0,0,0,0)' and highlight_color != ''
+    assign icon_color = highlight_color
+  endif
+
+  capture text_highlight_icon
+    assign has_text_highlight = false
+
+    if title contains '<em>'
+      case heading_highlight_type
+        when 'squiggle'
+          assign icon_url = 'icon-squiggle.svg' | asset_url
+        when 'circle' or 'circle-hand-drawn' or 'underline-hand-drawn'
+          echo '<span class="text-highlight__icon" data-highlight-holder>'
+
+            when 'circle'
+              render 'icon-circle'
+            when 'circle-hand-drawn'
+              render 'icon-circle-hand-drawn'
+            when 'underline-hand-drawn'
+              render 'icon-underline-hand-drawn'
+
+          echo '</span>'
+        when 'highlight' or 'squiggle'
+          echo '<span class="text-highlight__icon text-highlight__icon--pseudo" data-highlight-holder></span>'
+        when 'stroke' or 'circle' or 'circle-hand-drawn' or 'squiggle' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
+          assign has_text_highlight = true
+      endcase
+    endif
+  endcapture
+
+  capture icon_bg
+    if icon_url != ''
+      echo 'url( "' | append: icon_url | append: '" )'
+    else
+      echo 'none'
+    endif
+  endcapture
+  capture icon_styles
+    assign icon_bg = icon_bg | replace: '"', "'"
+    echo 'style="--icon-url: ' | append: icon_bg | append: ';' | append: '--icon-color: ' | append: icon_color | append: ';"'
+  endcapture
+
+  assign text_highlight_wrapper_class = 'text-highlight-wrapper' | append: ' text-highlight-wrapper--' | append: heading_highlight_type
+  capture text_highlight_start
+    echo '<text-highlight class="text-highlight" ' | append: icon_styles | append: ' data-highlight-type="' | append: heading_highlight_type | append: '">'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '<span class="text-highlight__string" data-highlight-holder>'
+    endcase
+  endcapture
+  capture text_highlight_end
+    echo text_highlight_icon
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '</span>'
+    endcase
+    echo '</text-highlight>'
+  endcapture
+
+  if title != blank and title contains '<em>'
+    case heading_highlight_type
+      when 'squiggle' or 'circle' or 'circle-hand-drawn' or 'stroke' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
+        assign title = title | replace: '<em>', text_highlight_start | replace: '</em>', text_highlight_end
+
+      when 'circle' or 'circle-hand-drawn'
+        comment
+          Update icon's holder class based on the italicised words count
+        endcomment
+        assign title = title | split: 'class="text-highlight"'
+        assign title_mod = ''
+        for title_part in title offset: 1
+          assign current_part = title_part
+
+          if title_part contains 'text-highlight__icon'
+            capture highlight_icon_classes
+              echo 'text-highlight__icon'
+              assign current_count = words_count_arr[forloop.index0] | times: 1
+              assign letters_count = letters_count_arr[forloop.index0] | times: 1
+              if current_count == 1
+                echo ' text-highlight__icon--single-word'
+              endif
+              if letters_count < 6
+                echo ' text-highlight__icon--short'
+                echo ' text-highlight__icon--l' | append: letters_count
+              endif
+              if letters_count > 15
+                echo ' text-highlight__icon--long'
+              endif
+            endcapture
+
+            assign current_part = title_part | replace: 'text-highlight__icon', highlight_icon_classes
+          endif
+
+          unless forloop.last
+            assign title_mod = title_mod | append: current_part | append: 'class="text-highlight"'
+          else
+            assign title_mod = title_mod | append: current_part
+          endunless
+        endfor
+        assign title_first_part = title | first | append: 'class="text-highlight"'
+        assign title_mod = title_mod | prepend: title_first_part
+        assign title = title_mod
+    endcase
+  endif
+-%}{%- style -%}
+        #Slideshow--{{ section.id }} .item--{{ unique }} {
           --overlay-opacity: {{ overlay_opacity }};
+
+          {%- if heading_highlight_type != 'highlight' -%}
+            --highlight-color: var(--text);
+          {%- endif -%}
+
+          {%- if highlight_color != 'rgba(0,0,0,0)' and highlight_color != '' -%}
+            --highlight-color: {{ highlight_color }};
+          {%- endif -%}
+
+          {%- if highlight_text_color != 'rgba(0,0,0,0)' and highlight_text_color != '' -%}
+            --highlight-text-color: {{ highlight_text_color }};
+          {%- endif -%}
+
+          --container-padding-top: 0;
+          {%- if slide_height == 'original-height' -%}
+            --container-padding-top: {{ 100 | divided_by: image_aspect_ratio | append: '%' }};
+          {%- endif -%}
         }
-        {%- if slide_height == 'original-height' -%}
-          .item--{{ unique }} .slide__image__container--desktop { padding-top: {{ 100 | divided_by: image_aspect_ratio | append: '%' }} }
-          .item--{{ unique }} .slide__image__container--mobile { padding-top: {{ 100 | divided_by: image_mobile_aspect_ratio | append: '%' }} }
-        {%- endif -%}
-        {%- if enable_mobile_height and mobile_slide_height == 'original-height-mobile' -%}
+
+        {%- if enable_mobile_height -%}
           @media screen and (max-width: 767px) {
-            .item--{{ unique }} .slide__image__container--desktop { padding-top: {{ 100 | divided_by: image_aspect_ratio | append: '%' }} }
-            .item--{{ unique }} .slide__image__container--mobile { padding-top: {{ 100 | divided_by: image_mobile_aspect_ratio | append: '%' }} }
+            #Slideshow--{{ section.id }} .item--{{ unique }} {
+              --container-padding-top: 0;
+              {%- if mobile_slide_height == 'original-height-mobile' -%}
+                --container-padding-top: {{ 100 | divided_by: image_mobile_aspect_ratio | append: '%' }};
+              {%- endif -%}
+            }
           }
         {%- endif -%}
       {%- endstyle -%}
 
-      <div class="item item--{{ unique }} {{ text_position }} {{ text_color }} {{ slide_height }}{% if enable_mobile_height %} {{ mobile_slide_height }}{% endif %}{% if forloop.first %} is-selected{% endif %}"
+      <div class="item item--{{ unique }} {{ text_position }} {{ text_alignment }} {{ text_color }} {{ slide_height }}{% if enable_mobile_height %} {{ mobile_slide_height }}{% endif %}{% if forloop.first %} is-selected{% endif %}"
         {{ block.shopify_attributes }}
         data-slide
-        data-slide-position="{{ forloop.index }}"
         data-style="{{ text_color }}">
         <div class="overlay"></div>
 
-        {%- if image_link -%}
-          <a class="slide__link" href="{{ button_1_link }}" aria-label="{{ title | strip_html | escape }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %}>
-        {%- endif -%}
-
-        {%- if image_mobile != blank -%}
-          <div class="slide__image__container slide__image__container--mobile">
-            <div class="slide__image__inner">
-              {%- render 'image-fill', is_background: true, img_object: image_mobile, classes: 'slide__image' -%}
-            </div>
-          </div>
-        {%- endif -%}
-
-        <div class="slide__image__container slide__image__container--desktop{% unless image %} slide__image__container--placeholder{% endunless %}">
+        <div class="slide__image__container">
           <div class="slide__image__inner">
-            {%- if image != blank -%}
-              {%- render 'image-fill', is_background: true, img_object: image, classes: 'slide__image' -%}
-            {%- else -%}
-              <div class="slide__image slide__image--desktop slide__image--placeholder background-size-cover">
-                <div class="slide__image__svg">
-                  {%- capture index -%}{% cycle 1, 2 %}{%- endcapture -%}
-                  {{- 'lifestyle-' | append: index | placeholder_svg_tag: 'placeholder-svg-filled' -}}
-                </div>
-              </div>
-            {%- endif -%}
+            {%- liquid
+              capture placeholder_svg
+                echo 'lifestyle-'
+                cycle 1, 2
+              endcapture
+              render 'image-fill', is_background: true, image_desktop: image_desktop, image_mobile: image_mobile, sizes: '100vw', classes: 'slide__image', loading: loading, fetchpriority: fetchpriority, preload: preload, placeholder_svg: placeholder_svg
+            -%}
           </div>
         </div>
 
         <div class="slide__text__container">
+          {%- if image_link -%}
+            <a class="slide__link" href="{{ button_1_link }}" aria-label="{{ title | strip_html | escape }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %}></a>
+          {%- endif -%}
+
           <div class="slide__text__wrapper slide__text__wrapper--{{ text_width }}{% if show_text_shadow %} backdrop--radial{% endif %}">
             {%- if video_link != blank or video_text != blank -%}
               <div class="slide__buttons main-buttons main-buttons--video">{%- liquid
@@ -207,10 +415,11 @@
   endif
 -%}<div class="main-buttons__item"
                   {% if animations_enabled %}
-                    data-aos="fade-up"
+                    data-aos="hero"
                     data-aos-anchor="{{ animation_anchor }}"
-                    data-aos-delay="{{ animation_delay }}"
-                  {% endif %}>
+                    data-aos-order="1"
+                  {% endif %}
+                >
                   <a class="slide__btn video-text-link" href="{{ video_link | default: '#!' }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %}
                     {% unless video_link == blank %}
                     data-video-play="{%- render 'photoswipe-video-html' item_link: video_link , item_link_type: video_type, item_link_id: video_id, item_id: video_parent_id -%}"
@@ -228,71 +437,51 @@
             {%- if subheading != blank -%}
               <div class="slide__subheading"
                 {% if animations_enabled %}
-                  data-aos="fade-up"
+                  data-aos="hero"
                   data-aos-anchor="{{ animation_anchor }}"
-                  data-aos-delay="{{ animation_delay }}"
-                  {%- assign animation_delay = animation_delay | plus: 150 -%}
-                {% endif %}>
+                  data-aos-order="1"
+                {% endif %}
+              >
                 <p class="subheading-text">{{ subheading }}</p>
               </div>
             {%- endif -%}
 
             {%- if title != blank -%}
-              <h1 class="slide__heading main-heading">
-                {%- liquid
-                  if animations_enabled
-                    assign title_lines = title | escape | newline_to_br | split: '<br />'
-                    for line in title_lines
-                      echo '<span class="text-reveal__cropper"><span data-aos="fade-up" data-aos-anchor="' | append: animation_anchor | append: '" data-aos-delay="' | append: animation_delay | append: '">'
-                      echo line
-                      echo '</span></span>'
-
-                      unless forloop.last
-                        assign animation_delay = animation_delay | plus: 150
-                      endunless
-                    endfor
-
-                    assign animation_delay = animation_delay | plus: 150
-                  else
-                    echo title | escape
-                  endif
-                -%}
-              </h1>
+              {%- capture title_attributes -%}
+                class="h1 slide__heading main-heading{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
+              {%- endcapture -%}
+              {% render 'title-text-reveal-and-highlights',
+                title: title,
+                title_attributes: title_attributes,
+                text_reveal: true,
+                has_text_highlight: has_text_highlight,
+                animation_anchor: animation_anchor,
+                animation_order: 1
+              %}
             {%- endif -%}
 
             {%- if text != blank -%}
-              <h2 class="slide__text main-text">
-                {%- liquid
-                  if animations_enabled
-                    assign text_lines = text | escape | newline_to_br | split: '<br />'
-                    for line in text_lines
-                      echo '<span class="text-reveal__cropper"><span data-aos="fade-up" data-aos-anchor="' | append: animation_anchor | append: '" data-aos-delay="' | append: animation_delay | append: '">'
-                      echo line
-                      echo '</span></span>'
-
-                      unless forloop.last
-                        assign animation_delay = animation_delay | plus: 150
-                      endunless
-                    endfor
-
-                    assign animation_delay = animation_delay | plus: 150
-                  else
-                    echo text | escape | newline_to_br
-                  endif
-                -%}
-              </h2>
+              <div class="slide__text main-text"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="1"
+                {% endif %}
+              >
+                {{ text }}
+              </div>
             {%- endif -%}
 
             {%- if button_1_text != blank or button_2_text != blank -%}
-              <div class="slide__buttons main-buttons">
+              <div class="slide__buttons main-buttons{% if stacked_button %} main-buttons--stacked{% endif %}">
                 {%- if button_1_text != blank -%}
                   <div class="main-buttons__item"
                     {% if animations_enabled %}
-                      data-aos="fade-up"
+                      data-aos="hero"
                       data-aos-anchor="{{ animation_anchor }}"
-                      data-aos-delay="{{ animation_delay }}"
-                      {%- assign animation_delay = animation_delay | plus: 150 -%}
-                    {% endif %}>
+                      data-aos-order="1"
+                    {% endif %}
+                  >
                     <a class="slide__btn btn {{ button_1_color }} {{ button_1_style }} {{ button_1_size }}" href="{{ button_1_link }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %}>{{ button_1_text | escape }}</a>
                   </div>
                 {%- endif -%}
@@ -300,11 +489,11 @@
                 {%- if button_2_text != blank -%}
                   <div class="main-buttons__item"
                     {% if animations_enabled %}
-                      data-aos="fade-up"
+                      data-aos="hero"
                       data-aos-anchor="{{ animation_anchor }}"
-                      data-aos-delay="{{ animation_delay }}"
-                      {%- assign animation_delay = animation_delay | plus: 150 -%}
-                    {% endif %}>
+                      data-aos-order="1"
+                    {% endif %}
+                  >
                     <a class="slide__btn btn {{ button_2_color }} {{ button_2_style }} {{ button_2_size }}" href="{{ button_2_link }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %}>{{ button_2_text | escape }}</a>
                   </div>
                 {%- endif -%}
@@ -312,10 +501,6 @@
             {%- endif -%}
           </div>
         </div>
-
-        {%- if image_link -%}
-          </a>
-        {%- endif -%}
       </div>
     {%- endfor -%}
   {%- else -%}
@@ -323,7 +508,7 @@
   {%- endif -%}
 
   {%- if section.settings.show_arrow_down -%}
-    <a href="#" class="slider__scroll-down" title="{{ 'slideshow.scroll_down' | t }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %} data-scroll-down>
+    <a href="#" class="slider__scroll-down" title="{{ 'slideshow.scroll_down' | t }}" data-scroll-down>
       {%- render 'icon-arrow-right' -%}
     </a>
   {%- endif -%}
@@ -337,13 +522,13 @@
   "settings": [
     {
       "type": "header",
-      "content": "layout"
+      "content": "Layout"
     },
     {
       "type": "select",
       "id": "slide_height",
       "label": "Height",
-      "default": "full-height",
+      "default": "two-thirds-height",
       "options": [
         { "value": "full-height", "label": "Full screen" },
         { "value": "three-quarters-height", "label": "Three quarters of screen" },
@@ -393,7 +578,7 @@
       "type": "checkbox",
       "id": "show_nav_arrows",
       "label": "Show slide navigation arrows",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
@@ -444,6 +629,20 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "enable_card_scrolling",
+      "label": "Enable card scrolling effect",
+      "info": "Section below will overlap and continue on scroll",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "increase_border_radius",
+      "label": "Increase border radius",
+      "default": true,
+      "info": "Applied to the next section's upper corners only when card scrolling effect is enabled"
+    },
+    {
       "type": "header",
       "content": "Heading"
     },
@@ -451,7 +650,7 @@
       "type": "range",
       "id": "heading_size",
       "label": "Size",
-      "default": 120,
+      "default": 150,
       "min": 100,
       "max": 200,
       "step": 10,
@@ -508,7 +707,7 @@
         {
           "type": "select",
           "id": "text_position",
-          "label": "Position",
+          "label": "Text position",
           "default": "center",
           "options": [
             { "value": "left", "label": "Left" },
@@ -518,6 +717,17 @@
             { "value": "bottom-right", "label": "Bottom right" },
             { "value": "top-left", "label": "Top left" },
             { "value": "top-right", "label": "Top right" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "default": "text-center",
+          "options": [
+            { "label": "Left", "value": "text-left" },
+            { "label": "Center", "value": "text-center" },
+            { "label": "Right", "value": "text-right" }
           ]
         },
         {
@@ -536,16 +746,59 @@
           "label": "Subheading"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "title",
           "label": "Heading",
-          "default": "Welcome to Palo Alto"
+          "default": "<p>Welcome to Palo Alto</p>",
+          "info": "Highlight one or two key words in your heading by italicizing them, then choose the highlight option below."
+        },
+        {
+          "type": "header",
+          "content": "Highlight"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_type",
+          "label": "Type",
+          "default": "underline-hand-drawn",
+          "options": [
+            { "value": "italics", "label": "Italics (no decoration)" },
+            { "value": "highlight", "label": "Highlight" },
+            { "value": "highlight-color", "label": "Text color" },
+            { "value": "underline", "label": "Underline (digital)" },
+            { "value": "underline-hand-drawn", "label": "Underline (hand-drawn)" },
+            { "value": "squiggle", "label": "Squiggle" },
+            { "value": "circle", "label": "Circle (digital)" },
+            { "value": "circle-hand-drawn", "label": "Circle (hand-drawn)" },
+            { "value": "stroke", "label": "Stroke (outlined text)" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "highlight_color",
+          "label": "Highlight color",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "highlight_text_color",
+          "label": "Text color"
         },
         {
           "type": "textarea",
           "id": "text",
           "label": "Text",
           "default": "Add more info or delete this text"
+        },
+        {
+          "type": "header",
+          "content": "Buttons"
+        },
+        {
+          "type": "checkbox",
+          "id": "stacked_button",
+          "label": "Stack buttons on larger screens",
+          "default": false
         },
         {
           "type": "header",

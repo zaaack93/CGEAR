@@ -1,25 +1,57 @@
-{% assign isFind = false%}
-
-{%for block in section.blocks%}
-  {% if block.settings.image!=blank or block.settings.title!=blank or block.settings.description!=blank or block.settings.text!=blank or block.settings.video!=blank or block.settings.external_video_url_metafield!=blank  %}
-    {% assign isFind = true%}
-  {%endif%}
-{%endfor%}
 <!-- /sections/section-custom-content.liquid -->
-
 {%- liquid
   assign section_width = section.settings.width
   assign animations_enabled = settings.animations_enabled
   assign bg_color = section.settings.bg_color
   assign section_height = section.settings.height
+  assign enable_mobile_height = section.settings.enable_mobile_height
+  assign mobile_height = section.settings.mobile_height
   assign add_gutter = section.settings.add_gutter
-  assign transparent_header = false
-  assign non_image_block_types = 'text, newsletter, testimonial, product, collection' | split: ','
   assign show_text_shadow = settings.show_text_shadow
+  assign blocks_count = section.blocks.size
 
-  unless non_image_block_types contains section.blocks[0].type and non_image_block_types contains section.blocks[1].type
-    assign transparent_header = true
-  endunless
+  comment
+    Images sizes
+  endcomment
+  assign desktop_space = 120
+  assign tablet_space = 40
+  assign mobile_space = 40
+  if add_gutter and blocks_count > 1
+    assign desktop_space = desktop_space | plus: 20
+    assign tablet_space = tablet_space | plus: 20
+  endif
+
+  case section_width
+    when 'wrapper--full'
+      assign wrapper_width = '100vw'
+      assign desktop_space = 0
+      assign tablet_space = 0
+      assign mobile_space = 0
+      if add_gutter
+        assign desktop_space = 40
+        assign tablet_space = 40
+        assign mobile_space = 40
+        if blocks_count > 1
+          assign desktop_space = desktop_space | plus: 20
+          assign tablet_space = tablet_space | plus: 20
+        endif
+      endif
+    when 'wrapper--full-padded'
+      assign wrapper_width = '100vw'
+    when 'wrapper'
+      assign wrapper_width = '1440px'
+    when 'wrapper--narrow'
+      assign wrapper_width = '840px'
+  endcase
+
+  assign img_width_xlg_pgi = 'min(calc(((' | append: wrapper_width | append: ' - ' | append: desktop_space | append: 'px) / ' | append: blocks_count | append: ') - 60px), 25vw)'
+  assign img_width_lg = 'calc((' | append: wrapper_width | append: ' - ' | append: desktop_space | append: 'px) / ' | append: blocks_count | append: ')'
+  assign img_width_lg_pgi = 'min(calc(((' | append: wrapper_width | append: ' - ' | append: desktop_space | append: 'px) / ' | append: blocks_count | append: ') - 60px), 25vw)'
+  assign img_width_md = 'calc((100vw - ' | append: tablet_space | append: 'px) / ' | append: blocks_count | append: ')'
+  assign img_width_md_pgi = 'min(calc(((' | append: wrapper_width | append: ' - ' | append: tablet_space | append: 'px) / ' | append: blocks_count | append: ') - 60px), 33vw)'
+  assign img_width_sm = 'calc(100vw - ' | append: mobile_space | append: 'px)'
+
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
@@ -33,18 +65,19 @@
   }
 {%- endstyle -%}
 
-{% if isFind %}
 <section id="brick-section--{{ section.id }}"
   class="section-padding brick__section"
   data-section-id="{{ section.id }}"
   data-section-type="custom-content">
 
-  <div class="brick__section__wrapper {{ section_width }} {{ section_height }}">
-    <div class="brick__blocks__flex brick__blocks__flex--{% if add_gutter %}gap{% else %}stuck{% endif %}">
-      {%- if section.blocks.size > 0 -%}
+  <div class="brick__section__wrapper {{ section_width }} {{ section_height }}{% if enable_mobile_height %} {{ mobile_height }}{% endif %}">
+    <div class="brick__blocks__flex brick__blocks__flex--{% if add_gutter %}gap{% else %}stuck{% endif %}{% if section.settings.reverse_blocks %} brick__blocks__flex--reverse{% endif %}">
+      {%- if blocks_count > 0 -%}
         {%- for block in section.blocks -%}
           {%- liquid
             assign unique = block.id
+            assign index = forloop.index0
+            assign block_type = block.type
             assign animation_anchor = '#BrickBlock--' | append: unique
             assign animation_delay = 150
             assign image = block.settings.image
@@ -59,7 +92,7 @@
             assign button_2_color = block.settings.button_2_color
             assign button_2_size = block.settings.button_2_size
             assign text_color = block.settings.text_color
-            assign bg_color = block.settings.bg_color | default: ''
+            assign block_bg_color = block.settings.bg_color | default: ''
             assign title = block.settings.title
             assign text = block.settings.text
             assign heading_size = block.settings.heading_size | times: 0.01
@@ -67,48 +100,99 @@
             assign subheading = block.settings.subheading
             assign text_position = block.settings.text_position
             assign overlay_opacity = block.settings.overlay_opacity | times: 0.01
+            assign block_full_rounded = false
+            assign prev_block_transparent_not_media = false
+            assign next_block_transparent_not_media = false
+
+            if block_type == 'image' or block_type == 'video'
+              case index
+                when 0
+                  assign next_block = section.blocks[1]
+                  assign next_block_bg_color = next_block.settings.bg_color
+                  if next_block.type != 'video' and next_block.type != 'image'
+                    unless next_block_bg_color.alpha != 0.0 and next_block_bg_color != '' and next_block_bg_color != bg_color
+                      assign next_block_transparent_not_media = true
+                    endunless
+                  endif
+                when 1
+                  assign prev_block = section.blocks[0]
+                  assign prev_block_bg_color = prev_block.settings.bg_color
+                  if prev_block.type != 'video' and prev_block.type != 'image'
+                    unless prev_block_bg_color.alpha != 0.0 and prev_block_bg_color != '' and prev_block_bg_color != bg_color
+                      assign prev_block_transparent_not_media = true
+                    endunless
+                  endif
+              endcase
+            endif
+
+            if prev_block_transparent_not_media or next_block_transparent_not_media
+              assign block_full_rounded = true
+            endif
+
             capture style
-              if bg_color != 'rgba(0,0,0,0)' and bg_color != ''
-                echo 'style="background-color: ' | append: bg_color | append: ';"'
+              if block_bg_color != 'rgba(0,0,0,0)' and block_bg_color != ''
+                echo 'style="background-color: ' | append: block_bg_color | append: ';"'
+              else
+                assign block_bg_color = bg_color
               endif
             endcapture
           -%}
           <div id="BrickBlock--{{ unique }}"
-            class="brick__block brick__block--{{ block.type }}{% if text_color != blank %} {{ text_color }}{% endif %}"
+            class="brick__block brick__block--{{ block_type }}{% if text_color != blank %}{% if block_full_rounded %} brick__block--rounded{% endif %} {{ text_color }}{% endif %}"
             {{ style }}
             {{ block.shopify_attributes }}>
             <div class="brick__block__content">
               <div class="brick__block__inner">
-                {%- case block.type -%}
+                {%- case block_type -%}
                   {%- when 'image' -%}
                     {%- liquid
-                      assign aspect_ratio = image.aspect_ratio | default: 1.66
+                      assign text = block.settings.image_text
+
+                      if block.settings.button_link != blank or block.settings.button_text != blank
+                        assign hover_scale = ' hover-scale'
+                      endif
+
+                      capture image_class
+                        echo 'brick__image '
+                        echo section_height
+
+                        if enable_mobile_height
+                          echo ' ' | append: mobile_height
+                        endif
+
+                        echo ' align--' | append: text_position
+
+                        unless image
+                          echo ' img-in'
+                        endunless
+
+                        echo hover_scale
+                      endcapture
                     -%}
 
-                    <div class="brick__image {{ section_height }} align--{{ text_position }}"
+                    <div class="{{ image_class }}"
                       id="FeaturedImage--{{ section.id }}--{{ block.id }}"
                       {% if animations_enabled %}
                         data-aos="zoom-out"
                         data-aos-anchor="{{ animation_anchor }}"
                         data-aos-delay="{{ animation_delay }}"
-                      {% endif %}
-                      {% if section_height == 'original-height' %}
-                        style="padding-top: {{ 1 | divided_by: aspect_ratio | times: 100 | round: 2 }}%;"
                       {% endif %}>{%- style -%}
   #FeaturedImage--{{ section.id }}--{{ block.id }} { --overlay-opacity: {{ overlay_opacity }}; }
   #FeaturedImage--{{ section.id }}--{{ block.id }} .main-heading { --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }}) }
 {%- endstyle -%}
 
-<div class="featured-image__pane">
-  <div class="featured-image__scale">
-    {%- render 'image-fill', is_background: true, img_object: image, classes: 'featured-image__bg' -%}
+{%- if button_text == blank and button_link != '#!' -%}
+  <a class="featured-image__link" href="{{ button_link }}">
+    <span class="visually-hidden">{{ title | strip_html | strip }}</span>
+  </a>
+{%- endif -%}
 
-    <div class="overlay"></div>
-  </div>
-</div>
+{%- render 'image-fill', is_background: true, img_object: image, sizes: sizes, classes: 'featured-image__bg' -%}
+
+<div class="overlay"></div>
 
 <div class="featured-image__content">
-  <div class="featured-image__content-inner{% if show_text_shadow and wrapper == 'full' %} backdrop--radial{% endif %}">
+  <div class="featured-image__content-inner{% if show_text_shadow %} backdrop--radial{% endif %}">
     {%- if title != blank -%}
       <h1 class="featured-image__heading main-heading"
         {% if animations_enabled %}
@@ -120,13 +204,13 @@
     {%- endif -%}
 
     {%- if text != blank -%}
-      <h2 class="featured-image__caption main-text"
+      <div class="featured-image__caption main-text h2"
         {% if animations_enabled %}
           data-aos="fade-up"
           data-aos-anchor="{{ animation_anchor }}"
           data-aos-delay="{{ animation_delay }}"
           {%- assign animation_delay = animation_delay | plus: 150 -%}
-        {% endif %}>{{ text | escape }}</h2>
+        {% endif %}>{{ text }}</div>
     {%- endif -%}
 
     {%- if button_text != blank -%}
@@ -142,10 +226,6 @@
       </div>
     {%- endif -%}
   </div>
-
-  {%- if button_text == blank and button_link != '#!' -%}
-    <a class="featured-image__link" href="{{ button_link }}"></a>
-  {%- endif -%}
 </div></div>
 
                   {%- when 'text' -%}
@@ -174,7 +254,8 @@
                       button_2_style: button_2_style,
                       button_2_color: button_2_color,
                       button_2_size: button_2_size,
-                      animation_anchor: animation_anchor
+                      animation_anchor: animation_anchor,
+                      block_bg_color: block_bg_color
                     -%}
 
                   {%- when 'newsletter' -%}
@@ -210,27 +291,11 @@
                     </div>
 
                   {%- when 'testimonial' -%}
-                    {%- liquid
-                      assign image_width = block.settings.image_width
-                      assign customer_name = block.settings.customer_name
-                      assign text_alignment = block.settings.text_alignment
-                      assign subheading = block.settings.subheading
-                      assign star_rating = block.settings.star_rating
-                      assign percent = star_rating | divided_by: 5.0 | times: 100
-                    -%}
+                    {%- assign text_alignment = block.settings.text_alignment -%}
 
                     <div class="brick__testimonial text-{{ text_alignment }}">
                       {%- render 'testimonial-item',
-                        block_id: block.id,
-                        block_shopify_attributes: block.shopify_attributes,
-                        image: image,
-                        image_width: image_width,
-                        customer_name: customer_name,
-                        text: text,
-                        text_size: text_size,
-                        subheading: subheading,
-                        star_rating: star_rating,
-                        percent: percent,
+                        block: block,
                         animations_enabled: animations_enabled,
                         animation_anchor: animation_anchor,
                         animation_delay: animation_delay
@@ -242,7 +307,7 @@
 
                     <div class="brick__product"
                       {% if animations_enabled %}
-                        data-aos="fade-up"
+                        data-aos="fade-left"
                         data-aos-anchor="{{ animation_anchor }}"
                         data-aos-delay="{{ animation_delay }}"
                       {% endif %}>
@@ -250,18 +315,16 @@
                         <p class="brick__subheading subheading-text">{{ title }}</p>
                       {%- endif -%}
 
-                      {%- if product != blank -%}
-                        {%- render 'product-grid-item',
-                          product: product,
-                          index: forloop.index,
-                          animation_anchor: animation_anchor
-                        -%}
-                      {%- else -%}
-                        {%- render 'product-grid-item--onboarding',
-                          index: forloop.index,
-                          animation_anchor: animation_anchor
-                        -%}
-                      {%- endif -%}
+                      {%- liquid
+                        if product != blank
+                          assign img_width_sm_pgi = 'calc((100vw - ' | append: mobile_space | append: 'px) - 60px)'
+                          assign sizes_pgi = '(min-width: 1440px) ' | append: img_width_xlg_pgi | append: ', (min-width: 1024px) ' | append: img_width_lg_pgi | append: ', (min-width: 768px) ' | append: img_width_md_pgi | append: ', ' | append: img_width_sm_pgi
+
+                          render 'product-grid-item', product: product, index: forloop.index, animation_anchor: animation_anchor, sizes: sizes_pgi
+                        else
+                          render 'product-grid-item--onboarding', placeholder_index: forloop.index, index: forloop.index, animation_anchor: animation_anchor
+                        endif
+                      -%}
                     </div>
 
                   {%- when 'video' -%}
@@ -269,18 +332,35 @@
                       assign video_id = block.settings.video_link.id
                       assign video_link = block.settings.video_link
                       assign background_video = block.settings.video_link_bg
+                      assign text = block.settings.video_text
+                      assign video_size = block.settings.video_size
+
+                      capture video_class
+                        echo 'brick__video '
+                        echo 'brick__video--' | append: video_size
+
+                        if video_size != 'video-fit'
+                          echo ' ' | append: section_height
+
+                          if enable_mobile_height
+                            echo ' ' | append: mobile_height
+                          endif
+                        endif
+                      endcapture
                     -%}
 
-                    <div class="brick__video {{ section_height }}">
+                    <div class="{{ video_class }}">
                       <div class="video-wrapper" data-video-wrapper>
                         {%- render 'video',
                           unique: unique,
                           text_color: text_color,
                           overlay_opacity: overlay_opacity,
                           title: title,
+                          title_highlights: false,
                           heading_size: heading_size,
                           text: text,
                           image: image,
+                          image_sizes: sizes,
                           button_text: button_text,
                           button_link: button_link,
                           button_style: button_style,
@@ -293,7 +373,8 @@
                           animation_delay: animation_delay,
                           background_video: background_video,
                           video_id: video_id,
-                          video_link: video_link
+                          video_link: video_link,
+                          video_size: video_size
                         -%}
                       </div>
                     </div>
@@ -310,21 +391,17 @@
                         {% endif %}>{{ title }}</p>
                     {%- endif -%}
 
-                    <div class="brick__collection"
-                      data-slider="slider-{{ unique }}"
-                      {% if animations_enabled %}
-                        data-aos="fade-up"
-                        data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
-                      {% endif %}>
+                    <div class="brick__collection" data-slider="slider-{{ unique }}">
                       {%- liquid
+                        assign img_width_sm_pgi = 'calc(((100vw - ' | append: mobile_space | append: 'px) * 0.9) - 20px)'
+                        assign sizes_pgi = '(min-width: 1440px) ' | append: img_width_xlg_pgi | append: ', (min-width: 1024px) ' | append: img_width_lg_pgi | append: ', (min-width: 768px) ' | append: img_width_md_pgi | append: ', ' | append: img_width_sm_pgi
                         if collection.products.size > 0
                           for product in collection.products limit: 5
-                            render 'product-grid-item', product: product, index: forloop.index, animation_anchor: animation_anchor, carousel: true
+                            render 'product-grid-item', product: product, index: forloop.index, animation_delay: forloop.index, animation_anchor: animation_anchor, carousel: true, sizes: sizes_pgi
                           endfor
                         else
                           for i in (1..5)
-                            render 'product-grid-item--onboarding', index: forloop.index, animation_anchor: animation_anchor, carousel: true
+                            render 'product-grid-item--onboarding', placeholder_index: forloop.index, index: forloop.index, animation_delay: forloop.index, animation_anchor: animation_anchor, carousel: true
                           endfor
                         endif
                       -%}
@@ -340,7 +417,7 @@
     </div>
   </div>
 </section>
-{%endif%}
+
 {% schema %}
 {
   "name": "Custom content",
@@ -349,7 +426,7 @@
     {
       "type": "select",
       "id": "height",
-      "label": "Section height",
+      "label": "Desktop height",
       "default": "six-fifty-height",
       "options": [
         { "value": "full-height", "label": "Full screen" },
@@ -368,6 +445,33 @@
       ]
     },
     {
+      "type": "checkbox",
+      "id": "enable_mobile_height",
+      "label": "Enable mobile height",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "default": "six-fifty-height-mobile",
+      "options": [
+        { "value": "full-height-mobile", "label": "Full screen" },
+        { "value": "three-quarters-height-mobile", "label": "Three quarters of screen" },
+        { "value": "two-thirds-height-mobile", "label": "Two thirds of screen" },
+        { "value": "one-half-height-mobile", "label": "One half of screen" },
+        { "value": "one-third-height-mobile", "label": "One third of screen" },
+        { "value": "one-fifth-height-mobile", "label": "One fifth of screen" },
+        { "value": "seven-fifty-height-mobile", "label": "750px" },
+        { "value": "six-fifty-height-mobile", "label": "650px" },
+        { "value": "five-fifty-height-mobile", "label": "550px" },
+        { "value": "four-fifty-height-mobile", "label": "450px" },
+        { "value": "three-fifty-height-mobile", "label": "350px" },
+        { "value": "two-fifty-height-mobile", "label": "250px" },
+        { "value": "one-fifty-height-mobile", "label": "150px" }
+      ]
+    },
+    {
       "type": "header",
       "content": "Colors"
     },
@@ -375,6 +479,16 @@
       "type": "color",
       "id": "bg_color",
       "label": "Background"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_blocks",
+      "label": "Reverse block placement",
+      "default": false
     },
     {
       "type": "header",
@@ -521,10 +635,10 @@
             "unit": "%"
           },
           {
-            "type": "textarea",
-            "id": "text",
+            "type": "richtext",
+            "id": "image_text",
             "label": "Text",
-            "default": "Describe in a few words your special products, collection, or brand."
+            "default": "<p>Describe in a few words your special products, collection, or brand.</p>"
           },
           {
             "type": "header",
@@ -533,7 +647,8 @@
           {
             "type": "text",
             "id": "button_text",
-            "label": "Text"
+            "label": "Text",
+            "info": "Leave blank to link entire image"
           },
           {
             "type": "url",
@@ -1012,6 +1127,22 @@
           "default": 10
         },
         {
+          "type": "select",
+          "id": "video_size",
+          "label": "Video container size",
+          "default": "video-cover",
+          "options": [
+            {
+              "value": "video-fit",
+              "label": "Fit"
+            },
+            {
+              "value": "video-cover",
+              "label": "Cover"
+            }
+          ]
+        },
+        {
           "type": "header",
           "content": "Text"
         },
@@ -1038,10 +1169,10 @@
           "default": "Welcome to Palo Alto"
         },
         {
-          "type": "textarea",
-          "id": "text",
+          "type": "richtext",
+          "id": "video_text",
           "label": "Text",
-          "default": "This text helps you provide some more detail to the title above."
+          "default": "<p>This text helps you provide some more detail to the title above.</p>"
         },
         {
           "type": "range",

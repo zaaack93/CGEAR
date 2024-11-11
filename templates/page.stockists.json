@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow": {
@@ -6,16 +15,15 @@
         "slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/georgia-dixon-wuHPFRWtDLI-unsplash.jpg",
+            "image": "shopify://shop_images/georgia-dixon-wuHPFRWtDLI-unsplash.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
             "text_color": "text-light",
             "subheading": "",
-            "title": "Stockists",
             "text": "",
             "button_1_text": "",
-            "button_1_link": "shopify:\/\/collections\/all",
+            "button_1_link": "shopify://collections/all",
             "button_1_color": "btn--white",
             "button_1_style": "btn--solid-border",
             "button_1_size": "btn--medium",
@@ -115,7 +123,7 @@
         "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company.<\/p>",
+            "text": "<p>Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company.</p>",
             "size": 100,
             "heading_highlight_type": "circle",
             "highlight_color": "#3c4147"
@@ -140,45 +148,45 @@
         "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-1": {
           "type": "press",
           "settings": {
-            "text": "<p>SA Parks<\/p>",
+            "text": "<p>SA Parks</p>",
             "link": "",
-            "press_logo": "shopify:\/\/shop_images\/Logo-SA-Parks.jpg",
+            "press_logo": "shopify://shop_images/Logo-SA-Parks.jpg",
             "logo_width": 120
           }
         },
         "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-2": {
           "type": "press",
           "settings": {
-            "text": "<p>CRVA<\/p>",
+            "text": "<p>CRVA</p>",
             "link": "",
-            "press_logo": "shopify:\/\/shop_images\/Logo-CRVA.jpg",
+            "press_logo": "shopify://shop_images/Logo-CRVA.jpg",
             "logo_width": 120
           }
         },
         "206e6594-f448-4f79-a746-a9b25e0336e5": {
           "type": "press",
           "settings": {
-            "text": "<p>Caravanning Industry of Australia.<\/p>",
+            "text": "<p>Caravanning Industry of Australia.</p>",
             "link": "",
-            "press_logo": "shopify:\/\/shop_images\/Logo-CIA.jpg",
+            "press_logo": "shopify://shop_images/Logo-CIA.jpg",
             "logo_width": 120
           }
         },
         "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-0": {
           "type": "press",
           "settings": {
-            "text": "<p>VIC Parks<\/p>",
+            "text": "<p>VIC Parks</p>",
             "link": "",
-            "press_logo": "shopify:\/\/shop_images\/Logo-VIC-Parks.jpg",
+            "press_logo": "shopify://shop_images/Logo-VIC-Parks.jpg",
             "logo_width": 120
           }
         },
         "7c8369bd-31fe-4f48-b44d-0f32f97f56f1": {
           "type": "press",
           "settings": {
-            "text": "<p>Caravaning QLD<\/p>",
+            "text": "<p>Caravaning QLD</p>",
             "link": "",
-            "press_logo": "shopify:\/\/shop_images\/Logo-Caravan-QLD.jpg",
+            "press_logo": "shopify://shop_images/Logo-Caravan-QLD.jpg",
             "logo_width": 120
           }
         }

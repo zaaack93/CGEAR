@@ -3,38 +3,59 @@
   assign highlight_item = section.settings.highlight_item | downcase | strip_html | escape
   assign highlight_item_color = section.settings.highlight_item_color
   assign mobile_menu_behaviour = settings.mobile_menu_behaviour
-  assign image = section.settings.logo_not_home
--%}
+  assign show_links_images = section.settings.show_images
+  assign links_images_aspect_ratio = section.settings.image_aspect_ratio
+  assign header_text_color = section.settings.header_text_color
+  assign enable_custom_badge = section.settings.enable_custom_badge
 
-{%- capture style -%}
-  {%- if highlight_item_color != 'rgba(0,0,0,0)' and highlight_item_color != '' -%}
-    style="--highlight: {{ highlight_item_color }};"
-  {%- endif -%}
-{%- endcapture -%}
+  capture style
+    if highlight_item_color != 'rgba(0,0,0,0)' and highlight_item_color != ''
+      echo '--highlight: ' | append: highlight_item_color | append: ';'
+
+      if enable_custom_badge
+        assign custom_badge_bg_brightness = highlight_item_color | color_brightness | round
+        echo '--custom-badge-bg-color: ' | append: highlight_item_color | append: ';'
+      endif
+    else
+      if enable_custom_badge
+        assign custom_badge_bg_brightness = header_text_color | color_brightness | round
+        echo '--custom-badge-bg-color: ' | append: header_text_color | append: ';'
+      endif
+    endif
+
+    if enable_custom_badge
+      if custom_badge_bg_brightness > 153
+        echo '--custom-badge-text-color: #000;'
+      else
+        echo '--custom-badge-text-color: #fff;'
+      endif
+    endif
+  endcapture
+-%}
 
 {%- capture logo -%}
   {%- if image != blank -%}
-    <a href="{{ routes.root_url }}" class="drawer__logo">
-      {%- assign image_url_pattern = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-      {%- assign image_widths = "[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048, 2450, 2700, 3000, 3350, 3750, 4100]" -%}
+    {%- liquid
+      assign image_alt = image.alt | escape
+      assign image_height = image_width | divided_by: image.aspect_ratio
+    -%}
+    {%- capture sizes -%}(max-width: {{ image_width | times: 2 }}px) 50vw, {{ image_width }}px{%- endcapture -%}
+    {%- capture widths -%}{{ image_width }}, {{ image_width | times: 1.5 | round }}, {{ image_width | times: 2 }}{%- endcapture -%}
 
-      <img
-        class="drawer__logo-image lazyload"
-        src="{{ image | img_url: 'small' }}"
-        data-src="{{ image_url_pattern }}"
-        data-widths= "{{ image_widths }}"
-        data-aspectratio="{{ image.aspect_ratio }}"
-        data-sizes="auto"
-        height="{{ section.settings.logo_max_width | divided_by: image.aspect_ratio }}px"
-        alt="{{ image.alt | escape }}">
-      <noscript>
-        <img src="{{ image | img_url: '512x' }}" alt="{{ image.alt | escape }}">
-      </noscript>
+    <a href="{{ routes.root_url }}" class="drawer__logo">
+      {{ image | image_url: width: 500 | image_tag:
+        widths: widths,
+        height: image_height,
+        width: image_width,
+        alt: image_alt,
+        sizes: sizes,
+        class: 'drawer__logo-image'
+      }}
     </a>
   {%- endif -%}
 {%- endcapture -%}
 
-<div id="nav-drawer" class="drawer drawer--right drawer--nav cv-h" role="navigation" {{ style }} data-drawer>
+<div id="nav-drawer" class="drawer drawer--left drawer--nav cv-h" role="navigation" data-drawer{% if style != '' %} style="{{ style }}"{% endif %}>
   <div class="drawer__header">
     {%- if logo != blank -%}
       <div class="drawer__title">{{ logo }}</div>
@@ -47,76 +68,13 @@
   </div>
 
   {%- comment -%} Mobile Navigation {%- endcomment -%}
-  <ul class="mobile-nav mobile-nav--weight-{{ settings.nav_font_weight }}">
+  <ul class="mobile-nav mobile-nav--weight-{{ settings.nav_font_weight }}{% unless settings.nav_caps_letter_spacing %} letter-spacing-nav{% endunless %}">
     {%- for link in linklists[section.settings.main-menu].links -%}
-      {%- assign link_title = link.title | strip_html | escape -%}
-      {%- assign link_title_lowercase = link.title | downcase | strip_html | escape -%}
-      {%- if link.links != blank -%}
-        <li class="mobile-menu__item mobile-menu__item--level-1 mobile-menu__item--has-items{% if link.active %} mobile-menu__item--active{% endif %}" aria-haspopup="true">
-          <a href="{{ link.url }}" class="mobile-navlink mobile-navlink--level-1{% if mobile_menu_behaviour == 'trigger' %} mobile-navlink--trigger{% endif %}{% if highlight_item == link_title_lowercase %} mobile-navlink--highlight{% endif %}" data-nav-link-mobile>
-            {{- link_title -}}
-          </a>
-          <button type="button" class="mobile-nav__trigger mobile-nav__trigger--level-1" aria-controls="MobileNav--{{ link.handle }}-{{ forloop.index0 }}" data-collapsible-trigger>
-            {%- render 'icon-toggle-plus' -%}
-            {%- render 'icon-toggle-minus' -%}
-            <span class="fallback-text">{{ 'layout.navigation.see_more' | t }}</span>
-          </button>
-          <div class="mobile-dropdown" id="MobileNav--{{ link.handle }}-{{ forloop.index0 }}" data-collapsible-container>
-            <ul class="mobile-nav__sublist{% if sub_link.levels == 1 %} mobile-nav__sublist--has-items{% endif %}" data-collapsible-content>
-              {%- for sub_link in link.links -%}
-                {%- assign link_title = sub_link.title | strip_html | escape -%}
-                {%- assign link_title_lowercase = sub_link.title | downcase | strip_html | escape -%}
+      {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
+    {%- endfor -%}
 
-                {%- capture link_image_markup -%}
-                  {%- render 'header-link-image' with enable: section.settings.show_images, link: sub_link, aspect_ratio: section.settings.image_aspect_ratio -%}
-                {%- endcapture -%}
-
-                <li class="mobile-menu__item mobile-menu__item--level-2{% if sub_link.levels == 1 %} mobile-menu__item--has-items{% endif %}{% if sub_link.active %} mobile-menu__item--active{% endif %}" {% if sub_link.levels == 1 %}aria-haspopup="true"{% endif %}>
-                  <a href="{{ sub_link.url }}" class="mobile-navlink mobile-navlink--level-2{% if link_image_markup != blank %} mobile-navlink--image{% endif %}{% if sub_link.levels == 1 and mobile_menu_behaviour == 'trigger' %} mobile-navlink--trigger{% endif %}{% if highlight_item == link_title_lowercase %} mobile-navlink--highlight{% endif %}" data-nav-link-mobile>
-                    {%- if link_image_markup != blank -%}
-                      <div class="mobile-navlink__image">
-                        {{- link_image_markup -}}
-                      </div>
-                    {%- endif -%}
-
-                    <span>{{- link_title -}}</span>
-                  </a>
-
-                  {%- if sub_link.levels == 1 -%}
-                    <button type="button" class="mobile-nav__trigger mobile-nav__trigger--level-2" aria-controls="MobileNav--{{ link.handle }}-{{ sub_link.handle }}-{{ forloop.index0 }}" data-collapsible-trigger>
-                      {%- render 'icon-toggle-plus' -%}
-                      {%- render 'icon-toggle-minus' -%}
-                      <span class="fallback-text">{{ 'layout.navigation.see_more' | t }}</span>
-                    </button>
-                  {%- endif -%}
-
-                  {%- if sub_link.levels == 1 -%}
-                    <div class="mobile-dropdown" id="MobileNav--{{ link.handle }}-{{ sub_link.handle }}-{{ forloop.index0 }}" data-collapsible-container>
-                      <ul class="mobile-nav__sub-sublist" data-collapsible-content>
-                        {%- for sub_sub_link in sub_link.links -%}
-                          {%- assign link_title = sub_sub_link.title | strip_html | escape -%}
-                          {%- assign link_title_lowercase = sub_sub_link.title | downcase | strip_html | escape -%}
-                          <li class="mobile-menu__item mobile-menu__item--level-3{% if sub_sub_link.active %} mobile-menu__item--active{% endif %}">
-                            <a href="{{ sub_sub_link.url }}" class="mobile-navlink mobile-navlink--level-3{% if highlight_item == link_title_lowercase %} mobile-navlink--highlight{% endif %}">
-                              {{- link_title -}}
-                            </a>
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </div>
-                  {%- endif -%}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
-        </li>
-      {%- else -%}
-        <li class="mobile-menu__item mobile-menu__item--level-1{% if link.active %} mobile-menu__item--active{% endif %}">
-          <a href="{{ link.url }}" class="mobile-navlink mobile-navlink--level-1{% if highlight_item == link_title_lowercase %} mobile-navlink--highlight{% endif %}">
-            {{ link_title }}
-          </a>
-        </li>
-      {%- endif -%}
+    {%- for link in linklists[section.settings.main_menu_secondary].links -%}
+      {%- render 'nav-item-mobile', link: link, mobile_menu_behaviour: mobile_menu_behaviour, show_links_images: show_links_images, links_images_aspect_ratio: links_images_aspect_ratio, index: forloop.index0, highlight_item: highlight_item -%}
     {%- endfor -%}
   </ul>
 

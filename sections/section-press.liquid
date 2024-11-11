@@ -4,14 +4,13 @@
   assign section_width = section.settings.width
   assign heading = section.settings.title
   assign show_quotations = section.settings.show_quotations
+  assign show_rounded_corners = section.settings.show_rounded_corners
+  assign autoplay = section.settings.autoplay
+  assign duration = section.settings.duration | times: 1000
   assign bg_color_secondary = section.settings.bg_color_secondary
   assign blocks_count = section.blocks.size
-
-  assign text_size = settings.text_size
-  assign quotes_shift_multiplier = 5
-  if text_size > 100
-    assign quotes_shift_multiplier = 8
-  endif
+  assign logo_opacity_default = section.settings.logo_opacity | default: 100
+  assign logo_opacity = logo_opacity_default | times: 0.01
 
   assign block_link = section.blocks | map: 'settings' | where: 'link', null
   assign block_text = section.blocks | map: 'settings' | where: 'text', ''
@@ -27,10 +26,6 @@
   if block_link.size == 0
     assign no_links = true
   endif
-
-  capture quotes_styles
-    echo 'transform: translateY(calc(10% * (' | append: quotes_shift_multiplier | append: ' * 0.833)));'
-  endcapture
 
   assign id = 'Press--' | append: section.id
   assign selector_id = '#' | append: id
@@ -56,13 +51,17 @@
   {{ selector_id }} {
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
+
+    --logo-opacity: {{ logo_opacity }};
   }
 {%- endstyle -%}
 
 <section id="{{ id }}"
   class="{{ section_classes }}"
   data-section-id="{{ section.id }}"
-  data-section-type="press">
+  data-section-type="press"
+  data-autoplay="{{ autoplay }}"
+  data-duration="{{ duration }}">
   <div class="{{ section_width }}">
     {%- unless heading == blank -%}
       <h4 class="press__heading subheading-text"
@@ -84,7 +83,7 @@
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
         data-aos-delay="{{ animation_delay }}"
-        {%- assign animation_delay = animation_delay | plus: 150 -%}
+        {%- assign animation_delay = animation_delay | plus: 250 -%}
       {% endif %}>
       {%- for block in section.blocks -%}
         {%- liquid
@@ -104,9 +103,7 @@
               <div class="{{ section_width }}">
                 <div class="press__item__content">
                   {%- if show_quotations -%}
-                    <span class="press__quote press__quote--open">
-                      <span class="press__quote-inner" style="{{ quotes_styles }}">“</span>
-                    </span>
+                    <span class="press__quote"></span>
                   {%- endif -%}
                   {%- if link != blank and has_nested_links == false -%}
                     <a href="{{ link }}" aria-label="{{ 'homepage.onboarding.press.read_more' | t }}"{% if forloop.index > 1 %} tabindex="-1"{% endif %}>{{ text }}</a>
@@ -119,11 +116,6 @@
                   {%- else -%}
                     {{- text -}}
                   {%- endif -%}
-                  {%- if show_quotations -%}
-                    <span class="press__quote press__quote--close">
-                      <span class="press__quote-inner" style="{{ quotes_styles }}">”</span>
-                    </span>
-                  {%- endif -%}
                 </div>
               </div>
             </div>
@@ -132,7 +124,7 @@
       {%- endfor -%}
     </div>
 
-    <div class="press__logos press__logos--{{ blocks_count }}{% if no_text %} press__logos--no-text{% endif %}"
+    <div class="press__logos press__logos--{{ blocks_count }}{% if no_text %} press__logos--no-text{% endif %}{% if show_rounded_corners %} press__logos--rounded-corners{% endif %}"
       {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
@@ -141,6 +133,7 @@
       <div class="press__logos-slider" data-logo-slider>
         {%- for block in section.blocks -%}
           {%- liquid
+            assign text = block.settings.text
             assign image = block.settings.press_logo
             assign image_width = block.settings.logo_width
             assign retina_size = image_width | times: 2
@@ -148,24 +141,21 @@
 
             unless image == blank
               assign image_height = image_width | divided_by: image.aspect_ratio
-              assign image_widths = '40, 60, 80, 100, 120, 140, 160, 180, 200 240 280 320 360'
+              assign image_widths = image_width | append: ', ' | append: retina_size
+              assign sizes = image_width | append: 'px'
             endunless
           -%}
 
-          <div class="press__logos-slide" data-logo-slide data-logo-index="{{ forloop.index0 }}" tabindex="0">
+          <div class="press__logos-slide{% if text != blank %} has-text{% endif %}" data-logo-slide data-logo-index="{{ forloop.index0 }}">
             <div class="press__logo" style="--image-width: {{ image_width }}px; --image-height: {{ image_height }}px;">
-              {%- unless image == blank -%}
-                {%- render 'image',
-                  image: image,
-                  width: retina_size,
-                  widths: image_widths,
-                  sizes: 'auto',
-                  classes: 'press__logo-image' -%}
-              {%- else -%}
-                <div class="press__logo-image press__logo-image--placeholder placeholder-svg--overlayed" style="width: {{ image_width | append: 'px' }}" data-thumbnail-id="{{ section.id }}-{{ media.id }}">
-                  {{- 'logo' | placeholder_svg_tag: 'placeholder-svg-filled' -}}
-                </div>
-              {%- endunless -%}
+              {%- liquid
+                assign image_class = 'press__logo-image lazy-image__simple'
+                unless image != blank
+                  assign image_class = image_class | append: ' press__logo-image--placeholder'
+                endunless
+
+                render 'image', image: image, width: retina_size, widths: image_widths, sizes: sizes, classes: image_class, placeholder_svg: 'logo', placeholder_svg_tag: 'placeholder-svg', cover: false
+              -%}
             </div>
           </div>
         {%- endfor -%}
@@ -179,26 +169,19 @@
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
         data-aos-delay="{{ animation_delay }}"
-        {%- assign animation_delay = animation_delay | plus: 150 -%}
+        {%- assign animation_delay = animation_delay | plus: 250 -%}
       {% endif %}>
       {%- for i in (1..4) -%}
-        <div class="press__item{% if show_quotations %} press__item--quotes{% endif %}" {{ block.shopify_attributes }}>
+        <div class="press__item{% if show_quotations %} press__item--quotes{% endif %}">
           <div class="press__item__inner">
             <div class="{{ section_width }}">
               <div class="press__item__content">
                 {%- if show_quotations -%}
-                  <span class="press__quote press__quote--open">
-                    <span class="press__quote-inner" style="{{ quotes_styles }}">“</span>
-                  </span>
+                  <span class="press__quote"></span>
                 {%- endif -%}
 
                 {{- 'homepage.onboarding.press.text' | t -}}
 
-                {%- if show_quotations -%}
-                  <span class="press__quote press__quote--close">
-                    <span class="press__quote-inner" style="{{ quotes_styles }}">”</span>
-                  </span>
-                {%- endif -%}
               </div>
             </div>
           </div>
@@ -217,9 +200,8 @@
         {%- for i in (1..4) -%}
           <div class="press__logos-slide" data-logo-slide>
             <div class="press__logo">
-              {%- capture counter -%}{%- cycle 1, 2, 3, 4 -%}{%- endcapture -%}
-              <div class="press__logo-image press__logo-image--placeholder placeholder-svg--overlayed" style="width: {{ block.settings.logo_width | append: 'px' }}">
-                {{- 'product-' | append: counter | placeholder_svg_tag: 'placeholder-svg-filled' -}}
+              <div class="press__logo-image press__logo-image--placeholder">
+                {{- 'logo' | placeholder_svg_tag: 'placeholder-svg' -}}
               </div>
             </div>
           </div>
@@ -246,6 +228,42 @@
       "id": "show_quotations",
       "label": "Show quotations",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rounded_corners",
+      "label": "Show rounded corners",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "Inactive logo opacity",
+      "unit": "%",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "default":50
+    },
+    {
+      "type": "header",
+      "content": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay slideshow",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "duration",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change slides every",
+      "default": 4
     },
     {
       "type": "header",
@@ -321,7 +339,7 @@
           "label": "Custom logo width (in pixels)",
           "min": 40,
           "max": 180,
-          "default": 120,
+          "default": 70,
           "step": 10,
           "unit":"px"
         }

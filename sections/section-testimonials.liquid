@@ -1,113 +1,26 @@
 <!-- /sections/testimonials.liquid -->
-{%- liquid
-  assign section_width = section.settings.width
-  assign total_blocks = section.blocks.size
-  assign bg_color = section.settings.bg_color
-  assign text_size = section.settings.text_size | times: 0.01
-  assign animations_enabled = settings.animations_enabled
-  assign animation_anchor = '#Testimonials--' | append: section.id
-  assign animation_delay = 150
-  assign block_bg = section.settings.testimonial_block_color
-  assign block_color = section.settings.testimonial_text_color
--%}
 
-{%- style -%}
-  #Testimonials--{{ section.id }} {
-    --PT: {{ section.settings.padding_top }}px;
-    --PB: {{ section.settings.padding_bottom }}px;
-    {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
-    background: {{ bg_color }};
-    {%- endif -%}
-  }
-  #Testimonials--{{ section.id }} .testimonial__text { --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }}); }
-  {%- if text_size > 1.5 -%}
-    @media screen and (max-width: 480px) { #Testimonials--{{ section.id }} .testimonial__text {font-size: 12px; }}
-  {%- endif -%}
-{%- endstyle -%}
-
-<section id="Testimonials--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="testimonials" class="section-padding testimonials-section has-quotes">
-  <div class="{{ section_width }}">
-    {%- if section.settings.title != blank -%}
-      <div class="section__header {{ section.settings.text_alignment }}">
-        <h2 class="section__heading h2"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-          {% endif %}
-        >{{ section.settings.title | escape }}</h2>
-
-        {%- if settings.show_spacer_lines -%}
-          <hr class="section__heading-line"{% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
-    <div class="testimonials__wrapper">
-      <div class="testimonials__slider testimonials__slider--{{ section.settings.text_alignment }} testimonials__slider--blocks-{{ total_blocks }}" data-slider>
-
-        {%- if total_blocks > 0 -%}
-          {%- for block in section.blocks -%}
-            {%- liquid
-              assign star_rating = block.settings.star_rating
-              assign text_size = block.settings.text_size | times: 0.01
-              assign percent = star_rating | divided_by: 5.0 | times: 100
-              assign animation_delay = animation_delay | plus: 150
-            -%}
-
-            {%- case block.type -%}
-
-              {%- when 'testimonial' -%}
-                {%- render 'testimonial-item',
-                  block_shopify_attributes: block.shopify_attributes,
-                  block_id: block.id,
-                  block_bg: block_bg,
-                  block_color: block_color,
-                  customer_name: block.settings.customer_name,
-                  subheading: block.settings.subheading,
-                  text: block.settings.text,
-                  star_rating: star_rating,
-                  percent: percent,
-                  animations_enabled: animations_enabled,
-                  animation_anchor: animation_anchor,
-                  animation_delay: animation_delay,
-                -%}
-
-              {%- when 'text' -%}
-                {%- render 'testimonial-text',
-                  block_shopify_attributes: block.shopify_attributes,
-                  block_id: block.id,
-                  heading: block.settings.heading,
-                  subheading: block.settings.subheading,
-                  block_color: block.settings.block_color,
-                  text_color: block.settings.text_color,
-                  text_size: text_size,
-                  text_alignment: block.settings.text_alignment,
-                  percent: percent,
-                  animations_enabled: animations_enabled,
-                  animation_anchor: animation_anchor,
-                  animation_delay: animation_delay,
-                -%}
-
-            {%- endcase -%}
-          {%- endfor -%}
-        {%- else -%}
-          {%- render 'no-blocks' -%}
-        {%- endif -%}
-      </div>
-    </div>
-  </div>
-</section>
+{%- render 'testimonials' -%}
 
 {% schema %}
 {
   "name": "Testimonials",
   "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading size",
+      "default": 100,
+      "min": 100,
+      "max": 200,
+      "step": 5,
+      "unit": "%"
+    },
     {
       "type": "text",
       "id": "title",
@@ -116,7 +29,7 @@
     },
     {
       "type": "range",
-      "id": "text_size",
+      "id": "heading_size",
       "label": "Heading size",
       "default": 100,
       "min": 100,
@@ -136,10 +49,6 @@
     },
     {
       "type": "header",
-      "content": "Layout"
-    },
-    {
-      "type": "header",
       "content": "Colors"
     },
     {
@@ -151,6 +60,11 @@
       "type": "color",
       "id": "testimonial_block_color",
       "label": "Block background"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color"
     },
     {
       "type": "select",
@@ -219,6 +133,28 @@
           "info": "Set 0 to hide stars"
         },
         {
+          "type": "checkbox",
+          "id": "enable_border",
+          "label": "Enable border",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Love it!"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Heading size",
+          "default": 125,
+          "min": 100,
+          "max": 200,
+          "step": 5,
+          "unit": "%"
+        },
+        {
           "type": "richtext",
           "id": "text",
           "label": "Testimonial",
@@ -243,6 +179,22 @@
       "name": "Text",
       "limit": 1,
       "settings": [
+        {
+          "type": "range",
+          "id": "star_rating",
+          "label": "Review star rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "info": "Set 0 to hide stars"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_border",
+          "label": "Enable border",
+          "default": true
+        },
         {
           "type": "textarea",
           "id": "heading",
@@ -318,7 +270,7 @@
           "type": "testimonial",
           "settings": {
             "customer_name": "John Edmonson",
-             "text": "<p>Excellent customer service. I love their products!<\/p>",
+            "text": "<p>Excellent customer service. I love their products!<\/p>",
             "subheading": "<p>Happy customer</p>"
           }
         },

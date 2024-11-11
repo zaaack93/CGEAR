@@ -27,7 +27,7 @@
       assign paginator = 9
     else
       assign article_width = 'blog__post--four-col'
-      assign paginator = 15
+      assign paginator = 12
   endcase
 
   if columns > 1
@@ -50,14 +50,40 @@
   endif
 
   if blog_style == 'photo'
-    assign blog_style = 'blog--photo'
+    assign blog_style_class = 'blog--photo'
   else
-    assign blog_style = 'blog--standard'
+    assign blog_style_class = 'blog--standard'
   endif
 
   assign animations_enabled = settings.animations_enabled
   assign animation_anchor = '#BlogPosts--' | append: section.id
   assign animation_delay = 150
+
+  comment
+    Images sizes
+  endcomment
+  assign blocks_gaps = columns | minus: 1
+  assign gaps_calc = 20 | times: blocks_gaps | append: 'px'
+
+  # Desktop widths
+  if columns > 1
+    assign wrapper_width_lg = '(1440px - 120px)'
+  else
+    assign wrapper_width_lg = '(840px - 120px)'
+  endif
+  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gaps_calc | append: ') / ' | append: columns | append: ')'
+  # Tablet widths
+  assign wrapper_width_md = '(100vw - 2 * 20px)'
+  assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - 2 * 20px) / 3)'
+  if columns == 1
+    assign img_width_md = 'min(800px, (' | append: wrapper_width_md | append: ' - 20px)'
+  elsif columns == 2
+    assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - 20px) / 2)'
+  endif
+  # Mobile widths
+  assign img_width_sm = 'calc(' | append: wrapper_width_md | append: ')'
+
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
@@ -66,13 +92,13 @@
     --PB: {{ section.settings.padding_bottom }}px;
   }
 
-  .blog .blog__post-image {
+  .blog .blog__post-image-link {
     --image-height: {{ section.settings.image_aspect_ratio | times: 100 }}%;
   }
 {%- endstyle -%}
 
 <section id="BlogPosts--{{ section.id }}"
-  class="blog {{ blog_style }} section-padding{% if bg_color_secondary %} bg-secondary{% endif %}"
+  class="blog {{ blog_style_class }} section-padding{% if bg_color_secondary %} bg-secondary{% endif %}"
   data-section-type="blog-posts"
   data-section-id="{{ section.id }}">
   <div class="{{ wrapper }}">
@@ -138,13 +164,15 @@
 
   {%- paginate blog.articles by paginator -%}
     <div class="{{ wrapper }}">
-      <div class="blog__post {{ article_width }}"{% if enable_infinity_scroll %} id="AjaxinateLoop"{% endif %}>
+      <div class="blog__post {{ article_width }}"{% if enable_infinity_scroll %} id="AjaxinateLoop" data-ajaxinate-id="{{ section.id }}"{% endif %}>
         {%- comment -%}
           Loop through each article.
         {%- endcomment -%}
         {%- for article in blog.articles -%}
           {%- render 'blog-post-grid-item',
             article: article,
+            article_style: blog_style,
+            img_sizes: sizes,
             animation_delay: animation_delay,
             animation_anchor: animation_anchor,
             default_color: default_color,
@@ -168,7 +196,7 @@
           {%- assign animation_delay = animation_delay | plus: 150 -%}
         {% endif %}>
         {%- if enable_infinity_scroll -%}
-          <div class="pagination pagination--infinite" id="AjaxinatePagination">
+          <div class="pagination pagination--infinite" id="AjaxinatePagination" data-ajaxinate-id="{{ section.id }}">
             {%- if paginate.next -%}
               <div class="pagination__loading">
                 <a href="{{ paginate.next.url }}"></a>

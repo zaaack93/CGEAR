@@ -1,4 +1,4 @@
-<div class="{{ quickview_form_classes | append: ' popup-quick-view__form--onboarding' }}">
+<div class="{{ quickview_form_classes | append: ' popup-quick-view__form--onboarding' }}" data-quick-view-focus>
   <div class="popup-quick-view__wrapper product__form__wrapper{{ hide_labels_class }}" data-scroll-lock-scrollable>
     <div class="popup-quick-view__body" data-scroll-lock-scrollable>
       {%- if quick_view_nav != '' -%}
@@ -11,22 +11,35 @@
             {%- render 'icon-close' -%}
           </a>
 
-          <h1 class="popup-quick-view__title">
+          <h1 class="popup-quick-view__title"{% if title_style != blank %}{{ title_style }}{% endif %}>
             <a href="{{ product_url }}" title="{{ product_title }}">{{ product_title }}</a>
-          </h1>{%- assign currency_code_enable = settings.currency_code_enable -%}
+          </h1>{%- liquid
+  assign currency_code_enable = settings.currency_code_enable
+
+  if price_size != 1
+    capture price_style
+      echo ' style="'
+      echo '--adjust-body-desktop: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size | append: ');'
+      if price_size_mobile != blank
+        echo ' --adjust-body-mobile: calc(var(--FONT-ADJUST-BODY) * ' | append: price_size_mobile | append: ');'
+      endif
+      echo '"'
+    endcapture
+  endif
+-%}
 
 <div class="product__block product__price-and-badge"
   {% if animations_enabled %}
-    data-aos="fade-up"
+    data-aos="hero"
     data-aos-anchor="{{ animation_anchor }}"
-    data-aos-delay="{{ animation_delay }}"
-    {%- assign animation_delay = animation_delay | plus: 150 -%}
+    data-aos-order="{{ animation_order }}"
+    {%- assign animation_order = animation_order | plus: 1 -%}
   {% endif %}
   {{ block_style }}>
-  <div class="product__price-and-rating">
-    <div class="product__price" data-price-wrapper>
+  <div class="product__price-wrapper">
+    <div class="product__price" data-price-wrapper{% if price_style != blank %}{{ price_style }}{% endif %}>
       {%- unless product == blank -%}
-        <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}">
+        <span data-product-price class="product__price--regular{% if current_variant.compare_at_price > current_variant.price %} product__price--sale{% endif %}{% if bold_price %} product__price--bold{% endif %}">
           {%- liquid
             if current_variant.price == 0
               echo 'products.product.free' | t
@@ -38,7 +51,7 @@
           -%}
         </span>
       {%- else -%}
-        <span id="ProductPrice">
+        <span id="ProductPrice" class="product__price--regular{% if bold_price %} product__price--bold{% endif %}">
           {%- liquid
             if currency_code_enable
               echo 1999 | money_with_currency
@@ -49,7 +62,7 @@
         </span>
       {%- endunless -%}
 
-      <s data-compare-price class="product__price--compare">
+      <s data-compare-price class="product__price--compare{% if bold_price %} product__price--bold{% endif %}">
         {%- liquid
           if current_variant.compare_at_price
             if currency_code_enable
@@ -103,26 +116,18 @@
       {% if section_type != 'quickview' %}
         <span data-price-off class="product__price--off hidden">
           <span data-price-off-type>{{ 'products.product.sale' | t }}</span>
-          <em>•</em>
+          <em>&bull;</em>
           {{ 'products.product.save' | t }}
           <span data-price-off-amount></span>
         </span>
       {% endif %}
     </div>
-
-    {%- if block.settings.show_rating or settings.show_rating and section_type == 'quickview' -%}
-      {%- unless product == blank -%}
-        {%- render 'rating', show_rating_count: block.settings.show_rating_count, single_star: true, reviews: product.metafields.reviews -%}
-      {%- else -%}
-        {%- render 'rating', show_rating_count: block.settings.show_rating_count, single_star: true, onboarding: true -%}
-      {%- endunless -%}
-    {%- endif -%}
   </div>
 
   {% if section_type == 'quickview' %}
     <span data-price-off class="product__price--off hidden">
       <span data-price-off-type>{{ 'products.product.sale' | t }}</span>
-      <em>•</em>
+      <em>&bull;</em>
       {{ 'products.product.save' | t }}
       <span data-price-off-amount></span>
     </span>
@@ -137,7 +142,7 @@
       <div>
         {%- comment -%} Product Form Variants {%- endcomment -%}
         {%- liquid
-          assign enable_color_swatches = settings.enable_color_swatches_product
+          assign color_swatches_type = settings.color_swatches_type
           assign variants_style = settings.variants_style
 
           assign enable_variant_boxes = false
@@ -145,21 +150,28 @@
             assign enable_variant_boxes = true
           endif
 
-          capture selector_wrapper_class
+          capture selector_wrapper_class_swatches
             echo 'selector-wrapper'
             if enable_variant_boxes
               echo ' selector-wrapper--boxes'
             endif
-
-            if enable_color_swatches
+            if color_swatches_type != 'disabled'
               echo ' selector-wrapper--swatches'
+            endif
+          endcapture
+
+          capture selector_wrapper_class
+            echo 'selector-wrapper'
+            echo ' selector-wrapper--grid'
+            if enable_variant_boxes
+              echo ' selector-wrapper--boxes'
             endif
           endcapture
         -%}
 
         {%- capture form_fields -%}
           <div class="product__selectors">
-            <div class="{{ selector_wrapper_class }}"
+            <div class="{{ selector_wrapper_class_swatches }}"
               data-option-position="1"
               {% if animations_enabled %}
                 data-aos="fade-up"
@@ -167,13 +179,13 @@
                 data-aos-delay="{{ animation_delay }}"
                 {%- assign animation_delay = animation_delay | plus: 150 -%}
               {% endif %}>
-              {%- if enable_variant_boxes or enable_color_swatches -%}
-                <fieldset class="radio__fieldset">
+              {%- if enable_variant_boxes or color_swatches_type != 'disabled' -%}
+                <fieldset class="radio__fieldset radio__fieldset--{{ settings.color_swatches_product_style }}">
                   <legend class="radio__legend">
-                    <span class="radio__legend__label">{{- 'homepage.onboarding.color' | t -}}</span>
+                    <span class="radio__legend__label label-typography">{{- 'homepage.onboarding.color' | t -}}</span>
                   </legend>
 
-                  {%- if enable_color_swatches -%}
+                  {%- if color_swatches_type != 'disabled' -%}
                     {%- for i in (1..3) -%}
                       {%- capture value -%}{%- cycle 'White', 'Grey', 'Black' -%}{%- endcapture -%}
                       <span class="swatch__button swatch__button--{{ settings.color_swatches_product_style }}">
@@ -187,9 +199,7 @@
                           {% if forloop.index == 1 %}checked{% endif %}>
                         <label for="option-{{ value }}-0-{{ unique }}" class="swatch__label" data-swatch="{{ value | escape_once }}" data-tooltip="{{ value | escape_once | capitalize }}">
                           <span class="visually-hidden">{{ value | escape_once }}</span>
-                          {%- if settings.color_swatches_product_style == 'circle' -%}
-                            <span class="icon icon-check"></span>
-                          {%- endif -%}
+                          <span class="icon icon-check"></span>
                         </label>
                       </span>
                     {%- endfor -%}
@@ -216,7 +226,7 @@
               {%- else -%}
                 <div class="select__fieldset">
                   <span class="radio__legend">
-                    <span class="radio__legend__label" id="onboarding-{{ unique }}-option-0-label">{{- 'homepage.onboarding.color' | t -}}</span>
+                    <span class="radio__legend__label label-typography" id="onboarding-{{ unique }}-option-0-label">{{- 'homepage.onboarding.color' | t -}}</span>
                   </span>
 
                   <div class="select-popout" data-popout data-popout-prevent="true">
@@ -226,7 +236,7 @@
                     </button>
 
                     <div id="onboarding-{{ unique }}-option-0-list" class="select-popout__list" data-popout-list>
-                      <ul class="select-popout__list__scroll">
+                      <ul class="select-popout__list__scroll" data-scroll-lock-scrollable>
                         {%- for i in (1..3) -%}
                           {%- capture value -%}{%- cycle 'White', 'Grey', 'Black' -%}{%- endcapture -%}
                           <li class="select-popout__item{% if forloop.index == 1 %} select-popout__item--current{% endif %}">
@@ -246,6 +256,7 @@
             </div>
 
             <div class="{{ selector_wrapper_class }}"
+              data-selector-wrapper
               data-option-position="2"
               {% if animations_enabled %}
                 data-aos="fade-up"
@@ -256,7 +267,7 @@
               {%- if enable_variant_boxes -%}
                 <fieldset class="radio__fieldset">
                   <legend class="radio__legend">
-                    <span class="radio__legend__label">{{- 'homepage.onboarding.size' | t -}}</span>
+                    <span class="radio__legend__label label-typography">{{- 'homepage.onboarding.size' | t -}}</span>
                   </legend>
 
                   {%- for i in (1..3) -%}
@@ -280,7 +291,7 @@
               {%- else -%}
                 <div class="select__fieldset">
                   <span class="radio__legend">
-                    <span class="radio__legend__label" id="onboarding-{{ unique }}-option-1-label">{{- 'homepage.onboarding.size' | t -}}</span>
+                    <span class="radio__legend__label label-typography" id="onboarding-{{ unique }}-option-1-label">{{- 'homepage.onboarding.size' | t -}}</span>
                   </span>
 
                   <div class="select-popout" data-popout data-popout-prevent="true">
@@ -290,7 +301,7 @@
                     </button>
 
                     <div id="onboarding-{{ unique }}-option-1-list" class="select-popout__list" data-popout-list>
-                      <ul class="select-popout__list__scroll">
+                      <ul class="select-popout__list__scroll" data-scroll-lock-scrollable>
                         {%- for i in (1..3) -%}
                           {%- capture value -%}{%- cycle 'Small', 'Medium', 'Large' -%}{%- endcapture -%}
                           <li class="select-popout__item{% if forloop.index == 1 %} select-popout__item--current{% endif %}">
@@ -317,26 +328,35 @@
       </div>
     </div>
 
-    <div class="popup-quick-view__foot">
+    <div class="popup-quick-view__foot" data-quick-view-foot>
       <div class="popup-quick-view__foot__inner" data-quick-view-foot-inner>
         {%- comment -%} Product Form Buttons {%- endcomment -%}
         <div class="product__submit__holder">
           <div class="product__submit__buttons">
-            <div class="product__submit__item"
-              {% if animations_enabled %}
-                data-aos="fade-up"
-                data-aos-anchor="{{ animation_anchor }}"
-                data-aos-delay="{{ animation_delay }}"
-                {%- assign animation_delay = animation_delay | plus: 150 -%}
-              {% endif %}>
+            <div class="product__submit__item">
               <button type="button" class="btn {{ atc_button_color }} {{ atc_button_style }} btn--large btn--submit product__submit__add">
-                <span>{{ 'products.product.add_to_cart' | t }}</span>
+                {{- 'products.product.add_to_cart' | t -}}
+                {%- if settings.atc_show_product_price -%}
+                  <span data-product-price class="product__price--regular">
+                    {%- liquid
+                      if currency_code_enable
+                        echo 1999 | money_with_currency
+                      else
+                        echo 1999 | money
+                      endif
+                    -%}
+                  </span>
+                {%- endif -%}
               </button>
             </div>
           </div>
         </div>
 
         <a class="popup-quick-view__view-button popup-quick-view__view-button--desktop" href="{{ product_url }}">{{ 'products.general.view_all_details' | t }}</a>
+
+        {%- if show_free_shipping_message -%}
+          {%- render 'cart-empty-message' -%}
+        {%- endif -%}
       </div>
     </div>
   </div>

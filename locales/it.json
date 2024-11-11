@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "ie11_support_message": "Questo sito ha un supporto limitato per il tuo browser. Consigliamo di passare a Edge, Chrome, Safari o Firefox.",
@@ -6,7 +15,12 @@
       "color_variant": "variante colore",
       "more_colors": "+ altri {{ number }}"
     },
+    "siblings": {
+      "label": "Colore",
+      "swatches": "Colore"
+    },
     "size_chart": {
+      "button": "Guida alle taglie",
       "size": "Dimensione"
     },
     "accessibility": {
@@ -33,12 +47,11 @@
       "logo_image": "Immagine logo",
       "unit_price_separator": "per",
       "my_account": "Il mio account",
-      "total_reviews": "recensioni totali",
       "view": "Visualizza",
       "product_image_lightbox": "Apri lightbox dell'immagine",
-      "star_reviews_info": "{{ rating_value }} su {{ rating_max }} stelle",
       "close_form_message": "Chiudi il messaggio di ringraziamento",
-      "scroll_to_top": "Scorri verso l'alto"
+      "scroll_to_top": "Scorri verso l'alto",
+      "quick_tip": "Consiglio rapido"
     },
     "meta": {
       "tags": "Tag utilizzati \"{{ tags }}\"",
@@ -73,7 +86,7 @@
     "search": {
       "title": "Cerca prodotti sul nostro sito",
       "search": "Ricerca",
-      "no_results": "La tua ricerca di \"{{ terms }}\" non ha prodotto alcun risultato.",
+      "no_results": "Nessun risultato per \"{{ terms }}\"",
       "results_for": "Risultati per \"{{ terms }}\"",
       "results_with_count": {
         "one": "{{ count }} risultato",
@@ -97,11 +110,9 @@
       "quick_tip": "Premere Invio",
       "browse_categories": "Sfoglia categorie",
       "popular_searches": "Termini di ricerca suggeriti",
-      "badge": {
-        "blog": "Blog",
-        "page": "Pagina"
-      },
       "products": "Prodotti",
+      "articles": "Blog",
+      "pages": "Pagine",
       "suggestions": "Suggerimenti",
       "pages_and_blogs": "Pagine e post di blog",
       "search_actions": "Azioni di ricerca"
@@ -175,7 +186,7 @@
       "checkout": "Pagamento",
       "empty": "Il tuo carrello è attualmente vuoto.",
       "accept_terms": "Devi accettare i nostri termini e condizioni.",
-      "accepted_terms": "Termini\/condizioni accettati?",
+      "accepted_terms": "Termini/condizioni accettati?",
       "zero_qty_error": "La quantità deve essere maggiore di 0.",
       "limit_error": "Apparentemente non abbiamo scorte sufficienti di questo prodotto.",
       "continue_shopping": "Continua ad acquistare",
@@ -405,6 +416,7 @@
       "single_collection_description": "Dopo aver scelto una raccolta, la sua descrizione comparirà automaticamente qui.",
       "single_collection_products_description": "Una volta scelta una collezione, le descrizioni dei prodotti verranno inserite automaticamente.",
       "no_content": "Al momento questa sezione non include contenuti. Aggiungi contenuto a questa sezione utilizzando la barra laterale.",
+      "no_page_content": "Questa pagina al momento non include alcun contenuto.",
       "slideshow": {
         "heading": "Ti diamo il benvenuto in Palo Alto",
         "subheading": "Questo sottotitolo ti aiuta a fornire altri dettagli sul titolo soprastante.",
@@ -443,6 +455,12 @@
       "press": {
         "text": "Spiega cosa pensa l'azienda di seguito su di te.",
         "read_more": "Leggi altro"
+      },
+      "products_with_image": {
+        "title": "Migliori venditori"
+      },
+      "banner_image": {
+        "title": "Palo Alto"
       }
     }
   },
@@ -482,7 +500,7 @@
       "regular_price": "Prezzo regolare",
       "description": "descrizione",
       "view_all_details": "Visualizza tutti i dettagli",
-      "reviews": "Recensioni",
+      "shop_now": "Acquista ora",
       "filters": "Filtri",
       "filter_by": "Filtra per",
       "reset": "Cancella filtri",
@@ -521,7 +539,10 @@
       "save": "Salva",
       "unit_price_label": "Prezzo unità",
       "popup_missing": "Seleziona la pagina dalle impostazioni del blocco.",
-      "popup_text_missing": "Nessun testo aggiunto nella pagina selezionata"
+      "popup_text_missing": "Nessun testo aggiunto nella pagina selezionata",
+      "show_more": "Mostra di più",
+      "show_less": "Mostra meno",
+      "variant_option_image": "Taglia"
     }
   },
   "gift_cards": {
@@ -538,6 +559,29 @@
       "gift_card": "Buono regalo"
     }
   },
+  "recipient": {
+    "form": {
+      "checkbox": "Voglio inviarlo come regalo",
+      "email_label": "Email destinatario",
+      "email": "Email destinatario",
+      "name_label": "Nome destinatario (facoltativo)",
+      "name": "Nome destinatario (facoltativo)",
+      "message_label": "Messaggio (facoltativo)",
+      "message": "Messaggio (facoltativo)",
+      "max_characters": "Massimo {{ max_chars }} caratteri",
+      "error_heading": "Correggi gli errori seguenti:",
+      "send_on": "AAAA-MM-GG",
+      "send_on_label": "Spedisci il giorno (opzionale)"
+    }
+  },
+  "countdown": {
+    "heading": "Acquista prima che finisca.",
+    "ends": "Finisce",
+    "days": "Giorni",
+    "hours": "Ore",
+    "minutes": "Minuti",
+    "seconds": "Secondi"
+  },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
   },
@@ -546,8 +590,9 @@
       "title": "Visualizza {{ shop_name }} su {{ social }}",
       "rss": "RSS"
     },
-    "currency": "Valuta",
+    "country": "Paese",
     "language": "Lingua",
+    "update": "Aggiornamento",
     "powered_by": "Fornito da"
   },
   "store_availability": {
@@ -566,5 +611,8 @@
     "previous": "Indietro",
     "next": "Avanti",
     "scroll_down": "Scorri verso il basso"
+  },
+  "video": {
+    "play_bg_video": "Riproduci video di sfondo"
   }
 }

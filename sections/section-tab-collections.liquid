@@ -1,79 +1,102 @@
 <!-- /sections/section-tab-collections -->
 {%- liquid
   assign section_width = section.settings.width
+  assign image_aspect_ratio = section.settings.image_aspect_ratio
+  assign type_style = section.settings.type_style
+  assign tab_heading_size = section.settings.tab_heading_size | times: 0.01
   assign columns = settings.products_per_row_on_desktop | plus: 0
+  assign columns_mobile = section.settings.columns_mobile | plus: 0
   assign columns_small = columns | at_most: 2
   assign text_alignment = section.settings.text_alignment
   assign show_buttons = section.settings.show_buttons
+  assign button_position = section.settings.button_position
   assign collection_button_text = section.settings.collection_button_text
   assign collection_button_style = section.settings.collection_button_style
   assign collection_button_color = section.settings.collection_button_color
   assign collection_button_size = section.settings.collection_button_size
   assign bg_color_secondary = section.settings.bg_color_secondary
   assign animations_enabled = settings.animations_enabled
-  assign animation_anchor = '#TabCollections--' | append: section.id
+  assign id = 'TabCollections--' | append: section.id
+  assign selector_id = '#' | append: id
+  assign aos_anchor = selector_id
+  assign aos_anchor_body = '#tabCollectionsBody--' | append: section.id
   assign animation_delay = 150
+
+  capture type_adjustment
+    case type_style
+      when 'font-heading'
+        echo 'var(--adjust-heading)'
+      when 'font-body'
+        echo 'var(--adjust-body)'
+      when 'subheading-text'
+        echo 'var(--adjust-accent)'
+    endcase
+  endcapture
+
+  comment
+    Images sizes
+  endcomment
+  assign gutter_space = columns | minus: 1 | times: 20 | append: 'px'
+
+  assign wrapper_width_xlg = '100vw - 120px'
+  if section_width == 'wrapper'
+    assign wrapper_width_xlg = '1440px - 120px'
+  endif
+  assign wrapper_width_lg = '100vw - 120px'
+  assign wrapper_width_md = '100vw - 40px'
+  assign wrapper_width_sm = wrapper_width_md
+
+  assign img_width_xlg = 'calc((' | append: wrapper_width_xlg | append: ' - ' | append: gutter_space | append: ') / ' | append: columns | append: ')'
+  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - ' | append: gutter_space | append: ') / ' | append: columns | append: ')'
+  assign img_width_md = 'calc(((' | append: wrapper_width_md | append: ') * 0.9 - 20px) / 2)'
+  assign img_width_sm = 'calc(' | append: wrapper_width_sm | append: ' - 20px)'
+
+  assign sizes = '(min-width: 1440px) ' | append: img_width_xlg | append: ', (min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
+
+  # Featured image
+  assign featured_img_width_xlg = 'calc((' | append: wrapper_width_xlg | append: ' - 40px) / 3)'
+  assign featured_img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - 40px) / 3)'
+
+  assign featured_image_sizes = '(min-width: 1440px) ' | append: featured_img_width_xlg | append: ', (min-width: 1024px) ' | append: featured_img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
-  #TabCollections--{{ section.id }} {
+  {{ selector_id }} {
+    --product-media-padding-top: {{ image_aspect_ratio | times: 100 | append: '%' }};
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
   }
 
   @media screen and (min-width: 1024px) {
-    #TabCollections--{{ section.id }} {
+    {{ selector_id }} {
       --grid: repeat({{ columns }}, minmax(0, 1fr));
     }
   }
 
   @media screen and (min-width: 480px) and (max-width: 1023px) {
-    #TabCollections--{{ section.id }} {
+    {{ selector_id }} {
       --grid: repeat({{ columns_small }}, minmax(0, 1fr));
     }
+  }
+
+  {{ section.id }} .tabs__nav { --text-size: calc({{ type_adjustment }} * {{ tab_heading_size }}); }
+
+  @media screen and (max-width: 767px) {
+    {%- if columns_mobile > 1 -%}
+      {{ selector_id }} .carousel--mobile { --item-width-mobile: calc(90% / {{ columns_mobile }} - var(--grid-gutter)); }
+    {%- endif -%}
   }
 {%- endstyle -%}
 
 <section
-  id="TabCollections--{{ section.id }}"
-  class="section-padding tab-collections{% if bg_color_secondary %} bg-secondary{% endif %}"
+  id="{{ id }}"
+  class="section-padding tab-collections{% if bg_color_secondary %} bg-secondary{% endif %}{%- render 'button-fallback-classes', primary_color: collection_button_color, bg_color_secondary: bg_color_secondary -%}"
   data-section-id="{{ section.id }}"
   data-section-type="tab-collections"
-  data-columns="{{ columns }}">
-
+  data-columns="{{ columns }}"
+  {% if animations_enabled %} data-aos-watch-anchors{% endif %}
+>
   <div class="{{ section_width }}">
-    {%- if section.settings.title != empty -%}
-      <div class="section__header">
-        <h2 class="h2 {{ text_alignment }}"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>{{ section.settings.title }}</h2>
-
-        {%- if settings.show_spacer_lines -%}
-          <hr class="section__heading-line"
-          {% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-delay="{{ animation_delay }}"
-            data-aos-anchor="{{ animation_anchor }}"
-          {% endif %}>
-          {%- assign animation_delay = animation_delay | plus: 150 -%}
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.text != empty -%}
-      <p class="{{ text_alignment }} tab-collections__text"
-        {% if animations_enabled %}
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 150 -%}
-        {% endif %}>{{ section.settings.text }}</p>
-    {%- endif -%}
-
     {%- if section.blocks.size > 0 -%}
       {%- assign current_idx = 0 -%}
 
@@ -81,7 +104,43 @@
         {%- assign current_idx = 1 -%}
       {%- endif -%}
 
-      <div class="tab-collections-wrapper tabs" data-tabs-holder data-start-index="{{ current_idx }}">
+      <div class="tab-collections-wrapper tabs {{ text_alignment }}" data-tabs-holder data-start-index="{{ current_idx }}">
+        {%- if section.settings.title != blank or section.settings.text != blank -%}
+          <div class="tab-collections__header">
+            {%- if section.settings.title != empty -%}
+              <div class="section__header">
+                <h2 class="h2"
+                  {% if animations_enabled %}
+                    data-aos="fade-up"
+                    data-aos-anchor="{{ aos_anchor }}"
+                    data-aos-delay="{{ animation_delay }}"
+                    {%- assign animation_delay = animation_delay | plus: 150 -%}
+                  {% endif %}>{{ section.settings.title }}</h2>
+
+                {%- if settings.show_spacer_lines -%}
+                  <hr class="section__heading-line"
+                  {% if animations_enabled %}
+                    data-aos="fade-up"
+                    data-aos-delay="{{ animation_delay }}"
+                    data-aos-anchor="{{ aos_anchor }}"
+                  {% endif %}>
+                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.text != empty -%}
+              <p class="tab-collections__text"
+                {% if animations_enabled %}
+                  data-aos="fade-up"
+                  data-aos-anchor="{{ aos_anchor }}"
+                  data-aos-delay="{{ animation_delay }}"
+                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                {% endif %}>{{ section.settings.text }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
         {%- assign tabs_navigation = '' -%}
         {%- assign tabs = '' -%}
 
@@ -107,13 +166,7 @@
               echo ' ' | append: collection_button_style
               echo ' ' | append: collection_button_size
               echo ' ' | append: collection_button_color
-              echo ' tab-collections__button'
-              case text_alignment
-                when 'text-center'
-                  echo ' tab-collections__button--center'
-                when 'text-left'
-                  echo ' tab-collections__button--left'
-              endcase
+
               if forloop.first
                 echo ' current'
               endif
@@ -121,8 +174,8 @@
 
             capture onboarding_products_one
               for i in (1..number_of_products)
-                capture index
-                  cycle 1, 2, 3, 4, 5, 6
+                capture placeholder_index
+                  cycle 1, 2, 3, 5, 6
                 endcapture
                 assign columns = settings.products_per_row_on_desktop | plus: 0
                 assign product_index = forloop.index0
@@ -130,14 +183,14 @@
                   assign product_index = forloop.index
                 endif
                 assign items_animation_delay = product_index
-                render 'product-grid-item--onboarding', carousel: true, index: index, animation_anchor: animation_anchor, animation_delay: items_animation_delay
+                render 'product-grid-item--onboarding', carousel: true, columns_mobile: columns_mobile, placeholder_index: placeholder_index, index: forloop.index0, block_id: block.id, animation_anchor: aos_anchor_body, animation_delay: items_animation_delay
               endfor
             endcapture
 
             capture onboarding_products_two
               for i in (1..number_of_products)
-                capture index
-                  cycle 6, 5, 4, 3, 2, 1
+                capture placeholder_index
+                  cycle 6, 5, 3, 2, 1
                 endcapture
                 assign columns = settings.products_per_row_on_desktop | plus: 0
                 assign product_index = forloop.index0
@@ -145,14 +198,10 @@
                   assign product_index = forloop.index
                 endif
                 assign items_animation_delay = product_index
-                render 'product-grid-item--onboarding', carousel: true, index: index, animation_anchor: animation_anchor, animation_delay: items_animation_delay
+                render 'product-grid-item--onboarding', carousel: true, columns_mobile: columns_mobile, placeholder_index: placeholder_index, index: forloop.index0, block_id: block.id, animation_anchor: aos_anchor_body, animation_delay: items_animation_delay
               endfor
             endcapture
           -%}
-
-          {%- style -%}
-            #TabCollections--{{ section.id }} .item--{{ block.id }} { --overlay-opacity: {{ overlay_opacity }}; }
-          {%- endstyle -%}
 
           {%- capture tabs_navigation -%}
             {{ tabs_navigation }}
@@ -173,17 +222,21 @@
               <div class="tab-collections__container carousel__container">
                 <div class="carousel carousel--mobile" data-slider data-slider-id="slider--{{ section.id }}-{{ block.id }}"{% if show_image %} data-slider-show-image{% endif %}>
                   {%- if show_image -%}
-                    {%- assign animation_delay = 150 -%}
+                    {%- assign animation_delay_body = 150 -%}
                     <div class="product-grid-item product-grid-item--featured carousel__item one-third mobile--one-whole"
                       data-slide
                       {% if animations_enabled %}
                         data-aos="fade-up"
-                        data-aos-anchor="{{ animation_anchor }}"
-                        data-aos-delay="{{ animation_delay }}"
+                        data-aos-anchor="{{ aos_anchor_body }}"
+                        data-aos-delay="{{ animation_delay_body }}"
                       {% endif %}>
                       {%- capture featured_image -%}
-                        <div class="tab-collections__featured-item item--{{ block.id }} {{ block.settings.text_color }}">
-                          {%- render 'image-fill', is_background: true, img_object: image, classes: 'tab-collections__featured-image', placeholder_svg: 'collection-1' -%}
+                        {%- style -%}
+                          {{ selector_id }} .item--{{ block.id }} { --overlay-opacity: {{ overlay_opacity }}; }
+                        {%- endstyle -%}
+
+                        <div class="tab-collections__featured-item item--{{ block.id }} {{ block.settings.text_color }} hover-scale">
+                          {%- render 'image-fill', is_background: true, img_object: image, sizes: featured_image_sizes, classes: 'tab-collections__featured-image', placeholder_svg: 'collection-1' -%}
 
                           <div class="overlay"></div>
 
@@ -196,9 +249,9 @@
                               <div class="tab-collections__heading h1"
                                 {% if animations_enabled %}
                                   data-aos="fade-up"
-                                  data-aos-delay="{{ animation_delay }}"
-                                  data-aos-anchor="{{ animation_anchor }}"
-                                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                                  data-aos-delay="{{ animation_delay_body }}"
+                                  data-aos-anchor="{{ aos_anchor_body }}"
+                                  {%- assign animation_delay_body = animation_delay_body | plus: 150 -%}
                                 {% endif %}>
                                 {{- heading -}}
                               </div>
@@ -208,9 +261,9 @@
                               <div class="tab-collections__btn-wrapper"
                                 {% if animations_enabled %}
                                   data-aos="fade"
-                                  data-aos-delay="{{ animation_delay }}"
-                                  data-aos-anchor="{{ animation_anchor }}"
-                                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                                  data-aos-delay="{{ animation_delay_body }}"
+                                  data-aos-anchor="{{ aos_anchor_body }}"
+                                  {%- assign animation_delay_body = animation_delay_body | plus: 150 -%}
                                 {% endif %}>
                                 <a class="btn {{ button_style }} {{ button_size }} {{ button_color }}"
                                   href="{{ button_link | default: '#' }}">
@@ -233,14 +286,17 @@
                   {%- if tab_collection != blank -%}
                     {% comment %} Check if there are any products in the collection {% endcomment %}
                     {%- if tab_collection_products.size > 0 -%}
-                      {%- for product in tab_collection_products limit: number_of_products -%}
-                        {%- assign product_index = forloop.index0 -%}
-                        {%- if show_image -%}
-                          {%- assign product_index = forloop.index -%}
-                        {%- endif -%}
-                        {%- assign items_animation_delay = product_index -%}
-                        {%- render 'product-grid-item', product: product, carousel: true, animation_anchor: animation_anchor, animation_delay: items_animation_delay -%}
-                      {%- endfor -%}
+                      {%- liquid
+                        for product in tab_collection_products limit: number_of_products
+                          assign product_index = forloop.index0
+                          if show_image
+                            assign product_index = forloop.index
+                          endif
+                          assign items_animation_delay = product_index
+
+                          render 'product-grid-item', product: product, carousel: true, columns_mobile: columns_mobile, block_id: block.id, animation_anchor: aos_anchor_body, animation_delay: items_animation_delay, image_aspect_ratio_setting: image_aspect_ratio, sizes: sizes
+                        endfor
+                      -%}
                     {%- else -%}
                       <div class="collection--no-results">
                         <p>{{ 'collections.general.no_matches' | t }}</p>
@@ -260,27 +316,33 @@
           {%- endcapture -%}
 
           {%- capture collection_buttons -%}
-            {%- if show_buttons -%}
-              {{ collection_buttons }}
+            {{ collection_buttons }}
 
-              <a href="{{ tab_collection_url }}" class="{{ collection_button_classes }}" data-tab-ref="{{ forloop.index0 }}">
-                {{ collection_button_text }}
-              </a>
-            {%- endif -%}
+            <a href="{{ tab_collection_url }}"
+              class="{{ collection_button_classes }}"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ aos_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+              {% endif %}
+              data-tab-ref="{{ forloop.index0 }}"
+            >
+              {{ collection_button_text }}
+            </a>
           {%- endcapture -%}
         {%- endfor -%}
 
         {%- if tabs_navigation != '' and section.blocks.size > 1 or show_buttons -%}
-          <div class="tabs__head tab-collections__head{% if show_buttons %} tab-collections__head--has-button{% endif %} {{ text_alignment }}"
+          <div class="tab-collections__nav tabs__head"
             {% if animations_enabled %}
               data-aos="fade-up"
-              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-anchor="{{ aos_anchor }}"
               data-aos-delay="{{ animation_delay }}"
-              {%- assign animation_delay = animation_delay | plus: 150 -%}
-            {% endif %}>
-            <div class="tabs-scrollbar {{ text_alignment }}" data-custom-scrollbar-parent>
+            {% endif %}
+          >
+            <div class="tabs-scrollbar" data-custom-scrollbar-parent>
               <div class="tabs-scrollbar__holder" data-custom-scrollbar-holder>
-                <ul class="tabs__nav" data-custom-scrollbar-items>
+                <ul class="tabs__nav {{ type_style }}" data-custom-scrollbar-items>
                   {{ tabs_navigation }}
                 </ul>
 
@@ -289,14 +351,22 @@
                 </div>
               </div>
             </div>
-
-            {{ collection_buttons }}
           </div>
         {%- endif -%}
 
-        <div class="tabs__contents" data-tabs-contents>
+        <div id="tabCollectionsBody--{{ section.id }}"
+          class="tab-collections__body tabs__contents"
+          data-tabs-contents
+          data-aos-intersection="0.2"
+        >
           {{ tabs }}
         </div>
+
+        {%- if show_buttons and collection_button_text != blank -%}
+          <div class="tab-collections__button tab-collections__button--{{ button_position }}">
+            {{ collection_buttons }}
+          </div>
+        {%- endif -%}
       </div>
     {%- else -%}
       {%- render 'no-blocks' -%}
@@ -311,6 +381,26 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Products per row on mobile",
+      "default": "1",
+      "options": [
+        { "label": "1", "value": "1" },
+        { "label": "2", "value": "2" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "min": 0.5,
+      "max": 1.5,
+      "step": 0.1,
+      "unit": ":1",
+      "default": 1.3
     },
     {
       "type": "select",
@@ -335,8 +425,40 @@
       "default": "Our favorite picks for the season"
     },
     {
+      "type": "select",
+      "label": "Tab heading style",
+      "id": "type_style",
+      "default": "subheading-text",
+      "options": [
+        { "label": "Heading", "value": "font-heading" },
+        { "label": "Body", "value": "font-body" },
+        { "label": "Accent", "value": "subheading-text" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "tab_heading_size",
+      "label": "Tab heading size",
+      "default": 120,
+      "min": 100,
+      "max": 200,
+      "step": 5,
+      "unit": "%"
+    },
+    {
       "type": "header",
       "content": "Buttons"
+    },
+    {
+      "type": "select",
+      "id": "button_position",
+      "label": "Button position",
+      "default": "top",
+      "info": "Only applies when Content alignment is set to Center",
+      "options": [
+        { "label": "Top", "value": "top" },
+        { "label": "Bottom", "value": "bottom" }
+      ]
     },
     {
       "type": "checkbox",

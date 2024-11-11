@@ -2,7 +2,7 @@
   assign section_width = section.settings.width
   assign heading_size = section.settings.heading_size
   assign image_aspect_ratio = section.settings.image_aspect_ratio
-    assign bg_color_secondary = section.settings.bg_color_secondary
+  assign bg_color_secondary = section.settings.bg_color_secondary
   assign button_style = section.settings.button_style
   assign button_color = section.settings.button_color
   assign button_size = section.settings.button_size
@@ -10,10 +10,30 @@
   assign animations_enabled = settings.animations_enabled
   assign animation_anchor = '#ProductsList--' | append: section.id
   assign animation_delay = 150
+  assign hover_scale = ''
   assign single_block = true
   if section.blocks.size > 1
     assign single_block = false
   endif
+
+  comment
+    Images sizes
+  endcomment
+  # Desktop widths
+  if section_width == 'wrapper--full-padded'
+    assign wrapper_width_lg = '(100vw - 120px)'
+  endif
+  if section_width == 'wrapper'
+    assign wrapper_width_lg = '(1440px - 120px)'
+  endif
+  assign img_width_lg = 'calc((' | append: wrapper_width_lg | append: ' - 60px) / 2)'
+  # Tablet widths
+  assign wrapper_width_md = '(100vw - 2 * 20px)'
+  assign img_width_md = 'calc((' | append: wrapper_width_md | append: ' - 20px) / 2)'
+  # Mobile widths
+  assign img_width_sm = 'calc(' | append: wrapper_width_md | append: ')'
+
+  assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
 -%}
 
 {%- style -%}
@@ -26,9 +46,13 @@
 {%- endstyle -%}
 
 <section id="ProductsList--{{ section.id }}"
-  class="section-padding products-list-section{% if bg_color_secondary %} bg-secondary{% endif %}"
+  class="section-padding products-list-section{% if bg_color_secondary %} bg-secondary{% endif %}{%- render 'button-fallback-classes', primary_color: button_color, bg_color_secondary: bg_color_secondary -%}"
   data-section-id="{{ section.id }}"
-  data-section-type="products-list">
+  data-section-type="products-list"
+  {% if animations_enabled %}
+    data-aos-intersection="0.3"
+  {% endif %}
+>
 
   <div class="{{ section_width }}" data-overflow-container>
     <div class="products-list__container" data-overflow-frame>
@@ -56,9 +80,11 @@
 
                     if collection != empty
                       assign heading = collection.title | strip_html
+                      assign hover_scale = ' hover-scale'
+
                       if single_block
                         assign button_link = collection.url
-                     endif
+                      endif
                     else
                       assign heading = 'homepage.onboarding.collection_title' | t
                       if single_block
@@ -70,6 +96,7 @@
                     assign product = all_products[product_handle]
 
                     if product != empty
+                      assign hover_scale = ' hover-scale'
                       assign heading = product.title | strip_html | escape
                       if single_block
                         assign button_link = product.url
@@ -129,12 +156,29 @@
             if block.type == 'product' and block.settings.product_description != blank
               assign product_description_override = true
             endif
+
+            assign image_1_sizes = sizes
+            assign image_2_sizes = sizes
+
+            if show_second_image
+              # 75%
+              assign img_1_width_lg = 'calc(((' | append: wrapper_width_lg | append: ' - 60px) / 2) * 0.75)'
+              assign img_1_width_md = 'calc(((' | append: wrapper_width_md | append: ' - 20px) / 2) * 0.75)'
+              assign img_1_width_sm = 'calc(' | append: wrapper_width_md | append: ' * 0.75)'
+              assign image_1_sizes = '(min-width: 1024px) ' | append: img_1_width_lg | append: ', (min-width: 768px) ' | append: img_1_width_md | append: ', ' | append: img_1_width_sm
+
+              # 40%
+              assign img_2_width_lg = 'calc(((' | append: wrapper_width_lg | append: ' - 60px) / 2) * 0.40)'
+              assign img_2_width_md = 'calc(((' | append: wrapper_width_md | append: ' - 20px) / 2) * 0.40)'
+              assign img_2_width_sm = 'calc(' | append: wrapper_width_md | append: ' * 0.40)'
+              assign image_2_sizes = '(min-width: 1024px) ' | append: img_2_width_lg | append: ', (min-width: 768px) ' | append: img_2_width_md | append: ', ' | append: img_2_width_sm
+            endif
           -%}
 
           {%- capture image_1 -%}
             {%- if image_1 != blank -%}
               <div class="products-list__item__image-bg">
-                {%- render 'image-fill', is_background: true, img_object: image_1 -%}
+                {%- render 'image-fill', is_background: true, img_object: image_1, sizes: image_1_sizes -%}
               </div>
             {%- endif -%}
           {%- endcapture -%}
@@ -142,14 +186,14 @@
           {%- capture image_2 -%}
             {%- if image_2 != blank -%}
               <div class="products-list__item__image-bg">
-                {%- render 'image-fill', is_background: true, img_object: image_2 -%}
+                {%- render 'image-fill', is_background: true, img_object: image_2, sizes: image_2_sizes -%}
               </div>
             {%- endif -%}
           {%- endcapture -%}
 
           {%- capture onboarding_item -%}
             {%- liquid
-              assign animation_delay_content = 150
+              assign animation_delay_content = 100
               assign product_title = 'homepage.onboarding.product_title' | t
               assign button_text = block.settings.button_text
               if block.type == 'product'
@@ -204,7 +248,7 @@
                       </div>
 
                       {% if animations_enabled %}
-                        {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                        {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                       {% endif %}
                     </div>
                   {%- endif -%}
@@ -219,13 +263,13 @@
                     {% endif %}
                     data-aos-anchor="{{ animation_anchor }}"
                     data-aos-delay="{{ animation_delay_content }}"
-                    {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                    {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                   {% endif %}>
-                  <div class="products-list__item__image__frame">
+                  <div class="products-list__item__image__frame{% if button_text != blank %} hover-scale{% endif %}">
                     {%- if image_1 != blank -%}
                       {{- image_1 -}}
                     {%- else -%}
-                      <div class="products-list__item__image-bg products-list__item__image-bg--placeholder placeholder-svg--overlayed">
+                      <div class="products-list__item__image-bg placeholder-svg--overlayed">
                         {%- capture current -%}{%- cycle 1, 2, 3, 4 -%}{%- endcapture -%}
                         {{- 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg-filled' -}}
                       </div>
@@ -234,7 +278,7 @@
                 </div>
 
                 {%- if show_second_image -%}
-                  <div class="products-list__item__image products-list__item__image--small">
+                  <div class="products-list__item__image products-list__item__image--small{% if button_text != blank %} hover-scale{% endif %}">
                     <div class="products-list__item__image__frame"
                       {% if animations_enabled %}
                         data-aos="fade-left"
@@ -244,7 +288,7 @@
                       {%- if image_2 != blank -%}
                         {{- image_2 -}}
                       {%- else -%}
-                        <div class="products-list__item__image-bg products-list__item__image-bg--placeholder placeholder-svg--overlayed">
+                        <div class="products-list__item__image-bg placeholder-svg--overlayed">
                           {%- capture current -%}{%- cycle 1, 2, 3, 4 -%}{%- endcapture -%}
                           {{- 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg-filled' -}}
                         </div>
@@ -257,25 +301,14 @@
 
             <div class="products-list__item__contents" data-overflow-content>
               <div class="products-list__item__content">
-                {%- assign animation_delay_content = 150 -%}
-                {%- if settings.show_rating -%}
-                  <div class="products-list__item__rating"
-                    {% if animations_enabled %}
-                      data-aos="fade-up"
-                      data-aos-anchor="{{ animation_anchor }}"
-                      data-aos-delay="{{ animation_delay_content }}"
-                      {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
-                    {% endif %}>
-                    {%- render 'rating', show_rating_count: false, onboarding: true -%}
-                  </div>
-                {%- endif -%}
+                {%- assign animation_delay_content = 100 -%}
 
                 <p class="products-list__item__title h4"
                   {% if animations_enabled %}
                     data-aos="fade-up"
                     data-aos-anchor="{{ animation_anchor }}"
                     data-aos-delay="{{ animation_delay_content }}"
-                    {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                    {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                   {% endif %}>
                   <a href="{{ product_url }}" title="{{ product_title }}" arial-label="{{ product_title }}">
                     {%- if product_title != empty -%}
@@ -291,7 +324,7 @@
                     data-aos="fade-up"
                     data-aos-anchor="{{ animation_anchor }}"
                     data-aos-delay="{{ animation_delay_content }}"
-                    {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                    {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                   {% endif %}>{{ product_description }}</div>
                 {%- endif -%}
 
@@ -347,7 +380,7 @@
                         </div>
 
                         {% if animations_enabled %}
-                          {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                          {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                         {% endif %}
                       </div>
                     {%- endif -%}
@@ -368,7 +401,7 @@
                         assign product_image = product.featured_media.preview_image
                       -%}
 
-                      <div class="products-list__item__image" data-product-single-media-wrapper>
+                      <div class="products-list__item__image{{ hover_scale }}" data-product-single-media-wrapper>
                         <div class="products-list__item__image__frame">
                           <a href="{{ product_url }}"
                             class="products-list__item__image-bg"
@@ -377,7 +410,7 @@
                             data-product-single-media-image
                             data-overflow-content
                             style="padding-top: {{ image_aspect_ratio | times: 100 | round: 1 }}%;">
-                            {%- render 'image-fill', is_background: true, img_object: product_image, placeholder_svg: 'product-1' -%}
+                            {%- render 'image-fill', is_background: true, img_object: product_image, sizes: sizes, placeholder_svg: 'product-1' -%}
                           </a>
                         </div>
                       </div>
@@ -410,7 +443,7 @@
                         assign product_price = 'products.product.free' | t
                       endif
 
-                      assign animation_delay_content = 150
+                      assign animation_delay_content = 100
                       assign product_description = ''
                       if product.description != blank
                         assign product_description = product.description | strip_html | truncate: 180 | prepend: '<p>' | append: '</p>'
@@ -418,32 +451,12 @@
                     -%}
 
                     <div class="products-list__item__content" data-product-content-wrapper>
-                      {%- if collection.products != empty or block.settings.collection == empty or product.id -%}
-                        {%- if settings.show_rating -%}
-                          <div class="products-list__item__rating"
-                            {% if animations_enabled %}
-                              data-aos="fade-up"
-                              data-aos-anchor="{{ animation_anchor }}"
-                              data-aos-delay="{{ animation_delay_content }}"
-                              {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
-                            {% endif %}>
-                            {%- liquid
-                              unless product == blank
-                                render 'rating', show_rating_count: false, reviews: product.metafields.reviews
-                              else
-                                render 'rating', show_rating_count: false, onboarding: true
-                              endunless
-                            -%}
-                          </div>
-                        {%- endif -%}
-                      {%- endif -%}
-
                       <p class="products-list__item__title h4"
                         {% if animations_enabled %}
                           data-aos="fade-up"
                           data-aos-anchor="{{ animation_anchor }}"
                           data-aos-delay="{{ animation_delay_content }}"
-                          {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                          {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                         {% endif %}>
                         <a href="{{ product.url }}" title="{{ product_title }}" arial-label="{{ product_title }}" data-product-link>
                           {%- if product_title != empty -%}
@@ -462,7 +475,7 @@
                             data-aos="fade-up"
                             data-aos-anchor="{{ animation_anchor }}"
                             data-aos-delay="{{ animation_delay_content }}"
-                            {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                            {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                           {% endif %}>{{ product_description }}</div>
                       {%- endif -%}
 
@@ -489,7 +502,7 @@
                 assign product = all_products[product_handle]
                 assign button_text = block.settings.button_text
                 assign button_link = '#!'
-                assign animation_delay_content = 150
+                assign animation_delay_content = 100
                 assign enable_video_looping = true
               -%}
 
@@ -561,7 +574,7 @@
                             </div>
 
                             {% if animations_enabled %}
-                              {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                              {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                             {% endif %}
                           </div>
                         {%- endif -%}
@@ -576,12 +589,13 @@
                             data-aos-anchor="{{ animation_anchor }}"
                           {% endif %}
                           data-overflow-content>
-                          <div class="products-list__item__image__frame">
+                          <div class="products-list__item__image__frame{{ hover_scale }}">
                             {{- image_1 -}}
                           </div>
                         </a>
                       {%- else -%}
-                        {%- if product_media.media_type == 'image' -%}
+
+                        {%- if product_media.media_type == 'image' or product_media == nil -%}
                           <a href="{{ product_url }}" aria-label="{{ product_title }}"
                             class="products-list__item__image products-list__item__image--main"
                             {% if animations_enabled %}
@@ -595,8 +609,15 @@
                               {%- assign animation_delay = animation_delay | plus: 150 -%}
                             {% endif %}
                             data-overflow-content>
-                            <div class="products-list__item__image__frame">
-                              {%- render 'media', media: product_media, featured_media: product_media, unique: section.id -%}
+                            <div class="products-list__item__image__frame{{ hover_scale }}">
+                              {%- unless product_media -%}
+                                <div class="products-list__item__image-bg placeholder-svg--overlayed">
+                                  {%- capture current -%}{%- cycle 1, 2, 3, 4 -%}{%- endcapture -%}
+                                  {{- 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg-filled' -}}
+                                </div>
+                              {%- else -%}
+                                {%- render 'media', media: product_media, featured_media: product_media, img_sizes: image_1_sizes, unique: section.id -%}
+                              {%- endunless -%}
                             </div>
                           </a>
                         {%- else -%}
@@ -612,7 +633,7 @@
                               {%- assign animation_delay = animation_delay | plus: 150 -%}
                             {% endif %}
                             data-overflow-content>
-                            <div class="products-list__item__image__frame">
+                            <div class="products-list__item__image__frame{{ hover_scale }}">
                               {%- render 'media', media: product_media, featured_media: product_media, unique: section.id, enable_video_looping: enable_video_looping, hide_controls: true -%}
                             </div>
                           </div>
@@ -637,7 +658,7 @@
                         <a href="{{ product_url }}" aria-label="{{ product_title }}"
                           class="products-list__item__image products-list__item__image--small"
                           data-overflow-content>
-                          <div class="products-list__item__image__frame"
+                          <div class="products-list__item__image__frame{{ hover_scale }}"
                             {% if animations_enabled %}
                               data-aos="fade-left"
                               data-aos-anchor="{{ animation_anchor }}"
@@ -652,28 +673,12 @@
 
                   <div class="products-list__item__contents">
                     <div class="products-list__item__content">
-                      {%- if settings.show_rating and product.id -%}
-                        <div class="products-list__item__rating"
-                          {% if animations_enabled %}
-                            data-aos="fade-up"
-                            data-aos-anchor="{{ animation_anchor }}"
-                            data-aos-delay="{{ animation_delay_content }}"
-                            {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
-                          {% endif %}>
-                        {%- unless product == blank -%}
-                          {%- render 'rating', show_rating_count: false, reviews: product.metafields.reviews -%}
-                        {%- else -%}
-                          {%- render 'rating', show_rating_count: false, onboarding: true -%}
-                        {%- endunless -%}
-                        </div>
-                      {%- endif -%}
-
                       <p class="products-list__item__title h4"
                         {% if animations_enabled %}
                           data-aos="fade-up"
                           data-aos-anchor="{{ animation_anchor }}"
                           data-aos-delay="{{ animation_delay_content }}"
-                          {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                          {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                         {% endif %}>
                         <a href="{{ product_url }}" title="{{ product_title }}" arial-label="{{ product_price }}">
                           {%- if product_title != empty and block.settings.title != empty -%}
@@ -692,7 +697,7 @@
                           data-aos="fade-up"
                           data-aos-anchor="{{ animation_anchor }}"
                           data-aos-delay="{{ animation_delay_content }}"
-                          {%- assign animation_delay_content = animation_delay_content | plus: 150 -%}
+                          {%- assign animation_delay_content = animation_delay_content | plus: 100 -%}
                         {% endif %}>{{ product_description }}</div>
                       {%- endif -%}
 

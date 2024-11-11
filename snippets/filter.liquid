@@ -39,32 +39,65 @@
   endif
 
   assign option_name_handle_separator = filter.label | handle | prepend: ',' | append: ','
-  assign enable_color_swatches = settings.enable_color_swatches_collection
+  assign color_swatches_type = settings.color_swatches_type
+  assign swatches_style = settings.color_swatches_product_style
+  assign swatch_width = 38
+  if swatches_style == 'circle'
+    assign swatch_width = 32
+  endif
+  assign retina_size = swatch_width | times: 2
+  assign swatch_widths = swatch_width | append: ', ' | append: retina_size
+  assign swatch_sizes = swatch_width | append: 'px'
 -%}{%- liquid
-  if enable_color_swatches
-    comment
-      Determine if current option matches swatch handle translations
-    endcomment
-    assign is_swatch_option = false
-    assign swatch_translation = 'general.swatches.color' | t
-    assign translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+  assign is_swatch_option = false
+  assign is_native_swatch_option = false
 
-    if translation_string contains option_name_handle_separator
+  comment
+    Determine if current option matches swatch handle translations
+  endcomment
+  assign swatch_translation = 'general.swatches.color' | t
+  assign color_translation_string = swatch_translation | remove: '  ' | replace: ', ', ',' | replace: ' ,', ',' | replace: ',', '____' | handle | replace: '____', ',' | append: ',' | prepend: ','
+
+  if color_translation_string contains option_name_handle_separator
+    if color_swatches_type == 'theme'
       assign is_swatch_option = true
     endif
   endif
+
+  if color_swatches_type == 'native'
+    for value in option.values
+      if value.swatch
+        assign is_native_swatch_option = true
+        break
+      endif
+    endfor
+  endif
 -%}{%- liquid
-  capture filters_list_class
-    echo 'collection__filter-tags'
-    if is_swatch_option
-      echo ' collection__filter-tags--swatches' | append: ' collection__filter-tags--swatches-' | append: settings.color_swatches_product_style
-    endif
-  endcapture
+  assign is_swatch = false
+  if is_swatch_option or filter.presentation == 'swatch'
+    assign is_swatch = true
+  endif
+
+  assign filters_list_class = 'collection__filter-tags'
+
+  if is_swatch
+    assign filters_list_class = filters_list_class | append: ' collection__filter-tags--swatches' | append: ' collection__filter-tags--swatches-' | append: swatches_style
+  endif
+
+  if filter.presentation == 'image'
+    assign filters_list_class = filters_list_class | append: ' collection__filter-tags--images'
+  endif
+
+  if settings.color_swatches_product_style == 'circle'
+    assign filters_list_class = filters_list_class | append: ' collection__filter-tags--circle'
+  endif
 
   assign has_show_more = false
   assign count_threshold = 10
-  if is_swatch_option
+  if is_swatch
     assign count_threshold = 20
+  elsif filter.presentation == 'image'
+    assign count_threshold = 9
   endif
   if filter.values.size > count_threshold and show_more
     assign has_show_more = true
@@ -72,7 +105,7 @@
 -%}
 
 <div class="collection__filter"{% if has_show_more %} data-show-more{% endif %}>
-  <button type="button" class="collection__filter__title{% if heading_style == 'body' %} collection__filter__title--body{% endif %}{% if toggle_state %} is-expanded{% endif %}"
+  <button type="button" class="collection__filter__title label-typography{% if toggle_state %} is-expanded{% endif %}"
     data-filter-active="{{ is_active }}"
     aria-expanded="{{ toggle_state }}"
     aria-controls="CollectionFilter--{{ filter.label | handle }}"
@@ -104,7 +137,7 @@
             {%- liquid
               capture filter_classes
                 echo 'collection__filter-tag'
-                if is_swatch_option
+                if is_swatch
                   echo ' collection__filter-tag--swatch'
                 else
                   echo ' collection__filter-tag--default'
@@ -112,34 +145,76 @@
               endcapture
             -%}
 
+            {%- capture filter_text -%}
+              <span class="visually-hidden">{{ filter_value.label }}</span>
+              <span class="icon icon-check"></span>
+            {%- endcapture -%}
+
             {%- capture current_filter -%}
               <li class="{{ filter_classes }}">
-                {%- if is_swatch_option -%}
-                  <span class="swatch__button swatch__button--{{ settings.color_swatches_product_style }} filter__button">
-                    <input type="checkbox"
-                      class="swatch__input filter__input"
-                      name="{{ filter_value.param_name }}"
-                      value="{{ filter_value.value }}"
-                      id="filter-{{ filter.label | escape }}-{{ forloop.index }}"
-                      {% if filter_value.active %}checked{% endif %}
-                      {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}>
-
-                    <label class="swatch__label swatch__label--{{ settings.color_swatches_product_style }} filter__button" for="filter-{{ filter.label | escape }}-{{ forloop.index }}" data-swatch="{{ filter_value.label | escape_once }}" data-tooltip="{{ filter_value.value | escape_once | capitalize }}">
-                      <span class="visually-hidden">{{ filter_value.label }}</span>
-                      {% if settings.color_swatches_product_style == 'circle' %}
-                        <span class="icon icon-check"></span>
-                      {% endif %}
-                    </label>
-                  </span>
-                {%- else -%}
+                {%- if is_swatch -%}
+                <span class="swatch__button swatch__button--{{ swatches_style }} filter__button">
+                {%- endif -%}
                   <input type="checkbox"
-                    class="filter__input"
+                    class="filter__input{% if is_swatch %} swatch__input{% endif %}"
                     name="{{ filter_value.param_name }}"
                     value="{{ filter_value.value }}"
                     id="filter-{{ filter.label | escape }}-{{ forloop.index }}"
                     {% if filter_value.active %}checked{% endif %}
                     {% if filter_value.count == 0 and filter_value.active == false %}disabled{% endif %}>
-                  <label class="filter__button" for="filter-{{ filter.label | escape }}-{{ forloop.index }}">{{ filter_value.label }}</label>
+
+                  {%- if is_swatch_option -%}
+                    <label class="swatch__label swatch__label--{{ swatches_style }} filter__button" for="filter-{{ filter.label | escape }}-{{ forloop.index }}" data-swatch="{{ filter_value.label | escape_once }}" data-tooltip="{{ filter_value.value | escape_once | capitalize }}">
+                      {{ filter_text }}
+                    </label>
+                  {%- elsif filter.presentation == 'swatch' -%}
+                    {%- if filter_value.swatch.image != blank -%}
+                      <label
+                        class="swatch__label swatch__label--{{ swatches_style }} filter__button"
+                        for="filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                        data-tooltip="{{ filter_value.label | escape_once | capitalize }}">
+                        {%- render 'image' image: filter_value.swatch.image, width: retina_size, sizes: swatch_sizes, widths: swatch_widths, cover: true -%}
+                        {{ filter_text }}
+                      </label>
+                    {%- elsif filter_value.swatch.color != blank -%}
+                      <label
+                        class="swatch__label swatch__label--{{ swatches_style }} filter__button"
+                        for="filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                        data-tooltip="{{ filter_value.label | escape_once | capitalize }}"
+                        {% if swatch_color_name %}data-swatch="{{ swatch_color_name }}"{% endif %}
+                        style="background: {{ filter_value.swatch.color }};">
+                        {{ filter_text }}
+                      </label>
+                    {%- else -%}
+                      <label
+                        class="swatch__label swatch__label--{{ swatches_style }} swatch__label--empty filter__button"
+                        for="filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                        data-tooltip="{{ filter_value.label | escape_once | capitalize }}"
+                        data-swatch="White"
+                        style="--swatch: white;">
+                        {{ filter_text }}
+                      </label>
+                    {%- endif -%}
+                  {%- elsif filter.presentation == 'image' -%}
+                    {%- capture image_sizes -%}
+                      (min-width: 1440px) 86px, (min-width: 768px) 56px, calc((100vw - 80px) / 3)
+                    {%- endcapture -%}
+                    {%- assign image_widths = '50, 60, 80, 100, 120, 180, 200, 240, 280, 300, 360, 400, 480, 500, 560, 600, 720' -%}
+
+                    <div class="filter__image">
+                      <label
+                        class="image__label"
+                        for="filter-{{ filter.label | escape }}-{{ forloop.index }}"
+                        data-tooltip="{{ filter_value.label | escape_once | capitalize }}">
+                        {%- render 'image' image: filter_value.image.preview_image, height: filter_value.image.height, sizes: image_sizes, widths: image_widths, cover: false, placeholder_svg: 'image' -%}
+                        {{ filter_text }}
+                      </label>
+                    </div>
+                  {%- else -%}
+                    <label class="filter__button" for="filter-{{ filter.label | escape }}-{{ forloop.index }}">{{ filter_value.label }}</label>
+                  {% endif %}
+                {%- if is_swatch -%}
+                </span>
                 {%- endif -%}
               </li>
             {%- endcapture -%}

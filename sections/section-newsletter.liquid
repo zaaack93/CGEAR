@@ -17,7 +17,6 @@
     --PB: {{ section.settings.padding_bottom }}px;
     {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
       --bg: {{ bg_color }};
-      background: {{ bg_color }};
     {%- endif -%}
       --overlay-opacity: {{ overlay_opacity }};
     }
@@ -42,6 +41,7 @@
       is_background: true,
       img_object: image,
       image_attributes: image_attributes,
+      sizes: '100vw',
       classes: 'newsletter-section__bg' -%}
 
     <div class="overlay"></div>
@@ -82,7 +82,7 @@
             data-aos-anchor="{{ animation_anchor }}"
             data-aos-delay="{{ animation_delay }}"
           {% endif %}>
-          {%- render 'newsletter-form-v2',
+          {%- render 'newsletter-form',
             unique: unique,
             extra_fields: section.settings.extra_fields,
             button_text: section.settings.button_text -%}

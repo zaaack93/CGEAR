@@ -21,7 +21,8 @@
 
   {%- if icon_image != blank -%}
     {%- assign retina_size = icon_width | times: 2 -%}
-    {%- assign image_widths = '50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150' -%}
+    {%- assign image_widths = icon_width | append: ', ' | append: retina_size -%}
+    {%- assign sizes = icon_width | append: 'px' -%}
   {%- endif -%}
 
   {%- capture icon_style -%}
@@ -50,7 +51,7 @@
                 image: icon_image,
                 width: retina_size,
                 widths: image_widths,
-                sizes: 'auto',
+                sizes: sizes,
                 classes: 'icons-row-block__img' -%}
             </div>
           {%- else -%}

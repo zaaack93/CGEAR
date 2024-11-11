@@ -10,13 +10,19 @@
   assign title = section.settings.title
   assign heading_highlight_type = section.settings.heading_highlight_type
   assign highlight_color = section.settings.highlight_color
+  assign highlight_text_color = section.settings.highlight_text_color
   assign text = section.settings.text
   assign heading_size = section.settings.heading_size | times: 0.01
-  assign button_text = section.settings.button_text
-  assign button_link = section.settings.button_link | default: '#!'
-  assign button_style = section.settings.button_style
-  assign button_color = section.settings.button_color
-  assign button_size = section.settings.button_size
+  assign button_1_text = section.settings.button_1_text
+  assign button_1_link = section.settings.button_1_link | default: '#!'
+  assign button_1_style = section.settings.button_1_style
+  assign button_1_color = section.settings.button_1_color
+  assign button_1_size = section.settings.button_1_size
+  assign button_2_text = section.settings.button_2_text
+  assign button_2_link = section.settings.button_2_link | default: '#!'
+  assign button_2_style = section.settings.button_2_style
+  assign button_2_color = section.settings.button_2_color
+  assign button_2_size = section.settings.button_2_size
   assign overlay_opacity = section.settings.overlay_opacity | times: 0.01
   assign text_position = section.settings.text_position
   assign show_text_shadow = settings.show_text_shadow
@@ -36,8 +42,16 @@
     when 'inline'
       assign mobile_layout_class = 'split-images__pane--inline'
   endcase
+
+  assign image_block = section.blocks | map: 'settings' | where: 'image'
+  assign image_mobile_block = section.blocks | map: 'settings' | where: 'image_mobile'
+
+  assign img_in_class = false
+  if image_block.size == 0 and image_mobile_block.size == 0
+    assign img_in_class = true
+  endif
 -%}{% comment %}
-  Enhanced text decorations options - Liqiud variables
+  Enhanced text decorations options - Liquid variables
 
   Dependencies:
     - Title liquid object from settings: `assign title = section.settings.title`
@@ -49,6 +63,34 @@
 {% endcomment %}
 
 {%- liquid
+  comment
+   Highlighted words count
+  endcomment
+  assign title_temp = title | split: '<em>'
+  assign em_arr = ''
+  if title_temp.size > 1
+    for text_part in title_temp offset: 1
+      assign em_text = text_part | split: '</em>' | first
+      assign em_arr = em_arr | append: '#separator#' | append: em_text
+    endfor
+  endif
+  assign em_arr = em_arr | split: '#separator#'
+  assign words_count_arr = ''
+  assign letters_count_arr = ''
+  if em_arr.size > 0
+    for words in em_arr offset: 1
+      assign word = words | split: ' '
+      assign words_count_arr = words_count_arr | append: word.size | append: ', '
+      assign letters_count_arr = letters_count_arr | append: words.size | append: ', '
+    endfor
+  endif
+
+  assign words_count_arr = words_count_arr | replace_last: ', ', '' | split: ', '
+  assign letters_count_arr = letters_count_arr | replace_last: ', ', '' | split: ', '
+
+  comment
+   Main highlight types logic
+  endcomment
   assign icon_url = ''
   assign icon_color = 'var(--text)'
 
@@ -63,12 +105,20 @@
       case heading_highlight_type
         when 'squiggle'
           assign icon_url = 'icon-squiggle.svg' | asset_url
-          echo '<span class="text-highlight__icon"></span>'
-        when 'circle'
-          echo '<span class="text-highlight__icon">'
-          render 'icon-circle', color: icon_color
+        when 'circle' or 'circle-hand-drawn' or 'underline-hand-drawn'
+          echo '<span class="text-highlight__icon" data-highlight-holder>'
+
+            when 'circle'
+              render 'icon-circle'
+            when 'circle-hand-drawn'
+              render 'icon-circle-hand-drawn'
+            when 'underline-hand-drawn'
+              render 'icon-underline-hand-drawn'
+
           echo '</span>'
-        when 'stroke' or 'circle' or 'squiggle'
+        when 'highlight' or 'squiggle'
+          echo '<span class="text-highlight__icon text-highlight__icon--pseudo" data-highlight-holder></span>'
+        when 'stroke' or 'circle' or 'circle-hand-drawn' or 'squiggle' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
           assign has_text_highlight = true
       endcase
     endif
@@ -88,21 +138,68 @@
 
   assign text_highlight_wrapper_class = 'text-highlight-wrapper' | append: ' text-highlight-wrapper--' | append: heading_highlight_type
   capture text_highlight_start
-    echo '<span class="text-highlight" ' | append: icon_styles | append: '>'
+    echo '<text-highlight class="text-highlight" ' | append: icon_styles | append: ' data-highlight-type="' | append: heading_highlight_type | append: '">'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '<span class="text-highlight__string" data-highlight-holder>'
+    endcase
   endcapture
   capture text_highlight_end
     echo text_highlight_icon
-    echo '</span>'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '</span>'
+    endcase
+    echo '</text-highlight>'
   endcapture
 
   if title != blank and title contains '<em>'
     case heading_highlight_type
-      when 'squiggle' or 'circle' or 'stroke'
+      when 'squiggle' or 'circle' or 'circle-hand-drawn' or 'stroke' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
         assign title = title | replace: '<em>', text_highlight_start | replace: '</em>', text_highlight_end
+
+      when 'circle' or 'circle-hand-drawn'
+        comment
+          Update icon's holder class based on the italicised words count
+        endcomment
+        assign title = title | split: 'class="text-highlight"'
+        assign title_mod = ''
+        for title_part in title offset: 1
+          assign current_part = title_part
+
+          if title_part contains 'text-highlight__icon'
+            capture highlight_icon_classes
+              echo 'text-highlight__icon'
+              assign current_count = words_count_arr[forloop.index0] | times: 1
+              assign letters_count = letters_count_arr[forloop.index0] | times: 1
+              if current_count == 1
+                echo ' text-highlight__icon--single-word'
+              endif
+              if letters_count < 6
+                echo ' text-highlight__icon--short'
+                echo ' text-highlight__icon--l' | append: letters_count
+              endif
+              if letters_count > 15
+                echo ' text-highlight__icon--long'
+              endif
+            endcapture
+
+            assign current_part = title_part | replace: 'text-highlight__icon', highlight_icon_classes
+          endif
+
+          unless forloop.last
+            assign title_mod = title_mod | append: current_part | append: 'class="text-highlight"'
+          else
+            assign title_mod = title_mod | append: current_part
+          endunless
+        endfor
+        assign title_first_part = title | first | append: 'class="text-highlight"'
+        assign title_mod = title_mod | prepend: title_first_part
+        assign title = title_mod
     endcase
   endif
 -%}<section
-  class="split-images-section split-images-section--{{ section.id }} {{ section.settings.text_color }}"
+  class="split-images-section split-images-section--{{ section.id }} {{ section.settings.text_color }}{% if img_in_class %} img-in{% endif %}"
   id="SplitImages--{{ section.id }}"
   data-section-id="{{ section.id }}"
   data-section-type="split-images">
@@ -110,10 +207,17 @@
   {%- style -%}
     #SplitImages--{{ section.id }} {
       --overlay-opacity: {{ overlay_opacity }};
-      --highlight-color: var(--text);
+
+      {%- if heading_highlight_type != 'highlight' -%}
+        --highlight-color: var(--text);
+      {%- endif -%}
 
       {%- if highlight_color != 'rgba(0,0,0,0)' and highlight_color != '' -%}
         --highlight-color: {{ highlight_color }};
+      {%- endif -%}
+
+      {%- if highlight_text_color != 'rgba(0,0,0,0)' and highlight_text_color != '' -%}
+        --highlight-text-color: {{ highlight_text_color }};
       {%- endif -%}
     }
     #SplitImages--{{ section.id }} .main-heading { --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }}); }
@@ -132,18 +236,15 @@
         {%- liquid
           assign image = block.settings.image
           assign image_mobile = block.settings.image_mobile
+          assign sizes = '(min-width: 768px) calc(100vw / ' | append: section.blocks.size | append: '), 100vw'
         -%}
 
         <div class="split-images__scale split-images__scale--{{ forloop.index }}" {{ block.shopify_attributes }}>
           {%- unless image_mobile == blank -%}
-            {%- render 'image-fill', is_background: true, img_object: image_mobile, classes: 'split-images__bg split-images__bg--mobile' -%}
+            {%- render 'image-fill', is_background: true, img_object: image_mobile, sizes: sizes, classes: 'split-images__bg split-images__bg--mobile' -%}
           {%- endunless -%}
 
-          {%- unless image == blank -%}
-            {%- render 'image-fill', is_background: true, img_object: image, classes: 'split-images__bg split-images__bg--desktop' -%}
-          {%- else -%}
-            {%- render 'image-fill', is_background: true, img_object: '', classes: 'split-images__bg split-images__bg--placeholder' -%}
-          {%- endunless -%}
+          {%- render 'image-fill', is_background: true, img_object: image, sizes: sizes, classes: 'split-images__bg split-images__bg--desktop' -%}
         </div>
       {%- endfor -%}
 
@@ -151,100 +252,65 @@
     </div>
 
     <div class="split-images__content align--{{ text_position }}">
-      <div class="{{ section_width }} split-images__content-inner{% if show_text_shadow %} backdrop--radial{% endif %}"
-        {% if animations_enabled %}
-          data-aos="fade"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-        {% endif %}>
+      <div class="{{ section_width }} split-images__content-inner{% if show_text_shadow %} backdrop--radial{% endif %}">
         {%- if title != blank -%}
-          <h1 class="split-images__heading main-heading{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}">
-            {%- liquid
-              if animations_enabled
-                assign title_lines = title | split: '<p>'
-                for line in title_lines
-                  if line != blank
-                    echo '<span class="text-reveal__cropper"><span data-aos="come-up" data-aos-anchor="' | append: animation_anchor | append: '" data-aos-delay="' | append: animation_delay | append: '">'
+          {%- capture title_attributes -%}
+            class="h1 split-images__heading main-heading{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
+          {%- endcapture -%}
 
-                      assign line_with_links = line | split: '<a'
-                      assign line_mod  = ''
-
-                      if line_with_links.size > 1 and has_text_highlight
-                        for link_html_part in line_with_links
-                          if link_html_part != blank
-                            assign link_html_mod = link_html_part
-                            if link_html_part contains ' href='
-                              assign link_html_mod = link_html_part | prepend: '<a'
-                            endif
-
-                            if link_html_part contains 'text-highlight'
-                              assign link_html_mod = link_html_mod | replace_first: '><span class="text-highlight', ' data-has-highlight><span class="text-highlight'
-                            endif
-
-                            assign line_mod = line_mod | append: link_html_mod
-                          endif
-                        endfor
-
-                        echo line_mod | replace: '</p>', ''
-                      else
-                        echo line | replace: '</p>', ''
-                      endif
-
-                    echo '</span></span>'
-
-                    unless forloop.last
-                      assign animation_delay = animation_delay | plus: 150
-                    endunless
-                  endif
-                endfor
-
-                assign animation_delay = animation_delay | plus: 150
-              else
-                echo title | replace: '<p>', '' | replace: '</p>', ''
-              endif
-            -%}
-          </h1>
+          {% render 'title-text-reveal-and-highlights',
+            title: title,
+            title_attributes: title_attributes,
+            text_reveal: true,
+            has_text_highlight: has_text_highlight,
+            animation_anchor: animation_anchor,
+            animation_order: 1
+          %}
         {%- endif -%}
 
         {%- if text != blank -%}
-          <h2 class="slide__text main-text">
-            {%- liquid
-              if animations_enabled
-                assign text_lines = text | escape | newline_to_br | split: '<br />'
-                for line in text_lines
-                  echo '<span class="text-reveal__cropper"><span data-aos="come-up" data-aos-delay="' | append: animation_delay | append: '">'
-                  echo line
-                  echo '</span></span>'
-
-                  unless forloop.last
-                    assign animation_delay = animation_delay | plus: 150
-                  endunless
-                endfor
-
-                assign animation_delay = animation_delay | plus: 150
-              else
-                echo text | escape | newline_to_br
-              endif
-            -%}
-          </h2>
+          <div class="h2 main-text"
+            {% if animations_enabled %}
+              data-aos="hero"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-order="1"
+            {% endif %}
+          >
+            {{ text }}
+          </div>
         {%- endif -%}
 
-        {%- if button_text != blank -%}
+        {%- if button_1_text != blank or button_2_text != blank -%}
           <div class="slide__buttons main-buttons">
-            <div class="main-buttons__item"
-              {% if animations_enabled %}
-                data-aos="fade-up"
-                data-aos-anchor="{{ animation_anchor }}"
-                data-aos-delay="{{ animation_delay }}"
-              {% endif %}>
-              <a class="slide__btn btn {{ button_style }} {{ button_size }} {{ button_color }}" href="{{ button_link }}">{{ button_text | escape }}</a>
-            </div>
+            {%- if button_1_text != blank -%}
+              <div class="main-buttons__item"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="1"
+                {% endif %}
+              >
+                <a class="slide__btn btn {{ button_1_style }} {{ button_1_size }} {{ button_1_color }}" href="{{ button_1_link }}">{{ button_1_text | escape }}</a>
+              </div>
+            {%- endif -%}
+
+            {%- if button_2_text != blank -%}
+              <div class="main-buttons__item"
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="1"
+                {% endif %}
+              >
+                <a class="slide__btn btn {{ button_2_style }} {{ button_2_size }} {{ button_2_color }}" href="{{ button_2_link }}">{{ button_2_text | escape }}</a>
+              </div>
+            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
 
-      {%- if button_text == blank and button_link != '#!' -%}
-        <a class="split-images__link" href="{{ button_link }}"></a>
+      {%- if button_1_text == blank and button_2_text == blank and button_1_link != '#!' -%}
+        <a class="split-images__link" href="{{ button_1_link }}"></a>
       {%- endif -%}
     </div>
   {%- else -%}
@@ -386,34 +452,36 @@
       "info": "Highlight one or two key words in your heading by italicizing them, then choose the highlight option below"
     },
     {
+      "type": "header",
+      "content": "Highlight"
+    },
+    {
       "type": "select",
       "id": "heading_highlight_type",
-      "label": "Highlight type",
-      "default": "italics",
+      "label": "Type",
+      "default": "underline-hand-drawn",
       "options": [
-        {
-          "value": "italics",
-          "label": "Italics (no decoration)"
-        },
-        {
-          "value": "squiggle",
-          "label": "Squiggle"
-        },
-        {
-          "value": "circle",
-          "label": "Circle"
-        },
-        {
-          "value": "stroke",
-          "label": "Stroke (outlined text)"
-        }
+        { "value": "italics", "label": "Italics (no decoration)" },
+        { "value": "highlight", "label": "Highlight" },
+        { "value": "highlight-color", "label": "Text color" },
+        { "value": "underline", "label": "Underline (digital)" },
+        { "value": "underline-hand-drawn", "label": "Underline (hand-drawn)" },
+        { "value": "squiggle", "label": "Squiggle" },
+        { "value": "circle", "label": "Circle (digital)" },
+        { "value": "circle-hand-drawn", "label": "Circle (hand-drawn)" },
+        { "value": "stroke", "label": "Stroke (outlined text)" }
       ]
     },
     {
       "type": "color",
       "id": "highlight_color",
       "label": "Highlight color",
-      "default": "#D43747"
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_text_color",
+      "label": "Text color"
     },
     {
       "type": "range",
@@ -433,23 +501,23 @@
     },
     {
       "type": "header",
-      "content": "Button"
+      "content": "Button 1"
     },
     {
       "type": "text",
-      "id": "button_text",
+      "id": "button_1_text",
       "label": "Text",
       "default":"Learn More",
       "info": "Leave blank to link entire image"
     },
     {
       "type": "url",
-      "id": "button_link",
+      "id": "button_1_link",
       "label": "Link"
     },
     {
       "type": "select",
-      "id": "button_color",
+      "id": "button_1_color",
       "label": "Color",
       "default": "btn--white",
       "options": [
@@ -461,7 +529,7 @@
     },
     {
       "type": "select",
-      "id": "button_style",
+      "id": "button_1_style",
       "label": "Button style",
       "default": "btn--solid-border",
       "options": [
@@ -473,8 +541,57 @@
     },
     {
       "type": "select",
-      "id": "button_size",
+      "id": "button_1_size",
       "label": "Size",
+      "default": "btn--small",
+      "options": [
+        { "label": "Large", "value": "btn--large" },
+        { "label": "Medium", "value": "btn--medium" },
+        { "label": "Small", "value": "btn--small" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Button 2"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Text"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "button_2_color",
+      "label": "Second button color",
+      "default": "btn--black",
+      "options": [
+        { "label": "Primary", "value": "btn--primary" },
+        { "label": "Secondary", "value": "btn--secondary" },
+        { "label": "White", "value": "btn--white" },
+        { "label": "Black", "value": "btn--black" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "button_2_style",
+      "label": "Second button style",
+      "default": "btn--solid",
+      "options": [
+        { "label": "Solid", "value": "btn--solid" },
+        { "label": "Outline", "value": "btn--outline" },
+        { "label": "Solid with border", "value": "btn--solid-border" },
+        { "label": "Text", "value": "btn--text" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "button_2_size",
+      "label": "Second button size",
       "default": "btn--small",
       "options": [
         { "label": "Large", "value": "btn--large" },

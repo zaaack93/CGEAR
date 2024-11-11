@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "ie11_support_message": "Este sitio web tiene ciertas restriucciones de navegación. Le recomendamos utilizar buscadores como: Edge, Chrome, Safari o Firefox.",
@@ -6,12 +15,17 @@
       "color_variant": "variante de color",
       "more_colors": "+ {{ number }} más"
     },
+    "siblings": {
+      "label": "Color",
+      "swatches": "Color"
+    },
     "size_chart": {
+      "button": "Guia de tallas",
       "size": "Talla"
     },
     "accessibility": {
       "skip_to_content": "Saltar al contenido",
-      "select_variant": "Seleccionar menú desplegable de variantes",
+      "select_variant":  "Seleccionar menú desplegable de variantes",
       "show_submenu": "Mostrar submenú",
       "product": "Producto",
       "show_products": "Mostrar productos",
@@ -33,12 +47,11 @@
       "logo_image": "Logotipo",
       "unit_price_separator": "por",
       "my_account": "Mi cuenta",
-      "total_reviews": "reseñas totales",
       "view": "Ver",
       "product_image_lightbox": "Caja de luz de imagen abierta",
-      "star_reviews_info": "{{ rating_value }} de {{ rating_max }} estrellas",
       "close_form_message": "Cerrar mensaje de agradecimiento",
-      "scroll_to_top": "Volver al inicio"
+      "scroll_to_top": "Volver al inicio",
+      "quick_tip": "Consejo rapido"
     },
     "meta": {
       "page": "Página {{ page }}",
@@ -73,7 +86,7 @@
     "search": {
       "title": "Buscar productos en nuestro sitio",
       "search": "Buscar",
-      "no_results": "Tu búsqueda de \"{{ terms }}\" no arrojó ningún resultado.",
+      "no_results": "Sin resultados para \"{{ terms }}\"",
       "results_for": "Resultados para \"{{ terms }}\"",
       "results_with_count": {
         "one": "{{ count }} resultado",
@@ -97,11 +110,9 @@
       "quick_tip": "Presiona enter",
       "browse_categories": "Examinar las categorías",
       "popular_searches": "Términos de búsqueda sugeridos",
-      "badge": {
-        "blog": "Blog",
-        "page": "Página"
-      },
       "products": "Productos",
+      "articles": "Blogs",
+      "pages": "Paginas",
       "suggestions": "Sugerencias",
       "pages_and_blogs": "Páginas y publicaciones de blog",
       "search_actions": "Acciones de búsqueda"
@@ -174,13 +185,13 @@
       "checkout": "Check out",
       "empty": "Tu carrito está vacío.",
       "accept_terms": "Debes aceptar nuestros términos y condiciones.",
-      "accepted_terms": "¿Términos\/condiciones aceptados?",
+      "accepted_terms": "¿Términos/condiciones aceptados?",
       "zero_qty_error": "La cantidad debe ser mayor que 0.",
       "limit_error": "Lo siento, parece que no tenemos suficiente de este producto.",
       "continue_shopping": "Seguir comprando",
       "close_cart": "Cerrar el carrito",
       "shipping_at_checkout": "Gastos de envío e impuestos calculados al finalizar la compra",
-      "free_shipping_message_html": "Invierta <span data-free-shipping-amount=\"\">{{ amount }}<\/span> para calificar para el envío gratuito",
+      "free_shipping_message_html": "Invierta <span data-free-shipping-amount=\"\">{{ amount }}</span> para calificar para el envío gratuito",
       "qualified_shipping_message": "¡Felicidades! Su pedido califica para el envío GRATIS"
     },
     "label": {
@@ -219,7 +230,7 @@
       "show_less": "Ver menos",
       "title": "Colección",
       "to": "A",
-      "use_fewer_filters_html": "Usa menos filtros o <a class=\"{{ class }}\" href=\"{{ link }}\">borra todo<\/a>"
+      "use_fewer_filters_html": "Usa menos filtros o <a class=\"{{ class }}\" href=\"{{ link }}\">borra todo</a>"
     }
   },
   "collections": {
@@ -303,7 +314,7 @@
       "province": "Estado",
       "zip": "Código postal",
       "default": "Por defecto",
-      "delete_confirm": "¿Está seguro\/a de que deseas eliminar esta dirección?"
+      "delete_confirm": "¿Está seguro/a de que deseas eliminar esta dirección?"
     },
     "login": {
       "title": "Iniciar sesión",
@@ -405,6 +416,7 @@
       "single_collection_products_description": "Una vez que elija una colección, las descripciones de sus productos se completarán aquí automáticamente.",
       "no_collections_html": "No tienes ninguna colección para mostrar aquí. <a href=\"\/admin\/custom_collections\">Add some collections<\/a> to go along with the default Frontpage.",
       "no_content": "Esta sección no tiene actualmente ningún contenido. Agregue contenido a esta sección usando la barra lateral.",
+      "no_page_content": "Esta página actualmente no incluye ningún contenido.",
       "slideshow": {
         "heading": "Bienvenido a Palo Alto",
         "subheading": "Este subtítulo le ayuda a proporcionar más detalles al título anterior.",
@@ -443,6 +455,12 @@
       "press": {
         "text": "Proporcione información sobre lo que piensa la siguiente empresa sobre su marca.",
         "read_more": "Leer más"
+      },
+      "products_with_image": {
+        "title": "Más vendidos"
+      },
+      "banner_image": {
+        "title": "Palo Alto"
       }
     }
   },
@@ -479,7 +497,7 @@
       "regular_price": "Precio regular",
       "description": "descripción",
       "view_all_details": "Ver todos los detalles",
-      "reviews": "Comentarios",
+      "shop_now": "Compra ahora",
       "previous_product_html": "&larr; Producto anterior",
       "next_product_html": "Siguiente producto &rarr;",
       "from_text_html": "Desde {{ price }}",
@@ -510,8 +528,8 @@
       "add_to_cart": "Añadir al carrito",
       "buy_it_now": "Cómpralo ahora",
       "on_sale": "Venta",
-      "save_badge_html": "Ahorre {{ discount }}",
-      "save_badge_up_to_html": "Ahorre hasta {{ discount }}",
+      "save_badge_html" : "Ahorre {{ discount }}",
+      "save_badge_up_to_html" : "Ahorre hasta {{ discount }}",
       "quick_view": "Compra rápida",
       "checkout": "Checkout",
       "view_in_space": "Ver en tu espacio",
@@ -521,7 +539,10 @@
       "save": "Ahorrar",
       "unit_price_label": "Precio por unidad",
       "popup_missing": "Seleccione la página de la configuración del bloque.",
-      "popup_text_missing": "No se agregó texto en la página seleccionada"
+      "popup_text_missing": "No se agregó texto en la página seleccionada",
+      "show_more": "Ver más",
+      "show_less": "Ver menos",
+      "variant_option_image": "Tamaño"
     }
   },
   "gift_cards": {
@@ -538,14 +559,38 @@
       "title": "¡Aquí está tu tarjeta de regalo con un monto de {{ value }}!"
     }
   },
+  "recipient": {
+    "form": {
+      "checkbox": "Quiero enviar esto como un regalo.",
+      "email_label": "Correo electrónico de la persona destinataria",
+      "email": "Correo electrónico de la persona destinataria",
+      "name_label": "Nombre de la persona destinataria (opcional)",
+      "name": "Nombre de la persona destinataria (opcional)",
+      "message_label": "Mensaje (opcional)",
+      "message": "Mensaje (opcional)",
+      "max_characters": "{{ max_chars }} caracteres máx.",
+      "error_heading": "Por favor, ajusta lo siguiente:",
+      "send_on": "AAAA-MM-DD",
+      "send_on_label": "Enviar el (opcional)"
+    }
+  },
   "footer": {
-    "socials": {
-      "title": "Ver {{ shop_name }} en {{ social }}",
-      "rss": "RSS"
+    "socials" : {
+      "title":"Ver {{ shop_name }} en {{ social }}",
+      "rss":"RSS"
     },
+    "country": "País",
     "language": "Idioma",
-    "currency": "Moneda",
+    "update": "Actualizar",
     "powered_by": "Esta tienda es proporcionada por"
+  },
+  "countdown": {
+    "heading": "Compre antes de que termine.",
+    "ends": "Termina",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos"
   },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
@@ -566,5 +611,8 @@
     "previous": "Anterior",
     "next": "Siguiente",
     "scroll_down": "Desplaza hacia abajo"
+  },
+  "video": {
+    "play_bg_video": "Reproducir video de fondo"
   }
 }

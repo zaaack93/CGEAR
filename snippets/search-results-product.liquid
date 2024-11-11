@@ -12,6 +12,8 @@
 
 {%- liquid
   assign featured_image = product.featured_media.preview_image
+  assign render_image_width = 60
+  assign image_widths = '30, 60'
   assign additional_classes = additional_classes | prepend: ' ' | default: ''
   assign focusable = focusable | default: false
 -%}
@@ -22,7 +24,14 @@
   {% unless focusable %} tabindex="-1"{% endunless %}
 >
   <div class="predictive-search__product-image">
-    {%- render 'image-fill', aspect_ratio: 1, img_object: featured_image-%}
+    {%- render 'image',
+      image: featured_image,
+      width: render_image_width,
+      widths: image_widths,
+      sizes: '30px',
+      cover: true,
+      placeholder_svg: 'product-apparel-1',
+      preload: true -%}
   </div>
 
   <p class="predictive-search__product-title">

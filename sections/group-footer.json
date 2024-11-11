@@ -1,14 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
   "sections": {
     "1ca2ef8d-cf24-471a-8827-ddcdeccd6129": {
       "type": "section-newsletter",
+      "disabled": true,
       "settings": {
         "flex_align": "align--middle-center",
         "text_color": "text-light",
         "title": "Subscribe & Save",
-        "text": "<p>Sign up for exclusive deals, giveaways and <strong>10% of your first CGEAR order.  <\/strong><\/p>",
+        "text": "<p>Sign up for exclusive deals, giveaways.</p>",
         "extra_fields": "",
         "button_text": "Subscribe",
         "bg_color": "#76892f",
@@ -22,10 +32,10 @@
     "6a3445b9-ede3-4ed9-9760-bcdc86f5fcad": {
       "type": "section-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Cgear-52-Web_4f2320c4-d495-477a-a44e-4a89e3f97a36.jpg",
-        "height": "one-half-height",
+        "image": "shopify://shop_images/zac-porter-fNsnl4q7V8M-unsplash-EDIT.jpg",
+        "height": "one-third-height",
         "enable_mobile_height": false,
-        "mobile_height": "original-height-mobile",
+        "mobile_height": "one-third-height-mobile",
         "enable_stretch": true,
         "image_position": "center",
         "bg_color_secondary": false,
@@ -40,19 +50,26 @@
         "a257dbc0-7913-4fbf-89f7-27dd288cd62e": {
           "type": "text",
           "settings": {
-            "text": "<p>Finding comfort in the uncomfortable.<\/p>",
+            "text": "<p><strong>BUILT  FOR AUSTRALIAN CONDITIONS</strong></p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
             "icon_name": "none",
             "icon_color": "",
-            "icon_width": 25,
+            "icon_width": 30,
             "target_device_enabled": false,
             "target_device": "mobile"
           }
         },
-        "a6589d89-48b4-45a4-8ce1-fbf060fbd8aa": {
+        "text_xHw7ma": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "",
+            "text": "<p><strong>FIND COMFORT IN THE UNCOMFORTABLE.</strong></p>",
+            "text_color": "",
+            "heading_highlight_type": "circle",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000",
             "icon_name": "none",
             "icon_color": "",
             "icon_width": 25,
@@ -63,75 +80,28 @@
       },
       "block_order": [
         "a257dbc0-7913-4fbf-89f7-27dd288cd62e",
-        "a6589d89-48b4-45a4-8ce1-fbf060fbd8aa"
+        "text_xHw7ma"
       ],
       "settings": {
         "layout": "marquee",
+        "show_top_border": false,
+        "show_bottom_border": false,
         "padding": 20,
-        "bg_color": "#76892f",
-        "color": "#ffffff",
         "marquee_speed": 100,
+        "direction": "ticker-ltr",
         "slider_speed": 7,
+        "show_arrows": false,
+        "text_caps": false,
+        "type_style": "subheading-text",
         "text_size": 140,
+        "letter_spacing": 0,
         "message_spacing": 50,
+        "bg_color": "#76892f",
+        "gradient": "",
+        "color": "#ffffff",
+        "border_color": "#000000",
         "padding_top": 0,
         "padding_bottom": 0
-      }
-    },
-    "d4b4a76c-e484-4781-9ede-9502da815aeb": {
-      "type": "section-icons-row",
-      "disabled": true,
-      "blocks": {
-        "sections--15169561395273__d4b4a76c-e484-4781-9ede-9502da815aeb-168413023943342596-0": {
-          "type": "text",
-          "settings": {
-            "icon_name": "truck",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery.png",
-            "title": "Free Shipping",
-            "text": "<p>on AUS orders over $250<\/p>"
-          }
-        },
-        "sections--15169561395273__d4b4a76c-e484-4781-9ede-9502da815aeb-168413023943342596-1": {
-          "type": "text",
-          "settings": {
-            "icon_name": "shield",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv.png",
-            "title": "12-Month Warranty",
-            "text": "<p>On all orders<\/p>"
-          }
-        },
-        "sections--15169561395273__d4b4a76c-e484-4781-9ede-9502da815aeb-168413023943342596-2": {
-          "type": "text",
-          "settings": {
-            "icon_name": "smile",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Aussie.png",
-            "title": "Australian Through & Through",
-            "text": "<p>Family Owned & Operated<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "sections--15169561395273__d4b4a76c-e484-4781-9ede-9502da815aeb-168413023943342596-0",
-        "sections--15169561395273__d4b4a76c-e484-4781-9ede-9502da815aeb-168413023943342596-1",
-        "sections--15169561395273__d4b4a76c-e484-4781-9ede-9502da815aeb-168413023943342596-2"
-      ],
-      "settings": {
-        "alignment": "left",
-        "columns": 3,
-        "icons_width": 55,
-        "heading": "",
-        "subheading": "",
-        "bg_color": "",
-        "text_color": "#333333",
-        "box_color": "",
-        "button_text": "",
-        "button_link": "",
-        "button_color": "btn--black",
-        "button_style": "btn--solid",
-        "button_size": "btn--small",
-        "enable_slider_mobile": false,
-        "padding_top": 60,
-        "padding_bottom": 60
       }
     },
     "footer": {
@@ -140,50 +110,79 @@
         "footer-block-0": {
           "type": "link",
           "settings": {
-            "menu": "support",
-            "title": "Support"
+            "alignment": "text-left",
+            "menu": "footer-shop-new",
+            "title": "SHOP",
+            "column_width": "15"
+          }
+        },
+        "link_mJhwGn": {
+          "type": "link",
+          "settings": {
+            "alignment": "text-left",
+            "menu": "footer-support-new",
+            "title": "SUPPORT",
+            "column_width": "15"
           }
         },
         "footer-block-1": {
           "type": "text",
           "settings": {
-            "title": "About CGear",
-            "footer_text": "<p>CGear is proudly designed in Australia for Australian conditions by a proudly Australian owned company. We're a group of adventurous and inspired Aussies, just like you.<\/p><p>Address: Unit 2\/8 Schofield St, Moorabbin, VIC, 3189, Australia<\/p><p>Phone: 03 9645 4447<\/p>"
+            "alignment": "text-left",
+            "title": "CONTACT",
+            "footer_text": "<p>Unit 2/8 Schofield St, Moorabbin<br/>VIC 3189 Australia</p><p>Call: 03 9645 4447</p>",
+            "column_width": "20"
           }
         },
-        "35f4748e-f8db-4b43-af9e-df1288ac102e": {
+        "text_fCUAQU": {
           "type": "text",
           "settings": {
-            "title": "Acknowledgement",
-            "footer_text": "<p>CGear acknowledges the Traditional Custodians of these great lands which we live, work and travel on. We pay our respects to their Elders past, present and emerging. <\/p>"
+            "alignment": "text-left",
+            "title": "ABOUT CGEAR",
+            "footer_text": "<p>CGear is designed in Australia for Australian conditions by a proudly Australian owned company. We're a group of adventurous Aussies, just like you.</p>",
+            "column_width": "25"
           }
         },
         "footer-block-2": {
           "type": "newsletter",
           "settings": {
-            "title": "Newsletter",
-            "text": "<p>Stay up to date with the new collections, products and exclusive offers.<\/p>"
+            "alignment": "text-left",
+            "title": "NEWSLETTER",
+            "uppercase_heading": false,
+            "heading_size": 100,
+            "text": "<p>Stay up to date with the new collections, products and exclusive offers.</p>",
+            "button_text": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid",
+            "column_width": "25"
           }
         }
       },
       "block_order": [
         "footer-block-0",
+        "link_mJhwGn",
         "footer-block-1",
-        "35f4748e-f8db-4b43-af9e-df1288ac102e",
+        "text_fCUAQU",
         "footer-block-2"
       ],
       "settings": {
-        "width": "wrapper--full-padded",
         "show_footer_wave": false,
+        "enable_footer_parallax": false,
+        "increase_border_radius": true,
+        "bottom_bar_alignment": "text-left",
         "show_social_links": true,
+        "enable_follow_on_shop": false,
         "show_payment_icons": false,
-        "bottom_menu": "",
+        "bottom_menu": "policies",
         "color_text": "#ffffff",
-        "color_bg": "#3c4147",
+        "color_bg": "#4a7d96",
         "color_border": "#ffffff",
         "show_locale_selector": false,
-        "show_currency_selector": false,
-        "currency_type": "currency"
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "width": "wrapper--full-padded",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -191,7 +190,6 @@
     "1ca2ef8d-cf24-471a-8827-ddcdeccd6129",
     "6a3445b9-ede3-4ed9-9760-bcdc86f5fcad",
     "a1f44c4d-be5b-4289-8285-a0e74923b727",
-    "d4b4a76c-e484-4781-9ede-9502da815aeb",
     "footer"
   ]
 }

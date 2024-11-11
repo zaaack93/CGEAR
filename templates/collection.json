@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -16,10 +25,9 @@
     },
     "subcollections": {
       "type": "subcollections",
+      "disabled": true,
       "settings": {
-        "subcollections": [
-
-        ],
+        "subcollections": [],
         "limit": 8,
         "layout": "grid",
         "image_source": "collection",
@@ -31,97 +39,44 @@
         "padding_bottom": 30
       }
     },
-    "e567062d-266b-4546-8c39-5c7c8bd45f6f": {
-      "type": "section-list-collection",
-      "disabled": true,
+    "section_banner_image_JYY8r8": {
+      "type": "section-banner-image",
       "blocks": {
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-0": {
-          "type": "collection",
+        "heading_Hk9333": {
+          "type": "heading",
           "settings": {
-            "collection": "",
-            "custom_collection_image": "shopify:\/\/shop_images\/Cgear-58-Web-1x1.jpg",
-            "bg_color": "",
-            "text_color": "text-light",
-            "overlay_opacity": 0
-          }
-        },
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-1": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "custom_collection_image": "shopify:\/\/shop_images\/Cgear-71-Web.jpg",
-            "bg_color": "",
-            "text_color": "text-light",
-            "overlay_opacity": 0
-          }
-        },
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-2": {
-          "type": "collection",
-          "settings": {
-            "collection": "cgear-privacy-screens",
-            "bg_color": "",
-            "text_color": "text-light",
-            "overlay_opacity": 0
-          }
-        },
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-3": {
-          "type": "collection",
-          "settings": {
-            "collection": "cgear-end-drops",
-            "bg_color": "",
-            "text_color": "text-light",
-            "overlay_opacity": 0
-          }
-        },
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-4": {
-          "type": "collection",
-          "settings": {
-            "collection": "cgear-fiama-privacy-screens",
-            "bg_color": "",
-            "text_color": "text-light",
-            "overlay_opacity": 0
-          }
-        },
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-5": {
-          "type": "collection",
-          "settings": {
-            "collection": "the-door-floor",
-            "bg_color": "",
-            "text_color": "text-light",
-            "overlay_opacity": 0
+            "text": "<p>Weather it's sand, grass, dirt or the desert, we've got you covered.</p>",
+            "size": 110,
+            "heading_highlight_type": "italics",
+            "highlight_color": "#d43747",
+            "highlight_text_color": "#000000"
           }
         }
       },
       "block_order": [
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-0",
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-1",
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-2",
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-3",
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-4",
-        "template--15169561034825__e567062d-266b-4546-8c39-5c7c8bd45f6f-16856863646ac4296e-5"
+        "heading_Hk9333"
       ],
       "settings": {
-        "layout": "carousel",
-        "alignment": "center",
-        "image_shape": "square",
-        "image_width": 200,
-        "image_height": 55,
-        "title": "",
-        "heading_size": 100,
-        "text_size": 130,
-        "overlay_text": false,
-        "layout_mobile": "carousel",
-        "image_width_mobile": 150,
-        "image_height_mobile": 100,
-        "bg_color_secondary": false,
-        "text_color": "text-dark",
-        "width": "wrapper--full-padded",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "height": "one-third-height",
+        "enable_mobile_height": true,
+        "mobile_height": "one-third-height-mobile",
+        "image": "shopify://shop_images/dylan-shaw-4LJh9TAcImw-unsplash-EDIT.jpg",
+        "overlay_opacity": 10,
+        "transition": "zoom-out",
+        "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
+        "text_width": "narrow",
+        "text_position": "center",
+        "text_alignment": "text-center",
+        "text_color": "text-light"
       }
     },
     "main": {
       "type": "collection",
+      "custom_css": [
+        ".product__badgebadge {font-weight: bold;}"
+      ],
       "settings": {
         "show_breadcrumbs": false,
         "enable_sorting": false,
@@ -129,7 +84,6 @@
         "filters_layout": "open",
         "show_more": false,
         "filter_mode": "default",
-        "heading_style": "body",
         "bg_color": "",
         "padding_top": 40,
         "padding_bottom": 60
@@ -139,7 +93,7 @@
   "order": [
     "hero",
     "subcollections",
-    "e567062d-266b-4546-8c39-5c7c8bd45f6f",
+    "section_banner_image_JYY8r8",
     "main"
   ]
 }

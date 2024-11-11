@@ -5,13 +5,15 @@
   assign section_height = section.settings.section_height
   assign section_width = section.settings.section_width
   assign image = section.settings.image
+  assign increase_border_radius = settings.increase_border_radius
   assign text_alignment = section.settings.text_alignment
   assign subheading = section.settings.subheading
   assign title = section.settings.title
   assign heading_highlight_type = section.settings.heading_highlight_type
   assign highlight_color = section.settings.highlight_color
+  assign highlight_text_color = section.settings.highlight_text_color
   assign heading_size = section.settings.heading_size | times: 0.01
-  assign text_content = section.settings.text_content
+  assign content = section.settings.content
   assign text_color = section.settings.text_color
   assign video_link = section.settings.video_link
   assign button_text = section.settings.button_text
@@ -20,6 +22,8 @@
   assign button_color = section.settings.button_color
   assign button_size = section.settings.button_size
   assign bg_color = section.settings.bg_color
+  assign gradient = section.settings.gradient | default: 'none'
+  assign bg_color_set = false
   assign items_layout_class = ''
   assign unique = section.id
   assign id = 'ImageWithText--' | append: section.id
@@ -28,12 +32,22 @@
   assign animations_enabled = settings.animations_enabled
   assign animation_delay = 150
 
+  assign hover_scale = ''
+  assign entire_section_link = false
+  if button_text == blank and button_link != blank
+    assign entire_section_link = true
+    assign hover_scale = ' hover-scale'
+  endif
+  if button_link != blank or button_text != blank
+    assign hover_scale = ' hover-scale'
+  endif
+
   case text_alignment
-   when 'left'
+    when 'left'
     assign text_alignment_class = 'text-left'
-   when 'center'
+    when 'center'
     assign text_alignment_class = 'text-center'
-   when 'right'
+    when 'right'
     assign text_alignment_class = 'text-right'
   endcase
 
@@ -57,17 +71,51 @@
   case image_width
     when 'extra-narrow'
       assign image_width_class = 'image-with-text--image-thirty'
+      assign block_width_percent = 0.3
     when 'narrow'
       assign image_width_class = 'image-with-text--image-forty'
+      assign block_width_percent = 0.4
     when 'standard'
       assign image_width_class = 'image-with-text--image-fifty'
+      assign block_width_percent = 0.5
     when 'wide'
       assign image_width_class = 'image-with-text--image-sixty'
+      assign block_width_percent = 0.6
     when 'extra-wide'
       assign image_width_class = 'image-with-text--image-seventy'
+      assign block_width_percent = 0.7
   endcase
+
+  if bg_color != 'rgba(0,0,0,0)' and bg_color != ''
+    assign bg_color_set = true
+  else
+    if gradient != 'none'
+      assign bg_color_set = true
+    endif
+  endif
+
+  assign desktop_space = 120
+  assign tablet_space = 40
+  assign mobile_space = 40
+  case section_width
+    when 'wrapper--full'
+      assign wrapper_width = '100vw'
+      assign desktop_space = 0
+      assign tablet_space = 0
+      assign mobile_space = 0
+    when 'wrapper--full-padded'
+      assign wrapper_width = '100vw'
+    when 'wrapper'
+      assign wrapper_width = '1440px'
+  endcase
+
+  if layout == 'overlay'
+    assign block_width_percent = 0.85
+    assign tablet_space = 40
+    assign mobile_space = 0
+  endif
 -%}{% comment %}
-  Enhanced text decorations options - Liqiud variables
+  Enhanced text decorations options - Liquid variables
 
   Dependencies:
     - Title liquid object from settings: `assign title = section.settings.title`
@@ -79,6 +127,34 @@
 {% endcomment %}
 
 {%- liquid
+  comment
+   Highlighted words count
+  endcomment
+  assign title_temp = title | split: '<em>'
+  assign em_arr = ''
+  if title_temp.size > 1
+    for text_part in title_temp offset: 1
+      assign em_text = text_part | split: '</em>' | first
+      assign em_arr = em_arr | append: '#separator#' | append: em_text
+    endfor
+  endif
+  assign em_arr = em_arr | split: '#separator#'
+  assign words_count_arr = ''
+  assign letters_count_arr = ''
+  if em_arr.size > 0
+    for words in em_arr offset: 1
+      assign word = words | split: ' '
+      assign words_count_arr = words_count_arr | append: word.size | append: ', '
+      assign letters_count_arr = letters_count_arr | append: words.size | append: ', '
+    endfor
+  endif
+
+  assign words_count_arr = words_count_arr | replace_last: ', ', '' | split: ', '
+  assign letters_count_arr = letters_count_arr | replace_last: ', ', '' | split: ', '
+
+  comment
+   Main highlight types logic
+  endcomment
   assign icon_url = ''
   assign icon_color = 'var(--text)'
 
@@ -93,12 +169,20 @@
       case heading_highlight_type
         when 'squiggle'
           assign icon_url = 'icon-squiggle.svg' | asset_url
-          echo '<span class="text-highlight__icon"></span>'
-        when 'circle'
-          echo '<span class="text-highlight__icon">'
-          render 'icon-circle', color: icon_color
+        when 'circle' or 'circle-hand-drawn' or 'underline-hand-drawn'
+          echo '<span class="text-highlight__icon" data-highlight-holder>'
+
+            when 'circle'
+              render 'icon-circle'
+            when 'circle-hand-drawn'
+              render 'icon-circle-hand-drawn'
+            when 'underline-hand-drawn'
+              render 'icon-underline-hand-drawn'
+
           echo '</span>'
-        when 'stroke' or 'circle' or 'squiggle'
+        when 'highlight' or 'squiggle'
+          echo '<span class="text-highlight__icon text-highlight__icon--pseudo" data-highlight-holder></span>'
+        when 'stroke' or 'circle' or 'circle-hand-drawn' or 'squiggle' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
           assign has_text_highlight = true
       endcase
     endif
@@ -118,31 +202,93 @@
 
   assign text_highlight_wrapper_class = 'text-highlight-wrapper' | append: ' text-highlight-wrapper--' | append: heading_highlight_type
   capture text_highlight_start
-    echo '<span class="text-highlight" ' | append: icon_styles | append: '>'
+    echo '<text-highlight class="text-highlight" ' | append: icon_styles | append: ' data-highlight-type="' | append: heading_highlight_type | append: '">'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '<span class="text-highlight__string" data-highlight-holder>'
+    endcase
   endcapture
   capture text_highlight_end
     echo text_highlight_icon
-    echo '</span>'
+    case heading_highlight_type
+      when 'stroke' or 'highlight-color' or 'underline'
+        echo '</span>'
+    endcase
+    echo '</text-highlight>'
   endcapture
 
   if title != blank and title contains '<em>'
     case heading_highlight_type
-      when 'squiggle' or 'circle' or 'stroke'
+      when 'squiggle' or 'circle' or 'circle-hand-drawn' or 'stroke' or 'highlight' or 'highlight-color' or 'underline' or 'underline-hand-drawn'
         assign title = title | replace: '<em>', text_highlight_start | replace: '</em>', text_highlight_end
+
+      when 'circle' or 'circle-hand-drawn'
+        comment
+          Update icon's holder class based on the italicised words count
+        endcomment
+        assign title = title | split: 'class="text-highlight"'
+        assign title_mod = ''
+        for title_part in title offset: 1
+          assign current_part = title_part
+
+          if title_part contains 'text-highlight__icon'
+            capture highlight_icon_classes
+              echo 'text-highlight__icon'
+              assign current_count = words_count_arr[forloop.index0] | times: 1
+              assign letters_count = letters_count_arr[forloop.index0] | times: 1
+              if current_count == 1
+                echo ' text-highlight__icon--single-word'
+              endif
+              if letters_count < 6
+                echo ' text-highlight__icon--short'
+                echo ' text-highlight__icon--l' | append: letters_count
+              endif
+              if letters_count > 15
+                echo ' text-highlight__icon--long'
+              endif
+            endcapture
+
+            assign current_part = title_part | replace: 'text-highlight__icon', highlight_icon_classes
+          endif
+
+          unless forloop.last
+            assign title_mod = title_mod | append: current_part | append: 'class="text-highlight"'
+          else
+            assign title_mod = title_mod | append: current_part
+          endunless
+        endfor
+        assign title_first_part = title | first | append: 'class="text-highlight"'
+        assign title_mod = title_mod | prepend: title_first_part
+        assign title = title_mod
     endcase
   endif
 -%}{%- style -%}
   {{ selector_id }} {
     --PT: {{ section.settings.padding_top }}px;
     --PB: {{ section.settings.padding_bottom }}px;
-    --highlight-color: var(--text);
 
-    {%- if bg_color != 'rgba(0,0,0,0)' and bg_color != '' -%}
-      --bg: {{ bg_color }};
+    {%- if increase_border_radius -%}
+      --radius: 34px;
+    {%- endif %}
+
+    {%- if bg_color_set -%}
+      {%- if gradient != 'none' -%}
+        --bg: {{ gradient }};
+      {%- else -%}
+        --bg: {{ bg_color }};
+      {%- endif -%}
+    {%- endif %}
+
+    {%- if heading_highlight_type != 'highlight' -%}
+      --highlight-color: var(--text);
     {%- endif -%}
 
     {%- if highlight_color != 'rgba(0,0,0,0)' and highlight_color != '' -%}
       --highlight-color: {{ highlight_color }};
+    {%- endif -%}
+
+    {%- if highlight_text_color != 'rgba(0,0,0,0)' and highlight_text_color != '' -%}
+      --highlight-text-color: {{ highlight_text_color }};
     {%- endif -%}
   }
 
@@ -162,28 +308,52 @@
       {% endif %}>{{ subheading }}</div>
   {%- endif -%}
 
-  {%- if title != blank -%}
-    {%- liquid
-      assign title = title | replace: '%', '<sup>%</sup>'
+  {%- if title != blank -%}{% comment %}
+  Modify text in title whenever there is a percentage off string, such as "20% off", so that output will include HTML tags with which to style promo texts better
+
+  Dependencies:
+    - title: {Object} Liquid object from settings that contains the heading that would be modified and rendered - `assign title = section.settings.title`
+
+  Returns variables:
+    - has_percent_off: {Boolean}
+    - has_number_percent: {Boolean}
+{%- endcomment -%}
+
+{%- liquid
+  assign numbers_string = '0%,1%,2%,3%,4%,5%,6%,7%,8%,9%' | split: ','
+  assign has_percent_off = false
+  assign has_number_percent = false
+  for num in numbers_string
+    if title contains num
+      assign has_number_percent = true
+    endif
+  endfor
+
+  if has_number_percent
+    assign title = title | replace: '%', '<sup>%</sup>'
+
+    if title contains '<sup>%</sup> off' or title contains '<sup>%</sup> OFF' or title contains '<sup>%</sup> Off'
+      assign has_percent_off = true
       assign title = title | replace: '<sup>%</sup> off', '<sup>%</sup> <small>off</small>'
       assign title = title | replace: '<sup>%</sup> OFF', '<sup>%</sup> <small>OFF</small>'
       assign title = title | replace: '<sup>%</sup> Off', '<sup>%</sup> <small>Off</small>'
-    -%}
-
-    <h3 class="image-with-text__heading h2{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}"
+    endif
+  endif
+-%}{%- capture title_attributes -%}
+      class="image-with-text__heading h2{% if has_text_highlight %} {{ text_highlight_wrapper_class }}{% endif %}{% if has_percent_off %} haspercentoff{% elsif has_number_percent %} hasnumberpercent{% endif %}"
       {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
         data-aos-delay="{{ animation_delay }}"
         {%- assign animation_delay = animation_delay | plus: 150 -%}
-      {% endif %}>
-      {%- render 'title-with-highlights',
-        title: title,
-        heading_highlight_type: heading_highlight_type,
-        highlight_color: highlight_color,
-        has_text_highlight: has_text_highlight
-      -%}
-    </h3>
+      {% endif %}
+    {%- endcapture -%}
+
+    {% render 'title-text-reveal-and-highlights',
+      title: title,
+      title_attributes: title_attributes,
+      has_text_highlight: has_text_highlight
+    %}
 
     {%- if settings.show_spacer_lines -%}
       <hr
@@ -196,14 +366,14 @@
     {%- endif -%}
   {%- endif -%}
 
-  {%- if text_content != blank -%}
+  {%- if content != blank -%}
     <div class="image-with-text__text"
       {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-anchor="{{ animation_anchor }}"
         data-aos-delay="{{ animation_delay }}"
         {%- assign animation_delay = animation_delay | plus: 150 -%}
-      {% endif %}>{{ text_content | newline_to_br }}</div>
+      {% endif %}>{{ content }}</div>
   {%- endif -%}
 
   {%- if button_text != blank -%}
@@ -291,19 +461,25 @@
 -%}
 
 <section id="{{ id }}"
-  class="section-padding image-with-text {{ section_height }} {{ image_width_class }} {{ text_color }}"
+  class="section-padding image-with-text {{ section_height }} {{ image_width_class }} {{ text_color }}{%- render 'button-fallback-classes', primary_color: button_color, section_bg_color: bg_color -%}"
   data-section-id="{{ section.id }}"
   data-section-type="image-with-text"
   data-prevent-transparent-header>
-  <div class="image-with-text__wrapper">
+  <div class="image-with-text__wrapper{{ hover_scale }}">
     <div class="{{ section_width }}">
-      {%- if button_text == blank and button_link != blank -%}
+      {%- if entire_section_link -%}
         <a class="image-with-text__link" href="{{ button_link }}"></a>
       {%- endif -%}
 
       <div class="image-with-text__items {{ items_layout_class }}">
         <div class="image-with-text__image">
-          {%- assign animation_delay = 150 -%}
+          {%- liquid
+            assign animation_delay = 150
+            assign img_width_lg = 'calc((' | append: wrapper_width | append: ' - ' | append: desktop_space | append: 'px) * ' | append: block_width_percent | append: ')'
+            assign img_width_md = 'calc((100vw - ' | append: tablet_space | append: 'px) * ' | append: block_width_percent | append: ')'
+            assign img_width_sm = 'calc(100vw - ' | append: mobile_space | append: 'px)'
+            assign sizes = '(min-width: 1024px) ' | append: img_width_lg | append: ', (min-width: 768px) ' | append: img_width_md | append: ', ' | append: img_width_sm
+          -%}
 
           {%- capture image_attributes -%}
             {% if animations_enabled %}
@@ -313,7 +489,7 @@
             {% endif %}
           {%- endcapture -%}
 
-          {%- render 'image-fill', is_background: true, img_object: image, image_attributes: image_attributes, classes: 'image-with-text__image-bg', placeholder_svg: 'lifestyle-1' -%}
+          {%- render 'image-fill', is_background: true, img_object: image, sizes: sizes, image_attributes: image_attributes, classes: 'image-with-text__image-bg', placeholder_svg: 'lifestyle-1' -%}
 
           {{- video_link -}}
         </div>
@@ -422,14 +598,23 @@
         "info": "Highlight one or two key words in your heading by italicizing them, then choose the highlight option below."
       },
       {
+        "type": "header",
+        "content": "Highlight"
+      },
+      {
         "type": "select",
         "id": "heading_highlight_type",
-        "label": "Highlight type",
-        "default": "circle",
+        "label": "Type",
+        "default": "underline-hand-drawn",
         "options": [
           { "value": "italics", "label": "Italics (no decoration)" },
+          { "value": "highlight", "label": "Highlight" },
+          { "value": "highlight-color", "label": "Text color" },
+          { "value": "underline", "label": "Underline (digital)" },
+          { "value": "underline-hand-drawn", "label": "Underline (hand-drawn)" },
           { "value": "squiggle", "label": "Squiggle" },
-          { "value": "circle", "label": "Circle" },
+          { "value": "circle", "label": "Circle (digital)" },
+          { "value": "circle-hand-drawn", "label": "Circle (hand-drawn)" },
           { "value": "stroke", "label": "Stroke (outlined text)" }
         ]
       },
@@ -437,7 +622,12 @@
         "type": "color",
         "id": "highlight_color",
         "label": "Highlight color",
-        "default": "#D43747"
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "highlight_text_color",
+        "label": "Text color"
       },
       {
         "type": "range",
@@ -450,10 +640,10 @@
         "unit": "%"
       },
       {
-        "type": "textarea",
-        "id": "text_content",
+        "type": "richtext",
+        "id": "content",
         "label": "Text",
-        "default": "Share details about a promotion, welcome customers, describe a product, or talk about your brand."
+        "default": "<p>Share details about a promotion, welcome customers, describe a product, or talk about your brand.</p>"
       },
       {
         "type": "select",
@@ -541,6 +731,11 @@
         "type": "color",
         "id": "bg_color",
         "label": "Background"
+      },
+      {
+        "type": "color_background",
+        "id": "gradient",
+        "label": "Overlay gradient"
       },
       {
         "type": "header",

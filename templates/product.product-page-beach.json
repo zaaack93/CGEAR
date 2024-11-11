@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,8 +16,6 @@
           "type": "title",
           "settings": {
             "subheading": "none",
-            "show_rating": true,
-            "show_rating_count": true,
             "padding_bottom": 20
           }
         },
@@ -24,7 +31,7 @@
         "c144a3fa-28a2-4fd4-95ac-9c193e6e52c4": {
           "type": "text",
           "settings": {
-            "title": "<p>{{ product.metafields.custom.short_description | metafield_tag }}<\/p>",
+            "title": "<p>{{ product.metafields.custom.short_description | metafield_tag }}</p>",
             "text_alignment": "left",
             "padding_bottom": 30
           }
@@ -34,7 +41,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "#76892f",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons-Square-Green_9b932b22-c427-4099-a241-d686460105a8.png",
+            "icon_image": "shopify://shop_images/CGear-Icons-Square-Green_9b932b22-c427-4099-a241-d686460105a8.png",
             "icon_width": 20,
             "icon_text": "Filters sand, dust and dirt.",
             "text_size": 90,
@@ -49,7 +56,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "#76892f",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons-Square-Green_9b932b22-c427-4099-a241-d686460105a8.png",
+            "icon_image": "shopify://shop_images/CGear-Icons-Square-Green_9b932b22-c427-4099-a241-d686460105a8.png",
             "icon_width": 21,
             "icon_text": "Reinforced edges with D-Rings.",
             "text_size": 90,
@@ -64,7 +71,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "#76892f",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons-Square-Green_9b932b22-c427-4099-a241-d686460105a8.png",
+            "icon_image": "shopify://shop_images/CGear-Icons-Square-Green_9b932b22-c427-4099-a241-d686460105a8.png",
             "icon_width": 20,
             "icon_text": "Lightweight and portable with a carry bag.",
             "text_size": 90,
@@ -89,7 +96,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
             "icon_width": 30,
             "icon_text": "Free shipping over $99",
             "text_size": 90,
@@ -104,7 +111,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Returns.png",
             "icon_width": 30,
             "icon_text": "Free returns",
             "text_size": 90,
@@ -119,7 +126,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
             "icon_width": 30,
             "icon_text": "12-month warranty",
             "text_size": 90,
@@ -134,7 +141,7 @@
           "settings": {
             "icon_name": "check",
             "icon_color": "",
-            "icon_image": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
+            "icon_image": "shopify://shop_images/CGear-Icons_Green-Delivery_c12206c3-b99d-4a23-870b-0e1f10c20193.png",
             "icon_width": 30,
             "icon_text": "Free shipping over $99",
             "text_size": 90,
@@ -150,17 +157,17 @@
           "settings": {
             "icon_name_1": "truck",
             "icon_color_1": "",
-            "icon_image_1": "shopify:\/\/shop_images\/CGear-Icons_Green-Delivery_dd16fb74-7b34-47c6-b22c-a235babc676c.png",
+            "icon_image_1": "shopify://shop_images/CGear-Icons_Green-Delivery_dd16fb74-7b34-47c6-b22c-a235babc676c.png",
             "icon_width_1": 39,
             "icon_text_1": "Free shipping",
             "icon_name_2": "check",
             "icon_color_2": "",
-            "icon_image_2": "shopify:\/\/shop_images\/CGear-Icons_Green-Returns.png",
+            "icon_image_2": "shopify://shop_images/CGear-Icons_Green-Returns.png",
             "icon_width_2": 39,
             "icon_text_2": "Free returns",
             "icon_name_3": "heart",
             "icon_color_3": "",
-            "icon_image_3": "shopify:\/\/shop_images\/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
+            "icon_image_3": "shopify://shop_images/CGear-Icons_Green-Hammockv_452233e3-a331-424b-b174-f175157f4821.png",
             "icon_width_3": 39,
             "icon_text_3": "12-month warranty",
             "icon_name_4": "none",
@@ -178,33 +185,10 @@
             "padding_bottom": 20
           }
         },
-        "product_accordions": {
-          "type": "product_accordions",
-          "settings": {
-            "accordion_heading_1": "Features",
-            "accordion_text_1": "<p>{{ product.metafields.custom.features | metafield_tag }}<\/p>",
-            "accordion_page_1": "",
-            "accordion_heading_2": "Benefits",
-            "accordion_text_2": "{{ product.metafields.custom.benefits | metafield_tag }}",
-            "accordion_page_2": "",
-            "accordion_heading_3": "Care & Usage",
-            "accordion_text_3": "<p>{{ product.metafields.custom.care_and_usage | metafield_tag }}<\/p>",
-            "accordion_page_3": "",
-            "accordion_heading_4": "Shipping & Returns",
-            "accordion_text_4": "<p>{{ product.metafields.custom.shipping_and_returns | metafield_tag }}<\/p>",
-            "accordion_page_4": "",
-            "accordion_heading_5": "",
-            "accordion_text_5": "",
-            "accordion_page_5": "",
-            "padding_bottom": 30
-          }
-        },
         "upsell": {
           "type": "upsell",
           "settings": {
-            "product_list": [
-
-            ],
+            "product_list": [],
             "padding_bottom": 20
           }
         },
@@ -214,7 +198,7 @@
             "icon_name": "support",
             "icon_width": 25,
             "title": "Have questions?",
-            "text": "<p>No worries - <a href=\"https:\/\/palo-alto-theme-luxe.myshopify.com\/pages\/contact\" title=\"Contact\">Get in touch<\/a> with us at any time.<\/p><p><\/p>",
+            "text": "<p>No worries - <a href=\"https://palo-alto-theme-luxe.myshopify.com/pages/contact\" title=\"Contact\">Get in touch</a> with us at any time.</p><p></p>",
             "bg_color": "#f7f9fa",
             "text_color": "#000000",
             "padding_bottom": 20
@@ -235,7 +219,6 @@
         "143f2a6a-1753-4518-9aae-7fd60579fd12",
         "icon_row",
         "description",
-        "product_accordions",
         "upsell",
         "c6c1e66b-3eb1-4df7-ac86-360f4bc65469"
       ],
@@ -258,7 +241,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-0": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/themadrig.png",
+            "image": "shopify://shop_images/themadrig.png",
             "title": "",
             "text": "",
             "button_text": "@themadrig",
@@ -273,7 +256,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-1": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dads_and_lads_outdoors.png",
+            "image": "shopify://shop_images/dads_and_lads_outdoors.png",
             "title": "",
             "text": "",
             "button_text": "@dads_and_lads_outdoors",
@@ -288,7 +271,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-2": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
+            "image": "shopify://shop_images/a247gear_481343ac-c468-449c-bf06-591429dc1660.png",
             "title": "",
             "text": "",
             "button_text": "@a247gear",
@@ -303,7 +286,7 @@
         "template--15169561329737__56b3988b-bb0a-46ca-99ac-733daa37bea9-16856775001ae6261f-3": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/vet.in.a.van.png",
+            "image": "shopify://shop_images/vet.in.a.van.png",
             "title": "",
             "text": "",
             "button_text": "@vet.in.a.van",
@@ -318,7 +301,7 @@
         "d4424942-069a-4ec0-bff8-d99edc30932d": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/elite_lc200.png",
+            "image": "shopify://shop_images/elite_lc200.png",
             "title": "",
             "text": "",
             "button_text": "@elite_lc200",
@@ -333,7 +316,7 @@
         "4530463d-4bb2-4134-bec6-8db3f7991fe1": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/thesteels4wheels-02.png",
+            "image": "shopify://shop_images/thesteels4wheels-02.png",
             "title": "",
             "text": "",
             "button_text": "@thesteels4wheels",
@@ -348,7 +331,7 @@
         "e0aae6b1-49b0-4f0a-b4c3-b96da0792c63": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sarahandtribe.png",
+            "image": "shopify://shop_images/sarahandtribe.png",
             "title": "",
             "text": "",
             "button_text": "@sarahandtribe",
@@ -363,7 +346,7 @@
         "9f3494fd-fa73-4350-b354-a0073e348e1b": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/our.wild.tribe.png",
+            "image": "shopify://shop_images/our.wild.tribe.png",
             "title": "",
             "text": "",
             "button_text": "@our.wild.tribe",
@@ -378,7 +361,7 @@
         "26190666-2102-4088-9fea-8d40b1914464": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/lostwithnoworries.png",
+            "image": "shopify://shop_images/lostwithnoworries.png",
             "title": "",
             "text": "",
             "button_text": "@lostwithnoworries",
@@ -393,7 +376,7 @@
         "76c659e8-dc67-4c89-9e6c-989b75fd9f6a": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/79series.png",
+            "image": "shopify://shop_images/79series.png",
             "title": "",
             "text": "",
             "button_text": "@79series",
@@ -408,7 +391,7 @@
         "baa18033-1301-467b-b083-78fbd82db761": {
           "type": "text_block",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ourwhittleadventure.png",
+            "image": "shopify://shop_images/ourwhittleadventure.png",
             "title": "",
             "text": "",
             "button_text": "@ourwhittleadventure",
@@ -438,9 +421,8 @@
         "title": "CGear Community",
         "align_text": "text-left",
         "columns": 3,
-        "equalize_height": true,
-        "image_aspect_ratio": 0.8,
         "show_images": true,
+        "equalize_height": true,
         "heading_size": 120,
         "text_size": 100,
         "bg_color_secondary": false,
@@ -455,7 +437,7 @@
         "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-0": {
           "type": "subheading",
           "settings": {
-            "text": "<p>Features<\/p>",
+            "text": "<p>Features</p>",
             "size": 100,
             "margin_bottom": 16
           }
@@ -463,7 +445,7 @@
         "template--15169561329737__14799a60-0c01-42df-b31a-f2d6a12cefa5-16862002943d1a394e-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>The Bells & Whistles<\/p>",
+            "text": "<p>The Bells & Whistles</p>",
             "size": 100,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747"
@@ -490,12 +472,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/CGear-Demo-Hand_b8c113e4-cf3f-4f00-899d-bbdde8aa133a.jpg",
+            "image": "shopify://shop_images/CGear-Demo-Hand_b8c113e4-cf3f-4f00-899d-bbdde8aa133a.jpg",
             "overlay_opacity": 0,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -512,7 +493,7 @@
             "subheading": "",
             "title": "Good For The Grass",
             "heading_size": 100,
-            "text": "<p>More environmentally friendly on the grass underneath the mat than tarpaulins.<\/p>",
+            "text": "<p>More environmentally friendly on the grass underneath the mat than tarpaulins.</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -553,7 +534,7 @@
             "subheading": "",
             "title": "No Pools Or Puddles",
             "heading_size": 100,
-            "text": "<p>Rain, drips and spills go straight through the mat. The only thing<\/p>",
+            "text": "<p>Rain, drips and spills go straight through the mat. The only thing</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -572,12 +553,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/vet.in.a.van.png",
+            "image": "shopify://shop_images/vet.in.a.van.png",
             "overlay_opacity": 0,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -606,12 +586,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/themadrig.png",
+            "image": "shopify://shop_images/themadrig.png",
             "overlay_opacity": 0,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -628,7 +607,7 @@
             "subheading": "",
             "title": "Easy To Clean",
             "heading_size": 100,
-            "text": "<p>Simply brush, fold and pack away in the handy storage bag. Hose for an extra clean.<\/p>",
+            "text": "<p>Simply brush, fold and pack away in the handy storage bag. Hose for an extra clean.</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -669,7 +648,7 @@
             "subheading": "",
             "title": "Non-absorbent",
             "heading_size": 100,
-            "text": "<p>Non-absorbent and will not rot or mould.<\/p>",
+            "text": "<p>Non-absorbent and will not rot or mould.</p>",
             "text_size": 100,
             "button_text": "",
             "button_link": "",
@@ -688,12 +667,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/vet.in.a.van.png",
+            "image": "shopify://shop_images/vet.in.a.van.png",
             "overlay_opacity": 0,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -717,18 +695,16 @@
     },
     "748f1396-4cf8-49b6-adfb-55e964abb405": {
       "type": "section-custom-content",
-      "disabled": true,
       "blocks": {
         "template--15169561329737__748f1396-4cf8-49b6-adfb-55e964abb405-1685670709f25008e4-0": {
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/Cgear-58-Web-1x1.jpg",
+            "image": "shopify://shop_images/Cgear-58-Web-1x1.jpg",
             "overlay_opacity": 10,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -740,12 +716,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/Screen_Shot_2023-06-02_at_12.08.18_pm.png",
+            "image": "shopify://shop_images/Screen_Shot_2023-06-02_at_12.08.18_pm.png",
             "overlay_opacity": 10,
             "text_color": "text-light",
             "title": "",
             "heading_size": 100,
-            "text": "",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -758,6 +733,7 @@
         "template--15169561329737__748f1396-4cf8-49b6-adfb-55e964abb405-1685670709f25008e4-0",
         "f25798cd-8a38-4efd-8d33-1ec9b2872cae"
       ],
+      "disabled": true,
       "settings": {
         "height": "six-fifty-height",
         "bg_color": "",
@@ -774,12 +750,11 @@
           "type": "image",
           "settings": {
             "text_position": "middle-center",
-            "image": "shopify:\/\/shop_images\/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
+            "image": "shopify://shop_images/Cgear-43-Web_5e26b06a-d982-4f5b-80ac-11e212306f34.jpg",
             "overlay_opacity": 10,
             "text_color": "text-light",
             "title": "Finding comfort in the uncomfortable",
             "heading_size": 100,
-            "text": "The only thing you need to worry about is what you're going to drink next.",
             "button_text": "",
             "button_link": "",
             "button_color": "btn--white",
@@ -804,7 +779,7 @@
       "type": "apps",
       "blocks": {
         "c5a71b63-7a84-4f97-9041-c11163547db8": {
-          "type": "shopify:\/\/apps\/loox-product-reviews-photos\/blocks\/loox-dynamic-section\/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "only_photos": false,
             "aggregated": false,
@@ -831,77 +806,77 @@
           "type": "text",
           "settings": {
             "title": "What is a Multimat?",
-            "text": "<p>The Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.<\/p>"
+            "text": "<p>The Multimat is a dual layer dust abatement mat that stops dust and dirt transfer from the outside to the inside of your tent, caravan or camper trailer.</p>"
           }
         },
         "acordion-1": {
           "type": "text",
           "settings": {
             "title": "Can I put tent pegs through the multimat ?",
-            "text": "<p>Tent pegs can be pegged into multimat, but not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.<\/p>"
+            "text": "<p>Tent pegs can be pegged into multimat, but not designed to be pegged. The mat material has rip stop technology so it won’t tear or fray if you put a hole in it.</p>"
           }
         },
         "94e75911-f75d-405b-8226-1c2f65643a4c": {
           "type": "text",
           "settings": {
             "title": "What Is Multimat made from?",
-            "text": "<p>Multimat is made from high density polypropylene, knitted mono\/mono and fully bound all the way around the mat and peg pointed approximately every half metre.<\/p>"
+            "text": "<p>Multimat is made from high density polypropylene, knitted mono/mono and fully bound all the way around the mat and peg pointed approximately every half metre.</p>"
           }
         },
         "b48aea37-98e6-40b5-af34-46d7eff5c646": {
           "type": "text",
           "settings": {
             "title": "Do I have to peg the Multimat down to the ground?",
-            "text": "<p>Multimat is designed to be pegged at all dring’s for maximum efficiency.<\/p>"
+            "text": "<p>Multimat is designed to be pegged at all dring’s for maximum efficiency.</p>"
           }
         },
         "80eb8a84-90e9-4ac2-b3a5-5d6d1e72e12a": {
           "type": "text",
           "settings": {
             "title": "Will camp furniture damage the Multimat?",
-            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.<\/p>"
+            "text": "<p>All good camp furniture have leg protectors or loop legs to protect mat from damage. If legs have plastic protectors, these need to be replaced with rubber protectors to stop sliding.</p>"
           }
         },
         "f649e455-3a9f-4927-9afe-355d6eb19d5c": {
           "type": "text",
           "settings": {
             "title": "What about mud?",
-            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the Multimat will dry out, return to dust and dissipate through the Multimat back to the ground.<\/p>"
+            "text": "<p>From our experience, the same principle applies to mud not rising through to the top layer. Mud left on top of the Multimat will dry out, return to dust and dissipate through the Multimat back to the ground.</p>"
           }
         },
         "acordion-2": {
           "type": "text",
           "settings": {
             "title": "Do you include a warranty?",
-            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.<\/p>"
+            "text": "<p>Multimat has a 12 month warranty from the date of purchase. This is a manufacturer’s warranty eg faulty sewing or material. Faulty products should be returned to the place of purchase together with a copy of the original receipt.</p>"
           }
         },
         "8876a4f8-53b2-402c-9c65-8792e66757fc": {
           "type": "text",
           "settings": {
             "title": "Can the multimat be glued?",
-            "text": "<p>While polypropylene is usually resistant to standard glues, it can be glued with polypropylene-based adhesive found at large hardware stores.<\/p>"
+            "text": "<p>While polypropylene is usually resistant to standard glues, it can be glued with polypropylene-based adhesive found at large hardware stores.</p>"
           }
         },
         "e7982ff6-a9b8-40c7-8ded-f32b3b20a28d": {
           "type": "text",
           "settings": {
             "title": "Does it matter what side of the Multimat is up?",
-            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.<\/p>"
+            "text": "<p>Multimat is fully reversible therefore can be used either green or grey side face up.</p>"
           }
         },
         "811ba464-11c9-4282-bf18-5e7cf1e2ee9b": {
           "type": "text",
           "settings": {
             "title": "Why doesn’t the sand rise to the top of the Multimat?",
-            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.<\/p>"
+            "text": "<p>This is due to the dual layers and the law of gravity. The sand and dirt won’t rise to the top of the multimat because the multiple layers create maximum resistance. This stops sand and dirt transferring into the tent, caravan or camper trailer unlike a single layer mat which has no resistance.</p>"
           }
         },
         "2fb093fd-5f24-4496-b5e8-da6e57781731": {
           "type": "text",
           "settings": {
             "title": "Does the sand and dust get caught between the Multimat layers?",
-            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.<\/p>"
+            "text": "<p>Dust, dirt or sand particles will not get trapped between the layers, it has been designed to fall through the top layer, then the second layer and onto the ground.</p>"
           }
         }
       },
@@ -943,8 +918,7 @@
         "image_link_1": "",
         "image_link_2": "",
         "hide_image_2": false,
-        "heading": "Our Story, Our Promise",
-        "description": "<p>Use this text to describe a product, promotion, or your company.<\/p>",
+        "description": "<p>Use this text to describe a product, promotion, or your company.</p>",
         "heading_size": 100,
         "button_text": "",
         "button_link": "",
@@ -970,8 +944,7 @@
         "image_link_1": "",
         "image_link_2": "",
         "hide_image_2": false,
-        "heading": "Our Story, Our Promise",
-        "description": "<p>Use this text to describe a product, promotion, or your company.<\/p>",
+        "description": "<p>Use this text to describe a product, promotion, or your company.</p>",
         "heading_size": 100,
         "button_text": "",
         "button_link": "",
@@ -992,7 +965,7 @@
         "template--15169561329737__1e732b75-7029-49b1-b9ce-6fdda8f21f9d-16861964878ecb53f5-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Can't find what you're looking for? View our full list of FAQs below.<\/p>",
+            "text": "<p>Can't find what you're looking for? View our full list of FAQs below.</p>",
             "size": 100
           }
         },
@@ -1000,7 +973,7 @@
           "type": "button",
           "settings": {
             "button_text": "Read More",
-            "button_link": "shopify:\/\/pages\/faqs",
+            "button_link": "shopify://pages/faqs",
             "button_color": "btn--primary",
             "button_style": "btn--solid",
             "button_size": "btn--small"
@@ -1022,7 +995,6 @@
     },
     "grid": {
       "type": "section-grid",
-      "disabled": true,
       "blocks": {
         "section-grid-0": {
           "type": "image",
@@ -1036,8 +1008,7 @@
             "button_1_text": "Shop Now",
             "button_1_link": "",
             "button_2_text": "",
-            "button_2_link": "",
-            "text_color": "text-light"
+            "button_2_link": ""
           }
         },
         "section-grid-1": {
@@ -1052,8 +1023,7 @@
             "button_1_text": "Shop Now",
             "button_1_link": "",
             "button_2_text": "",
-            "button_2_link": "",
-            "text_color": "text-light"
+            "button_2_link": ""
           }
         },
         "section-grid-2": {
@@ -1068,8 +1038,7 @@
             "button_1_text": "Shop Now",
             "button_1_link": "",
             "button_2_text": "",
-            "button_2_link": "",
-            "text_color": "text-light"
+            "button_2_link": ""
           }
         },
         "section-grid-3": {
@@ -1084,8 +1053,7 @@
             "button_1_text": "Shop Now",
             "button_1_link": "",
             "button_2_text": "",
-            "button_2_link": "",
-            "text_color": "text-light"
+            "button_2_link": ""
           }
         }
       },
@@ -1095,8 +1063,8 @@
         "section-grid-2",
         "section-grid-3"
       ],
+      "disabled": true,
       "settings": {
-        "height": "350",
         "heading_size": 100,
         "button_1_color": "btn--white",
         "button_1_style": "btn--text",
@@ -1114,14 +1082,13 @@
     },
     "icons": {
       "type": "section-icons-row",
-      "disabled": true,
       "blocks": {
         "icon-0": {
           "type": "text",
           "settings": {
             "icon_name": "truck",
             "title": "Free Shipping",
-            "text": "<p>on all order over $99<\/p>"
+            "text": "<p>on all order over $99</p>"
           }
         },
         "icon-1": {
@@ -1129,7 +1096,7 @@
           "settings": {
             "icon_name": "check",
             "title": "Free Returns",
-            "text": "<p>within 30 days of purchase<\/p>"
+            "text": "<p>within 30 days of purchase</p>"
           }
         },
         "icon-2": {
@@ -1137,7 +1104,7 @@
           "settings": {
             "icon_name": "eco-friendly",
             "title": "1% Donated Annually",
-            "text": "<p>to forest conservation<\/p>"
+            "text": "<p>to forest conservation</p>"
           }
         }
       },
@@ -1146,12 +1113,13 @@
         "icon-1",
         "icon-2"
       ],
+      "disabled": true,
       "settings": {
+        "heading": "",
+        "subheading": "",
         "alignment": "center",
         "columns": 3,
         "icons_width": 30,
-        "heading": "",
-        "subheading": "",
         "bg_color": "",
         "text_color": "#333333",
         "box_color": "",
@@ -1160,7 +1128,6 @@
         "button_color": "btn--black",
         "button_style": "btn--solid",
         "button_size": "btn--small",
-        "enable_slider_mobile": false,
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -1168,8 +1135,6 @@
     "related": {
       "type": "related-products",
       "settings": {
-        "limit": 4,
-        "product_recommendations_heading": "You May Also Like",
         "bg_color": "",
         "width": "wrapper",
         "padding_top": 60,

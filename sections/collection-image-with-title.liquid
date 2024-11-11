@@ -89,32 +89,32 @@
 
 {%- if show_banner_image -%}
   {%- style -%}
-    #ImageWithTitle--{{ section.id }} { --overlay-opacity: {{ overlay_opacity }}; }
+    #ImageWithTitle--{{ section.id }} {
+      --overlay-opacity: {{ overlay_opacity }};
+
+      --container-padding-top: 0;
+      {%- if banner_height == 'original-height' -%}
+        --container-padding-top: {{ 1 | divided_by: banner_image.aspect_ratio | times: 100 | round: 1 | append: '%' }};
+      {%- endif -%}
+    }
   {%- endstyle -%}
 {%- endif -%}
 
 <section id="ImageWithTitle--{{ section.id }}" class="banner banner--collection section-padding{% if bg_color_secondary %} bg-secondary{% endif %}" data-section-type="image-with-title" data-section-id="{{ section.id }}"{% unless show_banner_image and prevent_transparent_header == false %} data-prevent-transparent-header{% endunless %}>
   <div class="banner-inner {{ banner_height }} align--{{ text_position }}">
     {%- if show_banner_image -%}
-      {%- capture styles -%}
-        {%- if banner_height == 'original-height' -%}
-          padding-top: {{ 1 | divided_by: banner_image.aspect_ratio | times: 100 | round: 1 }}%;
-        {%- endif -%}
-      {%- endcapture -%}
-
-      {%- render 'image-fill', is_background: true, img_object: banner_image, classes: 'banner-img', styles: styles -%}
-
-      {{- collection_header -}}
-    {%- else -%}
-      {{- collection_header -}}
+      <div class="banner__image-container">
+        {%- render 'image-fill', is_background: true, img_object: banner_image, classes: 'banner-img', sizes: '100vw' -%}
+      </div>
     {%- endif -%}
+
+    {{- collection_header -}}
   </div>
 </section>
 
 {% schema %}
   {
     "name": "Image with title",
-    "templates": ["collection"],
     "class": "supports-transparent-header",
     "settings": [
       {
@@ -239,6 +239,9 @@
         "label": "Padding bottom",
         "default": 0
       }
-    ]
+    ],
+    "enabled_on": {
+      "templates": ["collection"]
+    }
   }
 {% endschema %}

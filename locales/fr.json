@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "ie11_support_message": "Ce site Web a des limites de navigation. Il est recommandé d'utiliser un navigateur comme Edge, Chrome, Safari ou Firefox.",
@@ -6,12 +15,17 @@
       "color_variant": "variante de couleur",
       "more_colors": "+ {{ number }} autres"
     },
+    "siblings": {
+      "label": "Couleur",
+      "swatches": "Couleur"
+    },
     "size_chart": {
+      "button": "Guide des tailles",
       "size": "Taille"
     },
     "accessibility": {
       "skip_to_content": "Aller au contenu",
-      "select_variant": "Sélectionnez la liste déroulante des variantes",
+      "select_variant":  "Sélectionnez la liste déroulante des variantes",
       "show_submenu": "Afficher le sous-menu",
       "product": "Produit",
       "show_products": "Afficher les produits",
@@ -33,23 +47,22 @@
       "logo_image": "Image logo",
       "unit_price_separator": "par",
       "my_account": "Mon compte",
-      "total_reviews": "total des critiques",
       "view": "Vue",
       "product_image_lightbox": "Ouvrir la visionneuse d'images",
-      "star_reviews_info": "{{ rating_value }} sur {{ rating_max }} étoiles",
       "close_form_message": "Fermer le message de remerciement",
-      "scroll_to_top": "Faire défiler vers le haut"
+      "scroll_to_top": "Faire défiler vers le haut",
+      "quick_tip": "Conseil rapide"
     },
     "meta": {
       "tags": "Étiqueter \"{{ tags }}\"",
       "page": "Page {{ page }}"
-    },
+      },
     "404": {
       "title": "404",
       "subtext_html": "Cette page n'existe pas.",
       "button_text": "Retour à la page d'accueil"
     },
-    "newsletter_form": {
+      "newsletter_form": {
       "heading": "Bulletin",
       "name": "Votre nom",
       "first_name": "Prénom",
@@ -73,7 +86,7 @@
     "search": {
       "title": "Rechercher des produits sur notre site",
       "search": "Recherche",
-      "no_results": "Votre recherche de \"{{ terms }}\" n'a donné aucun résultat.",
+      "no_results": "Aucun résultat pour \"{{ terms }}\"",
       "results_for": "Résultats pour \"{{ terms }}\"",
       "results_with_count": {
         "one": "{{ count }} résultat",
@@ -97,11 +110,9 @@
       "quick_tip": "Appuyez sur Entrée",
       "browse_categories": "Parcourir les catégories",
       "popular_searches": "Termes de recherche suggérés",
-      "badge": {
-        "blog": "Blog",
-        "page": "Page"
-      },
       "products": "Des produits",
+      "articles": "Blogues",
+      "pages": "Pages",
       "suggestions": "Suggestions",
       "pages_and_blogs": "Pages et articles de blog",
       "search_actions": "Actions de recherche"
@@ -175,12 +186,12 @@
       "checkout": "Caisset",
       "empty": "Votre panier est actuellement vide.",
       "accept_terms": "Vous devez accepter nos termes et conditions.",
-      "accepted_terms": "Termes\/conditions acceptés?",
+      "accepted_terms": "Termes/conditions acceptés?",
       "zero_qty_error": "La quantité doit être supérieur à 0.",
       "limit_error": "Désolé, il semble que nous n’ayons pas assez de ce produit.",
       "continue_shopping": "Continuer vos achats",
       "close_cart": "Fermer le panier",
-      "free_shipping_message_html": "Dépensez <span data-free-shipping-amount=\"\">{{ amount }}<\/span> pour bénéficier de la livraison gratuite",
+      "free_shipping_message_html": "Dépensez <span data-free-shipping-amount=\"\">{{ amount }}</span> pour bénéficier de la livraison gratuite",
       "qualified_shipping_message": "Toutes nos félicitations! Tes commandes se qualifient pour des expeditions gratuites"
     },
     "label": {
@@ -219,7 +230,7 @@
       "show_less": "Montrer moins",
       "title": "Collection",
       "to": "À",
-      "use_fewer_filters_html": "Utiliser moins de filtres ou <a class=\"{{ class }}\" href=\"{{ link }}\">tout effacer<\/a>"
+      "use_fewer_filters_html": "Utiliser moins de filtres ou <a class=\"{{ class }}\" href=\"{{ link }}\">tout effacer</a>"
     }
   },
   "collections": {
@@ -405,6 +416,7 @@
       "single_collection_description": "Une fois que vous avez choisi une collection, sa description s'affichera ici automatiquement.",
       "single_collection_products_description": "Une fois que vous aurez choisi une collection, les descriptions de ses produits s'afficheront automatiquement ici.",
       "no_content": "Cette section ne contient actuellement aucun contenu. Ajoutez-en en utilisant la barre latérale.",
+      "no_page_content": "Cette page n'inclut actuellement aucun contenu.",
       "slideshow": {
         "heading": "Bienvenue à Palo Alto",
         "subheading": "Ce sous-titre vous aide à fournir plus de détails sur le titre ci-dessus.",
@@ -443,6 +455,12 @@
       "press": {
         "text": "Fournissez des informations sur ce que l'entreprise ci-dessous pense de votre marque.",
         "read_more": "Lire la suite"
+      },
+      "products_with_image": {
+        "title": "Meilleures ventes"
+      },
+      "banner_image": {
+        "title": "Palo Alto"
       }
     }
   },
@@ -482,7 +500,7 @@
       "regular_price": "Prix normal",
       "description": "Description",
       "view_all_details": "Voir tous les détails",
-      "reviews": "Commentaires",
+      "shop_now": "Achetez maintenant",
       "filters": "Filtres",
       "filter_by": "Filtrer par",
       "reset": "Réinitialiser les filtres",
@@ -511,8 +529,8 @@
       "add_to_cart": "Ajouter au panier",
       "buy_it_now": "Achetez-le maintenant",
       "on_sale": "Vente",
-      "save_badge_html": "Économisez {{ discount }}",
-      "save_badge_up_to_html": "Économisez jusqu'à {{ discount }}",
+      "save_badge_html" : "Économisez {{ discount }}",
+      "save_badge_up_to_html" : "Économisez jusqu'à {{ discount }}",
       "quick_view": "Achat rapide",
       "checkout": "Caisse",
       "view_in_space": "Afficher dans votre espace",
@@ -521,7 +539,10 @@
       "save": "Sauver",
       "unit_price_label": "Prix ​​unitaire",
       "popup_missing": "Sélectionnez la page dans les paramètres de bloc.",
-      "popup_text_missing": "Aucun texte ajouté dans la page sélectionnée"
+      "popup_text_missing": "Aucun texte ajouté dans la page sélectionnée",
+      "show_more": "Afficher plus",
+      "show_less": "Montrer moins",
+      "variant_option_image": "Taille"
     }
   },
   "gift_cards": {
@@ -538,16 +559,40 @@
       "gift_card": "carte-cadeau"
     }
   },
+  "recipient": {
+    "form": {
+      "checkbox": "Je veux envoyer ce produit comme cadeau",
+      "email_label": "E-mail du destinataire",
+      "email": "E-mail du destinataire",
+      "name_label": "Nom du destinataire (facultatif)",
+      "name": "Nom du destinataire (facultatif)",
+      "message_label": "Message (facultatif)",
+      "message": "Message (facultatif)",
+      "max_characters": "{{ max_chars }} caractères au maximum",
+      "error_heading": "Veuillez ajuster les éléments suivants:",
+      "send_on": "AAAA-MM-JJ",
+      "send_on_label": "Envoyer le (facultatif)"
+    }
+  },
+  "countdown": {
+    "heading": "Achetez avant la fin.",
+    "ends": "Prend fin",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
+  },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
   },
   "footer": {
-    "socials": {
-      "title": "Voir {{ shop_name }} sur {{ social }}",
-      "rss": "RSS"
+    "socials" : {
+      "title":"Voir {{ shop_name }} sur {{ social }}",
+      "rss":"RSS"
     },
-    "currency": "Devise",
+    "country": "Pays",
     "language": "Langue",
+    "update": "Mise à jour",
     "powered_by": "Alimenté par"
   },
   "store_availability": {
@@ -566,5 +611,8 @@
     "previous": "Précédent",
     "next": "Suivant",
     "scroll_down": "Défiler vers le bas"
+  },
+  "video": {
+    "play_bg_video": "Lire la vidéo d'arrière-plan"
   }
 }

@@ -48,7 +48,7 @@
       {%- when 'email' -%}
         <div class="form__item" {{ animation_attributes }} {{ block.shopify_attributes }}>
           <label for="{{ input_id }}" class="hidden-label">{{ block_title }}</label>
-          <input type="email" id="{{ input_id }}" class="input--full" name="contact[{{ block_title | handle | default: 'email' }}]" placeholder="{{ block_title }}" autocorrect="off" autocapitalize="off" {{ required }}/>
+          <input type="email" id="{{ input_id }}" class="input--full" name="contact[email]" placeholder="{{ block_title }}" autocorrect="off" autocapitalize="off" {{ required }}/>
         </div>
 
       {%- when 'body' -%}
@@ -96,12 +96,12 @@
               <span>{{ block_title }}</span>
             </label>
           </div>
-        {%- endunless-%}
+        {%- endunless -%}
 
       {%- when 'radio' -%}
         <fieldset class="form__item form__item--radio" {{ animation_attributes }} {{ block.shopify_attributes }}>
           {%- if block_title != blank -%}
-            <legend class="form__label">{{ block_title }}</legend>
+            <legend class="form__label label-typography">{{ block_title }}</legend>
           {%- endif -%}
 
           {%- for i in (1..6) -%}
@@ -120,7 +120,7 @@
       {%- when 'select' -%}
         <fieldset class="form__item" {{ animation_attributes }} {{ block.shopify_attributes }}>
           {%- if block_title != blank -%}
-            <label for="{{ input_id }}" class="form__label">{{ block_title }}</label>
+            <label for="{{ input_id }}" class="form__label label-typography">{{ block_title }}</label>
           {%- endif -%}
           <div class="selector-wrapper">
             <select id="{{ input_id }}" class="FormSelect" name="contact[{{ block_title | handle | default: 'select' }}-{{ forloop.index0 }}]">
@@ -148,7 +148,7 @@
 
 <section
 id="{{ id }}"
-class="section-padding"
+class="section-padding{%- render 'button-fallback-classes', primary_color: button_color -%}"
 data-section-type="contact-form"
 data-section-id="{{ section.id }}">
   <div class="{{ section_width }}">
@@ -208,7 +208,7 @@ data-section-id="{{ section.id }}">
             {%- assign animation_delay = animation_delay | plus: 150 -%}
           {% endif %}>
           <label for="{{ form_id }}-Email" class="hidden-label">{{ 'contact.form.email' | t }}</label>
-          <input type="email" id="{{ form_id }}-Email" class="input--full" name="contact[{{ 'contact.form.email' | t | handle }}]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
+          <input type="email" id="{{ form_id }}-Email" class="input--full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
         </div>
       {%- endunless -%}
 

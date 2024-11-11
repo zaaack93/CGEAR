@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "ie11_support_message": "This site has limited support for your browser. We recommend switching to Edge, Chrome, Safari, or Firefox.",
@@ -6,12 +15,17 @@
       "color_variant": "color variant",
       "more_colors": "+ {{ number }} more"
     },
+    "siblings": {
+      "label": "Color",
+      "swatches": "Color, Colour"
+    },
     "size_chart": {
-      "size": "Size, Height, Weight"
+      "button": "Size guide",
+      "size": "Size"
     },
     "accessibility": {
       "skip_to_content": "Skip to content",
-      "select_variant": "Select variant dropdown",
+      "select_variant":  "Select variant dropdown",
       "show_submenu": "Show submenu",
       "product": "Product",
       "show_products": "Show products",
@@ -33,10 +47,8 @@
       "logo_image": "Logo image",
       "unit_price_separator": "per",
       "my_account": "My Account",
-      "total_reviews": "total reviews",
       "view": "View",
       "product_image_lightbox": "Open image lightbox",
-      "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars",
       "close_form_message": "Close thank you message",
       "scroll_to_top": "Scroll to top",
       "quick_tip": "Quick tip"
@@ -74,7 +86,7 @@
     "search": {
       "title": "Search for products on our site",
       "search": "Search",
-      "no_results": "Your search for \"{{ terms }}\" did not yield any results.",
+      "no_results": "No results for \"{{ terms }}\"",
       "results_for": "Results for \"{{ terms }}\"",
       "results_with_count": {
         "one": "{{ count }} result",
@@ -98,11 +110,9 @@
       "quick_tip": "Press enter",
       "browse_categories": "Browse categories",
       "popular_searches": "Suggested search terms",
-      "badge": {
-        "blog": "Blog",
-        "page": "Page"
-      },
       "products": "Products",
+      "articles": "Blogs",
+      "pages": "Pages",
       "suggestions": "Suggestions",
       "pages_and_blogs": "Pages and blog posts",
       "search_actions": "Search actions"
@@ -167,9 +177,7 @@
       "discount_label": "You're saving {{ amount }} with {{ title }}",
       "subtotal": "Subtotal",
       "subtotal_items": "Items",
-      "shipping_at_checkout": "Loved by over 100,000 Aussies",
-      "shipping_at_checkout_1": "Free AU Shipping (ex WA\/NT)",
-      "shipping_at_checkout_2": "12 Month Warranty",
+      "shipping_at_checkout": "Shipping & taxes calculated at checkout",
       "customer_note": "Special instructions for seller",
       "cart_notes_label": "Add order notes",
       "gift_notes_label": "Is this a gift? Add a note.",
@@ -178,12 +186,12 @@
       "checkout": "Checkout",
       "empty": "Your cart is currently empty.",
       "accept_terms": "You must accept our terms and conditions.",
-      "accepted_terms": "Accepted terms\/conditions?",
+      "accepted_terms": "Accepted terms/conditions?",
       "zero_qty_error": "Quantity must be greater than 0.",
       "limit_error": "Sorry, looks like we don't have enough of this product.",
       "continue_shopping": "Continue Shopping",
       "close_cart": "Close Cart",
-      "free_shipping_message_html": "Spend <span data-free-shipping-amount=\"\">{{ amount }}<\/span> to qualify for free shipping",
+      "free_shipping_message_html": "Spend <span data-free-shipping-amount=\"\">{{ amount }}</span> to qualify for free shipping",
       "qualified_shipping_message": "FREE shipping will be applied at checkout"
     },
     "label": {
@@ -222,7 +230,7 @@
       "show_less": "Show less",
       "title": "Collection",
       "to": "To",
-      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all<\/a>"
+      "use_fewer_filters_html": "Use fewer filters or <a class=\"{{ class }}\" href=\"{{ link }}\">clear all</a>"
     }
   },
   "collections": {
@@ -408,6 +416,7 @@
       "single_collection_description": "Once you choose a collection, its description will populate here automatically.",
       "single_collection_products_description": "Once you choose a collection, its product descriptions will populate here automatically.",
       "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar.",
+      "no_page_content": "This page doesn’t currently include any content.",
       "slideshow": {
         "heading": "Welcome to Palo Alto",
         "subheading": "This subheading helps you provide some more detail to the title above.",
@@ -446,6 +455,12 @@
       "press": {
         "text": "Provide some information about what the company below thinks about your brand.",
         "read_more": "Read more"
+      },
+      "products_with_image": {
+        "title": "Best Sellers"
+      },
+      "banner_image": {
+        "title": "Palo Alto"
       }
     }
   },
@@ -485,8 +500,7 @@
       "regular_price": "Regular price",
       "description": "description",
       "view_all_details": "View all details",
-      "accord_description": "Product Description",
-      "reviews": "Reviews",
+      "shop_now": "Shop Now",
       "filters": "Filters",
       "filter_by": "Filter by",
       "reset": "Clear Filters",
@@ -515,8 +529,8 @@
       "remaining_html": "Only {{ inventory }} left in stock",
       "remaining_no_count": "Hurry! Low inventory",
       "on_sale": "Sale",
-      "save_badge_html": "Save {{ discount }}",
-      "save_badge_up_to_html": "Save up to {{ discount }}",
+      "save_badge_html" : "Save {{ discount }}",
+      "save_badge_up_to_html" : "Save up to {{ discount }}",
       "quick_view": "Quick Buy",
       "checkout": "Checkout",
       "view_in_space": "View in Your Space",
@@ -525,7 +539,10 @@
       "save": "Save",
       "unit_price_label": "Unit price",
       "popup_missing": "Select page from the block settings.",
-      "popup_text_missing": "No text added in the selected page"
+      "popup_text_missing": "No text added in the selected page",
+      "show_more": "Show more",
+      "show_less": "Show less",
+      "variant_option_image": "Size"
     }
   },
   "gift_cards": {
@@ -542,17 +559,41 @@
       "gift_card": "Gift Card"
     }
   },
+  "recipient": {
+    "form": {
+      "checkbox": "I want to send this as a gift",
+      "email_label": "Recipient email",
+      "email": "Recipient email",
+      "name_label": "Recipient name (optional)",
+      "name": "Recipient name (optional)",
+      "message_label": "Message (optional)",
+      "message": "Message (optional)",
+      "max_characters": "{{ max_chars }} characters max",
+      "error_heading": "Please adjust the following:",
+      "send_on": "YYYY-MM-DD",
+      "send_on_label": "Send on (optional)"
+    }
+  },
+  "countdown": {
+    "heading": "Shop before it ends.",
+    "ends": "Ends",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
   },
   "footer": {
-    "socials": {
-      "title": "View {{ shop_name }} on {{ social }}",
-      "rss": "RSS"
+    "socials" : {
+      "title":"View {{ shop_name }} on {{ social }}",
+      "rss":"RSS"
     },
-    "currency": "Currency",
+    "country": "Country",
     "language": "Language",
-    "powered_by": " Designed by Yonder."
+    "update": "Update",
+    "powered_by": "Powered by"
   },
   "store_availability": {
     "general": {
@@ -571,9 +612,7 @@
     "next": "Next",
     "scroll_down": "Scroll down"
   },
-  "shopify": {
-    "links": {
-      "powered_by_shopify": "Designed by Yonder."
-    }
+  "video": {
+    "play_bg_video": "Play background video"
   }
 }

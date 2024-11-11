@@ -12,9 +12,6 @@
 
   if max_inventory == blank
     assign max_inventory = settings.max_inventory
-  endif
-
-  if max_inventory == blank
     assign hide_inventory_count = settings.hide_inventory_count
   endif
 
@@ -23,7 +20,7 @@
   endcomment
   assign max_inventory_quantity = max_inventory | plus: 1
 
-  if current_variant.inventory_management  and  current_variant.inventory_policy == 'deny'
+  if current_variant.inventory_management and current_variant.inventory_policy == 'deny'
     if current_variant.inventory_quantity > 0 and current_variant.inventory_quantity <= max_inventory
       assign show_remaining_class = 'count-is-low'
       assign current_inventory = current_variant.inventory_quantity | at_most: max_inventory_quantity

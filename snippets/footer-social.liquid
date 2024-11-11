@@ -1,6 +1,5 @@
-{%- if settings.social_facebook_link != blank or settings.social_twitter_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_youtube_link != blank or settings.social_tiktok_link != blank or settings.social_snapchat_link != blank or settings.social_tumblr_link != blank or settings.social_rss_link != blank -%}
-  <div class="social-sharing-wrapper">
-
+<div class="social-sharing-wrapper">
+  {%- if show_social_links -%}
     {%- if settings.social_instagram_link != blank -%}
       <a class="social-sharing-icon instagram" rel="noopener" href = "{{ settings.social_instagram_link }}" title="{{ 'footer.socials.title' | t: social: 'Instagram', shop_name: shop.name }}">
         {%- render 'icon-instagram' -%}
@@ -38,9 +37,9 @@
     {%- endif -%}
 
     {%- if settings.social_tumblr_link != blank -%}
-    <a class="social-sharing-icon tumblr" rel="noopener" href = "{{ settings.social_tumblr_link }}" title="{{ 'footer.socials.title' | t: social: 'Tumblr', shop_name: shop.name }}">
-      {%- render 'icon-tumblr' -%}
-    </a>
+      <a class="social-sharing-icon tumblr" rel="noopener" href = "{{ settings.social_tumblr_link }}" title="{{ 'footer.socials.title' | t: social: 'Tumblr', shop_name: shop.name }}">
+        {%- render 'icon-tumblr' -%}
+      </a>
     {%- endif -%}
 
     {%- if settings.social_youtube_link != blank -%}
@@ -54,5 +53,16 @@
         {%- render 'icon-rss-feed' -%}
       </a>
     {%- endif -%}
-  </div>
-{%- endif -%}
+  {%- endif -%}
+
+  {%- if show_follow_on_shop -%}
+    <div class="social-sharing-icon follow-on-shop"
+      data-shop-pay-wrapper
+      data-bg="{{ color_bg }}"
+      data-text="{{ color_text }}"
+      data-hover="{{ color_text | color_modify: 'alpha', 0.50 }}"
+    >
+      {{ shop | login_button: action: 'follow' }}
+    </div>
+  {%- endif -%}
+</div>
