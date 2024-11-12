@@ -16,6 +16,9 @@
           "type": "title",
           "settings": {
             "subheading": "none",
+            "title_size": 100,
+            "price_size": 100,
+            "bold_price": false,
             "padding_bottom": 20
           }
         },
@@ -143,26 +146,9 @@
         "product_accordion_JHfcTc": {
           "type": "product_accordion",
           "settings": {
-            "accordion_heading": "Key Specifications",
+            "accordion_heading": "Size & Weight",
             "heading_style": "font-heading",
-            "accordion_text": "<p>Key Specifications</p>",
-            "accordion_page": "",
-            "padding_bottom": 14
-          }
-        },
-        "divider_UnCrF4": {
-          "type": "divider",
-          "settings": {
-            "show_line": true,
-            "padding_bottom": 12
-          }
-        },
-        "product_accordion_GPMXf7": {
-          "type": "product_accordion",
-          "settings": {
-            "accordion_heading": "Size and Weight",
-            "heading_style": "font-heading",
-            "accordion_text": "<p>Size and Weight</p>",
+            "accordion_text": "<p>{{ product.metafields.custom.key_specs | metafield_tag }}</p>",
             "accordion_page": "",
             "padding_bottom": 14
           }
@@ -179,7 +165,7 @@
           "settings": {
             "accordion_heading": "Shipping, Returns & Warranty",
             "heading_style": "font-heading",
-            "accordion_text": "<p>Shipping, Returns & Warranty</p>",
+            "accordion_text": "<p><strong>Shipping Across Australia</strong><br/>We’ve got you covered with free shipping across most of Australia (WA and NT excluded, sorry mates!). Once you place your order, we’ll have it on the road within 24 hours. Delivery times are estimates, and while we do our best to hit them, sometimes things happen out of our control. </p><p><strong>Hassle-Free 30-Day Returns</strong><br/>We want you to feel stoked about your CGear purchase, so we offer a 30-day return window if you need to send something back. As long as it’s in its original condition, we’ll make the process smooth. </p><p><strong>3-Year Warranty You Can Count On</strong><br/>We build gear to last and back it with a 3-year warranty. If anything isn’t up to scratch because of a manufacturing issue, we’ll get it sorted. Rest easy knowing your gear is covered for the long haul—whether you're off-grid or just at your local caravan park. </p>",
             "accordion_page": "",
             "padding_bottom": 14
           }
@@ -227,8 +213,6 @@
         "product_accordion_iKBqNh",
         "divider_nagCtz",
         "product_accordion_JHfcTc",
-        "divider_UnCrF4",
-        "product_accordion_GPMXf7",
         "divider_Awtq8Y",
         "product_accordion_aUiNXW",
         "divider_fbaa3m",
@@ -252,6 +236,8 @@
       "type": "section-video",
       "settings": {
         "video_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
         "text_position": "middle-center",
         "video_link_bg": "",
         "video_link": "",
@@ -857,6 +843,7 @@
         "heading_size": 100,
         "text": "<p>Loved by over 100,000 Aussie adventurers. </p>",
         "text_size": 100,
+        "button_position": "top",
         "button_text": "Shop All Products",
         "button_color": "btn--secondary",
         "button_style": "btn--solid-border",

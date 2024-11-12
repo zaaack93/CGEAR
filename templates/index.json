@@ -230,8 +230,11 @@
         "template--15169561100361__888bc330-f9b4-404a-ae5c-f2b810c7bb24-1684125380e375bfaa-0",
         "3d3945a5-0163-4a90-bbef-2fb0788aed71"
       ],
+      "disabled": true,
       "settings": {
         "height": "one-third-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
         "bg_color": "#ededea",
         "reverse_blocks": false,
         "width": "wrapper--full-padded",
@@ -255,7 +258,8 @@
         "highlight_text_color": "#000000",
         "heading_size": 110,
         "text": "<p>Tried and tested in some of the harshest conditions Mother Nature has to throw at us - the Aussie outback. </p>",
-        "text_size": 100,
+        "text_size": 95,
+        "button_position": "top",
         "button_text": "Shop All Products",
         "button_color": "btn--primary",
         "button_style": "btn--solid-border",
@@ -315,7 +319,7 @@
             "video_size": "video-cover",
             "text_color": "text-light",
             "title": "See the Multimat Magic",
-            "video_text": "<p>This text helps you provide some more detail to the title above.</p>",
+            "video_text": "",
             "heading_size": 100,
             "button_text": "",
             "button_link": "",
@@ -330,6 +334,8 @@
       ],
       "settings": {
         "height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
         "bg_color": "#ededea",
         "reverse_blocks": false,
         "width": "wrapper",
@@ -499,31 +505,16 @@
             "button_2_size": "btn--small",
             "bg_color": "#efefef"
           }
-        },
-        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-0": {
-          "type": "image",
-          "settings": {
-            "text_position": "middle-center",
-            "image": "shopify://shop_images/Quicksand-Stack.gif",
-            "overlay_opacity": 0,
-            "text_color": "text-light",
-            "title": "",
-            "heading_size": 100,
-            "image_text": "",
-            "button_text": "",
-            "button_link": "",
-            "button_color": "btn--white",
-            "button_style": "btn--solid-border",
-            "button_size": "btn--small"
-          }
         }
       },
       "block_order": [
-        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-1",
-        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-0"
+        "template--15169561100361__8c3359a9-b53d-4d67-9cac-b84af7cfbf20-16894576136b3b69b5-1"
       ],
+      "disabled": true,
       "settings": {
         "height": "full-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
         "bg_color": "",
         "reverse_blocks": false,
         "width": "wrapper--full",
@@ -587,7 +578,10 @@
         "text_width": "normal",
         "text_position": "center",
         "text_alignment": "text-center",
-        "text_color": "text-light"
+        "text_color": "text-light",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "0439a52d-f580-44d5-bbf7-a5c178cfed0c": {
