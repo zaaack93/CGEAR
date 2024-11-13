@@ -774,7 +774,7 @@
   {%- unless show_quantity -%}
     <input type="hidden" name="quantity" value="1">
   {%- endunless -%}
-
+  
   {%- unless size_chart_button_as_label or size_chart_button == blank -%}
     <div class="product__form__size-chart"
       {% if animations_enabled %}
@@ -783,6 +783,7 @@
         data-aos-order="{{ animation_order }}"
         {%- assign animation_order = animation_order | plus: 1 -%}
       {% endif %}>
+      <label class="size-selector">Choose Size:</label>
       {{- size_chart_button -}}
     </div>
   {%- endunless -%}
@@ -1193,6 +1194,16 @@
                 <div class="select-popout" data-popout data-popout-prevent="true">
                   <button type="button" class="select-popout__toggle" aria-expanded="false" aria-controls="{{ unique }}-select-{{ option.name | handle }}" aria-labelledby="{{ unique }}-select-{{ option.name | handle }}-label" data-popout-toggle>
                     <span class="select-popout__value" data-popout-text>{{ option.selected_value }}</span>
+                    {% for variant in product.variants %}
+                      {%- if variant.options contains option.selected_value -%}
+                        <span class="select-popout__price" data-popout-price>
+                          {%- if variant.compare_at_price > variant.price -%}
+                            <s>{{ variant.compare_at_price | money_without_trailing_zeros }}</s>
+                          {%- endif -%}
+                          {{ variant.price | money_without_trailing_zeros }}
+                        </span>
+                      {%- endif -%}
+                    {%- endfor -%}
                     {%- render 'icon-select' -%}
                   </button>
 
@@ -1204,6 +1215,20 @@
                             <span>
                               {{ value | escape_once }}
                             </span>
+                            {% for variant in product.variants %}
+                              {%- if variant.options contains value -%}
+                                {% if variant.metafields.custom.variant_callout %}
+                                  <span class="select-popout__callout">{{ variant.metafields.custom.variant_callout }}</span>
+                                {% endif %}
+
+                                <span class="select-popout__price" data-popout-price>
+                                  {%- if variant.compare_at_price > variant.price -%}
+                                    <s>{{ variant.compare_at_price | money_without_trailing_zeros }}</s>
+                                  {%- endif -%}
+                                  {{ variant.price | money_without_trailing_zeros }}
+                                </span>
+                              {%- endif -%}
+                            {%- endfor -%}
                           </a>
                         </li>
                       {%- endfor -%}
@@ -1886,7 +1911,7 @@
                 --adjust-body: calc(var(--FONT-ADJUST-BODY) * {{ text_size }});
               {%- endcapture -%}
 
-              <div class="product__block{% if width == 'half' %} product__block--half{% endif %}"
+              <div class="product__block{% if width == 'half' %} product__block--half{% endif %} product-icon__block"
                 {% if animations_enabled %}
                   data-aos="hero"
                   data-aos-anchor="{{ animation_anchor }}"

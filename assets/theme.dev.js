@@ -8822,6 +8822,12 @@
 
             this.popupToggleFocusout(evt);
             this.popupListFocusout(evt);
+
+            
+            //update price
+            if(evt.currentTarget.querySelector('.select-popout__price')){
+              this.popout.querySelector('.select-popout__price').innerHTML = evt.currentTarget.querySelector('.select-popout__price').innerHTML;
+            }
           } else {
             this._submitForm(attrValue);
           }

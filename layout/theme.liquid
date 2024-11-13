@@ -210,7 +210,7 @@
   {%- endif -%}
 
   <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'theme.dev.js' | asset_url }}" defer="defer"></script>
 
   {%- comment -%}
     If you need to do some edits in Theme JS use theme.dev.js file
@@ -233,7 +233,7 @@ template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}
 {% if settings.color_body_bg == '#ffffff' or settings.color_body_bg == '#fff' %} palette--light{% endif %}
   no-outline
 {%- endcapture -%}
-{%- assign body_classes = body_classes | strip_newlines | strip -%}<body id="{{ page_title | handle }}" class="{{ body_classes }}">
+{%- assign body_classes = body_classes | strip_newlines | strip -%}<body id="{{ page_title | handle }}" class="{{ body_classes }} template--{{ template }}">
   {%- render 'loading' -%}
 
   <a class="in-page-link skip-link" data-skip-content href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
