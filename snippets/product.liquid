@@ -1716,6 +1716,15 @@
 
             {%- when 'product_accordion' -%}
               {%- comment -%} Accordions {%- endcomment -%}
+              {%- liquid
+                assign heading = block.settings.accordion_heading
+                assign text = block.settings.accordion_text
+                assign page = block.settings.accordion_page
+                assign content = page.content | default: text
+                assign heading_style = block_settings.heading_style
+              -%}
+
+              {%- if heading != '' and content != '' -%}
               <div class="product__block product__accordions"
                 id="Block--{{ block.id }}"
                 {% if animations_enabled %}
@@ -1729,6 +1738,7 @@
 
                 {%- render 'product-accordions', block_settings: block.settings, block_id: block.id -%}
               </div>
+              {%- endif -%}
 
             {%- when 'upsell' -%}
               {%- liquid
@@ -2116,7 +2126,22 @@
                 </div>
               {%- endif -%}
 
-            {%- when 'divider' -%}
+            {%- when 'divider' -%}{% assign index_block = forloop.index0 | minus:1 %}
+            {%- assign prev_block = section.blocks[index_block] -%}
+            {%- assign next_block = section.blocks[forloop.index] -%}
+            {%- assign next_block_content = next_block.settings.accordion_text -%}
+            {% assign shouldDisplay = true %}
+            {% if next_block.type == 'product_accordion' and next_block_content == blank %}
+              {% assign shouldDisplay = false %}
+            {% comment %} {% elsif next_block.type == 'complementary-products' and recommendations.products_count == 0 %}
+              {% assign shouldDisplay = false %} {% endcomment %}
+            {% comment %} {% elsif next_block.type =="siblings" and product.metafields.custom.siblings_list == blank  %}
+              {% assign shouldDisplay = false %}
+            {% elsif prev_block.type =="siblings" and product.metafields.custom.siblings_list == blank  %}
+              {% assign shouldDisplay = false %} {% endcomment %}
+            {% endif %}
+
+            {%- if shouldDisplay -%}
               <div class="product__block" {{ block_style }} {{ block.shopify_attributes }}>
                 {%- if block.settings.show_line -%}
                   <hr class="hr--full"
@@ -2128,6 +2153,7 @@
                     {% endif %}>
                 {%- endif -%}
               </div>
+            {%- endif -%}
 
             {%- when 'feature' -%}{%- liquid
   assign block_id = block.id

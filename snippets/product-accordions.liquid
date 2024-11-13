@@ -8,12 +8,12 @@
 
 {%- if heading != '' and content != '' -%}
   <div class="product__accordion">
-    <button class="product__accordion__title {{ heading_style }}" aria-controls="ProductAccordion--page-{{ heading | handle }}--{{ section.id }}--{{ block_id }}" data-collapsible-trigger>
+    <button class="product__accordion__title {{ heading_style }} {%if block_settings.expended %}is-expanded{%endif%}" aria-controls="ProductAccordion--page-{{ heading | handle }}--{{ section.id }}--{{ block_id }}" data-collapsible-trigger {%if block_settings.expended %}aria-expanded="true"{%endif%}>
       {{- heading -}}
       {%- render 'icon-toggle-plus' -%}
       {%- render 'icon-toggle-minus' -%}
     </button>
-    <div class="product__accordion__content" id="ProductAccordion--page-{{ heading | handle }}--{{ section.id }}--{{ block_id }}" data-collapsible-container>
+    <div class="product__accordion__content {%if block_settings.expended %}is-expanded{%endif%}" id="ProductAccordion--page-{{ heading | handle }}--{{ section.id }}--{{ block_id }}" data-collapsible-container  {%if block_settings.expended %}style="height: auto;" aria-expanded="true"{%endif%} >
       <div class="product__accordion__inner rte" data-collapsible-content>
         {{- content -}}
       </div>

@@ -24699,11 +24699,11 @@ search-form mark {
   }
 }
 
-@media only screen and (max-width: 767px) {
+/* @media only screen and (max-width: 767px) { */
   .product-single__wrapper .product__submit__holder {
     padding-top: calc(var(--form-margin-mobile) * 2);
   }
-}
+/* } */
 
 .featured-product--onboarding .product-single__wrapper--grid .product-single__media-slider {
   grid-template-columns: minmax(0, 1fr);

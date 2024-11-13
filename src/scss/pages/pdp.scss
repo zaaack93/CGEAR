@@ -110,6 +110,13 @@
                 line-height: 120%;
             }
         }
+        .product__selectors{
+            display: block;
+            margin: 0px;
+            .selector-wrapper{
+                margin:0px;
+            }
+        }
         .select-popout__toggle{
             border-radius: 10px;
             border: 1px solid var(--CHARCOAL, #3D4146);
@@ -191,6 +198,30 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: 110%;
+            }
+        }
+
+        //product accordion
+        .product__accordions {
+            .product__accordion__title{
+                color: #000;
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+            .product__accordion__inner{
+                padding-top: 12px;
+                color: #000;
+                font-size: 17px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                li{
+                    &::marker{
+                        color: #CECECE;
+                    }
+                }
             }
         }
 
