@@ -45,8 +45,8 @@
         "heading_Hk9333": {
           "type": "heading",
           "settings": {
-            "text": "<p>Weather it's sand, grass, dirt or the desert, we've got you covered.</p>",
-            "size": 110,
+            "text": "<p>Whether it's sand, grass, dirt or the desert, we've got you covered.</p>",
+            "size": 105,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747",
             "highlight_text_color": "#000000"
@@ -69,7 +69,10 @@
         "text_width": "narrow",
         "text_position": "center",
         "text_alignment": "text-center",
-        "text_color": "text-light"
+        "text_color": "text-light",
+        "width": "wrapper--full",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "main": {
