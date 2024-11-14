@@ -1,6 +1,9 @@
 .template--product {
     overflow-x: hidden;
     --vertical-spacing: 13px;
+
+
+
     //exactly
     .product-single__gallery{
         @media only screen and (min-width: 768px){
@@ -8,10 +11,87 @@
             position: sticky;
             top: 0px;
         }
+
+        .product-single__thumbnails{
+            @media only screen and (max-width: 768px){
+                .product-single__thumbnail{
+                    .product-single__thumbnail-link{
+                        width: 65px;
+                        height: 65px;
+                    }
+                    &.is-selected{
+                        .product-single__thumbnail-link{
+                            border-radius: 6.29px;
+                            border: 0.786px solid var(--CHARCOAL, #3D4146);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //product info reviews
     .product-single__details{
+        //radio fieldset
+        .radio__fieldset{
+            .radio__legend{
+                margin-bottom: 7px;
+                .radio__legend__label{
+                    color: var(--CHARCOAL, #3D4146);
+                    font-family: "Neue Plak";
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 120%;
+                    text-transform: capitalize;
+                }
+            }
+            
+            .radio__buttons{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 12px;
+                overflow-x: scroll;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+                .radio__button{
+                    margin: 0px;
+                    margin: 0px;
+                    width: 68px;
+                    height: 68px;
+                    max-width: 68px;
+                    max-height: 68px;
+                    min-width: 68px;
+                    min-height: 68px;
+                    label{
+                        padding: 0px;
+                        display: flex;
+                        overflow: hidden;
+                        .option-image{
+                            img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                        .option-title{
+                            display: none;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .radio__fieldset .radio__input:checked~.radio__label{
+            padding: 5px;
+            border-radius: 5px;
+            border: 2px solid #3C4147;
+        }
+
+
         //Reviews
         .shopify-app-block{
             .loox-rating{
@@ -112,9 +192,9 @@
         }
         .product__selectors{
             display: block;
-            margin: 0px;
+            margin-bottom: 15px;
             .selector-wrapper{
-                margin:0px;
+                //margin:0px;
             }
         }
         .select-popout__toggle{
@@ -224,6 +304,53 @@
             }
         }
 
+    }
+
+    //product upsell
+    .product-upsell-v2{
+        .product-upsell-container{
+            padding: 10px;
+            border-radius: 6.196px;
+            background: #A0BDCB;
+            display: flex;
+            align-items: center;
+            gap: 21px;
+            .product-upsell-image{
+                width: 91px;
+                height: 91px;
+                flex-shrink: 0;
+                border-radius: 3.098px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            .product-upsell-details{
+                h3{
+                    color: var(--WHITE, #FFF);
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 110%; 
+                    margin: 0px;
+                }
+                .btn{
+                    width: fit-content;
+                    padding: 9.914px 17.969px;
+                    color: var(--WHITE, #FFF);
+                    text-align: center;
+                    font-family: Inter;
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 8.423px;
+                    text-transform: uppercase;
+                    display: inline-block;
+                    margin-top: 6px;
+                }
+            }
+        }
     }
 
 }

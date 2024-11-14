@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "product",
@@ -48,7 +48,7 @@
         "form": {
           "type": "form",
           "settings": {
-            "show_labels": false,
+            "show_labels": true,
             "show_quantity": false,
             "show_payment_button": false,
             "enable_subscriptions_selectors": false,
@@ -200,12 +200,9 @@
             "padding_bottom": 40
           }
         },
-        "upsell": {
-          "type": "upsell",
+        "upsell_v2_gfT7wW": {
+          "type": "upsell-v2",
           "settings": {
-            "product_list": [
-              "door-floor-mat-new"
-            ],
             "padding_bottom": 20
           }
         },
@@ -240,7 +237,7 @@
         "divider_Awtq8Y",
         "product_accordion_aUiNXW",
         "divider_fbaa3m",
-        "upsell",
+        "upsell_v2_gfT7wW",
         "c6c1e66b-3eb1-4df7-ac86-360f4bc65469"
       ],
       "settings": {
