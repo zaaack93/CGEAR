@@ -298,7 +298,6 @@
 }
 .template--product .product-single__details .product-icon__block {
   display: inline-flex;
-  width: 50%;
   align-items: center;
 }
 .template--product .product-single__details .product-icon__block .product__icon__text {
