@@ -1,0 +1,58 @@
+
+<div class="product-single__media-slider{% if media.size == 1 %} product-single__media-slider--single{% endif %}" data-product-single-media-slider>
+  {%- if media.size > 0 -%}
+    {%- comment -%} Show Featured media first {%- endcomment -%}
+    {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type,index:0, section:section,notsrcset:true -%}
+
+    {%- comment -%} Loop product media skipping the featured {%- endcomment -%}
+    {%- for media in media -%}
+      {%- if media.id != featured_media_id -%}
+        {%- render 'media', unique: unique, current_variant: current_variant, media: media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type,index:forloop.index0,notsrcset:true  -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- assign media_aspect_ratio = 1 -%}
+    {%- assign media_padding_top = 1 | divided_by: media_aspect_ratio | times: 100 | round: 1 -%}
+    <div
+      id="FeaturedMedia-{{ unique }}"
+      class="product-single__media-slide{% unless featured_media == media %} media--hidden{% endunless %}"
+      data-id="{{ unique }}"
+      data-media-id="{{ unique }}"
+      data-aspectratio="{{ media_aspect_ratio }}"
+      data-product-single-media-wrapper>
+      <div class="product-single__media product-single__media--image">
+        <div class="product-single__media--image-height" style="padding-top: {{ media_padding_top }}%;"></div>
+        {%- render 'image-fill', aspect_ratio: 1, is_background: true, img_object: '', alt: product_title, placeholder_svg: 'image' -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- if first_3d_model -%}
+  <button
+    aria-label="{{ 'products.product.view_in_space_label' | t }}"
+    class="btn btn--ar product-single__view-in-space"
+    data-shopify-xr
+    data-shopify-model3d-id="{{ first_3d_model.id }}"
+    data-shopify-title="{{ product.title | strip_html | escape }}"
+    data-shopify-xr-hidden>
+
+    {%- render 'icon-media-model' -%}
+    <span class='product-single__view-in-space-text'>{{ 'products.product.view_in_space' | t }}</span>
+  </button>
+{%- endif -%}
+
+{%- comment -%} Product Thumbnails {%- endcomment -%}
+{%- if media.size > 1 and hide_product_thumbnails == false -%}
+  <div class="product-single__thumbnails" id="ProductThumbs" data-product-single-media-thumbs>
+    {%- comment -%} Show Featured media thumbnail first {%- endcomment -%}
+    {%- render 'media-thumb', media: featured_media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+
+    {%- comment -%} Loop product media skipping the featured media thumbnail {%- endcomment -%}
+    {%- for media in media -%}
+      {%- if media.id != featured_media_id -%}
+        {%- render 'media-thumb', media: media, featured_media: featured_media, has_link: true, product_title: product.title -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

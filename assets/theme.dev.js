@@ -4634,6 +4634,24 @@
 
     getFormState() {
       const variant = this.variant();
+
+    
+        //update variant by images
+        document.querySelectorAll('.gallery-content').forEach((element) => {
+          if(variant && variant.id === parseInt(element.getAttribute('data-variant-id'))) {
+            document.dispatchEvent(new CustomEvent('destroySlider', { bubbles: true }));
+            const gallerySlider = document.querySelector('.product-single__gallery .product-single__media-slider');
+            if (gallerySlider) {
+                gallerySlider.innerHTML = element.querySelector('.product-single__media-slider').innerHTML;
+            }
+            const thumbnailsContainer = document.querySelector('.product-single__gallery .product-single__thumbnails');
+            if (thumbnailsContainer) {
+              thumbnailsContainer.innerHTML = element.querySelector('.product-single__thumbnails').innerHTML;
+            }
+          }
+        });
+        document.dispatchEvent(new CustomEvent('initSlider', { bubbles: true }));
+        
       return {
         options: this.options(),
         variant: variant,
@@ -17629,7 +17647,7 @@
       this.container = container;
       this.mediaContainer = this.container.querySelector(selectors$c.mediaContainer);
       this.slider = this.container.querySelector(selectors$c.productMediaSlider);
-      this.zoomWrappers = this.container.querySelectorAll(selectors$c.zoomWrapper);
+      this.zoomWrappers = this.container.querySelector('.product-single__gallery').querySelectorAll(selectors$c.zoomWrapper);
       this.zoomEnable = this.mediaContainer.dataset.gallery === 'true';
       this.a11y = a11y;
 
@@ -17949,7 +17967,18 @@
       this.initMediaSwitch();
       this.initProductVideo();
       this.initProductModel();
-      this.initShopifyXrLaunch();
+      
+      document.addEventListener('destroySlider', () => {
+        this.destroyProductSlider();
+      });
+      document.addEventListener('initSlider', () => {
+        this.initProductSlider();
+        // const pswpContainer = document.querySelector('.pswp__container');
+          // if (pswpContainer) {
+          //   pswpContainer.innerHTML = '';
+          // }
+          new Zoom(this.container);
+      });
     }
 
     productSlider() {
@@ -17974,9 +18003,10 @@
 
     /* Product Slider */
     initProductSlider() {
-      const slider = this.container.querySelector(selectors$9.productMediaSlider);
-      const thumbs = this.container.querySelector(selectors$9.productMediaThumbs);
-      const media = this.container.querySelectorAll(selectors$9.productMediaWrapper);
+      const slider = this.container.querySelector('.product-single__gallery')?.querySelector(selectors$9.productMediaSlider);
+      const thumbs = this.container.querySelector('.product-single__gallery')?.querySelector(selectors$9.productMediaThumbs);
+      const media = this.container.querySelector('.product-single__gallery')?.querySelectorAll(selectors$9.productMediaWrapper);
+      debugger
 
       if (media.length > 1) {
         this.flkty = new Flickity(slider, {
@@ -18174,9 +18204,10 @@
         selectedMedia.focus();
       }
 
-      selectedMedia.closest(selectors$9.productMediaSlider).classList.remove(classes$9.hasMediaActive);
-      selectedMedia.classList.remove(classes$9.mediaHidden);
-      selectedMedia.dispatchEvent(new CustomEvent('theme:media:visible'), {bubbles: true});
+      selectedMedia.closest(selectors$9.productMediaSlider)?.classList.remove(classes$9.hasMediaActive);
+      selectedMedia?.classList.remove(classes$9.mediaHidden);
+      selectedMedia?.dispatchEvent(new CustomEvent('theme:media:visible'), {bubbles: true});
+
 
       // If media is not loaded, trigger poster button click to load it
       const deferredMedia = selectedMedia.querySelector(selectors$9.deferredMedia);
