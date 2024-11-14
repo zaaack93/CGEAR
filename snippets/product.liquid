@@ -262,6 +262,8 @@
             <div class="product-single__media-slider{% if product.media.size == 1 %} product-single__media-slider--single{% endif %}">
               {%- if product.media.size > 0 -%}
                 {%- comment -%} Show Featured media first {%- endcomment -%}
+                 
+                    
                 {%- render 'media', unique: unique, current_variant: current_variant, media: featured_media, featured_media: featured_media, image_width: image_size_desktop, enable_video_looping: enable_video_looping, enable_zoom: enable_zoom, section_type: section_type,index:0, section:section,notsrcset:true -%}
 
                 {%- comment -%} Loop product media skipping the featured {%- endcomment -%}
@@ -1173,7 +1175,7 @@
               <div class="{{ radio_fieldset_class }}"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-container{% endunless %}{% endif %} {% if option.values.size <= 1 %}style="display:none"{% endif %}>
                 <legend class="radio__legend"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-label{% endunless %}{% endif %}>
                   <span class="radio__legend__label label-typography">{{ option.name | escape_once | prepend: "Choose " | append:':' }}</span>
-                  <span class="option-value" data-option-value></span>
+                  <span class="radio__legend__value" data-option-value></span>
                   {%- if show_size_guide_as_label -%}{{- size_chart_button -}}{%- endif -%}
                 </legend>
                   <div class="radio__buttons" data-variant-buttons>
@@ -1315,7 +1317,8 @@
               {%- assign selects_counter = selects_counter | plus: 1 -%}
               <div class="select__fieldset">
                 {%- capture input_id -%}{{ unique }}-{{ product.id }}-option-{{ option.position }}{%- endcapture -%}
-                <div class="select__label label-typography" id="{{ unique }}-select-{{ option.name | handle }}-label">
+                <div class="select__label label-typography product__form__size-chart" id="{{ unique }}-select-{{ option.name | handle }}-label">
+                  <label class="size-selector">Choose Size:</label>
                   {%- if show_size_guide_as_label -%}
                     {{- size_chart_button -}}
                   {%- else -%}

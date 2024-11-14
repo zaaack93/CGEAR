@@ -148,6 +148,26 @@
   {% endif %}
   data-product-single-media-wrapper
 >
+
+  {% if index == 0 %}
+    {% if product.metafields.custom.collection_callout != blank %}
+        <span class="pdp-callout-badge">{{ product.metafields.custom.collection_callout }}</span>
+    {% endif %}
+    {% if section.settings.badge_picker != blank %}
+      <div class="badge-image-container">
+        {{ section.settings.badge_picker | image_url: width: width, height: height | image_tag:
+          loading: loading,
+          fetchpriority: fetchpriority,
+          preload: preload,
+          sizes: sizes,
+          srcset: srcset_desktop,
+          alt: alt,
+          class: 'is-loading',
+          style: 'object-position: var(--focal-point, center)'
+        }}
+      </div>
+    {% endif %}
+  {% endif %}
   {%- if media.media_type == 'image' -%}
     <div class="product-single__media product-single__media--image">
       <div class="product-single__media--image-height" style="padding-top: {{ media_padding_top }}%;"></div>

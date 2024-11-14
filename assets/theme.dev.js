@@ -7664,6 +7664,10 @@
         const position = parseInt(positionString, 10) - 1;
 
         let newVals = [...this.selections];
+        if(newVals[position]==val){
+          const legendValueElement = optionSelector.querySelector('.radio__legend__value');
+          if (legendValueElement) legendValueElement.innerText = val;
+        }
         newVals[position] = val;
 
         const found = this.productJSON.variants.find((element) => {
@@ -18006,7 +18010,6 @@
       const slider = this.container.querySelector('.product-single__gallery')?.querySelector(selectors$9.productMediaSlider);
       const thumbs = this.container.querySelector('.product-single__gallery')?.querySelector(selectors$9.productMediaThumbs);
       const media = this.container.querySelector('.product-single__gallery')?.querySelectorAll(selectors$9.productMediaWrapper);
-      debugger
 
       if (media.length > 1) {
         this.flkty = new Flickity(slider, {

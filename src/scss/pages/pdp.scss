@@ -3,7 +3,11 @@
     --vertical-spacing: 13px;
 
 
-
+    .product-single{
+        @media only screen and (max-width: 768px){
+            padding-top: 0px;
+        }
+    }
     //exactly
     .product-single__gallery{
         @media only screen and (min-width: 768px){
@@ -30,20 +34,76 @@
         }
     }
 
+    .product-single__media-slider{
+        .product-single__media-slide:not(:first-child){
+            .pdp-callout-badge,.badge-image-container{
+                display: none;
+            }
+        }
+    }
+
+    .badge-image-container{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        @media screen and (max-width: 768px){
+            width: 64.999px;
+            height: 65px;
+            top: 10px;
+            right: 10px;
+        }
+    }
+
+    .pdp-callout-badge{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1;
+        background: #8BAC0E;
+        color: var(--WHITE, #FFF);
+        font-family: Inter;
+        font-size: 13.361px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border-radius: 5px;
+        padding: 9px;
+        @media screen and (max-width: 768px){
+            top: 10px;
+            left: 10px;
+            font-size: 12px;
+        }
+    }
+
     //product info reviews
     .product-single__details{
         //radio fieldset
         .radio__fieldset{
             .radio__legend{
                 margin-bottom: 7px;
+                display: flex;
+                gap: 5px;
                 .radio__legend__label{
+                    color: var(--CHARCOAL, #3D4146);
+                    font-family: "Neue Plak";
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 120%;
+                    text-transform: capitalize;
+                }
+                .radio__legend__value{
                     color: var(--CHARCOAL, #3D4146);
                     font-family: "Neue Plak";
                     font-size: 18px;
                     font-style: normal;
                     font-weight: 400;
                     line-height: 120%;
-                    text-transform: capitalize;
                 }
             }
             
@@ -271,6 +331,9 @@
         .product-icon__block{
             display: inline-flex;
             align-items: center;
+            &.product__block--half {
+                width: 50%;
+            }
             .product__icon__text{
                 color: #3C4147;
                 font-size: 13px;
