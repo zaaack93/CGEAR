@@ -15,7 +15,11 @@
     </button>
     <div class="product__accordion__content {%if block_settings.expended %}is-expanded{%endif%}" id="ProductAccordion--page-{{ heading | handle }}--{{ section.id }}--{{ block_id }}" data-collapsible-container  {%if block_settings.expended %}style="height: auto;" aria-expanded="true"{%endif%} >
       <div class="product__accordion__inner rte" data-collapsible-content>
-        {{- content -}}
+        {% if block_settings.use_description %}
+          {{ product.description }}
+        {% else %}
+          {{- content -}}
+        {% endif %}
       </div>
     </div>
   </div>
