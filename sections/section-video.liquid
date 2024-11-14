@@ -194,6 +194,13 @@
   #FeaturedVideo--{{ section.id }} .main-heading { --adjust-heading: calc(var(--FONT-ADJUST-HEADING) * {{ heading_size }}); }
 {%- endstyle -%}
 
+{% assign shouldDisplay = true %}
+{% if template.name == 'product' and video_link_bg ==blank and video_link == blank %}
+  {% assign shouldDisplay = false %}
+{% endif %}
+
+
+{% if shouldDisplay %}
 <section id="FeaturedVideo--{{ unique }}"
   class="featured-video-section {{ section_height }}{% if enable_mobile_height %} {{ mobile_height }}{% endif %}"
   data-section-id="{{ unique }}"
@@ -228,6 +235,7 @@
     -%}
   </div>
 </section>
+{% endif %}
 
 {% schema %}
 {

@@ -909,17 +909,19 @@
   {%- unless show_quantity -%}
     <input type="hidden" name="quantity" value="1">
   {%- endunless -%}
-  {%- unless size_chart_button_as_label or size_chart_button == blank or size_option_count <= 1 -%}
-    <div class="product__form__size-chart"
-      {% if animations_enabled %}
-        data-aos="hero"
-        data-aos-anchor="{{ animation_anchor }}"
-        data-aos-order="{{ animation_order }}"
-        {%- assign animation_order = animation_order | plus: 1 -%}
-      {% endif %}>
-      <label class="size-selector">Choose Size:</label>
-      {{- size_chart_button -}}
-    </div>
+  {%- unless size_chart_button_as_label or size_chart_button == blank -%}
+    {% if size_option_count > 1  %}
+      <div class="product__form__size-chart"
+        {% if animations_enabled %}
+          data-aos="hero"
+          data-aos-anchor="{{ animation_anchor }}"
+          data-aos-order="{{ animation_order }}"
+          {%- assign animation_order = animation_order | plus: 1 -%}
+        {% endif %}>
+        <label class="size-selector">Choose Size:</label>
+        {{- size_chart_button -}}
+      </div>
+    {%endif %}
   {%- endunless -%}
 
   {% comment %} Shop pay split payment terms {% endcomment %}
@@ -1317,14 +1319,16 @@
               {%- assign selects_counter = selects_counter | plus: 1 -%}
               <div class="select__fieldset">
                 {%- capture input_id -%}{{ unique }}-{{ product.id }}-option-{{ option.position }}{%- endcapture -%}
-                <div class="select__label label-typography product__form__size-chart" id="{{ unique }}-select-{{ option.name | handle }}-label">
-                  <label class="size-selector">Choose Size:</label>
-                  {%- if show_size_guide_as_label -%}
-                    {{- size_chart_button -}}
-                  {%- else -%}
-                    {{- option.name | escape_once -}}
-                  {%- endif -%}
-                </div>
+                {% if size_option_count > 1  %}
+                  <div class="select__label label-typography product__form__size-chart" id="{{ unique }}-select-{{ option.name | handle }}-label">
+                    <label class="size-selector">Choose Size:</label>
+                    {%- if show_size_guide_as_label -%}
+                      {{- size_chart_button -}}
+                    {%- else -%}
+                      {{- option.name | escape_once -}}
+                    {%- endif -%}
+                  </div>
+                {%endif %}
 
                 <div class="select-popout" data-popout data-popout-prevent="true">
                   <button type="button" class="select-popout__toggle" aria-expanded="false" aria-controls="{{ unique }}-select-{{ option.name | handle }}" aria-labelledby="{{ unique }}-select-{{ option.name | handle }}-label" data-popout-toggle>
@@ -1880,7 +1884,7 @@
               {%- if product.metafields.custom.product_upsell != blank -%}
                 <div id="Block--{{ block.id }}"
                   class="product__block product-upsell-v2"
-                  {% if animations_enabled and upsell_items != blank %}
+                  {% if animations_enabled  %}
                     data-aos="hero"
                     data-aos-anchor="{{ animation_anchor }}"
                     data-aos-order="{{ animation_order }}"

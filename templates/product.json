@@ -242,6 +242,7 @@
       ],
       "settings": {
         "product_sticky_enable": true,
+        "badge_picker": "shopify://shop_images/Layer_1_1.svg",
         "image_layout": "carousel",
         "image_width": "standard",
         "product_image_aspect_ratio": false,
