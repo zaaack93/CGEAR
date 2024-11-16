@@ -432,10 +432,11 @@
         {%- for block in section.blocks -%}
           {%- liquid
             assign padding_bottom = block.settings.padding_bottom
+            assign padding_bottom_mobile = block.settings.padding_bottom_mobile
 
             if padding_bottom != blank
               capture block_style
-                echo 'style="--PBB:' | append: padding_bottom | append: 'px;"'
+                echo 'style="--PBB:' | append: padding_bottom | append: 'px;' | append: '--PBBM:' | append: padding_bottom_mobile | append: 'px;"'
               endcapture
             endif
           -%}
@@ -1114,7 +1115,7 @@
             endif
 
             assign enable_variant_boxes = false
-            if variants_style == 'boxes' or variants_style == 'auto' and longest_value < 16
+            if variants_style == 'boxes' or variants_style == 'auto' and option.name != "Size"
               assign enable_variant_boxes = true
             endif
 
@@ -1177,11 +1178,20 @@
               <div class="{{ radio_fieldset_class }}"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-container{% endunless %}{% endif %} {% if option.values.size <= 1 %}style="display:none"{% endif %}>
                 <legend class="radio__legend"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-label{% endunless %}{% endif %}>
                   <span class="radio__legend__label label-typography">{{ option.name | escape_once | prepend: "Choose " | append:':' }}</span>
-                  <span class="radio__legend__value" data-option-value></span>
+                  {%- unless show_size_guide_as_label -%}<span class="radio__legend__value" data-option-value></span>{%endunless %}
                   {%- if show_size_guide_as_label -%}{{- size_chart_button -}}{%- endif -%}
                 </legend>
                   <div class="radio__buttons" data-variant-buttons>
+                    {%- assign variant_option_image_translationd = 'products.product.variant_option_image' | t | handle -%}
+                    {%- assign option_named = option.name | handle -%}
+                    
+                    {%- if option_named == variant_option_image_translationd -%}
+                      <div class="options-color-container">
+                      {% else %}
+                      <div class="options-container">
+                    {%endif %}
                     {%- for value in option.values -%}
+
                       {%- capture input_id -%}{{ unique }}-{{ product.id }}-{{ option.name | escape_once }}-{{ value | handle }}{%- endcapture -%}
 
                       {%- capture options_markup -%}
@@ -1307,6 +1317,7 @@
                         {{ options_markup }}
                       {%- endif -%}
                     {%- endfor -%}
+                    </div>
                   </div>
               </div>
               {%- if is_swatch_option or is_native_swatch_option -%}
@@ -1666,7 +1677,7 @@
         </div>
       {%- endif -%}
     </div>
-
+    {{option.name }}----dddd-----
     <div class="selector-wrapper{% if enable_variant_boxes %} selector-wrapper--boxes{% endif %}"
       data-selector-wrapper
       data-option-position="2"
@@ -3122,6 +3133,9 @@
                 </legend>
 
                 <div class="radio__buttons" data-variant-buttons>
+                  {%- assign variant_option_image_translation = 'products.product.variant_option_image' | t | handle -%}
+                  {%- assign option_name = option.name | handle -%}
+                  {{option_name }}..
                   {%- for value in option.values -%}
                     {%- capture input_id -%}{{ unique }}-{{ product.id }}-{{ option.name | escape_once }}-{{ value | handle }}{%- endcapture -%}
 
