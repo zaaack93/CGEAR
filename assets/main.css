@@ -429,6 +429,8 @@
 .template--product .product-single__details .select-popout__price s {
   color: var(--charcoal-50, rgba(61, 65, 70, 0.5));
   font-weight: 400;
+  position: relative;
+  top: 1px;
 }
 .template--product .product-single__details .select-popout__callout {
   color: var(--WHITE, #fff);

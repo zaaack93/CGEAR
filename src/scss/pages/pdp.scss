@@ -339,6 +339,8 @@
       s {
         color: var(--charcoal-50, rgba(61, 65, 70, 0.5));
         font-weight: 400;
+        position: relative;
+        top: 1px;
       }
     }
     .select-popout__callout {

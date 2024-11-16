@@ -1328,7 +1328,7 @@
               {%- endif -%}
             {%- else -%}
               {%- assign selects_counter = selects_counter | plus: 1 -%}
-              <div class="select__fieldset">
+              <div class="select__fieldset"  {% if option.values.size <= 1 %}style="display:none"{% endif %}>
                 {%- capture input_id -%}{{ unique }}-{{ product.id }}-option-{{ option.position }}{%- endcapture -%}
                 {% if size_option_count > 1  %}
                   <div class="select__label label-typography product__form__size-chart" id="{{ unique }}-select-{{ option.name | handle }}-label">
