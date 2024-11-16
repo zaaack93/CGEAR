@@ -315,6 +315,11 @@
   font-weight: 400;
   line-height: 16px;
 }
+@media screen and (max-width: 375px) {
+  .template--product .product-single__details .shopify-app-block .loox-rating-label {
+    font-size: 12px;
+  }
+}
 .template--product .product-single__details .product__title-and-price {
   margin-bottom: var(--vertical-spacing);
 }
