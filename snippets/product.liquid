@@ -1176,11 +1176,11 @@
                 endcapture
               -%}
               <div class="{{ radio_fieldset_class }}"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-container{% endunless %}{% endif %} {% if option.values.size <= 1 %}style="display:none"{% endif %}>
-                <legend class="radio__legend"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-label{% endunless %}{% endif %}>
+                <div class="radio__legend"{% if is_swatch_option or is_native_swatch_option %}{% unless color_swatch_variant_image and show_variant_image %} data-swatches-label{% endunless %}{% endif %}>
                   <span class="radio__legend__label label-typography">{{ option.name | escape_once | prepend: "Choose " | append:':' }}</span>
                   {%- unless show_size_guide_as_label -%}<span class="radio__legend__value" data-option-value></span>{%endunless %}
                   {%- if show_size_guide_as_label -%}{{- size_chart_button -}}{%- endif -%}
-                </legend>
+                </div>
                   <div class="radio__buttons" data-variant-buttons>
                     {%- assign variant_option_image_translationd = 'products.product.variant_option_image' | t | handle -%}
                     {%- assign option_named = option.name | handle -%}

@@ -1,0 +1,18 @@
+.product-grid-item {
+
+
+    .product__badge__item--custom {
+        z-index: 1;
+        background: #8bac0e;
+        color: var(--WHITE, #fff);
+        font-size: 13.361px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border-radius: 5px;
+        padding: 9px;
+        @media screen and (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+}
