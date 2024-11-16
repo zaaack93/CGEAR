@@ -150,8 +150,8 @@
 >
 
   {% if index == 0 %}
-    {% if product.metafields.custom.collection_callout != blank %}
-        <span class="pdp-callout-badge">{{ product.metafields.custom.collection_callout }}</span>
+    {% if product.metafields.theme.badge != blank %}
+        <span class="pdp-callout-badge">{{ product.metafields.theme.badge }}</span>
     {% endif %}
     {% if section.settings.badge_picker != blank %}
       <div class="badge-image-container">

@@ -17982,6 +17982,7 @@
           //   pswpContainer.innerHTML = '';
           // }
           new Zoom(this.container);
+          this.initProductVideo();
       });
     }
 
