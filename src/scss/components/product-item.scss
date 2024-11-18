@@ -1,9 +1,68 @@
 .product-grid-item {
+  .product-grid-item__image{
+    margin-bottom: 14px;
+  }
+  .product-grid-item__info{
+    row-gap: 5.49px;
+    .product-grid-item__title{
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 120%;
+    }
 
+    .product-grid-item__price {
+      color: #3D4146;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .loox-rating{
+        display: flex;
+        .loox-rating-label{
+          color: #000;
+          font-size: 11.908px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          top: -1px;
+          position: relative;
+        }
+        .loox-icon{
+          width: 14px;
+          height: 14px;
+          color: #1496D5;
+        }
+      }
+    }
+  }
+
+  .product-grid-item__short-description{
+    margin-top: 4px;
+    color: #1B1B1B;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+  }
+
+  .product-grid-item__atc{
+    width: 100%;
+    margin-top: 16px;
+    .btn   {
+      width: 100%;
+      font-size: 19px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
 
     .product__badge__item--custom {
         z-index: 1;
-        background: #8bac0e;
+        background: #1F62A0;
         color: var(--WHITE, #fff);
         font-family: Inter;
         font-size: 13.361px;
@@ -17,4 +76,39 @@
           font-size: 12px;
         }
       }
+      product-grid-item-swatch{
+        display: none;
+      }
+
+      .product__media__image {
+        display: none;
+      }
+      .product__media__hover{
+        transform: none;
+        .progress-bar{
+          display: none;
+        }
+        .flickity-prev-next-button{
+          opacity: 1;
+          transform: scale(1) translateY(-50%);
+          visibility: visible;
+          background-image:url(https://cdn.shopify.com/s/files/1/0108/4293/1258/files/Group_1171277359.svg?v=1731933255);
+          background-size: cover;
+          background-color: transparent;
+          width: 40px;
+          height: 40px;
+          right: 6px;
+          &.previous{
+            transform: rotate(180deg) scale(1) translateY(-50%) !important;
+            left: 6px;
+          }
+          @media screen and (max-width: 450px) {
+            width: 25px;
+            height: 25px;
+          }
+          &::before{
+            display: none;
+          }
+      }
+  }
 }

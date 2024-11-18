@@ -169,7 +169,13 @@
 {%- capture product_info_price -%}
   <a class="product-grid-item__price price{% if settings.bold_price %} price--bold{% endif %}" href="{{ product.url | within: collection }}"{% if index > 1 %} tabindex="-1"{% endif %} data-grid-link>
     {%- render 'product-price', product: product -%}
+
+    <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+
   </a>
+  {% if product.metafields.custom.short_description != blank %}
+    <div class="product-grid-item__short-description">{{ product.metafields.custom.short_description | metafield_tag }}</div>
+  {% endif %}
 {%- endcapture -%}
 
 <div class="product-grid-item {% if carousel %}carousel__item{% else %}grid__item{% endif %} {{ size_desktop }} {{ size_mobile }}{% if sold_out %} soldout{% endif %}{{ grid_item_class }}"
@@ -345,7 +351,7 @@
 
         {%- if product_grid_hover == 'slideshow' and product.media.size > 1 -%}
           <div class="product__media__hover product__media__hover--{{ product_grid_hover_animation }} product__media__slider" data-hover-slideshow-holder>
-            {%- for media in product.media limit: 4 -%}
+            {%- for media in product.media -%}
               {%- if media != featured_media -%}
                 {%- assign image = media.preview_image -%}
 
@@ -668,4 +674,19 @@
       </product-grid-item-swatch>
     {%- endif -%}
   </div>
+
+
+    {% comment %} quick atc {%endcomment%}
+    <div class="product-grid-item__atc">
+      <a class="btn {{ atc_button_color }} {{ atc_button_style }} btn--large btn--submit product__submit__add"
+        href="{{ product.url | within: collection }}"
+        aria-label="{{ 'products.product.quick_view' | t }}"
+        data-handle="{{ product.handle }}">
+        <span data-add-to-cart-text{% if settings.atc_show_product_price %} data-price-wrapper data-atc-button{% endif %}>
+          SHOP NOW
+        </span>
+      </a>
+  </div>
+{% comment  %} end quick atc  {%endcomment%}
+
 </div>
