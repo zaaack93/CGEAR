@@ -153,9 +153,9 @@
     {% if product.metafields.theme.badge != blank %}
         <span class="pdp-callout-badge">{{ product.metafields.theme.badge }}</span>
     {% endif %}
-    {% if section.settings.badge_picker != blank %}
+    {% if product.metafields.custom.pdp_gallery_badge != blank %}
       <div class="badge-image-container">
-        {{ section.settings.badge_picker | image_url: width: width, height: height | image_tag:
+        {{ product.metafields.custom.pdp_gallery_badge | image_url: width: width, height: height | image_tag:
           loading: loading,
           fetchpriority: fetchpriority,
           preload: preload,
