@@ -161,6 +161,9 @@
   height: 20px;
   margin-right: 5px !important;
 }
+.testimonials-section .testimonial__heading {
+  font-weight: 500;
+}
 
 .product__block {
   padding-bottom: var(--PBB, 0);
