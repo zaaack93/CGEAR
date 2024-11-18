@@ -69,7 +69,12 @@
     {%- endif -%}
   }
 {%- endstyle -%}
+{% assign shouldDisplay = true %}
+{% if template.name == 'product' and section.blocks.size == 0 %}
+  {% assign shouldDisplay = false %}
+{% endif %}
 
+{% if shouldDisplay %}
 <div id="{{ id }}"
   class="section-padding section-columns {{ section.settings.align_text }}{% if bg_color_secondary %} bg-secondary{% endif %}"
   data-section-id="{{ unique }}"
@@ -277,6 +282,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 
 {% schema %}
   {

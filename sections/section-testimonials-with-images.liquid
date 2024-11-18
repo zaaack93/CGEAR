@@ -1,6 +1,12 @@
 <!-- /sections/testimonials-with-images.liquid -->
+{% assign shouldDisplay = true %}
+{% if template.name == 'product' and section.blocks.size == 0 %}
+  {% assign shouldDisplay = false %}
+{% endif %}
 
+{% if shouldDisplay %}
 {%- render 'testimonials', section_id: 'TestimonialsWithImages--' -%}
+{% endif %}
 
 {% schema %}
 {
