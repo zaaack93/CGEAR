@@ -188,6 +188,12 @@
   {%- endif -%}
 {% endcapture %}
 
+{% assign shouldDisplay = true %}
+{% if template.name == 'product' and section.blocks.size == 0 %}
+  {% assign shouldDisplay = false %}
+{% endif %}
+
+{% if shouldDisplay %}
 <section data-section-id="{{ section.id }}" id="Accordions--{{ section.id }}" data-section-type="accordions" class="section-padding accordions-section {{ text_color }}{% if bg_color_secondary %} bg-secondary{% endif %}">
   {{ section__heading }}
 
@@ -201,6 +207,7 @@
     {%- render 'no-blocks' -%}
   {%- endif -%}
 </section>
+{% endif %}
 
 {% schema %}
 {
