@@ -18,8 +18,8 @@
       line-height: normal;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       .loox-rating{
+        margin-left: auto;
         display: flex;
         .loox-rating-label{
           color: #000;
@@ -91,6 +91,7 @@
         .swiper-wrapper{ 
           .product__media__image_item{
             border-radius: 10px;
+            overflow: hidden;
           }
         }
         .swiper-button-prev,.swiper-button-next{

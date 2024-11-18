@@ -13,3 +13,11 @@
 @import "./components/testimonials.scss";
 
 @import "./pages/pdp.scss";
+
+.featured-collection--grid{
+    .carousel--mobile{
+        @media (max-width: 550px){
+            --item-width-mobile:85% !important;
+        }
+    }
+}

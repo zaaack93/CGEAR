@@ -19,9 +19,9 @@
   line-height: normal;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 .product-grid-item .product-grid-item__info .product-grid-item__price .loox-rating {
+  margin-left: auto;
   display: flex;
 }
 .product-grid-item .product-grid-item__info .product-grid-item__price .loox-rating .loox-rating-label {
@@ -89,6 +89,7 @@
 }
 .product-grid-item product-images-container .swiper-wrapper .product__media__image_item {
   border-radius: 10px;
+  overflow: hidden;
 }
 .product-grid-item product-images-container .swiper-button-prev::after, .product-grid-item product-images-container .swiper-button-next::after {
   display: none;
@@ -675,4 +676,10 @@
   display: inline-block;
   margin-top: 14px;
   min-width: inherit;
+}
+
+@media (max-width: 550px) {
+  .featured-collection--grid .carousel--mobile {
+    --item-width-mobile:85% !important;
+  }
 }

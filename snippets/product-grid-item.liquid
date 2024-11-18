@@ -594,8 +594,10 @@
     {% for media in product.media %}
       {% if media.media_type == 'image' %}
         <div class="product__media__image_item swiper-slide">
-          <img src="{{ media | img_url: '600x600' }}" alt="{{ media.alt | escape }}" class="product__media__image_item" loading="{{ loading }}" fetchpriority="{{ fetchpriority }}" />
-          {% comment %} {%- render 'image-fill',
+          
+        <a href="{{product.url }}" class="product__media__image_link">
+          {% comment %} <img src="{{ media | img_url: '600x600' }}" alt="{{ media.alt | escape }}" class="product__media__image_item" loading="{{ loading }}" fetchpriority="{{ fetchpriority }}" /> {% endcomment %}
+          {%- render 'image-fill',
             img_object: media,
             classes: 'product__media',
             aspect_ratio: aspect_ratio,
@@ -603,7 +605,9 @@
             fetchpriority: fetchpriority,
             preload: preload,
             placeholder_svg: 'product-1' 
-            -%} {% endcomment %}
+            classes: 'product__media__image_item'
+            -%}
+        </a>
         </div>
       {% endif %}
     {% endfor %}
