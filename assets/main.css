@@ -78,39 +78,19 @@
 .product-grid-item product-grid-item-swatch {
   display: none;
 }
-.product-grid-item .product__media__image {
+.product-grid-item hover-slideshow {
   display: none;
 }
-.product-grid-item .product__media__hover {
-  display: block !important;
-  transform: none;
+.product-grid-item product-images-container {
+  display: block;
 }
-.product-grid-item .product__media__hover .progress-bar {
-  display: none;
+.product-grid-item product-images-container .product__badge {
+  z-index: 9;
 }
-.product-grid-item .product__media__hover .flickity-prev-next-button {
-  opacity: 1;
-  transform: scale(1) translateY(-50%);
-  visibility: visible;
-  background-image: url(https://cdn.shopify.com/s/files/1/0108/4293/1258/files/Group_1171277359.svg?v=1731933255);
-  background-size: cover;
-  background-color: transparent;
-  width: 40px;
-  height: 40px;
-  right: 6px;
+.product-grid-item product-images-container .swiper-wrapper .product__media__image_item {
+  border-radius: 10px;
 }
-.product-grid-item .product__media__hover .flickity-prev-next-button.previous {
-  transform: rotate(180deg) scale(1) translateY(-50%) !important;
-  left: 6px;
-  right: 0px;
-}
-@media screen and (max-width: 450px) {
-  .product-grid-item .product__media__hover .flickity-prev-next-button {
-    width: 25px;
-    height: 25px;
-  }
-}
-.product-grid-item .product__media__hover .flickity-prev-next-button::before {
+.product-grid-item product-images-container .swiper-button-prev::after, .product-grid-item product-images-container .swiper-button-next::after {
   display: none;
 }
 
