@@ -549,7 +549,7 @@
 }
 .template--product .product-single__details .product__accordions .product__accordion__inner {
   padding-top: 12px;
-  color: #000;
+  color: #646262;
   font-size: 17px !important;
   font-style: normal;
   font-weight: 400 !important;
@@ -567,8 +567,8 @@
   gap: 21px;
 }
 .template--product .product-upsell-v2 .product-upsell-container .product-upsell-image {
-  width: 91px;
-  height: 91px;
+  width: 100px;
+  height: 100px;
   flex-shrink: 0;
   border-radius: 3.098px;
 }
@@ -580,7 +580,7 @@
 }
 .template--product .product-upsell-v2 .product-upsell-container .product-upsell-details h3 {
   color: var(--WHITE, #fff);
-  font-size: 20px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 400;
   line-height: 110%;
