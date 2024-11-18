@@ -352,7 +352,7 @@
         {%- if product_grid_hover == 'slideshow' and product.media.size > 1 -%}
           <div class="product__media__hover product__media__hover--{{ product_grid_hover_animation }} product__media__slider" data-hover-slideshow-holder>
             {%- for media in product.media -%}
-              {%- if media != featured_media -%}
+              {%- if true -%}
                 {%- assign image = media.preview_image -%}
 
                 <div class="product__media__slide" data-hover-slideshow-item>

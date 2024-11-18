@@ -1241,8 +1241,10 @@
       return this.querySelector(selectors$1a.progress);
     }
     connectedCallback() {
-      theme.settings.productGridHover === "slideshow" &&
-        !window.theme.touch &&
+      // theme.settings.productGridHover === "slideshow" &&
+      //   !window.theme.touch &&
+      //   this.init();
+      theme.settings.productGridHover === "slideshow"  &&
         this.init();
     }
     init() {
@@ -1267,13 +1269,14 @@
             pauseAutoPlayOnHover: 1,
             selectedAttraction: 0.2,
             friction: 1,
+            autoPlay: 0,
             on: {
               ready: () => {
-                this.section.style.setProperty(
-                  "--autoplay-speed",
-                  `${this.autoplaySpeed}ms`
-                ),
-                  setTimeout(() => this.flkty.resize(), 1e3);
+                // this.section.style.setProperty(
+                //   "--autoplay-speed",
+                //   `${this.autoplaySpeed}ms`
+                // ),
+                //   setTimeout(() => this.flkty.resize(), 1e3);
               },
               change: () => {
                 return
@@ -1289,6 +1292,7 @@
                   ));
               },
               dragEnd: () => {
+                return
                 this.flkty.playPlayer();
               },
             },

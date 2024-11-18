@@ -79,11 +79,11 @@
       product-grid-item-swatch{
         display: none;
       }
-
       .product__media__image {
         display: none;
       }
-      .product__media__hover{
+      .product__media__hover{////
+        display: block !important;
         transform: none;
         .progress-bar{
           display: none;
@@ -101,6 +101,7 @@
           &.previous{
             transform: rotate(180deg) scale(1) translateY(-50%) !important;
             left: 6px;
+            right: 0px;
           }
           @media screen and (max-width: 450px) {
             width: 25px;

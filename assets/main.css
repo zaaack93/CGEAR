@@ -82,6 +82,7 @@
   display: none;
 }
 .product-grid-item .product__media__hover {
+  display: block !important;
   transform: none;
 }
 .product-grid-item .product__media__hover .progress-bar {
@@ -101,6 +102,7 @@
 .product-grid-item .product__media__hover .flickity-prev-next-button.previous {
   transform: rotate(180deg) scale(1) translateY(-50%) !important;
   left: 6px;
+  right: 0px;
 }
 @media screen and (max-width: 450px) {
   .product-grid-item .product__media__hover .flickity-prev-next-button {
