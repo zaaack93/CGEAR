@@ -1,13 +1,11 @@
 .product-grid-item {
-  .product-grid-item__image{
-    margin-bottom: 14px;
-  }
   .product-grid-item__info{
     row-gap: 5.49px;
     .product-grid-item__title{
       font-size: 32px;
       font-weight: 600;
       line-height: 120%;
+      margin-top: 14px;
     }
 
     .product-grid-item__price {
