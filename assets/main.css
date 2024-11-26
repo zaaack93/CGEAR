@@ -512,6 +512,7 @@
   font-weight: 400;
   line-height: 120%;
   width: 100%;
+  display: block;
 }
 .template--product .product-single__details .product__form {
   row-gap: 0px;

@@ -315,7 +315,68 @@
       "unit": "px",
       "label": "Padding bottom",
       "default": 60
-    }
+    },
+    {
+      "type":"header",
+      "content": "Footer content"
+    },
+    {
+      "type": "richtext",
+      "id": "Footer_text",
+      "label": "Text",
+      "default": "<p>Use this text to share information about your collection with your customers.</p>"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "default": 100,
+      "min": 75,
+      "max": 250,
+      "step": 5,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button color",
+      "default": "btn--black",
+      "options": [
+        { "label": "Primary", "value": "btn--primary" },
+        { "label": "Secondary", "value": "btn--secondary" },
+        { "label": "White", "value": "btn--white" },
+        { "label": "Black", "value": "btn--black" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "default": "btn--text",
+      "options": [
+        { "label": "Solid", "value": "btn--solid" },
+        { "label": "Outline", "value": "btn--outline" },
+        { "label": "Solid with border", "value": "btn--solid-border" },
+        { "label": "Text", "value": "btn--text" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "Size",
+      "default": "btn--large",
+      "options": [
+        { "label": "Large", "value": "btn--large" },
+        { "label": "Medium", "value": "btn--medium" },
+        { "label": "Small", "value": "btn--small" }
+      ]
+    },
   ],
   "blocks": [
     {

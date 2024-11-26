@@ -174,7 +174,7 @@
 
   </a>
   {% if product.metafields.custom.short_description != blank %}
-    <div class="product-grid-item__short-description">{{ product.metafields.custom.short_description | metafield_tag }}</div>
+    <div class="product-grid-item__short-description">{{ product.metafields.custom.mini_description | metafield_tag }}</div>
   {% endif %}
 {%- endcapture -%}
 
