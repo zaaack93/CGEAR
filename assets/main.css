@@ -261,6 +261,13 @@
   }
 }
 
+.accordions-section .featured-collection__content__wrapper {
+  margin-top: 60px;
+}
+.accordions-section .featured-collection__content__wrapper .section__text {
+  margin-bottom: 16px;
+}
+
 .product__block {
   padding-bottom: var(--PBB, 0);
 }

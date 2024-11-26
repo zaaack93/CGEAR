@@ -193,6 +193,49 @@
   {% assign shouldDisplay = false %}
 {% endif %}
 
+{%- capture section_heading_content -%}
+  {% liquid 
+    assign text_alignment = 'text-center'
+    assign button_text = section.settings.button_text
+    assign button_style = section.settings.button_style
+    assign button_color = section.settings.button_color
+    assign button_size = section.settings.button_size
+    assign button_position = 'text-center'
+    assign text = section.settings.Footer_text
+  %}
+  <div class="section__header featured-collection__content__wrapper wrapper--full-padded">
+
+    {%- if text != blank -%}
+      <div class="section__text"
+        {% if animations_enabled %}
+          data-aos="fade-up"
+          data-aos-delay="{{ animation_delay }}"
+          data-aos-anchor="{{ animation_anchor }}"
+          {%- assign animation_delay = animation_delay | plus: 150 -%}
+        {% endif %}>
+        {{- text -}}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if button_text != blank -%}
+      <a class="btn {{ button_style }} {{ button_size }} {{ button_color }} btn--view-all" href="{{ collection.url | default: '#!' }}" {% if animations_enabled %}
+        data-aos="fade-up"
+        data-aos-delay="{{ animation_delay }}"
+        data-aos-anchor="{{ animation_anchor }}"
+        {%- assign animation_delay = animation_delay | plus: 150 -%}
+      {% endif %}>{{ button_text }}</a>
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture section_heading__footer -%}
+  {%- if title != blank or text != blank or button_text != blank -%}
+    <div class="featured-collection__content {{ text_alignment }}" id="{{ section_heading_id }}">
+      {{ section_heading_content }}
+    </div>
+  {%- endif -%}
+{%- endcapture -%}
+
 {% if shouldDisplay %}
 <section data-section-id="{{ section.id }}" id="Accordions--{{ section.id }}" data-section-type="accordions" class="section-padding accordions-section {{ text_color }}{% if bg_color_secondary %} bg-secondary{% endif %}">
   {{ section__heading }}
@@ -206,6 +249,8 @@
   {%- else -%}
     {%- render 'no-blocks' -%}
   {%- endif -%}
+
+  {{section_heading__footer }}
 </section>
 {% endif %}
 
