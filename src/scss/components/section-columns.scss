@@ -1,0 +1,19 @@
+.section-columns{
+    color:#000;
+    .text__heading{
+        --adjust-heading: calc(1.1* 1.0);
+        color: inherit;
+    }
+    .text__subheading {
+        --adjust-body: calc(1.1* 1.0);
+        color: inherit;
+        margin-top: 0px;
+        margin-bottom: 16px;
+    }
+    .section__header{
+        margin-bottom: 60px;
+        @media (max-width: 768px){
+            margin-bottom: 36px;
+        }
+    }
+}

@@ -74,6 +74,64 @@
   {% assign shouldDisplay = false %}
 {% endif %}
 
+{% capture section__heading %}
+  {% assign heading = section.settings.title %}
+  {% assign subheading = section.settings.subheading %}
+  {% assign text = section.settings.text %}
+  {%- unless heading == blank and subheading == blank and text == blank -%}
+    <div class="accordion__header">
+      <div class="{{ section_width }}">
+        <div class="section__header">
+
+          
+          {%- if subheading != blank -%}
+            <p class="text__subheading subheading-text"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}>{{ subheading }}</p>
+          {%- endif -%}
+          {%- if heading != blank -%}
+            <p class="text__heading h2 "
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}>{{ heading }}</p>
+
+            {%- if settings.show_spacer_lines -%}
+              <hr class="section__heading-line"
+                {% if animations_enabled %}
+                  data-aos="fade-up"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-delay="{{ animation_delay }}"
+                  {%- assign animation_delay = animation_delay | plus: 150 -%}
+                {% endif %}>
+            {%- endif -%}
+          {%- endif -%}
+
+
+          {%- if text != blank -%}
+            <div class="rte"
+              {% if animations_enabled %}
+                data-aos="fade-up"
+                data-aos-anchor="{{ animation_anchor }}"
+                data-aos-delay="{{ animation_delay }}"
+                {%- assign animation_delay = animation_delay | plus: 150 -%}
+              {% endif %}>{{ text }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endunless -%}
+
+  {%- assign animation_delay_header = animation_delay -%}
+  {%- assign animation_delay_mobile = animation_delay -%}
+{% endcapture %}
+
 {% if shouldDisplay %}
 <div id="{{ id }}"
   class="section-padding section-columns {{ section.settings.align_text }}{% if bg_color_secondary %} bg-secondary{% endif %}"
@@ -81,24 +139,7 @@
   data-section-type="columns-with-image">
   <div class="{{ section_width }}">
 
-    {%- if section.settings.title != '' -%}
-      <div class="section__header">
-        <h2 class="section__heading h2"
-          data-aos="fade-up"
-          data-aos-anchor="{{ animation_anchor }}"
-          data-aos-delay="{{ animation_delay }}"
-          {%- assign animation_delay = animation_delay | plus: 150 -%}>{{ section.settings.title }}</h2>
-
-        {%- if settings.show_spacer_lines -%}
-          <hr class="section__heading-line"{% if animations_enabled %}
-            data-aos="fade-up"
-            data-aos-anchor="{{ animation_anchor }}"
-            data-aos-delay="{{ animation_delay }}"
-            {%- assign animation_delay = animation_delay | plus: 150 -%}
-          {% endif %}>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
+    {{ section__heading }}
 
     <div class="section-columns__wrapper carousel__container">
       {%- if section.blocks.size > 0 -%}
@@ -292,7 +333,13 @@
       {
         "type": "text",
         "id": "title",
-        "label": "Heading"
+        "label": "Heading",
+        "default": "Frequently Asked Questions"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
       },
       {
         "type": "header",

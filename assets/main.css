@@ -239,6 +239,28 @@
   font-weight: 500;
 }
 
+.section-columns {
+  color: #000;
+}
+.section-columns .text__heading {
+  --adjust-heading: calc(1.1* 1.0);
+  color: inherit;
+}
+.section-columns .text__subheading {
+  --adjust-body: calc(1.1* 1.0);
+  color: inherit;
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+.section-columns .section__header {
+  margin-bottom: 60px;
+}
+@media (max-width: 768px) {
+  .section-columns .section__header {
+    margin-bottom: 36px;
+  }
+}
+
 .product__block {
   padding-bottom: var(--PBB, 0);
 }
