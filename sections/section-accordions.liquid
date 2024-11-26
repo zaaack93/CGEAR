@@ -219,7 +219,7 @@
   </div>
 
   {%- if button_text != blank -%}
-      <a class="btn {{ button_style }} {{ button_size }} {{ button_color }} btn--view-all" href="{{ collection.url | default: '#!' }}" {% if animations_enabled %}
+      <a class="btn {{ button_style }} {{ button_size }} {{ button_color }} btn--view-all" href="{{ section.settings.button_link }}" {% if animations_enabled %}
         data-aos="fade-up"
         data-aos-delay="{{ animation_delay }}"
         data-aos-anchor="{{ animation_anchor }}"
@@ -422,6 +422,11 @@
         { "label": "Small", "value": "btn--small" }
       ]
     },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
   ],
   "blocks": [
     {
