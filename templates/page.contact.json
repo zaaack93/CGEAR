@@ -15,13 +15,19 @@
         "template--15169561198665__d7500f76-3bf1-422a-a811-a46f0dc76b02-1687419522f730b89c-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/patrick-hendry-NykkeN4K3Kk-unsplash-16x9.jpg",
+            "image": "shopify://shop_images/IMG_5695.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
+            "text_alignment": "text-left",
             "text_color": "text-light",
             "subheading": "",
+            "title": "<p>Contact Us</p>",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000",
+            "highlight_text_color": "",
             "text": "",
+            "stacked_button": false,
             "button_1_text": "",
             "button_1_link": "",
             "button_1_color": "btn--white",
@@ -41,16 +47,18 @@
         "template--15169561198665__d7500f76-3bf1-422a-a811-a46f0dc76b02-1687419522f730b89c-0"
       ],
       "settings": {
-        "slide_height": "six-fifty-height",
+        "slide_height": "one-third-height",
         "enable_mobile_height": true,
-        "mobile_slide_height": "four-fifty-height-mobile",
-        "show_nav_dots": true,
-        "show_nav_arrows": true,
+        "mobile_slide_height": "one-third-height-mobile",
+        "show_nav_dots": false,
+        "show_nav_arrows": false,
         "show_arrow_down": false,
         "autoplay": false,
         "duration": 4,
         "transition": "wipe",
         "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
         "heading_size": 120
       }
     },
@@ -95,16 +103,17 @@
         "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>Need questions answered? </p>",
+            "text": "<p>Need a hand? </p>",
             "size": 100,
             "heading_highlight_type": "italics",
-            "highlight_color": "#d43747"
+            "highlight_color": "#d43747",
+            "highlight_text_color": ""
           }
         },
         "template--15169561198665__184419b4-34ea-4390-9e4d-73586d512bdc-16862777250e8182de-2": {
           "type": "text",
           "settings": {
-            "text": "<p>Tips for the best marinade? Secret camping spots? Favourite campsite yarn? </p><p>Drop us a line below or simply give us a buzz on 03 9645 4447.</p>",
+            "text": "<p>Tips for the best marinade? Secret camp spots? Favourite campsite yarn? Drop us a line below or simply give us a buzz on <strong>03 9645 4447.</strong></p>",
             "size": 100
           }
         }

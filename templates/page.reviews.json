@@ -15,13 +15,19 @@
         "slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/our.wild.tribe.png",
+            "image": "shopify://shop_images/patrick-hendry-NykkeN4K3Kk-unsplash-16x9_13ddfae6-d0de-4b2a-903d-73fe2d771b26.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
+            "text_alignment": "text-left",
             "text_color": "text-light",
             "subheading": "",
+            "title": "<p>Reviews</p>",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000",
+            "highlight_text_color": "",
             "text": "",
+            "stacked_button": false,
             "button_1_text": "",
             "button_1_link": "shopify://collections/all",
             "button_1_color": "btn--white",
@@ -41,9 +47,9 @@
         "slideshow-0"
       ],
       "settings": {
-        "slide_height": "six-fifty-height",
+        "slide_height": "one-third-height",
         "enable_mobile_height": true,
-        "mobile_slide_height": "four-fifty-height-mobile",
+        "mobile_slide_height": "one-third-height-mobile",
         "show_nav_dots": true,
         "show_nav_arrows": true,
         "show_arrow_down": false,
@@ -51,6 +57,8 @@
         "duration": 4,
         "transition": "wipe",
         "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
         "heading_size": 120
       }
     },
@@ -66,7 +74,9 @@
         "title": "<p>Don't just take our word for it.</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
+        "highlight_text_color": "",
         "heading_size": 130,
+        "content": "<p>Yes we are happy to yap on about ourselves and our fancy products, but we'll let our customers do the talking on this one. The ones that are out there right now, with clean feet (all thanks to us) and a cold beer in hand.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -75,10 +85,11 @@
         "button_size": "btn--small",
         "video_link": "",
         "text_color": "text-dark",
-        "bg_color": "",
+        "bg_color": "#ededea",
+        "gradient": "",
         "section_width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "main": {
@@ -102,7 +113,8 @@
             "product_handle": "",
             "aggregated": true,
             "data-limit": 20,
-            "maxwidth": 1080
+            "maxwidth": 1080,
+            "is_sample": true
           }
         }
       },
@@ -125,7 +137,8 @@
             "text": "<p>Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company. </p>",
             "size": 100,
             "heading_highlight_type": "circle",
-            "highlight_color": "#3c4147"
+            "highlight_color": "#3c4147",
+            "highlight_text_color": ""
           }
         }
       },
@@ -202,6 +215,10 @@
       "settings": {
         "title": "CGear is a proud member of:",
         "show_quotations": false,
+        "show_rounded_corners": false,
+        "logo_opacity": 50,
+        "autoplay": true,
+        "duration": 4,
         "bg_color_secondary": false,
         "width": "wrapper--narrow",
         "padding_top": 60,
@@ -214,12 +231,17 @@
         "collection": "all-cgear-products",
         "products_layout": "grid",
         "number_of_products": 4,
+        "products_per_row_on_desktop": 4,
         "columns_mobile": "2",
         "text_alignment": "text-left",
         "title": "<p>Best Sellers</p>",
+        "heading_highlight_type": "underline-hand-drawn",
+        "highlight_color": "#000",
+        "highlight_text_color": "",
         "heading_size": 100,
         "text": "",
         "text_size": 100,
+        "button_position": "top",
         "button_text": "Shop Now",
         "button_color": "btn--black",
         "button_style": "btn--text",
@@ -233,9 +255,9 @@
     }
   },
   "order": [
+    "main",
     "slideshow",
     "ce2df312-d889-4d37-b04b-aba15946304b",
-    "main",
     "1686278289112c752a",
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
     "6ef338fb-eb1b-498c-880d-4de0d0375389",

@@ -19,9 +19,15 @@
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
+            "text_alignment": "text-left",
             "text_color": "text-light",
             "subheading": "",
+            "title": "<p>Military</p>",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000",
+            "highlight_text_color": "",
             "text": "",
+            "stacked_button": false,
             "button_1_text": "",
             "button_1_link": "shopify://collections/all",
             "button_1_color": "btn--white",
@@ -41,9 +47,9 @@
         "slideshow-0"
       ],
       "settings": {
-        "slide_height": "six-fifty-height",
+        "slide_height": "one-third-height",
         "enable_mobile_height": true,
-        "mobile_slide_height": "four-fifty-height-mobile",
+        "mobile_slide_height": "one-third-height-mobile",
         "show_nav_dots": true,
         "show_nav_arrows": true,
         "show_arrow_down": false,
@@ -51,6 +57,8 @@
         "duration": 4,
         "transition": "wipe",
         "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
         "heading_size": 120
       }
     },
@@ -61,12 +69,14 @@
         "layout": "inline",
         "image_location": "left",
         "image_width": "standard",
-        "image": "shopify://shop_images/helimat_set_up_1.jpg",
+        "image": "shopify://shop_images/helimat_set_up_1.png",
         "subheading": "",
         "title": "<p>CGear For Military.</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
+        "highlight_text_color": "",
         "heading_size": 130,
+        "content": "<p>In operation since 2003, CGear has been supplying the military and civilian aviation industry their highly successful Tactical Helimat and Tactical Extraction Platform. CGear’s products are in use by the US Marines, the British MOD and the Australian Army.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -76,9 +86,10 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "main": {
@@ -95,6 +106,8 @@
       "type": "section-video",
       "settings": {
         "video_height": "six-fifty-height",
+        "enable_mobile_height": false,
+        "mobile_height": "six-fifty-height-mobile",
         "text_position": "middle-center",
         "video_link_bg": "",
         "video_link": "https://www.youtube.com/watch?v=QNjWIzvZNaE&t=34s",
@@ -104,6 +117,7 @@
         "title": "<p>Watch an Overview of our Tactical Helimat </p>",
         "heading_highlight_type": "italics",
         "highlight_color": "#d43747",
+        "highlight_text_color": "",
         "text": "",
         "heading_size": 100,
         "button_text": "",
@@ -111,34 +125,6 @@
         "button_color": "btn--white",
         "button_style": "btn--solid-border",
         "button_size": "btn--small"
-      }
-    },
-    "97500463-1f25-4585-85ab-aec47372797d": {
-      "type": "section-image-with-text",
-      "disabled": true,
-      "settings": {
-        "section_height": "five-fifty-height",
-        "layout": "inline",
-        "image_location": "left",
-        "image_width": "standard",
-        "image": "shopify://shop_images/don-jackson-wyatt-sbhubyl7lWI-unsplash.jpg",
-        "subheading": "",
-        "title": "<h1>Tactical Helimat</h1>",
-        "heading_highlight_type": "circle",
-        "highlight_color": "#a0bdcb",
-        "heading_size": 130,
-        "text_alignment": "left",
-        "button_text": "",
-        "button_link": "",
-        "button_color": "btn--black",
-        "button_style": "btn--solid",
-        "button_size": "btn--small",
-        "video_link": "",
-        "text_color": "text-dark",
-        "bg_color": "#ffffff",
-        "section_width": "wrapper",
-        "padding_top": 60,
-        "padding_bottom": 60
       }
     },
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c": {
@@ -150,7 +136,8 @@
             "text": "<h2>The CGear Tactical Helimat has been designed and manufactured to quickly and simply solve the problem of ‘Brownout’ on helicopter-landing zones.</h2>",
             "size": 100,
             "heading_highlight_type": "circle",
-            "highlight_color": "#3c4147"
+            "highlight_color": "#3c4147",
+            "highlight_text_color": ""
           }
         }
       },
@@ -205,16 +192,23 @@
         "alignment": "left",
         "columns": 3,
         "icons_width": 30,
+        "show_vertical_borders": true,
+        "show_horizontal_borders": false,
+        "heading_size": 90,
+        "text_size": 90,
         "bg_color": "#ededea",
-        "text_color": "#333",
+        "text_color": "#333333",
         "box_color": "",
+        "color_border": "#333",
         "button_text": "",
         "button_link": "",
         "button_color": "btn--black",
         "button_style": "btn--solid",
         "button_size": "btn--small",
+        "layout_mobile": "grid",
+        "width": "wrapper",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 80
       }
     },
     "8a3be47d-b8e8-4a92-a03a-b81162222698": {
@@ -314,7 +308,9 @@
         "title": "<h1>Tactical Extraction Platform</h1>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
-        "heading_size": 130,
+        "highlight_text_color": "",
+        "heading_size": 100,
+        "content": "<p>The CGear Tactical Extraction Platform was designed for personnel rescue and deployment in extreme and dangerous environments.<br/><br/>Originally designed to be used for deployment by helicopters, the Tactical Extraction Platform is now in service in marine rescue and on oil and gas platforms for transference of personnel and cargo.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -324,8 +320,9 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
-        "padding_top": 60,
+        "padding_top": 80,
         "padding_bottom": 60
       }
     },
@@ -341,7 +338,9 @@
         "title": "<h1>Marine Tested</h1>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
-        "heading_size": 130,
+        "highlight_text_color": "",
+        "heading_size": 100,
+        "content": "<p>The Helimat is easy to deploy, being lightweight and easily transportable. It is also tough and durable. The fabric won’t tear or fray and is impervious to petro-chemicals.<br/>In US Marine Corps trials at NAVAIR Lakehurst, the CGear Tactical Helimat demonstrated not only its ability to eliminate ‘Brownout’ but also its strength and stability on the ground.<br/><br/>The CGear Mat stood fast, even when the Marines attempted to lift and rip apart its patented joining and anchoring systems using a ‘Huey’, a Black Hawk, and a ‘Super Stallion’ . There was no risk of the Helimat being sucked up and tangled in the rotors.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -351,35 +350,10 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
         "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "4ece2c47-faf9-49f2-bd77-503fe1caa631": {
-      "type": "section-text",
-      "blocks": {
-        "96db51d8-5e46-46a4-962e-354f2c8bcd4c": {
-          "type": "heading",
-          "settings": {
-            "text": "<h2>The CGear Tactical Extraction Platform was designed for personnel rescue and deployment in extreme and dangerous environments.</h2>",
-            "size": 100,
-            "heading_highlight_type": "circle",
-            "highlight_color": "#3c4147"
-          }
-        }
-      },
-      "block_order": [
-        "96db51d8-5e46-46a4-962e-354f2c8bcd4c"
-      ],
-      "disabled": true,
-      "settings": {
-        "text_position": "center",
-        "bg_color_secondary": true,
-        "text_color": "text-dark",
-        "width": "wrapper--narrow",
-        "padding_top": 90,
-        "padding_bottom": 90
+        "padding_bottom": 80
       }
     },
     "5a4be997-d1db-41ac-a834-be037566af00": {
@@ -391,7 +365,8 @@
             "text": "<p>To receive more information on the capabilities of the CGear Helimat please reach out below.</p>",
             "size": 100,
             "heading_highlight_type": "italics",
-            "highlight_color": "#d43747"
+            "highlight_color": "#d43747",
+            "highlight_text_color": ""
           }
         },
         "template--15181640171593__5a4be997-d1db-41ac-a834-be037566af00-1686207946e7bfa614-2": {
@@ -418,60 +393,13 @@
         "template--15181640171593__5a4be997-d1db-41ac-a834-be037566af00-1686207946e7bfa614-2",
         "template--15181640171593__5a4be997-d1db-41ac-a834-be037566af00-1686207946e7bfa614-3"
       ],
-      "disabled": true,
       "settings": {
         "text_position": "center",
-        "bg_color_secondary": false,
+        "bg_color_secondary": true,
         "text_color": "text-dark",
         "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "c516a38f-ce21-4fcb-8cb0-a0bd4c73c572": {
-      "type": "section-contact-form",
-      "blocks": {
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-0": {
-          "type": "heading",
-          "settings": {
-            "title": "To receive more information on the capabilities of the CGear Helimat please reach out below."
-          }
-        },
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-1": {
-          "type": "text",
-          "settings": {
-            "title": "Name",
-            "required": false
-          }
-        },
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-2": {
-          "type": "email",
-          "settings": {
-            "title": "Email",
-            "required": true
-          }
-        },
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-3": {
-          "type": "body",
-          "settings": {
-            "title": "Message",
-            "required": true
-          }
-        }
-      },
-      "block_order": [
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-0",
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-1",
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-2",
-        "template--15181640171593__c516a38f-ce21-4fcb-8cb0-a0bd4c73c572-1687420292a8d22342-3"
-      ],
-      "settings": {
-        "button_color": "btn--black",
-        "button_style": "btn--solid",
-        "button_size": "btn--large",
-        "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "2e13a5e8-eabb-48d3-9866-4378ddda8603": {
@@ -543,13 +471,20 @@
       "disabled": true,
       "settings": {
         "title": "",
+        "subheading": "",
         "align_text": "text-left",
         "columns": 3,
+        "columns_mobile": "1",
         "show_images": true,
+        "show_borders": false,
         "equalize_height": true,
+        "desktop_aspect_ratio": 0.8,
+        "mobile_aspect_ratio": 0.8,
         "heading_size": 120,
         "text_size": 100,
         "bg_color_secondary": false,
+        "color_borders": "#000",
+        "layout_mobile": "carousel",
         "width": "wrapper",
         "padding_top": 60,
         "padding_bottom": 60
@@ -561,15 +496,12 @@
     "ce2df312-d889-4d37-b04b-aba15946304b",
     "main",
     "a16d1a04-8fef-484a-95ca-8e246996d4a7",
-    "97500463-1f25-4585-85ab-aec47372797d",
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
     "4e2bdda2-5fdf-4be6-9099-6f1167180725",
     "8a3be47d-b8e8-4a92-a03a-b81162222698",
     "3608b4d3-540d-4e1b-9c84-2f3b000db6a9",
     "c734ab72-3811-421f-a397-57f7ec9e9952",
-    "4ece2c47-faf9-49f2-bd77-503fe1caa631",
     "5a4be997-d1db-41ac-a834-be037566af00",
-    "c516a38f-ce21-4fcb-8cb0-a0bd4c73c572",
     "2e13a5e8-eabb-48d3-9866-4378ddda8603"
   ]
 }

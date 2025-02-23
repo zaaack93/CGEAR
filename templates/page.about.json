@@ -9,19 +9,35 @@
  */
 {
   "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_page_title": true,
+        "bg_color_secondary": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "slideshow": {
       "type": "section-slideshow",
       "blocks": {
         "slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Cgear-62-Web-1500x1125.jpg",
+            "image": "shopify://shop_images/pexels-mads-de-silva-275585403-13581479.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
+            "text_alignment": "text-left",
             "text_color": "text-light",
             "subheading": "",
+            "title": "<p>About Us</p>",
+            "heading_highlight_type": "underline-hand-drawn",
+            "highlight_color": "#000",
+            "highlight_text_color": "",
             "text": "",
+            "stacked_button": false,
             "button_1_text": "",
             "button_1_link": "shopify://collections/all",
             "button_1_color": "btn--white",
@@ -41,9 +57,9 @@
         "slideshow-0"
       ],
       "settings": {
-        "slide_height": "six-fifty-height",
+        "slide_height": "one-third-height",
         "enable_mobile_height": true,
-        "mobile_slide_height": "four-fifty-height-mobile",
+        "mobile_slide_height": "one-third-height-mobile",
         "show_nav_dots": true,
         "show_nav_arrows": true,
         "show_arrow_down": false,
@@ -51,22 +67,29 @@
         "duration": 4,
         "transition": "wipe",
         "enable_zoom_animation": true,
+        "enable_card_scrolling": false,
+        "increase_border_radius": true,
         "heading_size": 120
       }
     },
     "ce2df312-d889-4d37-b04b-aba15946304b": {
       "type": "section-image-with-text",
+      "custom_css": [
+        ".h2 {line-height: 100%;}"
+      ],
       "settings": {
-        "section_height": "five-fifty-height",
+        "section_height": "six-fifty-height",
         "layout": "inline",
         "image_location": "left",
         "image_width": "standard",
-        "image": "shopify://shop_images/dylan-shaw-4LJh9TAcImw-unsplash-EDIT.jpg",
+        "image": "shopify://shop_images/7dc552150bf95554bffdeb10518e5716.png",
         "subheading": "",
-        "title": "<p>The gear for out here</p>",
+        "title": "<p>Great Southern Land</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
-        "heading_size": 130,
+        "highlight_text_color": "",
+        "heading_size": 120,
+        "content": "<p>At CGear, we’re a family-owned and operated company, built on a shared love for adventure and the great outdoors. From weekend camping trips to cross-country explorations, our mission is to create reliable, high-quality gear that helps families like yours make lasting memories out and about in nature.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -76,24 +99,30 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
-        "padding_top": 60,
+        "padding_top": 80,
         "padding_bottom": 60
       }
     },
     "5f0a85a4-6cba-4029-963f-526062296974": {
       "type": "section-image-with-text",
+      "custom_css": [
+        ".h2 {line-height: 100%;}"
+      ],
       "settings": {
-        "section_height": "five-fifty-height",
+        "section_height": "six-fifty-height",
         "layout": "inline",
         "image_location": "right",
         "image_width": "standard",
-        "image": "shopify://shop_images/Cgear-23-Web.jpg",
+        "image": "shopify://shop_images/461849221_2743100875855962_4354141942142975239_n.jpg",
         "subheading": "",
-        "title": "<p>Engineered for adventure</p>",
+        "title": "<p>Engineered For Adventure</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
-        "heading_size": 130,
+        "highlight_text_color": "",
+        "heading_size": 120,
+        "content": "<p>We understand how rugged the great outdoors can be, which is why we’re passionate about crafting durable, high-quality gear that you can rely on. Whether you’re camping in the Kimberley, pitching up at Lucky Bay, or tackling the Simpson Desert, our gear is designed to go the distance, so you can make every outdoor moment unforgettable.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -103,19 +132,10 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
         "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "show_page_title": true,
-        "bg_color_secondary": false,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 80
       }
     },
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c": {
@@ -124,20 +144,24 @@
         "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1": {
           "type": "heading",
           "settings": {
-            "text": "<p>Our products are proudly designed in Australia for Australian conditions by a proudly Australian owned company.</p>",
+            "text": "<p>Our products are proudly designed in Australia by an Australian owned company for the harsh Australian conditions.</p>",
             "size": 100,
             "heading_highlight_type": "circle",
-            "highlight_color": "#3c4147"
+            "highlight_color": "#3c4147",
+            "highlight_text_color": ""
           }
         }
       },
       "block_order": [
         "template--15169561165897__a5edf133-c7fb-45ab-8ef2-ec81d903c34c-1685680161af26d3ea-1"
       ],
+      "custom_css": [
+        "section {background: #5e6c2a; margin-bottom: 0px;}"
+      ],
       "settings": {
         "text_position": "center",
         "bg_color_secondary": true,
-        "text_color": "text-dark",
+        "text_color": "text-light",
         "width": "wrapper--narrow",
         "padding_top": 90,
         "padding_bottom": 90
@@ -155,7 +179,9 @@
         "title": "<p>Our Guarantee</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#a0bdcb",
-        "heading_size": 130,
+        "highlight_text_color": "",
+        "heading_size": 120,
+        "content": "<p>We take incredible care in our design and manufacturing and stand proudly by the quality of our equipment. We also know just how far some of you push yourselves during your adventures.<br/><br/>That’s why every Cgear product includes a 36 month Warranty against all manufacturing defects - so the only thing you need to worry about is what your having for dinner.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -165,6 +191,7 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
         "padding_top": 60,
         "padding_bottom": 60
@@ -177,12 +204,14 @@
         "layout": "inline",
         "image_location": "right",
         "image_width": "standard",
-        "image": "shopify://shop_images/Cgear-43-Web.jpg",
+        "image": "shopify://shop_images/Military.jpg",
         "subheading": "",
         "title": "<p>Our History</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
-        "heading_size": 130,
+        "highlight_text_color": "",
+        "heading_size": 120,
+        "content": "<p>CGear Multimat was originally designed as a deployable helimat to eliminate dirt, dust and debris from being kicked up by the helicopters rotors when landing. The product was so successful in eliminating sand, dirt and dust from helicopter landings that we applied it to camping sites.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -192,6 +221,7 @@
         "video_link": "",
         "text_color": "text-dark",
         "bg_color": "",
+        "gradient": "",
         "section_width": "wrapper",
         "padding_top": 60,
         "padding_bottom": 60
@@ -205,8 +235,8 @@
           "settings": {
             "text": "<p>SA Parks</p>",
             "link": "",
-            "press_logo": "shopify://shop_images/Logo-SA-Parks.jpg",
-            "logo_width": 120
+            "press_logo": "shopify://shop_images/Clients-Navy_SA-Parks_eb0c7f7e-18ce-474c-8e2c-dd212a95257e.svg",
+            "logo_width": 150
           }
         },
         "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-2": {
@@ -214,8 +244,8 @@
           "settings": {
             "text": "<p>CRVA</p>",
             "link": "",
-            "press_logo": "shopify://shop_images/Logo-CRVA.jpg",
-            "logo_width": 120
+            "press_logo": "shopify://shop_images/Clients-Navy_CRVA_411c9e7f-9b99-4d6a-bd1f-6e080a601f80.svg",
+            "logo_width": 150
           }
         },
         "206e6594-f448-4f79-a746-a9b25e0336e5": {
@@ -223,8 +253,8 @@
           "settings": {
             "text": "<p>Caravanning Industry of Australia.</p>",
             "link": "",
-            "press_logo": "shopify://shop_images/Logo-CIA.jpg",
-            "logo_width": 120
+            "press_logo": "shopify://shop_images/Clients-Navy_CIA.svg",
+            "logo_width": 150
           }
         },
         "template--15169561165897__6ef338fb-eb1b-498c-880d-4de0d0375389-1685943122e0a0a15a-0": {
@@ -232,8 +262,8 @@
           "settings": {
             "text": "<p>VIC Parks</p>",
             "link": "",
-            "press_logo": "shopify://shop_images/Logo-VIC-Parks.jpg",
-            "logo_width": 120
+            "press_logo": "shopify://shop_images/Clients-Navy_VIC-Parks_f25909ca-d87e-482d-9fe6-0126b633c3bc.svg",
+            "logo_width": 150
           }
         },
         "7c8369bd-31fe-4f48-b44d-0f32f97f56f1": {
@@ -241,8 +271,8 @@
           "settings": {
             "text": "<p>Caravaning QLD</p>",
             "link": "",
-            "press_logo": "shopify://shop_images/Logo-Caravan-QLD.jpg",
-            "logo_width": 120
+            "press_logo": "shopify://shop_images/Clients-Navy_CaraQLD.svg",
+            "logo_width": 150
           }
         }
       },
@@ -256,18 +286,22 @@
       "settings": {
         "title": "CGear is a proud member of:",
         "show_quotations": false,
-        "bg_color_secondary": false,
+        "show_rounded_corners": false,
+        "logo_opacity": 50,
+        "autoplay": true,
+        "duration": 4,
+        "bg_color_secondary": true,
         "width": "wrapper--narrow",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     }
   },
   "order": [
+    "main",
     "slideshow",
     "ce2df312-d889-4d37-b04b-aba15946304b",
     "5f0a85a4-6cba-4029-963f-526062296974",
-    "main",
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
     "97500463-1f25-4585-85ab-aec47372797d",
     "3608b4d3-540d-4e1b-9c84-2f3b000db6a9",
