@@ -1,0 +1,29 @@
+<!-- /snippets/product-siblings.liquid -->
+
+{%- liquid
+    assign animation_attributes = animation_attributes | default: ''
+    assign padding_bottom = block.settings.padding_bottom
+  -%}
+  {%- if product.metafields.custom.product_siblings_screen_ != blank -%}
+    <div class="product__block" style="--PBB: {{ padding_bottom }}px;" {{ animation_attributes }} {{ block.shopify_attributes }}>
+      <div class="siblings-container">
+        <legend class="radio__legend siblings__legend">
+          <span class="radio__legend__label label-typography">{{ block.settings.label }}</span>
+        </legend>
+
+        <div class="product__siblings-container">
+            {% for product_sibling in product.metafields.custom.product_siblings_screen_.value %}
+                <a href="{{ product_sibling.url }}" class="product__siblings-item
+                    {% if product_sibling.id == product.id %}
+                        btn--primary btn--solid
+                    {% else %}
+                        btn--outline
+                    {% endif %} btn btn--small">
+                    {{ product_sibling.metafields.custom.screen_type }}
+                </a>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+  

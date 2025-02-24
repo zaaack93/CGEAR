@@ -2174,6 +2174,18 @@
 
               {% render 'product-siblings' product: product, block: block, animation_attributes: animation_attributes %}
 
+            {% when 'siblings_fiamma' %}
+              {% capture animation_attributes %}
+                {% if animations_enabled %}
+                  data-aos="hero"
+                  data-aos-anchor="{{ animation_anchor }}"
+                  data-aos-order="{{ animation_order }}"
+                  {%- assign animation_order = animation_order | plus: 1 -%}
+                {% endif %}
+              {% endcapture %}
+
+              {% render 'product-siblings-fiamma' product: product, block: block, animation_attributes: animation_attributes %}
+
             {%- when 'inventory_countdown' -%}
               <div class="product__block"
                 {% if animations_enabled %}

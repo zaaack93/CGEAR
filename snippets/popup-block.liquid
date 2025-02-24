@@ -1,0 +1,43 @@
+{%- liquid
+    assign text = block.settings.text
+    assign popup_page = pages[block.settings.popup_page]
+    assign popup_content = popup_page.content
+  -%}
+
+  <div class="product__block product__popup__wrapper"
+    {% if animations_enabled %}
+      data-aos="hero"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-order="{{ animation_order }}"
+      {%- assign animation_order = animation_order | plus: 1 -%}
+    {% endif %}
+    {{ block_style }}
+    {{ block.shopify_attributes }}>
+    {%- unless text == blank -%}
+      <button type="button" class="product__popup__link label-typography" href="{{ popup_page.url }}" aria-controls="popup-text--{{ block.id }}" data-drawer-toggle>
+        <span>{{ text }}</span>
+      </button>
+
+      {%- capture popup_text -%}
+        {{- popup_text -}}
+        <div class="product__popup drawer drawer--left cv-h" id="popup-text--{{ block.id }}" aria-hidden="true" role="dialog" data-drawer>
+          <button type="button" class="drawer__close-button" aria-controls="popup-text--{{ block.id }}" data-drawer-toggle>
+            <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
+            {%- render 'icon-close' -%}
+          </button>
+
+          <div class="product__popup__inner" data-scroll>
+            <div class="product__popup__content rte">
+              {%- if popup_page == blank -%}
+                {{ 'products.product.popup_missing' | t }}
+              {%- elsif popup_content == blank -%}
+                {{ 'products.product.popup_text_missing' | t }}
+              {%- else -%}
+                {{ popup_content }}
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endcapture -%}
+    {%- endunless -%}
+  </div>
