@@ -903,10 +903,58 @@
       </button>
     {%- endunless -%}
   {%- endcapture -%}
+
+
+  {%- capture screen_chart_drawer -%}
+      <div class="{{ drawer_classes }}" id="screen-chart--{{ unique }}" aria-hidden="true" role="dialog" data-drawer>
+        <button type="button" class="drawer__close-button" aria-controls="screen-chart--{{ unique }}" data-drawer-toggle>
+          <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
+          {{- drawer_close_icon -}}
+        </button>
+
+        <div class="popup-chart__inner" data-scroll>
+          <div class="popup-chart__content">
+            <div class="rte tabs" data-tabs-holder>
+              {{ pages[block.settings.page].content }}
+            </div>
+          </div>
+        </div>
+      </div>
+  {%- endcapture -%}
+
+  {%- capture screen_chart_button -%}
+      <button type="button" class="product__popup__link label-typography" href="{{ info_page.url | default: '#!' }}" aria-controls="screen-chart--{{ unique }}" data-drawer-toggle>
+        {% render 'icon-ruler' %}
+        <span>Screen guide</span>
+      </button>
+  {%- endcapture -%}
 {%- endif -%}{%- form 'product', product, class: 'product__form', data-product-form: '', id: product_form_id, data-recipient-errors: gift_card_recipient_feature_active, data-max-inventory-reached: max_inventory_reached, data-error-message-position: error_message_position, data-variant-title: current_variant_title -%}
   {% comment %} The input with name="id" submits to cart {% endcomment %}
   <input type="hidden" name="id" value="{{ current_variant.id }}" data-product-select>
+  {% capture animation_attributes %}
+    {% if animations_enabled %}
+      data-aos="hero"
+      data-aos-anchor="{{ animation_anchor }}"
+      data-aos-order="{{ animation_order }}"
+      {%- assign animation_order = animation_order | plus: 1 -%}
+    {% endif %}
+  {% endcapture %}
+  {% render 'product-siblings-fiamma' product: product, block: block, animation_attributes: animation_attributes,button_handler:screen_chart_button %}
+  {%- capture popup_text_screen -%}
+    {{- popup_text_screen -}}
+    <div class="product__popup drawer drawer--left cv-h" id="popup-text--{{ block.id }}" aria-hidden="true" role="dialog" data-drawer>
+      <button type="button" class="drawer__close-button" aria-controls="popup-text--{{ block.id }}" data-drawer-toggle>
+        <span class="visually-hidden">{{ 'general.accessibility.close_drawer' | t }}</span>
+        {%- render 'icon-close' -%}
+      </button>
 
+      <div class="product__popup__inner" data-scroll>
+        <div class="product__popup__content rte">
+          dzadza
+        </div>
+      </div>
+    </div>
+  {%- endcapture -%}
   {%- unless show_quantity -%}
     <input type="hidden" name="quantity" value="1">
   {%- endunless -%}
@@ -2183,8 +2231,8 @@
                   {%- assign animation_order = animation_order | plus: 1 -%}
                 {% endif %}
               {% endcapture %}
-
-              {% render 'product-siblings-fiamma' product: product, block: block, animation_attributes: animation_attributes %}
+              {{screen_chart_button }}
+              {% render 'product-siblings-fiamma' product: product, block: block, animation_attributes: animation_attributes,button_handler:screen_chart_button %}
 
             {%- when 'inventory_countdown' -%}
               <div class="product__block"
@@ -2458,6 +2506,7 @@
     {%- comment -%}Popup text & size chart drawers, leave outsude .form__wrapper otherwise it will break when sticky form is enabled{%- endcomment -%}
     {{- popup_text -}}
     {{- size_chart_drawer -}}
+    {{- screen_chart_drawer -}}
 
     <script type="application/json" id="ProductJson-{{ unique }}" data-product-json>{{ product | json }}</script>
     <script type="application/json" id="ModelJson-{{ unique }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
@@ -3482,6 +3531,8 @@
     {%- endif -%}
 
     {{- size_chart_drawer -}}
+    {{- screen_chart_drawer -}}
+
 
   {%- unless multiple_quick_view_items -%}
       </div>

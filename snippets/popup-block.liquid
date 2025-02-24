@@ -1,6 +1,7 @@
+
 {%- liquid
-    assign text = block.settings.text
-    assign popup_page = pages[block.settings.popup_page]
+    assign text = "SCREEN GUIDE"
+    assign popup_page = pages["size-chart"]
     assign popup_content = popup_page.content
   -%}
 
@@ -41,3 +42,9 @@
       {%- endcapture -%}
     {%- endunless -%}
   </div>
+
+  {{- size_chart_button -}}
+
+      {%- comment -%}Popup text & size chart drawers, leave outsude .form__wrapper otherwise it will break when sticky form is enabled{%- endcomment -%}
+      {{- popup_text -}}
+      {{- size_chart_drawer -}}

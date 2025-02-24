@@ -504,6 +504,12 @@
 
   //product sublings
   .siblings-container{
+    .siblings__legend{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
     .radio__legend__label {
       color: var(--CHARCOAL, #3d4146);
       font-size: 20px;

@@ -47,18 +47,11 @@
             "padding_bottom_mobile": 20
           }
         },
-        "siblings_fiamma_Rbh6cJ": {
-          "type": "siblings_fiamma",
-          "settings": {
-            "label": "Choose Screen Type:",
-            "page": "fiamma",
-            "padding_bottom": 10,
-            "padding_bottom_mobile": 10
-          }
-        },
         "form": {
           "type": "form",
           "settings": {
+            "label": "Choose Screen Type:",
+            "page": "fiamma",
             "show_labels": true,
             "show_quantity": false,
             "show_payment_button": false,
@@ -271,7 +264,6 @@
         "loox_reviews_loox_rating_RMTtKD",
         "title",
         "c144a3fa-28a2-4fd4-95ac-9c193e6e52c4",
-        "siblings_fiamma_Rbh6cJ",
         "form",
         "81346c75-bdb4-41d0-84bf-117ca0901222",
         "818ea8ca-df8c-4430-9189-4c8b38575d4a",

@@ -856,6 +856,12 @@
   margin-top: 14px;
   min-width: inherit;
 }
+.template--product .siblings-container .siblings__legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 .template--product .siblings-container .radio__legend__label {
   color: var(--CHARCOAL, #3d4146);
   font-size: 20px;
