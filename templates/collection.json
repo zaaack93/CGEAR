@@ -46,7 +46,7 @@
           "type": "heading",
           "settings": {
             "text": "<p>Whether it's sand, grass, dirt or the desert, we've got you covered.</p>",
-            "size": 105,
+            "size": 100,
             "heading_highlight_type": "italics",
             "highlight_color": "#d43747",
             "highlight_text_color": "#000000"

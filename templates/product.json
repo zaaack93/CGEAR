@@ -50,7 +50,7 @@
         "form": {
           "type": "form",
           "settings": {
-            "label": "Choose Screen Type:",
+            "label": "Screen Type:",
             "page": "fiamma",
             "show_labels": true,
             "show_quantity": false,
@@ -204,7 +204,7 @@
             "accordion_heading": "Shipping, Returns & Warranty",
             "heading_style": "font-heading",
             "use_description": false,
-            "accordion_text": "<p><strong>Shipping Across Australia</strong><br/>We’ve got you covered with free shipping across most of Australia (WA and NT excluded, sorry mates!). Once you place your order, we’ll have it on the road within 24 hours. Delivery times are estimates, and while we do our best to hit them, sometimes things happen out of our control. </p><p><strong>Hassle-Free 30-Day Returns</strong><br/>We want you to feel stoked about your CGear purchase, so we offer a 30-day return window if you need to send something back. As long as it’s in its original condition, we’ll make the process smooth. </p><p><strong>3-Year Warranty You Can Count On</strong><br/>We build gear to last and back it with a 3-year warranty. If anything isn’t up to scratch because of a manufacturing issue, we’ll get it sorted. Rest easy knowing your gear is covered for the long haul—whether you're off-grid or just at your local caravan park. </p>",
+            "accordion_text": "<p><strong>Shipping Across Australia</strong><br/>We’ve got you covered with free shipping across most of Australia (WA and NT excluded). Once you place your order, we’ll have it on the road within 24 hours. Delivery times are estimates, and while we do our best to hit them, sometimes things happen out of our control. </p><p><strong>Hassle-Free 30-Day Returns</strong><br/>We want you to feel stoked about your CGear purchase, so we offer a 30-day return window if you need to send something back. As long as it’s in its original condition, we’ll make the process smooth. </p><p><strong>12-Month Warranty You Can Count On</strong><br/>We build gear to last and back it with a 12-month warranty. If anything isn’t up to scratch because of a manufacturing issue, we’ll get it sorted. Rest easy knowing your gear is covered for the long haul—whether you're off-grid or just at your local caravan park. </p>",
             "accordion_page": "",
             "padding_bottom": 14,
             "padding_bottom_mobile": 20

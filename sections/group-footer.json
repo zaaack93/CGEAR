@@ -50,7 +50,7 @@
         "a257dbc0-7913-4fbf-89f7-27dd288cd62e": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>BUILT  FOR AUSTRALIAN CONDITIONS</strong></p>",
+            "text": "<p><strong>BUILT  FOR AUSTRALIAN CONDITIONS.</strong></p>",
             "text_color": "",
             "heading_highlight_type": "circle",
             "highlight_color": "#d43747",
@@ -65,7 +65,7 @@
         "text_xHw7ma": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>FIND COMFORT IN THE UNCOMFORTABLE.</strong></p>",
+            "text": "<p><strong>FIND COMFORT IN THE UNCOMFORTABLE</strong></p>",
             "text_color": "",
             "heading_highlight_type": "circle",
             "highlight_color": "#d43747",
