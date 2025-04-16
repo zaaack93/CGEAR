@@ -11,6 +11,33 @@
   overflow-x: hidden;
   --vertical-spacing: 13px;
 
+  .ratings__reviews{
+    margin-bottom: -15px;
+    .testimonial__stars{
+      margin-bottom: 0px;
+    }
+    .rating__star__full {
+      position: relative;
+      margin-right: 3px;
+    }
+    .rating__star__full .icon {
+      margin-right: 2px;
+      width: 16px;
+      height: 16px;
+      stroke: rgb(139, 172, 14);
+      fill: rgb(139, 172, 14);
+    }
+
+    .review-text{
+      margin-block: 0px;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      color:#3d4146;
+    }
+  }
+
   .product-single {
     @media only screen and (max-width: 768px) {
       padding-top: 0px;
@@ -393,6 +420,10 @@
         line-height: normal;
         text-transform: uppercase;
         background-color: #3c4147;
+        .loader--line{
+          left: 50%;
+          transform: translateX(-50%);
+        }
         .product__price--regular {
           display: none;
         }

@@ -432,6 +432,31 @@
   overflow-x: hidden;
   --vertical-spacing: 13px;
 }
+.template--product .ratings__reviews {
+  margin-bottom: -15px;
+}
+.template--product .ratings__reviews .testimonial__stars {
+  margin-bottom: 0px;
+}
+.template--product .ratings__reviews .rating__star__full {
+  position: relative;
+  margin-right: 3px;
+}
+.template--product .ratings__reviews .rating__star__full .icon {
+  margin-right: 2px;
+  width: 16px;
+  height: 16px;
+  stroke: rgb(139, 172, 14);
+  fill: rgb(139, 172, 14);
+}
+.template--product .ratings__reviews .review-text {
+  margin-block: 0px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  color: #3d4146;
+}
 @media only screen and (max-width: 768px) {
   .template--product .product-single {
     padding-top: 0px;
@@ -763,6 +788,10 @@
   line-height: normal;
   text-transform: uppercase;
   background-color: #3c4147;
+}
+.template--product .product-single__details .product__submit__buttons button.product__submit__add .loader--line {
+  left: 50%;
+  transform: translateX(-50%);
 }
 .template--product .product-single__details .product__submit__buttons button.product__submit__add .product__price--regular {
   display: none;

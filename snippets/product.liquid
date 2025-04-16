@@ -503,7 +503,9 @@
 
                     <nav class="breadcrumbs"><a href="{{ vendor | url_for_vendor }}">{{ vendor }}</a></nav>
                 {%- endcase -%}
-
+                {% if product.metafields.loox.avg_rating != blank %}
+                  {% render 'reviews-snippet' %}
+                {% endif %}
                 <h1 class="product__title"{% if title_style != blank %}{{ title_style }}{% endif %}>
                   {%- if template.name == 'product' and section_type != 'featured' -%}
                     {{- product_title -}}

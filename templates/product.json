@@ -14,6 +14,7 @@
       "blocks": {
         "loox_reviews_loox_rating_RMTtKD": {
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "disabled":true,
           "settings": {
             "contentSize": 16,
             "pattern": "[rating]/5   |   From [count] Verified Reviews",

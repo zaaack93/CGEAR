@@ -1,0 +1,25 @@
+{% liquid
+    assign star_rating = 5
+    assign percent = star_rating | divided_by: 5.0 | times: 100
+%}
+<a href="#looxReviews" class="ratings__reviews">
+    <div class="testimonial__item__content">
+        {%  assign star_rating = 5 %}
+        {%- unless star_rating == 0 -%}
+          <div class="testimonial__stars"
+            {% if animations_enabled %}
+              data-aos="fade-up"
+              data-aos-anchor="{{ animation_anchor }}"
+              data-aos-delay="{{ animation_delay }}"
+              {%- assign animation_delay = animation_delay | plus: 150 -%}
+            {% endif %}>
+            <span class="rating__star" aria-hidden="true" style="--percent: {{ 100 | minus: percent }}%">
+              <span class="rating__star__full">
+                {%- for i in (1..star_rating) -%}<svg width="25px" height="25px" viewBox="0 0 25 25" class="icon icon-star icon-star--full"><polygon fill-rule="nonzero" points="16.2212909 8.77064179 12.5128412 0.870224269 8.80343056 8.77064179 0.512841234 10.0374085 6.51243703 16.1862739 5.09643337 24.8702243 12.5128412 20.7696377 19.9292491 24.8702243 18.5122845 16.1862739 24.5128412 10.0374085"></polygon></svg>{%- endfor -%}
+              </span>
+            </span>
+            <p class="review-text">{{product.metafields.loox.avg_rating}}/5 | From {{ product.metafields.loox.num_reviews }} Verified Reviews</p>
+          </div>
+        {%- endunless -%}
+      </div>
+</a>
