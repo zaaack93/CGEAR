@@ -14,7 +14,7 @@
       "blocks": {
         "loox_reviews_loox_rating_RMTtKD": {
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "disabled":true,
+          "disabled": true,
           "settings": {
             "contentSize": 16,
             "pattern": "[rating]/5   |   From [count] Verified Reviews",
@@ -297,6 +297,69 @@
         "padding_bottom": 60
       }
     },
+    "section_custom_content_nPBgc8": {
+      "type": "section-custom-content",
+      "blocks": {
+        "text_CK9zir": {
+          "type": "text",
+          "settings": {
+            "text_position": "left",
+            "top_image_width": 100,
+            "text_color": "text-dark",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.video_usage_heading.value }}",
+            "heading_size": 100,
+            "text": "{{ product.metafields.custom.video_usage_paragraph | metafield_tag }}",
+            "text_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--black",
+            "button_style": "btn--solid",
+            "button_size": "btn--small",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_color": "btn--white",
+            "button_2_style": "btn--solid-border",
+            "button_2_size": "btn--small",
+            "bg_color": ""
+          }
+        },
+        "video_Nx4xEL": {
+          "type": "video",
+          "settings": {
+            "text_position": "middle-center",
+            "video_link_bg": "{{ product.metafields.custom.video_usage_link.value }}",
+            "video_link": "",
+            "overlay_opacity": 0,
+            "video_size": "video-cover",
+            "text_color": "text-light",
+            "title": "",
+            "video_text": "",
+            "heading_size": 100,
+            "button_text": "",
+            "button_link": "",
+            "button_color": "btn--white",
+            "button_style": "btn--solid-border",
+            "button_size": "btn--small"
+          }
+        }
+      },
+      "block_order": [
+        "text_CK9zir",
+        "video_Nx4xEL"
+      ],
+      "settings": {
+        "height": "five-fifty-height",
+        "enable_mobile_height": true,
+        "mobile_height": "five-fifty-height-mobile",
+        "bg_color": "",
+        "reverse_blocks": false,
+        "width": "wrapper",
+        "add_gutter": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "a53634e9-b4df-48a5-8b3d-314fdc32a419": {
       "type": "section-video",
       "settings": {
@@ -348,7 +411,7 @@
       "settings": {
         "subheading": "Hear the word from out Yonder.",
         "subheading_size": 100,
-        "title": "Real reviews. Real people. Real good.",
+        "title": "Loved by 100,000+ Aussie Campers",
         "heading_size": 100,
         "text_alignment": "text-left",
         "bg_color": "",
@@ -886,7 +949,7 @@
         "highlight_color": "#d43747",
         "highlight_text_color": "#000000",
         "heading_size": 100,
-        "text": "<p>Loved by over 100,000 Aussie adventurers. </p>",
+        "text": "",
         "text_size": 100,
         "button_position": "top",
         "button_text": "",
@@ -903,6 +966,7 @@
   },
   "order": [
     "main",
+    "section_custom_content_nPBgc8",
     "a53634e9-b4df-48a5-8b3d-314fdc32a419",
     "section_testimonials_with_images_dMKYtF",
     "14799a60-0c01-42df-b31a-f2d6a12cefa5",

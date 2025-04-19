@@ -15,7 +15,8 @@
         "template--15169561198665__d7500f76-3bf1-422a-a811-a46f0dc76b02-1687419522f730b89c-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_5695.jpg",
+            "image": "shopify://shop_images/fiona-smallwood-1IiEpv5mb30-unsplash.jpg",
+            "image_mobile": "shopify://shop_images/tai-bui-Ns7KaILqbWI-unsplash_1.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
@@ -24,7 +25,7 @@
             "subheading": "",
             "title": "<p>Contact Us</p>",
             "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#000",
+            "highlight_color": "#000000",
             "highlight_text_color": "",
             "text": "",
             "stacked_button": false,

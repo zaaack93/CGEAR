@@ -41,7 +41,7 @@
     "product_grid_heading_size": 130,
     "product_grid_text_size": 110,
     "bold_price": false,
-    "products_per_row_on_desktop": 3,
+    "products_per_row_on_desktop": 4,
     "products_per_row_on_mobile": "1",
     "image_size": "cover",
     "image_aspect_ratio": 1,
