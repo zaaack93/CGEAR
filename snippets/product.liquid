@@ -1957,7 +1957,7 @@
                   {% assign upsell_button_text = product.metafields.custom.product_upsell.value.button_text %}
                   {% assign upsell_image = product.metafields.custom.product_upsell.value.picture %}
                     {% assign upsell_heading = product.metafields.custom.product_upsell.value.heading | newline_to_br %}
-                  {% assign upsell_product = product.metafields.custom.product_upsell.value.product %}
+                  {% assign upsell_product = product.metafields.custom.product_upsell.value.product.value %}
                   <a href="{{ upsell_product.url }}">
                     <div class="product-upsell-container">
                       <div class="product-upsell-image">
