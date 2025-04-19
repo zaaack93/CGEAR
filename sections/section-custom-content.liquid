@@ -1,3 +1,16 @@
+{%  assign shouldDisplay = true %}
+
+{%  if template == 'product' %}
+  {% for block in section.blocks %}
+    {% if block.type == 'text' and block.settings.title == blank and block.settings.text == blank %}
+      {% assign shouldDisplay = false %}
+    {% elsif block.type == 'video' and block.settings.video_link_bg == blank %}
+      {% assign shouldDisplay = false %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
 <!-- /sections/section-custom-content.liquid -->
 {%- liquid
   assign section_width = section.settings.width
@@ -64,7 +77,7 @@
     {%- endif -%}
   }
 {%- endstyle -%}
-
+{% if shouldDisplay %}
 <section id="brick-section--{{ section.id }}"
   class="section-padding brick__section"
   data-section-id="{{ section.id }}"
@@ -417,6 +430,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% schema %}
 {
