@@ -25,7 +25,7 @@
         "slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/pexels-mads-de-silva-275585403-13581479.jpg",
+            "image": "shopify://shop_images/image_629.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "left",
@@ -34,7 +34,7 @@
             "subheading": "",
             "title": "<p>About Us</p>",
             "heading_highlight_type": "underline-hand-drawn",
-            "highlight_color": "#000",
+            "highlight_color": "#000000",
             "highlight_text_color": "",
             "text": "",
             "stacked_button": false,
@@ -57,7 +57,7 @@
         "slideshow-0"
       ],
       "settings": {
-        "slide_height": "one-third-height",
+        "slide_height": "four-fifty-height",
         "enable_mobile_height": true,
         "mobile_slide_height": "one-third-height-mobile",
         "show_nav_dots": true,
@@ -82,7 +82,7 @@
         "layout": "inline",
         "image_location": "left",
         "image_width": "standard",
-        "image": "shopify://shop_images/7dc552150bf95554bffdeb10518e5716.png",
+        "image": "shopify://shop_images/image_630.jpg",
         "subheading": "",
         "title": "<p>Great Southern Land</p>",
         "heading_highlight_type": "circle",
@@ -100,29 +100,26 @@
         "text_color": "text-dark",
         "bg_color": "",
         "gradient": "",
-        "section_width": "wrapper",
+        "section_width": "wrapper--full-padded",
         "padding_top": 80,
         "padding_bottom": 60
       }
     },
-    "5f0a85a4-6cba-4029-963f-526062296974": {
+    "3608b4d3-540d-4e1b-9c84-2f3b000db6a9": {
       "type": "section-image-with-text",
-      "custom_css": [
-        ".h2 {line-height: 100%;}"
-      ],
       "settings": {
         "section_height": "six-fifty-height",
         "layout": "inline",
         "image_location": "right",
         "image_width": "standard",
-        "image": "shopify://shop_images/461849221_2743100875855962_4354141942142975239_n.jpg",
+        "image": "shopify://shop_images/Military.jpg",
         "subheading": "",
-        "title": "<p>Engineered For Adventure</p>",
+        "title": "<p>Our History</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
         "highlight_text_color": "",
         "heading_size": 120,
-        "content": "<p>We understand how rugged the great outdoors can be, which is why we’re passionate about crafting durable, high-quality gear that you can rely on. Whether you’re camping in the Kimberley, pitching up at Lucky Bay, or tackling the Simpson Desert, our gear is designed to go the distance, so you can make every outdoor moment unforgettable.</p>",
+        "content": "<p>CGear Multimat was originally designed as a deployable helimat to eliminate dirt, dust and debris from being kicked up by the helicopters rotors when landing. The product was so successful in eliminating sand, dirt and dust from helicopter landings that we applied it to camping sites.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -133,7 +130,7 @@
         "text_color": "text-dark",
         "bg_color": "",
         "gradient": "",
-        "section_width": "wrapper",
+        "section_width": "wrapper--full-padded",
         "padding_top": 60,
         "padding_bottom": 80
       }
@@ -170,7 +167,7 @@
     "97500463-1f25-4585-85ab-aec47372797d": {
       "type": "section-image-with-text",
       "settings": {
-        "section_height": "five-fifty-height",
+        "section_height": "six-fifty-height",
         "layout": "inline",
         "image_location": "left",
         "image_width": "standard",
@@ -181,7 +178,7 @@
         "highlight_color": "#a0bdcb",
         "highlight_text_color": "",
         "heading_size": 120,
-        "content": "<p>We take incredible care in our design and manufacturing and stand proudly by the quality of our equipment. We also know just how far some of you push yourselves during your adventures.<br/><br/>That’s why every Cgear product includes a 36 month Warranty against all manufacturing defects - so the only thing you need to worry about is what your having for dinner.</p>",
+        "content": "<p>We take incredible care in our design and manufacturing and stand proudly by the quality of our equipment. We also know just how far some of you push yourselves during your adventures.<br/><br/>That’s why every Cgear Multimat includes a 12 Month Warranty against all manufacturing defects - so the only thing you need to worry about is what you're having for dinner.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -192,26 +189,29 @@
         "text_color": "text-dark",
         "bg_color": "",
         "gradient": "",
-        "section_width": "wrapper",
-        "padding_top": 60,
+        "section_width": "wrapper--full-padded",
+        "padding_top": 80,
         "padding_bottom": 60
       }
     },
-    "3608b4d3-540d-4e1b-9c84-2f3b000db6a9": {
+    "5f0a85a4-6cba-4029-963f-526062296974": {
       "type": "section-image-with-text",
+      "custom_css": [
+        ".h2 {line-height: 100%;}"
+      ],
       "settings": {
-        "section_height": "five-fifty-height",
+        "section_height": "six-fifty-height",
         "layout": "inline",
         "image_location": "right",
         "image_width": "standard",
-        "image": "shopify://shop_images/Military.jpg",
+        "image": "shopify://shop_images/461849221_2743100875855962_4354141942142975239_n.jpg",
         "subheading": "",
-        "title": "<p>Our History</p>",
+        "title": "<p>Engineered For Adventure</p>",
         "heading_highlight_type": "circle",
         "highlight_color": "#d43747",
         "highlight_text_color": "",
         "heading_size": 120,
-        "content": "<p>CGear Multimat was originally designed as a deployable helimat to eliminate dirt, dust and debris from being kicked up by the helicopters rotors when landing. The product was so successful in eliminating sand, dirt and dust from helicopter landings that we applied it to camping sites.</p>",
+        "content": "<p>We understand how rugged the great outdoors can be, which is why we’re passionate about crafting durable, high-quality gear that you can rely on. Whether you’re camping in the Kimberley, pitching up at Lucky Bay, or tackling the Simpson Desert, our gear is designed to go the distance, so you can make every outdoor moment unforgettable.</p>",
         "text_alignment": "left",
         "button_text": "",
         "button_link": "",
@@ -222,9 +222,9 @@
         "text_color": "text-dark",
         "bg_color": "",
         "gradient": "",
-        "section_width": "wrapper",
+        "section_width": "wrapper--full-padded",
         "padding_top": 60,
-        "padding_bottom": 60
+        "padding_bottom": 80
       }
     },
     "6ef338fb-eb1b-498c-880d-4de0d0375389": {
@@ -301,10 +301,10 @@
     "main",
     "slideshow",
     "ce2df312-d889-4d37-b04b-aba15946304b",
-    "5f0a85a4-6cba-4029-963f-526062296974",
+    "3608b4d3-540d-4e1b-9c84-2f3b000db6a9",
     "a5edf133-c7fb-45ab-8ef2-ec81d903c34c",
     "97500463-1f25-4585-85ab-aec47372797d",
-    "3608b4d3-540d-4e1b-9c84-2f3b000db6a9",
+    "5f0a85a4-6cba-4029-963f-526062296974",
     "6ef338fb-eb1b-498c-880d-4de0d0375389"
   ]
 }

@@ -15,11 +15,11 @@
         "section-slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/cgear.com.au__utm_source_google_utm_medium_g_utm_campaign_20427933991_utm_content_668233742158_utm_term_cgear_gad_source_1_gclid_CjwKCAjwjqWzBhAqEiwAQmtgTwIgsoayaNRCMG2fk52fsVoV5CMVF4.jpg",
-            "image_mobile": "shopify://shop_images/Cropped_hero.jpg",
+            "image": "shopify://shop_images/IMG_9525-1.jpg",
+            "image_mobile": "shopify://shop_images/CGear_Lifestyle-90_2.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
-            "text_position": "left",
+            "text_position": "bottom-left",
             "text_alignment": "text-left",
             "text_color": "text-light",
             "subheading": "Loved by over 100,000 Aussies.",
@@ -48,7 +48,7 @@
         "section-slideshow-0"
       ],
       "settings": {
-        "slide_height": "full-height",
+        "slide_height": "two-thirds-height",
         "enable_mobile_height": true,
         "mobile_slide_height": "original-height-mobile",
         "show_nav_dots": true,
@@ -540,7 +540,7 @@
         "template--15169561100361__7e08aea3-8d64-45f2-ad45-b3aed504884c-168566631841e582bf-2": {
           "type": "text",
           "settings": {
-            "text": "<p>We back our own products so much, that our Cgear mats come with a 12 month warranty against all manufacturing defects - so the only thing you need to worry about is what you're catching for dinner.</p>",
+            "text": "<p>We back our own products so much, that our Cgear mats come with a 12 month warranty against all manufacturing defects.</p>",
             "size": 115
           }
         },

@@ -56,8 +56,8 @@
         "show_arrow_down": false,
         "autoplay": false,
         "duration": 4,
-        "transition": "wipe",
-        "enable_zoom_animation": true,
+        "transition": "fade",
+        "enable_zoom_animation": false,
         "enable_card_scrolling": false,
         "increase_border_radius": true,
         "heading_size": 120
