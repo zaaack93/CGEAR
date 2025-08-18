@@ -166,6 +166,7 @@
         flex-wrap: nowrap;
         gap: 12px;
         overflow-x: scroll;
+        scroll-behavior: smooth;
         &::-webkit-scrollbar {
           display: none;
         }
@@ -173,7 +174,8 @@
         .options-container {
           display: flex;
           flex-direction: row;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
+          gap: 12px;
         }
         .options-color-container {
           display: flex;
@@ -222,6 +224,73 @@
       padding: 5px;
       border-radius: 5px;
       border: 2px solid #3c4147;
+    }
+
+    //Scroll buttons wrapper
+    .radio__buttons-wrapper {
+      position: relative;
+      width: 100%;
+
+      .scroll-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 26px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+        
+        &.scroll-btn--left {
+          left: 5px;
+        }
+        
+        &.scroll-btn--right {
+          right: 5px;
+        }
+        
+        &:hover {
+          opacity: 0.7;
+        }
+        
+        &:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+        }
+        
+        svg {
+          width: 26px;
+          height: 26px;
+        }
+        
+        @media only screen and (max-width: 768px) {
+          width: 20px;
+          height: 20px;
+          
+          &.scroll-btn--left {
+            left: 10px;
+          }
+          
+          &.scroll-btn--right {
+            right: 15px;
+          }
+          
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      
+      .radio__buttons {
+        width: 100%;
+      }
     }
 
     //Reviews

@@ -65,6 +65,137 @@ var ProductImages = /*#__PURE__*/function (_HTMLElement) {
 }( /*#__PURE__*/_wrapNativeSuper(HTMLElement)); // Define the custom element
 customElements.define("product-images-container", ProductImages);
 
+// Horizontal scroll functionality for radio buttons
+var RadioButtonsScroller = /*#__PURE__*/function () {
+  function RadioButtonsScroller() {
+    _classCallCheck(this, RadioButtonsScroller);
+    this.initScrollButtons();
+  }
+  _createClass(RadioButtonsScroller, [{
+    key: "initScrollButtons",
+    value: function initScrollButtons() {
+      var _this = this;
+      var wrappers = document.querySelectorAll('.radio__buttons-wrapper');
+      wrappers.forEach(function (wrapper) {
+        var scrollContainer = wrapper.querySelector('.radio__buttons');
+        var leftBtn = wrapper.querySelector('[data-scroll-left]');
+        var rightBtn = wrapper.querySelector('[data-scroll-right]');
+        if (scrollContainer && leftBtn && rightBtn) {
+          // Find the actual scrollable container (either options-container or options-color-container)
+          var actualScrollContainer = scrollContainer.querySelector('.options-container') || scrollContainer.querySelector('.options-color-container') || scrollContainer;
+          _this.setupScrollButton(leftBtn, actualScrollContainer, 'left');
+          _this.setupScrollButton(rightBtn, actualScrollContainer, 'right');
+          _this.setupTouchSwipe(actualScrollContainer);
+          _this.updateButtonStates(actualScrollContainer, leftBtn, rightBtn);
+
+          // Update button states on scroll
+          actualScrollContainer.addEventListener('scroll', function () {
+            _this.updateButtonStates(actualScrollContainer, leftBtn, rightBtn);
+          });
+
+          // Update button states on resize
+          window.addEventListener('resize', function () {
+            _this.updateButtonStates(actualScrollContainer, leftBtn, rightBtn);
+          });
+
+          // Initial check after a short delay to ensure layout is complete
+          setTimeout(function () {
+            _this.updateButtonStates(actualScrollContainer, leftBtn, rightBtn);
+          }, 100);
+        }
+      });
+    }
+  }, {
+    key: "setupScrollButton",
+    value: function setupScrollButton(button, container, direction) {
+      button.addEventListener('click', function () {
+        var scrollAmount = 120; // Adjust scroll distance as needed
+        var currentScroll = container.scrollLeft;
+        if (direction === 'left') {
+          container.scrollTo({
+            left: currentScroll - scrollAmount,
+            behavior: 'smooth'
+          });
+        } else {
+          container.scrollTo({
+            left: currentScroll + scrollAmount,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+  }, {
+    key: "setupTouchSwipe",
+    value: function setupTouchSwipe(container) {
+      var startX = 0;
+      var startY = 0;
+      var isScrolling = null;
+      container.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isScrolling = null;
+      }, {
+        passive: true
+      });
+      container.addEventListener('touchmove', function (e) {
+        if (!startX || !startY) return;
+        var diffX = startX - e.touches[0].clientX;
+        var diffY = startY - e.touches[0].clientY;
+        if (isScrolling === null) {
+          isScrolling = Math.abs(diffX) > Math.abs(diffY);
+        }
+        if (isScrolling) {
+          // Allow horizontal scrolling
+          e.preventDefault();
+          var scrollAmount = diffX * 0.8; // Adjust sensitivity
+          container.scrollLeft += scrollAmount;
+          startX = e.touches[0].clientX;
+        }
+      }, {
+        passive: false
+      });
+      container.addEventListener('touchend', function () {
+        startX = 0;
+        startY = 0;
+        isScrolling = null;
+      }, {
+        passive: true
+      });
+    }
+  }, {
+    key: "updateButtonStates",
+    value: function updateButtonStates(container, leftBtn, rightBtn) {
+      var isAtStart = container.scrollLeft <= 1; // Allow for small rounding errors
+      var isAtEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth - 1;
+      var hasOverflow = container.scrollWidth > container.clientWidth + 1;
+
+      // Show buttons if there's overflow (removed mobile check)
+      if (!hasOverflow) {
+        leftBtn.style.display = 'none';
+        rightBtn.style.display = 'none';
+        return;
+      }
+      leftBtn.style.display = 'flex';
+      rightBtn.style.display = 'flex';
+      leftBtn.disabled = isAtStart;
+      rightBtn.disabled = isAtEnd;
+
+      // Add visual feedback
+      leftBtn.style.opacity = isAtStart ? '0.3' : '1';
+      rightBtn.style.opacity = isAtEnd ? '0.3' : '1';
+    }
+  }]);
+  return RadioButtonsScroller;
+}(); // Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  new RadioButtonsScroller();
+});
+
+// Also initialize on dynamic content changes (for AJAX)
+document.addEventListener('variant:changed', function () {
+  new RadioButtonsScroller();
+});
+
 /***/ }),
 
 /***/ "./src/scss/main.scss":

@@ -569,6 +569,7 @@
   flex-wrap: nowrap;
   gap: 12px;
   overflow-x: scroll;
+  scroll-behavior: smooth;
 }
 .template--product .product-single__details .radio__fieldset .radio__buttons::-webkit-scrollbar {
   display: none;
@@ -576,7 +577,8 @@
 .template--product .product-single__details .radio__fieldset .radio__buttons .options-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 12px;
 }
 .template--product .product-single__details .radio__fieldset .radio__buttons .options-color-container {
   display: flex;
@@ -619,6 +621,62 @@
   padding: 5px;
   border-radius: 5px;
   border: 2px solid #3c4147;
+}
+.template--product .product-single__details .radio__buttons-wrapper {
+  position: relative;
+  width: 100%;
+}
+.template--product .product-single__details .radio__buttons-wrapper .scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+.template--product .product-single__details .radio__buttons-wrapper .scroll-btn.scroll-btn--left {
+  left: 5px;
+}
+.template--product .product-single__details .radio__buttons-wrapper .scroll-btn.scroll-btn--right {
+  right: 5px;
+}
+.template--product .product-single__details .radio__buttons-wrapper .scroll-btn:hover {
+  opacity: 0.7;
+}
+.template--product .product-single__details .radio__buttons-wrapper .scroll-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.template--product .product-single__details .radio__buttons-wrapper .scroll-btn svg {
+  width: 26px;
+  height: 26px;
+}
+@media only screen and (max-width: 768px) {
+  .template--product .product-single__details .radio__buttons-wrapper .scroll-btn {
+    width: 20px;
+    height: 20px;
+  }
+  .template--product .product-single__details .radio__buttons-wrapper .scroll-btn.scroll-btn--left {
+    left: 10px;
+  }
+  .template--product .product-single__details .radio__buttons-wrapper .scroll-btn.scroll-btn--right {
+    right: 15px;
+  }
+  .template--product .product-single__details .radio__buttons-wrapper .scroll-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+.template--product .product-single__details .radio__buttons-wrapper .radio__buttons {
+  width: 100%;
 }
 .template--product .product-single__details .shopify-app-block .loox-rating {
   display: flex;
