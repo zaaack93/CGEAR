@@ -15,8 +15,8 @@
         "section-slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_9525-1.jpg",
-            "image_mobile": "shopify://shop_images/CGear_Lifestyle-90_2.jpg",
+            "image": "shopify://shop_images/FRONT_IMAGE_CGEAR.jpg",
+            "image_mobile": "shopify://shop_images/Shop_camping_main.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "bottom-left",
@@ -48,7 +48,7 @@
         "section-slideshow-0"
       ],
       "settings": {
-        "slide_height": "two-thirds-height",
+        "slide_height": "seven-fifty-height",
         "enable_mobile_height": true,
         "mobile_slide_height": "original-height-mobile",
         "show_nav_dots": true,
