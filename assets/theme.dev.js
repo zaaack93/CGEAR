@@ -9104,7 +9104,11 @@
             classes$C.hidden,
             !that.hasItemsInCart()
           )
-        : (this.pairProductsHolder.classList.toggle(
+        : (this.buttonHolder.classList.toggle(
+            classes$C.hidden,
+            !that.hasItemsInCart()
+          ),
+          this.pairProductsHolder.classList.toggle(
             classes$C.hidden,
             !that.hasItemsInCart()
           ),

@@ -1231,10 +1231,6 @@
                   {%- unless show_size_guide_as_label -%}<span class="radio__legend__value" data-option-value></span>{%endunless %}
                   {%- if show_size_guide_as_label -%}{{- size_chart_button -}}{%- endif -%}
                 </div>
-                <div class="radio__buttons-wrapper">
-                  <button type="button" class="scroll-btn scroll-btn--left" data-scroll-left aria-label="Scroll left">
-                    {%- render 'icon-prev' -%}
-                  </button>
                   <div class="radio__buttons" data-variant-buttons>
                     {%- assign variant_option_image_translationd = 'products.product.variant_option_image' | t | handle -%}
                     {%- assign option_named = option.name | handle -%}
@@ -1373,10 +1369,6 @@
                     {%- endfor -%}
                     </div>
                   </div>
-                  <button type="button" class="scroll-btn scroll-btn--right" data-scroll-right aria-label="Scroll right">
-                    {%- render 'icon-next' -%}
-                  </button>
-                </div>
               </div>
               {%- if is_swatch_option or is_native_swatch_option -%}
                 <button type="button" class="btn btn--text swatch__more" aria-expanded="false" aria-controls="CollectionFilterActions--product-type" data-swatches-more>
@@ -3203,11 +3195,7 @@
                   {%- if show_size_guide_as_label -%}{{- size_chart_button -}}{%- endif -%}
                 </legend>
 
-                <div class="radio__buttons-wrapper">
-                  <button type="button" class="scroll-btn scroll-btn--left" data-scroll-left aria-label="Scroll left">
-                    {%- render 'icon-prev' -%}
-                  </button>
-                  <div class="radio__buttons" data-variant-buttons>
+                <div class="radio__buttons" data-variant-buttons>
                   {%- assign variant_option_image_translation = 'products.product.variant_option_image' | t | handle -%}
                   {%- assign option_name = option.name | handle -%}
                   {{option_name }}..
@@ -3335,10 +3323,6 @@
                       {{ options_markup }}
                     {%- endif -%}
                   {%- endfor -%}
-                  </div>
-                  <button type="button" class="scroll-btn scroll-btn--right" data-scroll-right aria-label="Scroll right">
-                    {%- render 'icon-next' -%}
-                  </button>
                 </div>
               </fieldset>
               {%- if is_swatch_option or is_native_swatch_option -%}

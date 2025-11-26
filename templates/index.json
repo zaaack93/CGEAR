@@ -15,15 +15,15 @@
         "section-slideshow-0": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/FRONT_IMAGE_CGEAR.jpg",
-            "image_mobile": "shopify://shop_images/Shop_camping_main.jpg",
+            "image": "shopify://shop_images/BLACK_2560_x_1440_px.jpg",
+            "image_mobile": "shopify://shop_images/Final_mobile.jpg",
             "overlay_opacity": 0,
             "text_width": "normal",
             "text_position": "bottom-left",
             "text_alignment": "text-left",
             "text_color": "text-light",
-            "subheading": "Loved by over 100,000 Aussies.",
-            "title": "<p><strong>Sand-free. Stress-free.</strong></p>",
+            "subheading": "",
+            "title": "",
             "heading_highlight_type": "circle",
             "highlight_color": "#d43747",
             "highlight_text_color": "#000000",
@@ -248,7 +248,7 @@
       "settings": {
         "collection": "all-cgear-products",
         "products_layout": "grid",
-        "number_of_products": 8,
+        "number_of_products": 10,
         "products_per_row_on_desktop": 4,
         "columns_mobile": "1",
         "text_alignment": "text-left",
